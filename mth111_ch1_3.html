@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.3: Rounding Whole Numbers</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Number line images ── */
+        .numberline-figure {
+            text-align: center;
+            margin: 1.25rem 0;
+        }
+        .numberline-figure img {
+            max-width: 480px;
+            width: 100%;
+            height: auto;
+        }
+        .numberline-figure figcaption {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-3">Section 1.3: Rounding Whole Numbers</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Learn the rules for rounding.</li>
+            <li>Round whole numbers to specific place values, including tens, hundreds, and thousands.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-3-heading">
+        <h3 id="intro-1-3-heading">Introduction</h3>
+        <p>In some situations, you don't need an exact answer. In these cases, rounding the number to a specific place value is helpful. For example, if you travelled 973 miles, you might want to round the distance to 1,000 miles, which is easier to think about. Rounding also comes in handy to check whether a calculation is reasonable.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         ROUNDING WHOLE NUMBERS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="rounding-rules-heading">
+        <h3 id="rounding-rules-heading">Rounding Whole Numbers</h3>
+
+        <div class="definition-box" role="note" aria-label="Rules for rounding whole numbers">
+            <h3>Rules for Rounding Whole Numbers</h3>
+            <ol>
+                <li>Identify the digit in the place value you are rounding to.</li>
+                <li>Look at the digit immediately to the <strong>right</strong> of that place.</li>
+                <li>If that digit is <strong>less than 5</strong>, round <strong>down</strong> — keep the identified digit the same and replace all digits to its right with zeros.</li>
+                <li>If that digit is <strong>5 or greater</strong>, round <strong>up</strong> — increase the identified digit by 1 and replace all digits to its right with zeros.</li>
+                <li>When a number is exactly halfway between two possible rounded values, round up to the greater number.</li>
+            </ol>
+        </div>
+
+        <p>You can use a number line to help visualize rounding. The number that is closer to your original number is the one you round to.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-3-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-1-heading">Example 1</h3>
+                <p>A camera is dropped out of a boat and sinks to the bottom of a pond that is 37 feet deep. Round 37 to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The digit we are rounding to is the tens digit, <strong>3</strong>. The number 37 falls between 30 and 40 on the number line.</p>
+
+                    <figure class="numberline-figure">
+                        <img
+                            src="images/mth111_1_3_1.png"
+                            alt="A horizontal number line from 30 to 40 with tick marks at each integer. The value 35 is labeled at the midpoint. The value 37 is marked with a filled circle and a curved arrow pointing right toward 40, showing that 37 rounds up to 40 because it is closer to 40 than to 30."
+                        />
+                        <figcaption>37 is only 3 units from 40 but 7 units from 30, so it rounds up to 40.</figcaption>
+                    </figure>
+
+                    <p>Since the ones digit (7) is 5 or greater, we round <strong>up</strong>.</p>
+                    <p><strong>Answer:</strong> 37 rounded to the nearest ten is <strong>40</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-3-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-2-heading">Example 2</h3>
+                <p>Round 33 to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The number 33 falls between 30 and 40.</p>
+
+                    <figure class="numberline-figure">
+                        <img
+                            src="images/mth111_1_3_2.png"
+                            alt="A horizontal number line from 30 to 40 with tick marks at each integer. The value 35 is labeled at the midpoint. The value 33 is marked with a filled circle and a curved arrow pointing left toward 30, showing that 33 rounds down to 30 because it is closer to 30 than to 40."
+                        />
+                        <figcaption>33 is closer to 30, so it rounds down.</figcaption>
+                    </figure>
+
+                    <p>Since the ones digit (3) is less than 5, we round <strong>down</strong>.</p>
+                    <p><strong>Answer:</strong> 33 rounded to the nearest ten is <strong>30</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>You can also determine where to round <em>without</em> a number line by simply looking at the digit to the right of the place you are rounding to. If that digit is less than 5, round down; if it is 5 or greater, round up.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-3-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-3-heading">Example 3</h3>
+                <p>Round 77 to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The ones digit is 7, which is 5 or greater, so round up.</p>
+                    <p><strong>Answer:</strong> 77 rounded to the nearest ten is <strong>80</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-3-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-4-heading">Example 4</h3>
+                <p>There are 576 jellybeans in a jar. Round this number to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The tens digit is 7. The ones digit is 6, which is 5 or greater, so round up.</p>
+                    <p><strong>Answer:</strong> 576 rounded to the nearest ten is <strong>580</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>When rounding to the nearest <strong>hundred</strong>, the rounded number will have zeros in both the tens and ones places.</p>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-3-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-5-heading">Example 5</h3>
+                <p>A runner ran 1,539 meters but describes the distance with a rounded number. Round 1,539 to the nearest hundred.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The hundreds digit is 5. The digit to its right (tens digit) is 3, which is less than 5, so round down.</p>
+                    <p><strong>Answer:</strong> 1,539 rounded to the nearest hundred is <strong>1,500</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>When rounding to the nearest <strong>thousand</strong>, the rounded number will have zeros in the hundreds, tens, and ones places.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-1-3-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-6-heading">Example 6</h3>
+                <p>A plane's altitude increased by 2,721 feet. Round this number to the nearest thousand.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-6">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The thousands digit is 2. The digit to its right (hundreds digit) is 7, which is 5 or greater, so round up.</p>
+                    <p><strong>Answer:</strong> 2,721 rounded to the nearest thousand is <strong>3,000</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-1-3-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-3-7-heading">Example 7</h3>
+                <p>Round 326,749 to the nearest ten thousand.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-3-7">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-3-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The ten-thousands digit is 2. The digit to its right (thousands digit) is 6, which is 5 or greater, so round up.</p>
+                    <p><strong>Answer:</strong> 326,749 rounded to the nearest ten thousand is <strong>330,000</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>A record number of 23,386 people voted in a city election. Round this number to the nearest hundred.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-3">
+                Show Answer
+            </button>
+            <div id="sca-1-3" class="self-check-answer">
+                <p>The two possible values are 23,300 and 23,400. The tens digit is 8, which is 5 or greater, so round up.</p>
+                <p><strong>23,400</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-3-heading">
+        <h3 id="summary-1-3-heading">Summary</h3>
+        <p>In situations when you don't need an exact answer, you can round numbers. When you round, you are always rounding to a particular place value, such as the nearest thousand or the nearest ten. Whether you round up or down depends on which possible value is closest to the original number. When a number is exactly halfway between the two possible values, round up to the larger number.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-3-heading">
+        <h2 id="exercises-1-3-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-3-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-3-content" class="exercises-content" role="region" aria-labelledby="exercises-1-3-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
