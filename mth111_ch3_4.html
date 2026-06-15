@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.4: U.S. Measurement – Capacity</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-4">Section 3.4: U.S. Measurement – Capacity</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Define units of capacity and convert from one to another.</li>
+            <li>Perform arithmetic calculations on units of capacity.</li>
+            <li>Solve application problems involving units of capacity.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p><span class="blue-text"><strong>Capacity</strong></span> is the amount of liquid (or other pourable substance) that an object can hold when it's full. When a liquid, such as milk, is being described in gallons or quarts, this is a measure of capacity.</p>
+
+        <p>Understanding units of capacity can help you solve problems like this: Sven and Johanna were hosting a potluck dinner. They did not ask their guests what they would be bringing, and three people ended up bringing soup. Erin brought 1 quart, Richard brought 3 pints, and LeVar brought 9 cups. How many cups of soup did they have all together?</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         UNITS OF CAPACITY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="units-capacity-heading">
+        <h3 id="units-capacity-heading">Units of Capacity</h3>
+
+        <p>There are five main units for measuring capacity in the U.S. customary measurement system. The smallest unit of measurement is a <span class="blue-text"><strong>fluid ounce</strong></span>. Note that "ounce" is also used as a measure of weight, so it is important to use the word "fluid" when talking about capacity. Sometimes the prefix "fluid" is omitted when it is clear from context that the measurement refers to capacity rather than weight.</p>
+
+        <div class="definition-box" role="note" aria-label="Units of capacity descriptions">
+            <h3>Units of Capacity — Descriptions</h3>
+            <ul>
+                <li><strong>Fluid Ounce</strong> — A unit of capacity equal to \(\tfrac{1}{8}\) of a cup. One fluid ounce of water at 62°F weighs about one ounce. The amount of liquid medicine is often measured in fluid ounces.</li>
+                <li><strong>Cup</strong> — A unit equal to 8 fluid ounces. The capacity of a standard measuring cup is one cup.</li>
+                <li><strong>Pint</strong> — A unit equal to 16 fluid ounces, or 2 cups. The capacity of a carton of ice cream is often measured in pints.</li>
+                <li><strong>Quart</strong> — A unit equal to 32 fluid ounces, or 4 cups. You often see quarts of milk being sold in the supermarket.</li>
+                <li><strong>Gallon</strong> — A unit equal to 4 quarts, or 128 fluid ounces. When you fill up your car with gasoline, the price of gas is often listed in dollars per gallon.</li>
+            </ul>
+        </div>
+
+        <p>You can use any of these five measurement units to describe the capacity of an object, but it makes more sense to use certain units for certain purposes. For example, it makes more sense to describe the capacity of a swimming pool in gallons and the capacity of an expensive perfume in fluid ounces.</p>
+
+        <p>Sometimes you will need to convert between units of measurement. For example, you might want to express 5 gallons of lemonade in cups if you are trying to determine how many 8-fluid-ounce servings the lemonade would yield. The table below shows the most common equivalents and conversion factors for the five customary units of capacity.</p>
+
+        <!-- Full 3-column conversion factor table -->
+        <table aria-label="Capacity conversion factors in both directions">
+            <caption class="visually-hidden">U.S. customary capacity conversion factors, from larger to smaller units and from smaller to larger units</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Unit Equivalents</th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(larger to smaller)</span></th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(smaller to larger)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 cup = 8 fluid ounces</td>
+                    <td>\(\dfrac{8\text{ fl oz}}{1\text{ cup}}\)</td>
+                    <td>\(\dfrac{1\text{ cup}}{8\text{ fl oz}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 pint = 2 cups</td>
+                    <td>\(\dfrac{2\text{ cups}}{1\text{ pint}}\)</td>
+                    <td>\(\dfrac{1\text{ pint}}{2\text{ cups}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 quart = 2 pints</td>
+                    <td>\(\dfrac{2\text{ pints}}{1\text{ quart}}\)</td>
+                    <td>\(\dfrac{1\text{ quart}}{2\text{ pints}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 quart = 4 cups</td>
+                    <td>\(\dfrac{4\text{ cups}}{1\text{ quart}}\)</td>
+                    <td>\(\dfrac{1\text{ quart}}{4\text{ cups}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 gallon = 4 quarts</td>
+                    <td>\(\dfrac{4\text{ quarts}}{1\text{ gallon}}\)</td>
+                    <td>\(\dfrac{1\text{ gallon}}{4\text{ quarts}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 gallon = 16 cups</td>
+                    <td>\(\dfrac{16\text{ cups}}{1\text{ gallon}}\)</td>
+                    <td>\(\dfrac{1\text{ gallon}}{16\text{ cups}}\)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CONVERTING BETWEEN UNITS OF CAPACITY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="converting-capacity-heading">
+        <h3 id="converting-capacity-heading">Converting Between Units of Capacity</h3>
+
+        <p>As with converting units of length and weight, you can use the factor label method to convert from one unit of capacity to another. When the table does not contain a direct conversion factor between two units, use an intermediate unit and chain the conversion factors together.</p>
+
+        <!-- Example 1: gallons to pints -->
+        <section class="example" aria-labelledby="ex-3-4-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-4-1-heading">Example 1</h3>
+                <p>How many pints is \(3\tfrac{3}{4}\) gallons?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-4-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-4-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since a gallon is larger than a pint, we expect our answer in pints to be greater than \(3\tfrac{3}{4}\). The table does not contain a direct conversion factor for gallons to pints, so we use quarts as an intermediate unit:</p>
+                    \[\frac{11}{4}\text{ gal} \cdot \frac{4\text{ qt}}{1\text{ gal}} \cdot \frac{2\text{ pt}}{1\text{ qt}}\]
+                    <p>The units "gallons" and "quarts" cancel, leaving pints:</p>
+                    \[= \frac{11 \times 4 \times 2}{4 \times 1 \times 1}\text{ pt} = \frac{88}{4}\text{ pt} = 22\text{ pt}\]
+                    <p><strong>\(3\tfrac{3}{4}\) gallons is equal to 22 pints.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: fl oz to gallons -->
+        <section class="example" aria-labelledby="ex-3-4-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-4-2-heading">Example 2</h3>
+                <p>How many gallons is 32 fluid ounces?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-4-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-4-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since gallons is a larger unit than fluid ounces, we expect our answer to be less than 32. There is no direct conversion from fluid ounces to gallons, so we chain through cups, pints, and quarts:</p>
+                    \[\frac{32\text{ fl oz}}{1} \cdot \frac{1\text{ cup}}{8\text{ fl oz}} \cdot \frac{1\text{ pt}}{2\text{ cups}} \cdot \frac{1\text{ qt}}{2\text{ pt}} \cdot \frac{1\text{ gal}}{4\text{ qt}}\]
+                    <p>All intermediate units cancel, leaving gallons:</p>
+                    \[= \frac{32 \times 1 \times 1 \times 1 \times 1}{1 \times 8 \times 2 \times 2 \times 4}\text{ gal} = \frac{32}{128}\text{ gal} = \frac{1}{4}\text{ gal}\]
+                    <p><strong>32 fluid ounces is the same as \(\tfrac{1}{4}\) gallon.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Find the sum of 4 gallons and 2 pints. Express your answer in cups.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Each gallon has 16 cups, so \(4 \times 16 = 64\) cups in 4 gallons. Each pint has 2 cups, so \(2 \times 2 = 4\) cups in 2 pints.</p>
+                \[64 + 4 = 68\text{ cups}\]
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         APPLYING UNIT CONVERSIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applying-capacity-heading">
+        <h3 id="applying-capacity-heading">Applying Unit Conversions</h3>
+
+        <p>There are times when you will need to combine measurements that are given in different units. In order to do this, you need to convert first so that all quantities share the same unit. The problem itself may not specify which unit to use — in that case, choose the one that makes the computation most straightforward.</p>
+
+        <!-- Example 3: potluck soup -->
+        <section class="example" aria-labelledby="ex-3-4-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-4-3-heading">Example 3</h3>
+                <p>Sven and Johanna were hosting a potluck dinner. Three people ended up bringing soup: Erin brought 1 quart, Richard brought 3 pints, and LeVar brought 9 cups. How much soup did they have in total?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-4-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-4-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>To find the total, we need to add all three quantities. Before adding we must convert them all to the same unit. We'll convert everything to cups since LeVar's amount is already in cups.</p>
+                    <p>Convert 1 quart to cups (1 quart = 4 cups):</p>
+                    \[1\text{ qt} \times \frac{4\text{ cups}}{1\text{ qt}} = 4\text{ cups}\]
+                    <p>Convert 3 pints to cups:</p>
+                    \[3\text{ pt} \times \frac{2\text{ cups}}{1\text{ pt}} = 6\text{ cups}\]
+                    <p>Now add all three quantities:</p>
+                    \[4\text{ cups} + 6\text{ cups} + 9\text{ cups} = 19\text{ cups}\]
+                    <p><strong>There are 19 cups of soup for the dinner.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4: Natasha lemonade -->
+        <section class="example" aria-labelledby="ex-3-4-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-4-4-heading">Example 4</h3>
+                <p>Natasha is making lemonade to bring to the beach. She has two containers: one holds one gallon and the other holds 2 quarts. If she fills both containers, how many cups of lemonade will she have?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-4-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-4-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, find the total capacity in quarts. Since 1 gallon = 4 quarts:</p>
+                    \[4\text{ qt} + 2\text{ qt} = 6\text{ qt}\]
+                    <p>Now convert 6 quarts to cups, chaining through pints:</p>
+                    \[\frac{6\text{ qt}}{1} \cdot \frac{2\text{ pt}}{1\text{ qt}} \cdot \frac{2\text{ cups}}{1\text{ pt}} = \frac{6 \times 2 \times 2}{1}\text{ cups} = 24\text{ cups}\]
+                    <p>Alternatively, you could convert directly: 1 gallon = 16 cups and 2 quarts = 8 cups, giving \(16 + 8 = 24\) cups.</p>
+                    <p><strong>Natasha will have 24 cups of lemonade.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Alan is making chili using a recipe that makes 24 cups of chili. He has a 5-quart pot and a 2-gallon pot, and is trying to determine whether the chili will all fit in one of these pots. Which pot will fit the chili?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Convert each pot's capacity to cups:</p>
+                \[5\text{ qt} \times \frac{4\text{ cups}}{1\text{ qt}} = 20\text{ cups}\]
+                \[2\text{ gal} \times \frac{16\text{ cups}}{1\text{ gal}} = 32\text{ cups}\]
+                <p>The 5-quart pot holds only 20 cups, so 24 cups of chili will <strong>not</strong> fit. The 2-gallon pot holds 32 cups, so 24 cups of chili <strong>will</strong> fit in the 2-gallon pot.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>There are five basic units for measuring capacity in the U.S. customary measurement system: the fluid ounce, cup, pint, quart, and gallon. These units are related to one another, and capacity can be described using any of them. Typically, people use gallons to describe larger quantities and fluid ounces, cups, pints, or quarts for smaller quantities. Often, in order to compare or solve problems involving the amount of liquid in a container, you need to convert from one unit of measurement to another using the factor label method.</p>
+    </section>
+
+</main>
+
+<!-- Toggle scripts -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
