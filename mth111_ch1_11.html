@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.11: Numbers</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles1.css" />
+
+    <style>
+        /* ── Number line / diagram images ── */
+        .numberline-figure {
+            text-align: center;
+            margin: 1.25rem 0;
+        }
+        .numberline-figure img {
+            max-width: 520px;
+            width: 100%;
+            height: auto;
+        }
+        .numberline-figure figcaption {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Reference table ── */
+        .ref-table {
+            border-collapse: collapse;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        .ref-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: left;
+        }
+        .ref-table td {
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+        }
+        .ref-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-11">Section 1.11: Numbers</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Identify the subset(s) of the real numbers that a given number belongs to.</li>
+            <li>Locate points on a number line.</li>
+            <li>Compare rational numbers.</li>
+            <li>Identify rational and irrational numbers.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-11-heading">
+        <h3 id="intro-1-11-heading">Introduction</h3>
+        <p>You've worked with fractions and decimals, like 3.8 and \(2\frac{1}{3}\). These numbers can be found between the integer numbers on a number line. There are other numbers that can be found on a number line, too. When you include all the numbers that can be put on a number line, you have the real number line. Let's dig deeper into the number line and see what those numbers look like. Let's take a closer look to see where these numbers fall on the number line.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         RATIONAL NUMBERS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="rational-heading">
+        <h3 id="rational-heading">Rational Numbers</h3>
+
+        <p>The fraction \(\frac{16}{3}\), mixed number \(5\frac{1}{3}\), and decimal 5.33… (or \(5.\overline{3}\)) all represent the same number. This number belongs to a set of numbers that mathematicians call <strong>rational numbers</strong>. Rational numbers are numbers that can be written as a ratio of two integers. Regardless of the form used, \(5.\overline{3}\) is rational because this number can be written as the ratio of 16 over 3, or \(\frac{16}{3}\).</p>
+
+        <p>Examples of rational numbers include the following.</p>
+
+        <ul>
+            <li>0.5, as it can be written as \(\frac{1}{2}\)</li>
+            <li>\(3\frac{3}{4}\), as it can be written as \(\frac{11}{4}\)</li>
+            <li>\(-1.6\), as it can be written as \(\frac{-16}{10} = -\frac{8}{5}\)</li>
+            <li>4, as it can be written as \(\frac{4}{1}\)</li>
+            <li>\(-10\), as it can be written as \(\frac{-10}{1}\)</li>
+        </ul>
+
+        <p>All of these numbers can be written as the ratio of two integers.</p>
+
+        <p>You can locate these points on the number line.</p>
+
+        <p>In the following illustration, points are shown for 0.5 or \(\frac{1}{2}\), and for 2.75 or \(2\frac{3}{4} = \frac{11}{4}\).</p>
+
+        <figure class="numberline-figure">
+            <img
+                src="images/mth111_1_11_1.png"
+                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. A filled blue circle is placed at 0.5, labeled 0.5, between 0 and 1. A second filled blue circle is placed at 2.75, labeled 2.75, between 2 and 3."
+            />
+        </figure>
+
+        <p>As you have seen, rational numbers can be negative. Each positive rational number has an opposite. The opposite of \(5.\overline{3}\) is \(-5.\overline{3}\), for example.</p>
+
+        <p>Be careful when placing <strong>negative numbers</strong> on a number line. The negative sign means the number is to the left of 0, and the absolute value of the number is the distance from 0. So to place \(-1.6\) on a number line, you would find a point that is \(|-1.6|\) or 1.6 units to the left of 0. This is more than 1 unit away, but less than 2.</p>
+
+        <figure class="numberline-figure">
+            <img
+                src="images/mth111_1_11_2.png"
+                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. A filled blue circle is placed at negative 1.6, labeled negative 1.6, between negative 2 and negative 1. Two arrows above the number line show that negative 1.6 is 2 units to the left of 0 and 1 unit to the left of 0, illustrating the position of negative 1.6."
+            />
+        </figure>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-11-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-11-1-heading">Example 1</h3>
+                <p>Place \(-\frac{23}{5}\) on a number line.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-11-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-11-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>It's helpful to first write this improper fraction as a mixed number: 23 divided by 5 is 4 with a remainder of 3, so \(-\frac{23}{5}\) is \(-4\frac{3}{5}\).</p>
+                    <p>Since the number is negative, you can think of it as moving \(4\frac{3}{5}\) units to the left of 0. \(-4\frac{3}{5}\) will be between \(-4\) and \(-5\).</p>
+                    <figure class="numberline-figure">
+                        <img
+                            src="images/mth111_1_11_3.png"
+                            alt="A horizontal number line from negative 5 to 0 with tick marks at each integer. A filled blue circle is placed between negative 5 and negative 4, closer to negative 5, representing negative 4 and 3 fifths."
+                        />
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Which of the following points represents \(-1\frac{1}{4}\)?</p>
+            <figure class="numberline-figure">
+                <img
+                    src="images/mth111_1_11_4.png"
+                    alt="A horizontal number line with five labeled points. Point A is between negative 3 and negative 2. Point B is between negative 2 and negative 1, closer to negative 2. Point C is between negative 2 and negative 1, closer to negative 1. Point D is between negative 1 and 0, closer to negative 1. Point E is between 0 and 1."
+                />
+            </figure>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-11">
+                Show Answer
+            </button>
+            <div id="sca-1-11" class="self-check-answer">
+                <p>B.</p>
+                <p>Negative numbers are to the left of 0, and \(-1\frac{1}{4}\) should be 1.25 units to the left. Point B is the only point that's more than 1 unit and less than 2 units to the left of 0.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         COMPARING RATIONAL NUMBERS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="comparing-rational-heading">
+        <h3 id="comparing-rational-heading">Comparing Rational Numbers</h3>
+
+        <p>When two whole numbers are graphed on a number line, the number to the right on the number line is always greater than the number on the left.</p>
+
+        <p>The same is true when comparing two <strong>integers</strong> or rational numbers. The number to the right on the number line is always greater than the one on the left.</p>
+
+        <p>Here are some examples.</p>
+
+        <table class="ref-table" aria-label="Examples of comparing rational numbers on a number line">
+            <thead>
+                <tr>
+                    <th scope="col">Numbers to Compare</th>
+                    <th scope="col">Comparison</th>
+                    <th scope="col">Symbolic Expression</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(-2\) and \(-3\)</td>
+                    <td>\(-2\) is greater than \(-3\) because \(-2\) is to the right of \(-3\)</td>
+                    <td>\(-2 > -3\) or \(-3 < -2\)</td>
+                </tr>
+                <tr>
+                    <td>2 and 3</td>
+                    <td>3 is greater than 2 because 3 is to the right of 2</td>
+                    <td>\(3 > 2\) or \(2 < 3\)</td>
+                </tr>
+                <tr>
+                    <td>\(-3.5\) and \(-3.1\)</td>
+                    <td>\(-3.1\) is greater than \(-3.5\) because \(-3.1\) is to the right of \(-3.5\) (see below)</td>
+                    <td>\(-3.1 > -3.5\) or \(-3.5 < -3.1\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <figure class="numberline-figure">
+            <img
+                src="images/mth111_1_11_5.png"
+                alt="A horizontal number line from negative 5 to 0 with tick marks at each integer. A filled green circle is placed at negative 3.5, labeled negative 3.5, and a filled blue circle is placed at negative 3.1, labeled negative 3.1, to the right of negative 3.5, showing that negative 3.1 is greater than negative 3.5."
+            />
+        </figure>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Which of the following are true?</p>
+            <ol type="i">
+                <li>\(-4.1 > 3.2\)</li>
+                <li>\(-3.2 > -4.1\)</li>
+                <li>\(3.2 > 4.1\)</li>
+                <li>\(-4.6 < -4.1\)</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-11">
+                Show Answer
+            </button>
+            <div id="scb-1-11" class="self-check-answer">
+                <p>ii and iv</p>
+                <p>\(-3.2\) is to the right of \(-4.1\), so \(-3.2 > -4.1\). Also, \(-4.6\) is to the left of \(-4.1\), so \(-4.6 < -4.1\).</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         IRRATIONAL AND REAL NUMBERS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="irrational-heading">
+        <h3 id="irrational-heading">Irrational and Real Numbers</h3>
+
+        <p>There are also numbers that are not rational. <strong>Irrational numbers</strong> cannot be written as the ratio of two integers.</p>
+
+        <p>Any square root of a number that is not a perfect square, for example \(\sqrt{2}\), is irrational. Irrational numbers are most commonly written in one of three ways: as a root (such as a square root), using a special symbol (such as \(\pi\)), or as a nonrepeating, nonterminating decimal.</p>
+
+        <p>Numbers with a decimal part can either be terminating decimals or nonterminating decimals. Terminating means the digits stop eventually (although you can always write 0s at the end). For example, 1.3 is terminating, because there's a last digit. The decimal form of \(\frac{1}{4}\) is 0.25. Terminating decimals are always rational.</p>
+
+        <p>Nonterminating decimals have digits (other than 0) that continue forever. For example, consider the decimal form of \(\frac{1}{3}\), which is 0.3333…. The 3s continue indefinitely. Or the decimal form of \(\frac{1}{11}\), which is 0.090909…: the sequence "09" continues forever.</p>
+
+        <p>In addition to being nonterminating, these two numbers are also repeating decimals. Their decimal parts are made of a number or sequence of numbers that repeats again and again. A nonrepeating decimal has digits that never form a repeating pattern. The value of \(\sqrt{2}\), for example, is 1.414213562…. No matter how far you carry out the numbers, the digits will never repeat a previous sequence.</p>
+
+        <p>If a number is terminating or repeating, it must be rational; if it is both nonterminating and nonrepeating, the number is irrational.</p>
+
+        <table class="ref-table" aria-label="Types of decimals and whether they are rational or irrational">
+            <thead>
+                <tr>
+                    <th scope="col">Type of Decimal</th>
+                    <th scope="col">Rational or Irrational</th>
+                    <th scope="col">Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Terminating</td>
+                    <td>Rational</td>
+                    <td>\(0.25\) (or \(\frac{1}{4}\)) &nbsp; \(1.3\) (or \(\frac{13}{10}\))</td>
+                </tr>
+                <tr>
+                    <td>Nonterminating and Repeating</td>
+                    <td>Rational</td>
+                    <td>\(0.66\ldots\) (or \(\frac{2}{3}\)) &nbsp; \(3.242424\ldots\) (or \(\frac{321}{99} = \frac{107}{33}\))</td>
+                </tr>
+                <tr>
+                    <td>Nonterminating and Nonrepeating</td>
+                    <td>Irrational</td>
+                    <td>\(\pi\) (or \(3.14159\ldots\)) &nbsp; \(\sqrt{7}\) (or \(2.6457\ldots\))</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-11-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-11-2-heading">Example 2</h3>
+                <p>Is \(-82.91\) rational or irrational?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-11-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-11-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p><strong>Answer:</strong> \(-82.91\) is rational, because it is a terminating decimal.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>The <strong>set of real numbers</strong> is made by combining the set of rational numbers and the set of irrational numbers. The real numbers include <strong>natural numbers</strong> or counting numbers, whole numbers, integers, rational numbers (fractions and repeating or terminating decimals), and irrational numbers. The set of real numbers is all the numbers that have a location on the number line.</p>
+
+        <figure class="numberline-figure">
+            <img
+                src="images/mth111_1_11_6.png"
+                alt="A Venn diagram showing the sets of real numbers. The outermost circle is labeled Real Numbers. Inside it are two overlapping regions: a large circle on the left labeled Irrational Numbers containing pi, square root of 2, and square root of 7, and a large circle on the right labeled Rational Numbers containing 0.25 and 15 over 8 and 81 over 25. Inside the Rational Numbers circle is a smaller circle labeled Integers, inside which is a smaller circle labeled Whole Numbers, inside which is the smallest circle labeled Natural Numbers. The value 0.66 appears in the Rational Numbers circle outside the Integers circle."
+            />
+        </figure>
+
+        <table class="ref-table" aria-label="Sets of numbers and their descriptions">
+            <caption style="caption-side:top; text-align:center; font-weight:bold; color:#33AB2B; padding-bottom:0.4rem;">Sets of Numbers</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Set</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Natural numbers</td>
+                    <td>1, 2, 3, …</td>
+                </tr>
+                <tr>
+                    <td>Whole numbers</td>
+                    <td>0, 1, 2, 3, …</td>
+                </tr>
+                <tr>
+                    <td>Integers</td>
+                    <td>…, \(-3\), \(-2\), \(-1\), 0, 1, 2, 3, …</td>
+                </tr>
+                <tr>
+                    <td>Rational numbers</td>
+                    <td>numbers that can be written as a ratio of two integers — rational numbers are terminating or repeating when written in decimal form</td>
+                </tr>
+                <tr>
+                    <td>Irrational numbers</td>
+                    <td>numbers that cannot be written as a ratio of two integers — irrational numbers are nonterminating and nonrepeating when written in decimal form</td>
+                </tr>
+                <tr>
+                    <td>Real numbers</td>
+                    <td>any number that is rational or irrational</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-11-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-11-3-heading">Example 3</h3>
+                <p>What sets of numbers does 32 belong to?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-11-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-11-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The number 32 belongs to all these sets of numbers:</p>
+                    <ul>
+                        <li>Natural numbers</li>
+                        <li>Whole numbers</li>
+                        <li>Integers</li>
+                        <li>Rational numbers</li>
+                        <li>Real numbers</li>
+                    </ul>
+                    <p>Every natural or counting number belongs to all of these sets!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-11-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-11-4-heading">Example 4</h3>
+                <p>What sets of numbers does \(382.\overline{3}\) belong to?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-11-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-11-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(382.\overline{3}\) belongs to these sets of numbers:</p>
+                    <ul>
+                        <li>Rational numbers</li>
+                        <li>Real numbers</li>
+                    </ul>
+                    <p>The number is rational because it's a repeating decimal. It's equal to \(382\frac{1}{3}\) or \(\frac{1{,}147}{3}\).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-11-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-11-5-heading">Example 5</h3>
+                <p>What sets of numbers does \(-\sqrt{5}\) belong to?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-11-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-11-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(-\sqrt{5}\) belongs to these sets of numbers:</p>
+                    <ul>
+                        <li>Irrational numbers</li>
+                        <li>Real numbers</li>
+                    </ul>
+                    <p>The number is irrational because it can't be written as a ratio of two integers. Square roots that aren't perfect squares are always irrational.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>Which of the following sets does \(-\frac{33}{5}\) belong to?</p>
+            <ul>
+                <li>whole numbers</li>
+                <li>integers</li>
+                <li>rational numbers</li>
+                <li>irrational numbers</li>
+                <li>real numbers</li>
+            </ul>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-11">
+                Show Answer
+            </button>
+            <div id="scc-1-11" class="self-check-answer">
+                <p>rational and real numbers</p>
+                <p>The number is between integers, so it can't be an integer or a whole number. It's written as a ratio of two integers, so it's a rational number and not irrational. All rational numbers are real numbers, so this number is rational and real.</p>
+            </div>
+        </div>
+
+        <figure class="numberline-figure">
+            <img
+                src="images/mth111_1_11_7.png"
+                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. Various numbers are plotted: a filled circle at negative 4 and 3 fifths labeled negative 23 over 5, a filled circle at negative 1.6, a filled circle at negative 1 and 1 fourth, a filled circle at 0.5, a filled circle at 2.75, and approximate positions for square root of 2 near 1.4 and pi near 3.14, illustrating the locations of both rational and irrational numbers on the real number line."
+            />
+        </figure>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-11-heading">
+        <h3 id="summary-1-11-heading">Summary</h3>
+        <p>The set of real numbers is all numbers that can be shown on a number line. This includes natural or counting numbers, whole numbers, and integers. It also includes rational numbers, which are numbers that can be written as a ratio of two integers, and irrational numbers, which cannot be written as the ratio of two integers. When comparing two numbers, the one with the greater value would appear on the number line to the right of the other one.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-11-heading">
+        <h2 id="exercises-1-11-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-11-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-11-content" class="exercises-content" role="region" aria-labelledby="exercises-1-11-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
