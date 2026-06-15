@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.3: U.S. Measurement – Weight</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Self Check styles (matching 3.2) */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-3">Section 3.3: U.S. Measurement – Weight</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Define units of weight and convert from one to another.</li>
+            <li>Perform arithmetic calculations on units of weight.</li>
+            <li>Solve application problems involving units of weight.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>When you mention how heavy or light an object is, you are referring to its <span class="blue-text"><strong>weight</strong></span>. In the U.S. customary system of measurement, weight is measured in ounces, pounds, and tons. Like other units of measurement, you can convert between these units, and you sometimes need to do this to solve problems.</p>
+
+        <p>The grocery store sells a 36-ounce canister of ground coffee for \($\)14, and sells bulk coffee for \($\)7 per pound. Which is the better deal? To answer this question, you need to understand the relationship between ounces and pounds.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         UNITS OF WEIGHT
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="units-weight-heading">
+        <h3 id="units-weight-heading">Units of Weight</h3>
+
+        <p>Weight is measured in the U.S. customary system using three units: ounces, pounds, and tons. An <span class="blue-text"><strong>ounce</strong></span> is the smallest unit for measuring weight, a <span class="blue-text"><strong>pound</strong></span> is a larger unit, and a <span class="blue-text"><strong>ton</strong></span> is the largest unit.</p>
+
+        <div class="definition-box" role="note" aria-label="Units of weight descriptions">
+            <h3>Units of Weight — Examples</h3>
+            <ul>
+                <li><strong>Tons</strong> — used for very large objects. Some whale species can reach weights of up to 200 tons, which equals 400,000 pounds.</li>
+                <li><strong>Pounds</strong> — used for everyday objects. Meat is typically sold by the pound; one pound of ground beef makes about four hamburger patties.</li>
+                <li><strong>Ounces</strong> — used for lighter objects. A stack of 11 pennies weighs about one ounce.</li>
+            </ul>
+        </div>
+
+        <p>You can use any of the customary measurement units to describe the weight of something, but it makes more sense to use certain units for certain purposes. For example, it makes more sense to describe the weight of a human being in pounds rather than tons, and the weight of a car in tons rather than ounces.</p>
+
+        <div class="conversion-box" role="note" aria-label="Basic weight unit equivalents">
+            <h3>Weight Unit Equivalents</h3>
+            <table>
+                <caption class="visually-hidden">Basic unit equivalents for U.S. customary weight measurements</caption>
+                <tbody>
+                    <tr>
+                        <td>1 pound (lb)</td>
+                        <td>=</td>
+                        <td>16 ounces (oz)</td>
+                    </tr>
+                    <tr>
+                        <td>1 ton</td>
+                        <td>=</td>
+                        <td>2,000 pounds (lbs)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CONVERTING BETWEEN UNITS OF WEIGHT
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="converting-weight-heading">
+        <h3 id="converting-weight-heading">Converting Between Units of Weight</h3>
+
+        <p>You can use the <span class="blue-text"><strong>factor label method</strong></span> (dimensional analysis) to convert one customary unit of weight to another. This method uses conversion factors that allow you to cancel units to end up with your desired unit of measurement. Each conversion factor is a ratio of equal values, so multiplying by it does not change the size of the measurement — it only changes the unit.</p>
+
+        <p>The table below shows the unit equivalents and conversion factors used to make conversions between customary units of weight.</p>
+
+        <!-- Full 3-column conversion factor table -->
+        <table aria-label="Weight conversion factors in both directions">
+            <caption class="visually-hidden">U.S. customary weight conversion factors, from heavier to lighter units and from lighter to heavier units</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Unit Equivalents</th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(heavier to lighter)</span></th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(lighter to heavier)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 pound = 16 ounces</td>
+                    <td>\(\dfrac{16\text{ oz}}{1\text{ lb}}\)</td>
+                    <td>\(\dfrac{1\text{ lb}}{16\text{ oz}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 ton = 2,000 pounds</td>
+                    <td>\(\dfrac{2{,}000\text{ lbs}}{1\text{ ton}}\)</td>
+                    <td>\(\dfrac{1\text{ ton}}{2{,}000\text{ lbs}}\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Example: lbs to oz -->
+        <section class="example" aria-labelledby="ex-3-3-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-3-1-heading">Example 1</h3>
+                <p>How many ounces are in \(1\tfrac{3}{4}\) pounds?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-3-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-3-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since a pound is heavier than an ounce, we expect our answer to be a number greater than \(1\tfrac{3}{4}\). We multiply by the conversion factor that relates ounces to pounds, placing pounds in the denominator to cancel it:</p>
+                    \[1\tfrac{3}{4}\text{ lbs} \cdot \frac{16\text{ oz}}{1\text{ lb}} = \frac{7}{4}\text{ lbs} \cdot \frac{16\text{ oz}}{1\text{ lb}}\]
+                    <p>The unit "pounds" cancels from numerator and denominator:</p>
+                    \[= \frac{7 \times 16}{4 \times 1}\text{ oz} = \frac{112}{4}\text{ oz} = 28\text{ oz}\]
+                    <p><strong>There are 28 ounces in \(1\tfrac{3}{4}\) pounds.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: lbs to tons -->
+        <section class="example" aria-labelledby="ex-3-3-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-3-2-heading">Example 2</h3>
+                <p>How many tons is 6,500 pounds?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-3-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-3-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since a ton is heavier than a pound, we expect our answer to be less than 6,500. We multiply by the conversion factor that puts pounds in the denominator:</p>
+                    \[\frac{6{,}500\text{ lbs}}{1} \cdot \frac{1\text{ ton}}{2{,}000\text{ lbs}} = \frac{6{,}500}{2{,}000}\text{ ton} = \frac{13}{4}\text{ tons} = 3\tfrac{1}{4}\text{ tons}\]
+                    <p><strong>6,500 pounds is equal to \(3\tfrac{1}{4}\) tons.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>How many pounds is 72 ounces?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>There are 16 ounces in one pound, so multiply by the conversion factor with ounces in the denominator:</p>
+                \[72\text{ oz} \cdot \frac{1\text{ lb}}{16\text{ oz}} = \frac{72}{16}\text{ lbs} = 4\tfrac{1}{2}\text{ lbs}\]
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         APPLYING UNIT CONVERSIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applying-weight-heading">
+        <h3 id="applying-weight-heading">Applying Unit Conversions</h3>
+
+        <p>There are times when you need to perform calculations on measurements that are given in different units. To solve these problems, you need to convert one of the measurements to the same unit as the other before calculating. Always think about whether the unit you are converting <em>to</em> is smaller or larger than the unit you are converting <em>from</em> — this will help you check that your computation is going in the right direction.</p>
+
+        <!-- Example: trash facility -->
+        <section class="example" aria-labelledby="ex-3-3-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-3-3-heading">Example 3</h3>
+                <p>A municipal trash facility allows a person to throw away a maximum of 30 pounds of trash per week. Last week, 140 people threw away the maximum allowable trash. How many tons of trash did this equal?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-3-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-3-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, determine the total trash for the week in pounds. If 140 people each threw away 30 pounds:</p>
+                    \[140 \times 30 = 4{,}200\text{ pounds}\]
+                    <p>Next, convert 4,200 pounds to tons. Since a ton is heavier than a pound, we expect our answer to be less than 4,200:</p>
+                    \[\frac{4{,}200\text{ lbs}}{1} \cdot \frac{1\text{ ton}}{2{,}000\text{ lbs}} = \frac{4{,}200}{2{,}000}\text{ tons} = \frac{21}{10}\text{ tons} = 2\tfrac{1}{10}\text{ tons}\]
+                    <p><strong>The total amount of trash generated was \(2\tfrac{1}{10}\) tons.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: coffee price -->
+        <section class="example" aria-labelledby="ex-3-3-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-3-4-heading">Example 4</h3>
+                <p>The grocery store sells a 36-ounce canister of ground coffee for $14, and sells bulk coffee for $7 per pound. Which is the better deal?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-3-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-3-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since the canister pricing is given in ounces, convert its weight to pounds so we can compare price per pound. Use the factor label method:</p>
+                    \[\frac{36\text{ oz}}{1} \cdot \frac{1\text{ lb}}{16\text{ oz}} = \frac{36}{16}\text{ lbs} = \frac{9}{4}\text{ lbs} = 2\tfrac{1}{4}\text{ lbs}\]
+                    <p>Now calculate the price per pound for the canister:</p>
+                    \[\frac{\$14}{2\tfrac{1}{4}\text{ lbs}} = \frac{\$14}{\tfrac{9}{4}\text{ lbs}} = \$14 \times \frac{4}{9} = \frac{\$56}{9} \approx \$6.22\text{ per pound}\]
+                    <p>Comparing the two options:</p>
+                    <ul>
+                        <li>Canister: approximately <strong>$6.22 per pound</strong></li>
+                        <li>Bulk coffee: <strong>$7.00 per pound</strong></li>
+                    </ul>
+                    <p><strong>The canister is the better deal at approximately $6.22 per pound.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>The average weight of a northern bluefin tuna is 1,800 pounds. The average weight of a great white shark is \(2\tfrac{1}{2}\) tons. On average, how much more does a great white shark weigh, in pounds, than a northern bluefin tuna?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>First convert the shark's weight from tons to pounds:</p>
+                \[2\tfrac{1}{2}\text{ tons} \times \frac{2{,}000\text{ lbs}}{1\text{ ton}} = \frac{5}{2} \times 2{,}000 = 5{,}000\text{ lbs}\]
+                <p>Then subtract the tuna's weight:</p>
+                \[5{,}000 - 1{,}800 = 3{,}200\text{ lbs}\]
+                <p>On average, a great white shark weighs <strong>3,200 pounds more</strong> than a northern bluefin tuna.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>In the U.S. customary system of measurement, weight is measured in three units: ounces, pounds, and tons. A pound is equivalent to 16 ounces, and a ton is equivalent to 2,000 pounds. While an object's weight can be described using any of these units, it is typical to describe very heavy objects using tons and very light objects using ounces. Pounds are used to describe the weight of many everyday objects and people.</p>
+        <p>Often, in order to compare the weights of two objects or to solve problems involving weight, you must convert from one unit of measurement to another. Using conversion factors with the factor label method is an effective strategy for converting units and solving problems.</p>
+    </section>
+
+</main>
+
+<!-- Toggle scripts -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
