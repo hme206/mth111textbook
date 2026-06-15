@@ -1,1 +1,995 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.1: Place Value &amp; Names for Whole Numbers</title>
+
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: {
+                load: ['input/tex', 'output/chtml']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Place-value chart: wide table that scrolls on small screens ── */
+        .pv-scroll {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .pv-table {
+            border-collapse: collapse;
+            min-width: 700px;
+            width: 100%;
+            font-size: 0.92em;
+        }
+        .pv-table caption {
+            caption-side: top;
+            font-weight: bold;
+            color: #33AB2B;
+            text-align: center;
+            padding-bottom: 0.4rem;
+            font-size: 1em;
+        }
+        .pv-table th,
+        .pv-table td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .pv-table thead tr.period-row th {
+            background-color: #d6f0cc;
+            color: #1a6e14;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        .pv-table thead tr.subheader-row th {
+            background-color: #f0f8ed;
+            color: #333;
+            font-weight: normal;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        .pv-table tbody td {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #333;
+            min-width: 38px;
+        }
+        .pv-table tbody td.empty-cell {
+            color: #aaa;
+            font-weight: normal;
+        }
+        /* highlighted cells (digits that are placed) */
+        .pv-table tbody td.digit {
+            background-color: #fff9e6;
+        }
+
+        /* ── Annotated breakdown diagram (word-name breakdowns) ── */
+        .breakdown-table {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            border-collapse: collapse;
+            margin: 1.2rem auto;
+            max-width: 560px;
+            width: 100%;
+            font-size: 0.95em;
+            overflow: hidden;
+        }
+        .breakdown-table thead tr th {
+            background-color: #33AB2B;
+            color: #fff;
+            padding: 8px 14px;
+            text-align: center;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .breakdown-table tbody tr td {
+            padding: 8px 14px;
+            border-top: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .breakdown-table .label-cell {
+            color: #0066cc;
+            font-weight: bold;
+            width: 55%;
+        }
+        .breakdown-table .label-problem {
+            color: #1a6e14;
+            font-weight: bold;
+        }
+        .breakdown-table .answer-row td {
+            font-style: italic;
+            color: #1a6e14;
+        }
+        .breakdown-table .number-display {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: right;
+            padding-right: 1rem;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .ex-item {
+            padding: 4px 0;
+            line-height: 1.5;
+        }
+        .ex-item .sub-parts {
+            margin-left: 1rem;
+            margin-top: 2px;
+        }
+        .ex-wide {
+            margin: 0.5rem 0 1.25rem 1rem;
+        }
+        .ex-wide li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .ex-grid.two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover {
+            background-color: #2a8922;
+        }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOC loaded from external file -->
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-1">Section 1.1: Place Value and Names for Whole Numbers</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Find the place value of a digit in a whole number.</li>
+            <li>Write a whole number in words and in standard form.</li>
+            <li>Write a whole number in expanded form.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>Mathematics involves solving problems that involve numbers. We will work with <strong>whole numbers</strong>, which are any of the numbers 0, 1, 2, 3, and so on. We first need to have a thorough understanding of the number system we use. Suppose the scientists preparing a lunar command module know it has to travel 382,564 kilometers to get to the moon. How well would they do if they didn't understand this number? Would it make more of a difference if the 8 was off by 1 or if the 4 was off by 1?</p>
+
+        <p>In this section, you will take a look at digits and place value. You will also learn how to write whole numbers in words, standard form, and expanded form based on the place values of their digits.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         THE NUMBER SYSTEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="number-system-heading">
+        <h3 id="number-system-heading">The Number System</h3>
+
+        <p>A <strong>digit</strong> is one of the symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. All numbers are made up of one or more digits. Numbers such as 2 have one digit, whereas numbers such as 89 have two digits. To understand what a number really means, you need to understand what the digits represent in a given number.</p>
+
+        <p>The position of each digit in a number tells its value, or <strong>place value</strong>. We can use a <strong>place-value chart</strong> like the one below to easily see the place value for each digit. The place values for the digits in 1,456 are shown in this chart.</p>
+
+        <!-- Place-Value Chart: 1,456 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Place-Value Chart</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th colspan="3" scope="colgroup">Trillions</th>
+                        <th colspan="3" scope="colgroup">Billions</th>
+                        <th colspan="3" scope="colgroup">Millions</th>
+                        <th colspan="3" scope="colgroup">Thousands</th>
+                        <th colspan="3" scope="colgroup">Ones</th>
+                    </tr>
+                    <tr class="subheader-row">
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">1</td>
+                        <td class="digit">4</td><td class="digit">5</td><td class="digit">6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>In the number 1,456, the digit 1 is in the <strong>thousands</strong> place. The digit 4 is in the <strong>hundreds</strong> place. The digit 5 is in the <strong>tens</strong> place, and the digit 6 is in the <strong>ones</strong> place.</p>
+
+        <p>You can tell a digit's value by looking at its position. Look at the number of digits to the right of the digit, or write your number into a place-value chart, with the last digit in the ones column. Both methods are shown in the example below.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-1-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-1-heading">Example 1</h3>
+                <p>The development of a city over the past twenty years cost $962,234,532,274,312. What is the value of the digit 6 in this number?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Write the number in the place-value chart and read the value of the 6 from the chart.</p>
+
+                    <div class="pv-scroll">
+                        <table class="pv-table">
+                            <caption>Place-Value Chart</caption>
+                            <thead>
+                                <tr class="period-row">
+                                    <th colspan="3" scope="colgroup">Trillions</th>
+                                    <th colspan="3" scope="colgroup">Billions</th>
+                                    <th colspan="3" scope="colgroup">Millions</th>
+                                    <th colspan="3" scope="colgroup">Thousands</th>
+                                    <th colspan="3" scope="colgroup">Ones</th>
+                                </tr>
+                                <tr class="subheader-row">
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="digit">9</td><td class="digit" style="background:#ffe0b2; color:#b84d00;">6</td><td class="digit">2</td>
+                                    <td class="digit">2</td><td class="digit">3</td><td class="digit">4</td>
+                                    <td class="digit">5</td><td class="digit">3</td><td class="digit">2</td>
+                                    <td class="digit">2</td><td class="digit">7</td><td class="digit">4</td>
+                                    <td class="digit">3</td><td class="digit">1</td><td class="digit">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>Reading from the chart, the digit 6 is in the <strong>ten-trillions</strong> place.</p>
+                    <p>\(6 \times 10{,}000{,}000{,}000{,}000 = 60{,}000{,}000{,}000{,}000\)</p>
+                    <p><strong>The value of the digit 6 is 60 trillion.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>In a far away galaxy, there are 2,968,351,472 stars. What does the digit 3 represent in this number?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-1">
+                Show Answer
+            </button>
+            <div id="sca-1-1" class="self-check-answer">
+                <p>The digit 3 is in the <strong>hundred-thousands</strong> place, so it represents <strong>300,000</strong>.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         PERIODS AND STANDARD FORM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="periods-heading">
+        <h3 id="periods-heading">Periods and Standard Form</h3>
+
+        <p>The <strong>standard form</strong> of a number refers to a type of notation in which digits are separated into groups of three by commas. These groups of three digits are known as <strong>periods</strong>. For example, 893,450,243 has three periods with three digits in each period, as shown below.</p>
+
+        <!-- Place-Value Chart: 893,450,243 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Place-Value Chart — 893,450,243</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th colspan="3" scope="colgroup">Trillions</th>
+                        <th colspan="3" scope="colgroup">Billions</th>
+                        <th colspan="3" scope="colgroup">Millions</th>
+                        <th colspan="3" scope="colgroup">Thousands</th>
+                        <th colspan="3" scope="colgroup">Ones</th>
+                    </tr>
+                    <tr class="subheader-row">
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="digit">8</td><td class="digit">9</td><td class="digit">3</td>
+                        <td class="digit">4</td><td class="digit">5</td><td class="digit">0</td>
+                        <td class="digit">2</td><td class="digit">4</td><td class="digit">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The number of body cells in an average adult human is about one hundred trillion. This number is written as 100,000,000,000,000. Notice that there are 15 digits and 5 periods. Here is how the number would look in a place-value chart.</p>
+
+        <!-- Place-Value Chart: 100,000,000,000,000 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Place-Value Chart — 100,000,000,000,000</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th colspan="3" scope="colgroup">Trillions</th>
+                        <th colspan="3" scope="colgroup">Billions</th>
+                        <th colspan="3" scope="colgroup">Millions</th>
+                        <th colspan="3" scope="colgroup">Thousands</th>
+                        <th colspan="3" scope="colgroup">Ones</th>
+                    </tr>
+                    <tr class="subheader-row">
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="digit">1</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="digit">0</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="digit">0</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="digit">0</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="digit">0</td><td class="digit">0</td><td class="digit">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         CONVERTING STANDARD FORM TO WORD NAMES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="std-to-words-heading">
+        <h3 id="std-to-words-heading">Converting Standard Form to Word Names</h3>
+
+        <p>We often use word names to write numbers. A word name for 42 is "forty-two." The total number of weeks in a year, 52, is written as "fifty-two."</p>
+
+        <p>For whole numbers with three digits, use the word "hundred" to describe how many hundreds there are in the number. For example, for the number of days in a normal year, 365, the digit 3 is in the hundreds place. The word name for the number is "three hundred sixty-five."</p>
+
+        <p>For whole numbers with four digits, begin the name with the number of thousands, followed by the period name.</p>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-1-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-2-heading">Example 2</h3>
+                <p>A man owes $2,562 on a car. Write the word name for this number.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Break the number into its periods and name each part:</p>
+
+                    <table class="breakdown-table" aria-label="Word name breakdown for 2,562">
+                        <thead>
+                            <tr><th colspan="2">Breakdown of 2,562</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-cell">Two thousand</td>
+                                <td class="number-display">2,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Five hundred sixty-two</td>
+                                <td class="number-display">562</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td colspan="2"><em>Answer:</em> The word name is <strong>two thousand, five hundred sixty-two</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>For word names of greater numbers, begin at the left with the greatest period. For each period, write the one- to three-digit number in the period, and then the period name.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-1-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-3-heading">Example 3</h3>
+                <p>The construction of a new athletic center cost $23,456,390. Write the word name for this number.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Start from the left (greatest period) and name each part:</p>
+
+                    <table class="breakdown-table" aria-label="Word name breakdown for 23,456,390">
+                        <thead>
+                            <tr><th colspan="2">Breakdown of 23,456,390</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-cell">Twenty-three million</td>
+                                <td class="number-display">23,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Four hundred fifty-six thousand</td>
+                                <td class="number-display">456,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Three hundred ninety</td>
+                                <td class="number-display">390</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td colspan="2"><em>Answer:</em> The word name is <strong>twenty-three million, four hundred fifty-six thousand, three hundred ninety</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         CONVERTING WORD NAMES TO STANDARD FORM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="words-to-std-heading">
+        <h3 id="words-to-std-heading">Converting Word Names to Standard Form</h3>
+
+        <p>When converting word names to standard form, the period names ("thousand," "million," etc.) tell you which group of three digits each number belongs to.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-1-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-4-heading">Example 4</h3>
+                <p>Forty-seven thousand, five hundred eighty-six blueberries are produced on a farm over the course of three years. Write this number in standard form.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <table class="breakdown-table" aria-label="Standard form breakdown for forty-seven thousand, five hundred eighty-six">
+                        <thead>
+                            <tr><th colspan="2">Building the Standard Form</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-cell">Forty-seven thousand</td>
+                                <td class="number-display">47,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Five hundred eighty-six</td>
+                                <td class="number-display">586</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td colspan="2"><em>Answer:</em> The number in standard form is <strong>47,586</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-1-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-5-heading">Example 5</h3>
+                <p>There are three hundred eight million, six hundred thirty-two thousand, nine hundred seventy-eight bacteria in a sample of soil. Write this number in standard form.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The words "million" and "thousand" identify the periods. Assign each group to its period:</p>
+
+                    <table class="breakdown-table" aria-label="Standard form breakdown for three hundred eight million, six hundred thirty-two thousand, nine hundred seventy-eight">
+                        <thead>
+                            <tr><th colspan="2">Building the Standard Form</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-cell">Three hundred eight million</td>
+                                <td class="number-display">308,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Six hundred thirty-two thousand</td>
+                                <td class="number-display">632,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Nine hundred seventy-eight</td>
+                                <td class="number-display">978</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td colspan="2"><em>Answer:</em> The number in standard form is <strong>308,632,978</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>Some numbers in word form may not mention a specific period. For example, "three million, one hundred twelve" in standard form is 3,000,112. Because the thousands period is not mentioned, you write three zeros in the thousands period. You can use a place-value chart to make it easier to see the values of the digits.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-1-1-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-6-heading">Example 6</h3>
+                <p>A company had a new office building constructed. The final cost was seventy-four million, three hundred sixty-two dollars. Write this number in standard form.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Place the number in a place-value chart. Notice that the thousands period is not mentioned, so we fill it with zeros.</p>
+
+                    <div class="pv-scroll">
+                        <table class="pv-table">
+                            <caption>Place-Value Chart — $74,000,362</caption>
+                            <thead>
+                                <tr class="period-row">
+                                    <th colspan="3" scope="colgroup">Trillions</th>
+                                    <th colspan="3" scope="colgroup">Billions</th>
+                                    <th colspan="3" scope="colgroup">Millions</th>
+                                    <th colspan="3" scope="colgroup">Thousands</th>
+                                    <th colspan="3" scope="colgroup">Ones</th>
+                                </tr>
+                                <tr class="subheader-row">
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                    <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                                    <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                                    <td class="digit">7</td><td class="digit">4</td><td class="empty-cell">—</td>
+                                    <td class="digit" style="color:#888;">0</td><td class="digit" style="color:#888;">0</td><td class="digit" style="color:#888;">0</td>
+                                    <td class="digit">3</td><td class="digit">6</td><td class="digit">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <table class="breakdown-table" aria-label="Standard form breakdown for seventy-four million, three hundred sixty-two">
+                        <thead>
+                            <tr><th colspan="2">Building the Standard Form</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="label-cell">Seventy-four million</td>
+                                <td class="number-display">74,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Zero thousands <span style="color:#888;">(not mentioned)</span></td>
+                                <td class="number-display" style="color:#888;">000,</td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Three hundred sixty-two</td>
+                                <td class="number-display">362</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td colspan="2"><em>Answer:</em> The number in standard form is <strong>$74,000,362</strong>. Remember to separate each period with a comma.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         WRITING NUMBERS IN EXPANDED FORM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="expanded-heading">
+        <h3 id="expanded-heading">Writing Numbers in Expanded Form</h3>
+
+        <p>Sometimes it is useful to write numbers in <strong>expanded form</strong>. In expanded form, the number is written as a sum of the value of each digit.</p>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-1-1-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-1-7-heading">Example 7</h3>
+                <p>During the week, Mike drives a total of 264 miles. Write 264 in expanded form.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-1-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-1-1-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, identify the value of each digit:</p>
+                    <table style="border-collapse:collapse; margin: 0.75rem 0;">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="padding:6px 16px; border:1px solid #ccc; background:#f0f8ed; color:#33AB2B;">Number</th>
+                                <th scope="col" style="padding:6px 16px; border:1px solid #ccc; background:#f0f8ed; color:#33AB2B;">Digit highlighted</th>
+                                <th scope="col" style="padding:6px 16px; border:1px solid #ccc; background:#f0f8ed; color:#33AB2B;">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding:6px 16px; border:1px solid #ccc;"><strong style="color:#0066cc;">2</strong>64</td>
+                                <td style="padding:6px 16px; border:1px solid #ccc;">hundreds digit</td>
+                                <td style="padding:6px 16px; border:1px solid #ccc; font-weight:bold; color:#0066cc;">200</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px 16px; border:1px solid #ccc;">2<strong style="color:#0066cc;">6</strong>4</td>
+                                <td style="padding:6px 16px; border:1px solid #ccc;">tens digit</td>
+                                <td style="padding:6px 16px; border:1px solid #ccc; font-weight:bold; color:#0066cc;">60</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:6px 16px; border:1px solid #ccc;">26<strong style="color:#0066cc;">4</strong></td>
+                                <td style="padding:6px 16px; border:1px solid #ccc;">ones digit</td>
+                                <td style="padding:6px 16px; border:1px solid #ccc; font-weight:bold; color:#0066cc;">4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Then write the numbers as a sum. 264 written in expanded form is:</p>
+                    \[200 + 60 + 4\]
+                    <p>or equivalently:</p>
+                    \[(2 \times 100) + (6 \times 10) + (4 \times 1)\]
+                    <p>or in word form: <strong>2 hundreds + 6 tens + 4 ones</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>You can also use a place-value chart to help write a number in expanded form. Suppose the number of cars and pick-up trucks in the U.S. at this very moment is 251,834,697. The expanded form of this number is shown below.</p>
+
+        <!-- Place-Value Chart: 251,834,697 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Place-Value Chart — 251,834,697</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th colspan="3" scope="colgroup">Trillions</th>
+                        <th colspan="3" scope="colgroup">Billions</th>
+                        <th colspan="3" scope="colgroup">Millions</th>
+                        <th colspan="3" scope="colgroup">Thousands</th>
+                        <th colspan="3" scope="colgroup">Ones</th>
+                    </tr>
+                    <tr class="subheader-row">
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                        <th scope="col">Hundreds</th><th scope="col">Tens</th><th scope="col">Ones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                        <td class="digit">2</td><td class="digit">5</td><td class="digit">1</td>
+                        <td class="digit">8</td><td class="digit">3</td><td class="digit">4</td>
+                        <td class="digit">6</td><td class="digit">9</td><td class="digit">7</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="definition-box" role="note" aria-label="Expanded form of 251,834,697">
+            <h3>Expanded Form of 251,834,697</h3>
+            \[
+            \begin{aligned}
+            &amp;2 \text{ hundred millions} &amp;&amp;= 200{,}000{,}000 \\
+            +\;&amp;5 \text{ ten millions}    &amp;&amp;= 50{,}000{,}000 \\
+            +\;&amp;1 \text{ million}         &amp;&amp;= 1{,}000{,}000 \\
+            +\;&amp;8 \text{ hundred thousands}&amp;&amp;= 800{,}000 \\
+            +\;&amp;3 \text{ ten thousands}   &amp;&amp;= 30{,}000 \\
+            +\;&amp;4 \text{ thousands}       &amp;&amp;= 4{,}000 \\
+            +\;&amp;6 \text{ hundreds}        &amp;&amp;= 600 \\
+            +\;&amp;9 \text{ tens}            &amp;&amp;= 90 \\
+            +\;&amp;7 \text{ ones}            &amp;&amp;= 7
+            \end{aligned}
+            \]
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Whole numbers that are greater than 9 consist of multiple digits. Each digit in a given number has a place value. To better understand place value, numbers can be put in a place-value chart so that the value of each digit can be identified. Numbers with more than three digits can be separated into groups of three digits, known as periods. Any whole number can be expressed in standard form, expanded form, or as a word name.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-1-heading">
+        <h2 id="exercises-1-1-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-1-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-1-content" class="exercises-content" role="region" aria-labelledby="exercises-1-1-heading">
+
+        <!-- Part 1: Identify Place Value -->
+        <h3>Identify the Place Value of a Digit</h3>
+        <p>In the following exercises, find the place value of the given digits.</p>
+
+        <div class="ex-grid two-col">
+            <div class="ex-item">
+                <strong>9.</strong> 579,601
+                <div class="sub-parts">
+                    a) 9 &nbsp; b) 6 &nbsp; c) 0 &nbsp; d) 7 &nbsp; e) 5
+                </div>
+            </div>
+            <div class="ex-item">
+                <strong>10.</strong> 398,127
+                <div class="sub-parts">
+                    a) 9 &nbsp; b) 3 &nbsp; c) 2 &nbsp; d) 8 &nbsp; e) 7
+                </div>
+            </div>
+            <div class="ex-item">
+                <strong>11.</strong> 56,804,379
+                <div class="sub-parts">
+                    a) 8 &nbsp; b) 6 &nbsp; c) 4 &nbsp; d) 7 &nbsp; e) 0
+                </div>
+            </div>
+            <div class="ex-item">
+                <strong>12.</strong> 78,320,465
+                <div class="sub-parts">
+                    a) 8 &nbsp; b) 4 &nbsp; c) 2 &nbsp; d) 6 &nbsp; e) 7
+                </div>
+            </div>
+        </div>
+
+        <!-- Part 2: Name Whole Numbers -->
+        <h3>Use Place Value to Name Whole Numbers</h3>
+        <p>In the following exercises, name each number in words.</p>
+
+        <div class="ex-grid">
+            <div class="ex-item"><strong>13.</strong> 1,078</div>
+            <div class="ex-item"><strong>14.</strong> 5,902</div>
+            <div class="ex-item"><strong>15.</strong> 364,510</div>
+            <div class="ex-item"><strong>16.</strong> 146,023</div>
+            <div class="ex-item"><strong>17.</strong> 5,846,103</div>
+            <div class="ex-item"><strong>18.</strong> 1,458,398</div>
+            <div class="ex-item"><strong>19.</strong> 37,889,005</div>
+            <div class="ex-item"><strong>20.</strong> 62,008,465</div>
+        </div>
+
+        <ol class="ex-wide" start="21">
+            <li>The height of Mount Rainier is 14,410 feet.</li>
+            <li>The height of Mount Adams is 12,276 feet.</li>
+            <li>Seventy years is 613,200 hours.</li>
+            <li>One year is 525,600 minutes.</li>
+            <li>The U.S. Census estimate of the population of Miami-Dade county was 2,617,176.</li>
+            <li>The population of Chicago was 2,718,782.</li>
+            <li>There are projected to be 23,867,000 college and university students in the US in five years.</li>
+            <li>About twelve years ago there were 20,665,415 registered automobiles in California.</li>
+            <li>The population of China is expected to reach 1,377,583,156 in 2016.</li>
+            <li>The population of India is estimated at 1,267,401,849 as of July 1, 2014.</li>
+        </ol>
+
+        <!-- Part 3: Write Whole Numbers -->
+        <h3>Use Place Value to Write Whole Numbers</h3>
+        <p>In the following exercises, write each number as a whole number using digits.</p>
+
+        <div class="ex-grid">
+            <div class="ex-item"><strong>31.</strong> four hundred twelve</div>
+            <div class="ex-item"><strong>32.</strong> two hundred fifty-three</div>
+            <div class="ex-item"><strong>33.</strong> thirty-five thousand, nine hundred seventy-five</div>
+            <div class="ex-item"><strong>34.</strong> sixty-one thousand, four hundred fifteen</div>
+            <div class="ex-item"><strong>35.</strong> eleven million, forty-four thousand, one hundred sixty-seven</div>
+            <div class="ex-item"><strong>36.</strong> eighteen million, one hundred two thousand, seven hundred eighty-three</div>
+            <div class="ex-item"><strong>37.</strong> three billion, two hundred twenty-six million, five hundred twelve thousand, seventeen</div>
+            <div class="ex-item"><strong>38.</strong> eleven billion, four hundred seventy-one million, thirty-six thousand, one hundred six</div>
+        </div>
+
+        <ol class="ex-wide" start="39">
+            <li>The population of the world was estimated to be seven billion, one hundred seventy-three million people.</li>
+            <li>The age of the solar system is estimated to be four billion, five hundred sixty-eight million years.</li>
+            <li>Lake Tahoe has a capacity of thirty-nine trillion gallons of water.</li>
+            <li>The federal government budget was three trillion, five hundred billion dollars.</li>
+        </ol>
+
+        <p class="credit-note">Exercises taken from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section><!-- end exercises -->
+
+</main><!-- end .container -->
+
+<!-- Toggle script for examples -->
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    const submenu = button.nextElementSibling;
+                    submenu.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
