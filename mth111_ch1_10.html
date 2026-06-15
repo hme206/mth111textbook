@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.10: Order of Operations</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-10">Section 1.10: Order of Operations</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Use the order of operations to simplify expressions, including those with parentheses.</li>
+            <li>Use the order of operations to simplify expressions containing exponents and square roots.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-10-heading">
+        <h3 id="intro-1-10-heading">Introduction</h3>
+        <p>People need a common set of rules for performing computation. Many years ago, mathematicians developed a standard order of operations that tells you which calculations to make first in an expression with more than one operation. Without a standard procedure for making calculations, two people could get two different answers to the same problem. For example, \(3 + 5 \cdot 2\) has only one correct answer. Is it 13 or 16?</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         ORDER OF ADDITION, SUBTRACTION, MULTIPLICATION & DIVISION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="order-basic-heading">
+        <h3 id="order-basic-heading">The Order of Addition, Subtraction, Multiplication &amp; Division Operations</h3>
+
+        <p>First, consider expressions that include one or more of the arithmetic operations: addition, subtraction, multiplication, and division. The order of operations requires that all multiplication and division be performed first, going from left to right in the expression. The order in which you compute multiplication and division is determined by which one comes first, reading from left to right.</p>
+
+        <p>After multiplication and division has been completed, add or subtract in order from left to right. The order of addition and subtraction is also determined by which one comes first when reading from left to right.</p>
+
+        <p>Below, are three examples showing the proper order of operations for expressions with addition, subtraction, multiplication, and/or division.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-10-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-1-heading">Example 1</h3>
+                <p>Simplify \(3 + 5 \cdot 2\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Order of operations tells you to perform multiplication before addition.</p>
+                    \[3 + 5 \cdot 2\]
+                    \[3 + 10\]
+                    <p>Then add.</p>
+                    <p><strong>Answer:</strong> \(3 + 5 \cdot 2 = 13\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-10-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-2-heading">Example 2</h3>
+                <p>Simplify \(20 - 16 \div 4\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Order of operations tells you to perform division before subtraction.</p>
+                    \[20 - 16 \div 4\]
+                    \[20 - 4\]
+                    \[16\]
+                    <p>Then subtract.</p>
+                    <p><strong>Answer:</strong> \(20 - 16 \div 4 = 16\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-10-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-3-heading">Example 3</h3>
+                <p>Simplify \(60 - 30 \div 3 \cdot 5 + 7\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Order of operations tells you to perform multiplication and division first, working from left to right, before doing addition and subtraction.</p>
+                    \[60 - 30 \div 3 \cdot 5 + 7\]
+                    \[60 - 10 \cdot 5 + 7\]
+                    <p>Continue to perform multiplication and division from left to right.</p>
+                    \[60 - 50 + 7\]
+                    <p>Next, add and subtract from left to right. (Note that addition is not necessarily performed before subtraction.)</p>
+                    \[10 + 7\]
+                    \[17\]
+                    <p><strong>Answer:</strong> \(60 - 30 \div 3 \cdot 5 + 7 = 17\)</p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         GROUPING SYMBOLS AND THE ORDER OF OPERATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="grouping-heading">
+        <h3 id="grouping-heading">Grouping Symbols and the Order of Operations</h3>
+
+        <p>Grouping symbols such as parentheses ( ), brackets [ ], braces { }, and fraction bars can be used to further control the order of the four basic arithmetic operations. The rules of the order of operations require computation within grouping symbols to be completed first, even if you are adding or subtracting within the grouping symbols and you have multiplication outside the grouping symbols. After computing within the grouping symbols, divide or multiply from left to right and then subtract or add from left to right.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-10-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-4-heading">Example 4</h3>
+                <p>Simplify \(900 \div (6 + 3 \cdot 8) - 10\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Order of operations tells you to perform what is inside the parentheses first.</p>
+                    \[900 \div (6 + 3 \cdot 8) - 10\]
+                    <p>Simplify the expression in the parentheses. Multiply first.</p>
+                    \[900 \div (6 + 24) - 10\]
+                    <p>Then add \(6 + 24\).</p>
+                    \[900 \div 30 - 10\]
+                    <p>Now perform division; then subtract.</p>
+                    \[30 - 10\]
+                    \[20\]
+                    <p><strong>Answer:</strong> \(900 \div (6 + 3 \cdot 8) - 10 = 20\)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>When there are grouping symbols within grouping symbols, compute from the inside to the outside. That is, begin simplifying the innermost grouping symbols first. Two examples are shown.</p>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-10-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-5-heading">Example 5</h3>
+                <p>Simplify \(4 - 3[20 - 3 \cdot 4 - (2 + 4)] \div 2\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>There are brackets and parentheses in this problem. Compute inside the innermost grouping symbols first.</p>
+                    \[4 - 3[20 - 3 \cdot 4 - (2 + 4)] \div 2\]
+                    <p>Simplify within parentheses.</p>
+                    \[4 - 3[20 - 3 \cdot 4 - 6] \div 2\]
+                    <p>Then, simplify within the brackets by multiplying and then subtracting from left to right.</p>
+                    \[4 - 3[20 - 12 - 6] \div 2\]
+                    \[4 - 3[8 - 6] \div 2\]
+                    \[4 - 3(2) \div 2\]
+                    <p>Multiply and divide from left to right.</p>
+                    \[4 - 6 \div 2\]
+                    \[4 - 3\]
+                    <p>Subtract.</p>
+                    \[1\]
+                    <p><strong>Answer:</strong> \(4 - 3[20 - 3 \cdot 4 - (2 + 4)] \div 2 = 1\)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Remember that parentheses can also be used to show multiplication. In the example that follows, the parentheses are not a grouping symbol; they are a multiplication symbol. In this case, since the problem only has multiplication and division, we compute from left to right. Be careful to determine what parentheses mean in any given problem. Are they a grouping symbol or a multiplication sign?</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-1-10-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-6-heading">Example 6</h3>
+                <p>Simplify \(6 \div (3)(2)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-6">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>This expression has multiplication and division only. The multiplication operation can be shown with a dot.</p>
+                    \[6 \div 3 \cdot 2\]
+                    <p>Since this expression has only division and multiplication, compute from left to right.</p>
+                    \[6 \div 3 \cdot 2\]
+                    \[2 \cdot 2\]
+                    \[4\]
+                    <p><strong>Answer:</strong> \(6 \div (3)(2) = 4\)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Consider what happens if braces are added to the problem above: \(6 \div \{(3)(2)\}\). The parentheses still mean multiplication; the additional braces are a grouping symbol. According to the order of operations, compute what is inside the braces first. This problem is now evaluated as \(6 \div 6 = 1\). Notice that the braces caused the answer to change from 4 to 1.</p>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Simplify \(40 - (4 + 6) \div 2 + 3\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-10">
+                Show Answer
+            </button>
+            <div id="sca-1-10" class="self-check-answer">
+                <p>\(38\)</p>
+                <p>Compute the addition in parentheses first. \(40 - 10 \div 2 + 3\). Then, perform division. \(40 - 5 + 3\). Finally, add and subtract from left to right.</p>
+            </div>
+        </div>
+
+        <div class="definition-box" role="note" aria-label="The Order of Operations">
+            <h3>The Order of Operations</h3>
+            <ol>
+                <li>Perform all operations within grouping symbols first. Grouping symbols include parentheses ( ), braces { }, brackets [ ], and fraction bars.</li>
+                <li>Multiply and Divide, from left to right.</li>
+                <li>Add and Subtract, from left to right.</li>
+            </ol>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         ORDER OF OPERATIONS WITH EXPONENTS AND SQUARE ROOTS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="exponents-order-heading">
+        <h3 id="exponents-order-heading">Performing the Order of Operations with Exponents and Square Roots</h3>
+
+        <p>So far, our rules allow us to simplify expressions that have multiplication, division, addition, subtraction or grouping symbols in them. What happens if a problem has exponents or square roots in it? We need to expand our order of operation rules to include exponents and square roots.</p>
+
+        <p>If the expression has exponents or square roots, they are to be performed after parentheses and other grouping symbols have been simplified and before any multiplication, division, subtraction and addition that are outside the parentheses or other grouping symbols.</p>
+
+        <p>Note that you compute from more complex operations to more basic operations. Addition and subtraction are the most basic of the operations. You probably learned these first. Multiplication and division, often thought of as repeated addition and subtraction, are more complex and come before addition and subtraction in the order of operations. Exponents and square roots are repeated multiplication and division, and because they're even more complex, they are performed before multiplication and division. Some examples that show the order of operations involving exponents and square roots are shown below.</p>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-1-10-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-7-heading">Example 7</h3>
+                <p>Simplify \(14 + 28 \div 2^2\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-7">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>This problem has addition, division, and exponents in it. Use the order of operations.</p>
+                    \[14 + 28 \div 2^2\]
+                    <p>Simplify \(2^2\).</p>
+                    \[14 + 28 \div 4\]
+                    <p>Perform division before addition.</p>
+                    \[14 + 7\]
+                    <p>Add.</p>
+                    \[21\]
+                    <p><strong>Answer:</strong> \(14 + 28 \div 2^2 = 21\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-1-10-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-8-heading">Example 8</h3>
+                <p>Simplify \(3^2 \cdot 2^3\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-8">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>This problem has exponents and multiplication in it.</p>
+                    \[3^2 \cdot 2^3\]
+                    <p>Simplify \(3^2\) and \(2^3\).</p>
+                    \[9 \cdot 8\]
+                    <p>Perform multiplication.</p>
+                    \[72\]
+                    <p><strong>Answer:</strong> \(3^2 \cdot 2^3 = 72\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-1-10-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-10-9-heading">Example 9</h3>
+                <p>Simplify \((3 + 4)^2 + (8)(4)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-10-9">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-10-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>This problem has parentheses, exponents, and multiplication in it. The first set of parentheses is a grouping symbol. The second set indicates multiplication.</p>
+                    <p>Grouping symbols are handled first.</p>
+                    \[(3 + 4)^2 + (8)(4)\]
+                    <p>Add the numbers inside the parentheses that are serving as grouping symbols. Simplify \(7^2\).</p>
+                    \[7^2 + (8)(4)\]
+                    \[49 + (8)(4)\]
+                    <p>Perform multiplication.</p>
+                    \[49 + 32\]
+                    <p>Add.</p>
+                    \[81\]
+                    <p><strong>Answer:</strong> \((3 + 4)^2 + (8)(4) = 81\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Simplify \(77 - (1 + 4 - 2)^2\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-10">
+                Show Answer
+            </button>
+            <div id="scb-1-10" class="self-check-answer">
+                <p>\(68\)</p>
+                <p>\(77 - (1 + 4 - 2)^2 = 77 - (3)^2 = 77 - 9 = 68\)</p>
+            </div>
+        </div>
+
+        <div class="definition-box" role="note" aria-label="The Order of Operations with Exponents">
+            <h3>The Order of Operations</h3>
+            <ol>
+                <li>Perform all operations within grouping symbols first. Grouping symbols include parentheses ( ), braces { }, brackets [ ], and fraction bars.</li>
+                <li>Evaluate exponents and roots of numbers, such as square roots.</li>
+                <li>Multiply and Divide, from left to right.</li>
+                <li>Add and Subtract, from left to right.</li>
+            </ol>
+            <p>Some people use a saying to help them remember the order of operations. This saying is called PEMDAS or "Please Excuse My Dear Aunt Sally." The first letter of each word begins with the same letter of an arithmetic operation.</p>
+            <p>Note: Even though multiplication comes before division in the saying, division could be performed first. Which is performed first, between multiplication and division, is determined by which comes first when reading from left to right. The same is true of addition and subtraction. Don't let the saying confuse you about this!</p>
+            <ul>
+                <li><strong>P</strong>lease &nbsp;&nbsp; ⇒ &nbsp;&nbsp; <strong>P</strong>arentheses (and other grouping symbols)</li>
+                <li><strong>E</strong>xcuse &nbsp;&nbsp; ⇒ &nbsp;&nbsp; <strong>E</strong>xponents</li>
+                <li><strong>M</strong>y <strong>D</strong>ear &nbsp;&nbsp; ⇒ &nbsp;&nbsp; <strong>M</strong>ultiplication and <strong>D</strong>ivision (from left to right)</li>
+                <li><strong>A</strong>unt <strong>S</strong>ally &nbsp;&nbsp; ⇒ &nbsp;&nbsp; <strong>A</strong>ddition and <strong>S</strong>ubtraction (from left to right)</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-10-heading">
+        <h3 id="summary-1-10-heading">Summary</h3>
+        <p>The order of operations gives us a consistent sequence to use in computation. Without the order of operations, you could come up with different answers to the same computation problem. (Some of the early calculators, and some inexpensive ones, do NOT use the order of operations. In order to use these calculators, the user has to input the numbers in the correct order.)</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-10-heading">
+        <h2 id="exercises-1-10-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-10-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-10-content" class="exercises-content" role="region" aria-labelledby="exercises-1-10-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
