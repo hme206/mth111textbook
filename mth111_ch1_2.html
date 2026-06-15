@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.2: Decimals and Place Value</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Scrollable place-value tables ── */
+        .pv-scroll {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        .pv-table {
+            border-collapse: collapse;
+            min-width: 520px;
+            width: 100%;
+            font-size: 0.92em;
+        }
+        .pv-table caption {
+            caption-side: top;
+            font-weight: bold;
+            color: #33AB2B;
+            text-align: center;
+            padding-bottom: 0.4rem;
+            font-size: 1em;
+        }
+        .pv-table th,
+        .pv-table td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            text-align: center;
+        }
+        .pv-table thead tr.period-row th {
+            background-color: #d6f0cc;
+            color: #1a6e14;
+            font-weight: bold;
+        }
+        .pv-table thead tr.subheader-row th {
+            background-color: #f0f8ed;
+            color: #333;
+            font-weight: normal;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+        /* decimal-point separator column */
+        .pv-table th.dec-col,
+        .pv-table td.dec-col {
+            background-color: #fff9e6;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #b84d00;
+            min-width: 32px;
+        }
+        .pv-table tbody td {
+            font-size: 1.05em;
+            font-weight: bold;
+            color: #333;
+            min-width: 34px;
+        }
+        .pv-table tbody td.empty-cell {
+            color: #aaa;
+            font-weight: normal;
+        }
+        .pv-table tbody td.digit {
+            background-color: #fff9e6;
+        }
+        .pv-table tbody td.dec-digit {
+            background-color: #e8f4fd;
+        }
+        /* "th side" label row */
+        .pv-table tr.side-label td {
+            font-size: 0.78em;
+            color: #666;
+            font-style: italic;
+            border: none;
+            padding: 2px 6px;
+        }
+
+        /* ── Inline reference tables (word/decimal/fraction) ── */
+        .ref-table {
+            border-collapse: collapse;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        .ref-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+        }
+        .ref-table td {
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+        }
+        .ref-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        /* ── Exercise layout ── */
+        .ex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .ex-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .ex-item { padding: 4px 0; line-height: 1.5; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 1rem; }
+        .ex-wide li { margin-bottom: 0.5rem; line-height: 1.5; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.1em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 3px;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .ex-grid.three-col,
+            .ex-grid.two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-2">Section 1.2: Decimals and Place Value</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Read and write numbers in decimal notation.</li>
+            <li>Write decimals as fractions.</li>
+            <li>Write fractions as decimals.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-2-heading">
+        <h3 id="intro-1-2-heading">Introduction</h3>
+        <p>In addition to fraction notation, decimal notation is another way to write numbers between 0 and 1. Decimals can also be used to write numbers between any two whole numbers. For example, you may have to write a check for $2,003.38. Or, in measuring the length of a room, you may find that the length is between two whole numbers, such as 35.24 feet. In this section you will focus on reading and writing decimal numbers, and rewriting them in fraction notation.</p>
+        <p>To read or write numbers written in decimal notation, you need to know the <strong>place value</strong> of each digit — that is, the value of a digit based on its position within a number. With decimal numbers, the position of a numeral in relation to the decimal point determines its place value. For example, the place value of the 4 in 45.6 is in the <em>tens</em> place, while the place value of 6 in 45.6 is in the <em>tenths</em> place.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         DECIMAL NOTATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="decimal-notation-heading">
+        <h3 id="decimal-notation-heading">Decimal Notation</h3>
+
+        <p><strong>Decimal numbers</strong> are numbers whose place values are based on 10s. Whole numbers are actually decimal numbers that are greater than or equal to zero. The place-value chart can be extended to include numbers less than one, which are sometimes called <strong>decimal fractions</strong>. A decimal point is used to separate the whole number part of the number from the fraction part.</p>
+
+        <p>Suppose you are measuring the length of a driveway and find that it is 745.36 feet. The place values of the decimal part are shown below.</p>
+
+        <!-- Place-Value Chart: 745.36 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Decimal Numbers Place-Value Chart — 745.36</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th scope="col">Hundreds</th>
+                        <th scope="col">Tens</th>
+                        <th scope="col">Ones</th>
+                        <th scope="col" class="dec-col">Decimal Point</th>
+                        <th scope="col">Tenths</th>
+                        <th scope="col">Hundredths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="digit">7</td>
+                        <td class="digit">4</td>
+                        <td class="digit">5</td>
+                        <td class="dec-col">.</td>
+                        <td class="dec-digit">3</td>
+                        <td class="dec-digit">6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Notice how the place-value names start from the decimal point. To the <strong>left</strong> of the decimal point are the ones, tens, and hundreds places — digits that represent whole numbers greater than or equal to zero. To the <strong>right</strong> of the decimal point are the tenths and hundredths — digits that represent fractional parts less than one.</p>
+
+        <p>The place value of a number depends on how far away it is from the decimal point. The chart below shows the digit 4 in seven different place values.</p>
+
+        <!-- Place-Value Chart: digit 4 in various positions -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>The Digit 4 in Different Place Values</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th scope="col">Number</th>
+                        <th scope="col">Thousands</th>
+                        <th scope="col">Hundreds</th>
+                        <th scope="col">Tens</th>
+                        <th scope="col">Ones</th>
+                        <th scope="col" class="dec-col">.</th>
+                        <th scope="col">Tenths</th>
+                        <th scope="col">Hundredths</th>
+                        <th scope="col">Thousandths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0.004</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="dec-digit">0</td><td class="dec-digit">0</td><td class="dec-digit">4</td>
+                    </tr>
+                    <tr>
+                        <td>0.04</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="dec-digit">0</td><td class="dec-digit">4</td><td class="empty-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td>0.4</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="dec-digit">4</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">4</td>
+                        <td class="dec-col">.</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="digit">4</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td>400</td>
+                        <td class="empty-cell">—</td><td class="digit">4</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td>4000</td>
+                        <td class="digit">4</td><td class="digit">0</td><td class="digit">0</td><td class="digit">0</td>
+                        <td class="dec-col">.</td>
+                        <td class="empty-cell">—</td><td class="empty-cell">—</td><td class="empty-cell">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>As you move from the decimal point to the right, you divide by 10 at each step — just as moving left multiplies by 10. The table below shows the relationship between decimal places and fractions:</p>
+
+        <!-- Word / Decimal / Fraction table -->
+        <table class="ref-table" aria-label="Relationship between place values and fractions">
+            <caption style="caption-side:top; text-align:left; font-weight:bold; color:#33AB2B; margin-bottom:0.4rem;">
+                Place Value Relationships
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Word Form</th>
+                    <th scope="col">Decimal Notation</th>
+                    <th scope="col">Fraction Notation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>one thousand</td><td>1,000</td><td>\(1{,}000\)</td></tr>
+                <tr><td>one hundred</td><td>100</td><td>\(100\)</td></tr>
+                <tr><td>ten</td><td>10</td><td>\(10\)</td></tr>
+                <tr><td>one</td><td>1</td><td>\(1\)</td></tr>
+                <tr><td>one tenth</td><td>0.1</td><td>\(\dfrac{1}{10}\)</td></tr>
+                <tr><td>one hundredth</td><td>0.01</td><td>\(\dfrac{1}{100}\)</td></tr>
+                <tr><td>one thousandth</td><td>0.001</td><td>\(\dfrac{1}{1{,}000}\)</td></tr>
+            </tbody>
+        </table>
+
+        <p>Now consider the number 1,357.924 kilograms. It uses the thousands place on the left and the thousandths place on the right.</p>
+
+        <!-- Place-Value Chart: 1,357.924 -->
+        <div class="pv-scroll">
+            <table class="pv-table">
+                <caption>Place-Value Chart — 1,357.924</caption>
+                <thead>
+                    <tr class="period-row">
+                        <th colspan="4" scope="colgroup" style="background:#d6f0cc; color:#1a6e14;">No "th" side (≥ 1)</th>
+                        <th scope="col" class="dec-col" rowspan="2" style="vertical-align:middle;">.</th>
+                        <th colspan="3" scope="colgroup" style="background:#d6eaf8; color:#1a4e8a;">"th" side (&lt; 1)</th>
+                    </tr>
+                    <tr class="subheader-row">
+                        <th scope="col">Thousands</th>
+                        <th scope="col">Hundreds</th>
+                        <th scope="col">Tens</th>
+                        <th scope="col">Ones</th>
+                        <th scope="col">Tenths</th>
+                        <th scope="col">Hundredths</th>
+                        <th scope="col">Thousandths</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="digit">1</td>
+                        <td class="digit">3</td>
+                        <td class="digit">5</td>
+                        <td class="digit">7</td>
+                        <td class="dec-col">.</td>
+                        <td class="dec-digit">9</td>
+                        <td class="dec-digit">2</td>
+                        <td class="dec-digit">4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="definition-box" role="note" aria-label="Key pattern for decimal place values">
+            <h3>Key Pattern: The "th" Side</h3>
+            <p>The place values to the <strong>right</strong> of the decimal point all end in <em>"th"</em> (tenths, hundredths, thousandths). There is no such thing as "oneths" — the ones place sits to the left of the decimal point.</p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-2-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-1-heading">Example 1</h3>
+                <p>What is the place value of 8 in 4,279.386?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <div class="pv-scroll">
+                        <table class="pv-table">
+                            <caption>Place-Value Chart — 4,279.386</caption>
+                            <thead>
+                                <tr class="subheader-row">
+                                    <th scope="col">Thousands</th>
+                                    <th scope="col">Hundreds</th>
+                                    <th scope="col">Tens</th>
+                                    <th scope="col">Ones</th>
+                                    <th scope="col" class="dec-col">.</th>
+                                    <th scope="col">Tenths</th>
+                                    <th scope="col">Hundredths</th>
+                                    <th scope="col">Thousandths</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="digit">4</td>
+                                    <td class="digit">2</td>
+                                    <td class="digit">7</td>
+                                    <td class="digit">9</td>
+                                    <td class="dec-col">.</td>
+                                    <td class="dec-digit">3</td>
+                                    <td class="dec-digit" style="background:#ffe0b2; color:#b84d00;">8</td>
+                                    <td class="dec-digit">6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>The digit 8 is in the <strong>hundredths</strong> place.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>What is the place value of the 7 in 324.2671?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-2">
+                Show Answer
+            </button>
+            <div id="sca-1-2" class="self-check-answer">
+                <p>The digit 7 is three decimal places to the right of the decimal point, so it is in the <strong>thousandths</strong> place.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         READING DECIMALS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="reading-decimals-heading">
+        <h3 id="reading-decimals-heading">Reading Decimals</h3>
+
+        <p>The easiest way to read a decimal number is to read the decimal fraction part as a fraction (without simplifying). For example, 0.4 grams is read as "four tenths of a gram," since the 4 is in the tenths place.</p>
+
+        <p>The denominator of the fraction is always a power of ten, and the number of zeros in the denominator equals the number of decimal places to the right of the decimal point.</p>
+
+        <table class="ref-table" aria-label="Examples of reading decimals">
+            <thead>
+                <tr>
+                    <th scope="col">Decimal Notation</th>
+                    <th scope="col">Fraction Notation</th>
+                    <th scope="col">Word Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0.5</td>
+                    <td>\(\dfrac{5}{10}\)</td>
+                    <td>five tenths</td>
+                </tr>
+                <tr>
+                    <td>0.34</td>
+                    <td>\(\dfrac{34}{100}\)</td>
+                    <td>thirty-four hundredths</td>
+                </tr>
+                <tr>
+                    <td>0.896</td>
+                    <td>\(\dfrac{896}{1{,}000}\)</td>
+                    <td>eight hundred ninety-six thousandths</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>For numbers greater than 1 (mixed numbers), say the whole number part, the word <em>"and"</em> (representing the decimal point), and then the decimal part followed by its place value name.</p>
+
+        <table class="ref-table" aria-label="Examples of reading mixed decimal numbers">
+            <thead>
+                <tr>
+                    <th scope="col">Decimal Notation</th>
+                    <th scope="col">Fraction Notation</th>
+                    <th scope="col">Word Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>9.4</td>
+                    <td>\(9\dfrac{4}{10}\)</td>
+                    <td>nine and four tenths</td>
+                </tr>
+                <tr>
+                    <td>87.49</td>
+                    <td>\(87\dfrac{49}{100}\)</td>
+                    <td>eighty-seven and forty-nine hundredths</td>
+                </tr>
+                <tr>
+                    <td>594.236</td>
+                    <td>\(594\dfrac{236}{1{,}000}\)</td>
+                    <td>five hundred ninety-four and two hundred thirty-six thousandths</td>
+                </tr>
+                <tr>
+                    <td>1,475.3014</td>
+                    <td>\(1{,}475\dfrac{3{,}014}{10{,}000}\)</td>
+                    <td>one thousand four hundred seventy-five and three thousand fourteen ten-thousandths</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-2-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-2-heading">Example 2</h3>
+                <p>Write 0.68 in word form.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The last decimal place is hundredths, so the denominator is 100 (two zeros, same as the number of decimal places):</p>
+                    \[0.68 = \frac{68}{100} = \text{sixty-eight hundredths}\]
+                    <p><strong>Answer:</strong> sixty-eight hundredths.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-2-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-3-heading">Example 3</h3>
+                <p>Write 4.379 in word form.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The last digit (9) is in the thousandths place, so the denominator is 1,000 (three zeros):</p>
+                    \[4.379 = 4\frac{379}{1{,}000}\]
+                    <p><strong>Answer:</strong> four and three hundred seventy-nine thousandths.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Write 2.364 in word form.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-2">
+                Show Answer
+            </button>
+            <div id="scb-1-2" class="self-check-answer">
+                <p><strong>Two and three hundred sixty-four thousandths.</strong> Since \(2.364 = 2\dfrac{364}{1{,}000}\), you read the decimal part as three hundred sixty-four thousandths.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         WRITING DECIMALS AS SIMPLIFIED FRACTIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="dec-to-frac-heading">
+        <h3 id="dec-to-frac-heading">Writing Decimals as Simplified Fractions</h3>
+
+        <p>To convert a decimal to a fraction, place the digits after the decimal point in the numerator and use the appropriate power of 10 (matching the number of decimal places) as the denominator. Then simplify.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-2-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-4-heading">Example 4</h3>
+                <p>Write 0.6 as a simplified fraction.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The last decimal place is tenths, so use 10 as the denominator:</p>
+                    \[0.6 = \frac{6}{10}\]
+                    <p>Simplify by dividing numerator and denominator by 2:</p>
+                    \[\frac{6}{10} \div \frac{2}{2} = \frac{3}{5}\]
+                    <p><strong>Answer:</strong> \(0.6 = \dfrac{3}{5}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-2-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-5-heading">Example 5</h3>
+                <p>Write 0.64 as a simplified fraction.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Two decimal places → denominator is 100:</p>
+                    \[0.64 = \frac{64}{100}\]
+                    <p>Simplify by dividing by 4:</p>
+                    \[\frac{64}{100} \div \frac{4}{4} = \frac{16}{25}\]
+                    <p><strong>Answer:</strong> \(0.64 = \dfrac{16}{25}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-1-2-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-6-heading">Example 6</h3>
+                <p>Write 0.645 as a simplified fraction.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-6">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Three decimal places → denominator is 1,000:</p>
+                    \[0.645 = \frac{645}{1{,}000}\]
+                    <p>Simplify by dividing by 5:</p>
+                    \[\frac{645}{1{,}000} \div \frac{5}{5} = \frac{129}{200}\]
+                    <p><strong>Answer:</strong> \(0.645 = \dfrac{129}{200}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-1-2-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-7-heading">Example 7</h3>
+                <p>Write 0.007 as a simplified fraction.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-7">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The digit 7 is in the thousandths place, so the denominator is 1,000:</p>
+                    \[0.007 = \frac{7}{1{,}000}\]
+                    <p>This fraction cannot be simplified further.</p>
+                    <p><strong>Answer:</strong> \(0.007 = \dfrac{7}{1{,}000}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-1-2-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-8-heading">Example 8</h3>
+                <p>Write 8.65 as a simplified mixed fraction.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-8">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Keep the whole number part (8) and convert only the decimal part:</p>
+                    \[8.65 = 8\frac{65}{100}\]
+                    <p>Simplify \(\dfrac{65}{100}\) by dividing by 5:</p>
+                    \[8\frac{65}{100} = 8\frac{13}{20}\]
+                    <p><strong>Answer:</strong> \(8.65 = 8\dfrac{13}{20}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>Write 0.25 as a fraction.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-2">
+                Show Answer
+            </button>
+            <div id="scc-1-2" class="self-check-answer">
+                <p>\(0.25 = \dfrac{25}{100} = \dfrac{1}{4}\)</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         WRITING FRACTIONS AS DECIMALS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="frac-to-dec-heading">
+        <h3 id="frac-to-dec-heading">Writing Fractions as Decimals</h3>
+
+        <p>To write a fraction as a decimal, divide the numerator by the denominator. Use long division if necessary and watch where the decimal point falls in your answer.</p>
+
+        <p>If the division produces digits that repeat without end, you have a <strong>repeating decimal</strong>. Write a bar over the repeating digit(s) to indicate the repetition. For example, \(\dfrac{2}{3} = 0.\overline{6}\).</p>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-1-2-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-9-heading">Example 9</h3>
+                <p>Write \(\dfrac{1}{2}\) as a decimal.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-9">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Divide 1 by 2 using long division:</p>
+                    \[
+                    \begin{array}{r}
+                    0.5 \\[-2pt]
+                    2 \overline{\smash{)}\, 1.0} \\[-2pt]
+                    \underline{-\,1.0} \\[-2pt]
+                    0
+                    \end{array}
+                    \]
+                    <p><strong>Answer:</strong> \(\dfrac{1}{2} = 0.5\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 10 -->
+        <section class="example" aria-labelledby="ex-1-2-10-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-10-heading">Example 10</h3>
+                <p>Write \(\dfrac{3}{8}\) as a decimal.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-10">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-10" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Divide 3 by 8 using long division:</p>
+                    \[
+                    \begin{array}{r}
+                    0.375 \\[-2pt]
+                    8 \overline{\smash{)}\, 3.000} \\[-2pt]
+                    \underline{-\,2.4\phantom{0}} \\[-2pt]
+                    60\phantom{0} \\[-2pt]
+                    \underline{-\,56\phantom{0}} \\[-2pt]
+                    40 \\[-2pt]
+                    \underline{-\,40} \\[-2pt]
+                    0
+                    \end{array}
+                    \]
+                    <p><strong>Answer:</strong> \(\dfrac{3}{8} = 0.375\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 11 -->
+        <section class="example" aria-labelledby="ex-1-2-11-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-11-heading">Example 11</h3>
+                <p>Convert \(\dfrac{4}{11}\) to a decimal.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-11">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-11" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Divide 4 by 11. The pattern 36 repeats indefinitely:</p>
+                    \[
+                    \begin{array}{r}
+                    0.3636\ldots \\[-2pt]
+                    11 \overline{\smash{)}\, 4.0000} \\[-2pt]
+                    \underline{-\,3.3\phantom{00}} \\[-2pt]
+                    70\phantom{0} \\[-2pt]
+                    \underline{-\,66\phantom{0}} \\[-2pt]
+                    40 \\[-2pt]
+                    \underline{-\,33} \\[-2pt]
+                    70 \\[-2pt]
+                    \underline{-\,66} \\[-2pt]
+                    4\ldots
+                    \end{array}
+                    \]
+                    <p>Since 36 repeats, write a bar over both digits:</p>
+                    <p><strong>Answer:</strong> \(\dfrac{4}{11} = 0.\overline{36}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 12 -->
+        <section class="example" aria-labelledby="ex-1-2-12-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-2-12-heading">Example 12</h3>
+                <p>Convert \(2\dfrac{1}{4}\) to a decimal.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-2-12">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-2-12" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Keep the whole number 2 and convert only the fraction part. Divide 1 by 4:</p>
+                    \[
+                    \begin{array}{r}
+                    0.25 \\[-2pt]
+                    4 \overline{\smash{)}\, 1.00} \\[-2pt]
+                    \underline{-\,0.8\phantom{0}} \\[-2pt]
+                    20 \\[-2pt]
+                    \underline{-\,20} \\[-2pt]
+                    0
+                    \end{array}
+                    \]
+                    <p>Now add the whole number back: \(2 + 0.25 = 2.25\)</p>
+                    <p><strong>Answer:</strong> \(2\dfrac{1}{4} = 2.25\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="definition-box" role="note" aria-label="Tips on converting fractions to decimals">
+            <h3>Tips on Converting Fractions to Decimals</h3>
+            <ul>
+                <li>Divide the numerator by the denominator.</li>
+                <li>If digits repeat, write a bar over the repeating digit(s): e.g., \(0.\overline{3}\) for 0.333…</li>
+                <li>For mixed numbers, keep the whole number and convert only the fraction part, then combine.</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-2-heading">
+        <h3 id="summary-1-2-heading">Summary</h3>
+        <p>Decimal notation is another way to write numbers that are less than 1 or that combine whole numbers with decimal fractions. When you write numbers in decimal notation, you can use an extended place-value chart that includes positions for numbers less than one. You can convert between decimal notation and fraction notation in either direction.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-2-heading">
+        <h2 id="exercises-1-2-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-2-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-2-content" class="exercises-content" role="region" aria-labelledby="exercises-1-2-heading">
+
+            <h3>Name Decimals</h3>
+            <p>In the following exercises, name each decimal.</p>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>1.</strong> 5.5</div>
+                <div class="ex-item"><strong>2.</strong> 7.8</div>
+                <div class="ex-item"><strong>3.</strong> 5.01</div>
+                <div class="ex-item"><strong>4.</strong> 14.02</div>
+                <div class="ex-item"><strong>5.</strong> 8.71</div>
+                <div class="ex-item"><strong>6.</strong> 2.64</div>
+                <div class="ex-item"><strong>7.</strong> 0.002</div>
+                <div class="ex-item"><strong>8.</strong> 0.005</div>
+                <div class="ex-item"><strong>9.</strong> 0.381</div>
+                <div class="ex-item"><strong>10.</strong> 0.479</div>
+                <div class="ex-item"><strong>11.</strong> −17.9</div>
+                <div class="ex-item"><strong>12.</strong> −31.4</div>
+            </div>
+
+            <h3>Write Decimals</h3>
+            <p>In the following exercises, translate the name into a decimal number.</p>
+            <div class="ex-grid two-col">
+                <div class="ex-item"><strong>13.</strong> Eight and three hundredths</div>
+                <div class="ex-item"><strong>14.</strong> Nine and seven hundredths</div>
+                <div class="ex-item"><strong>15.</strong> Twenty-nine and eighty-one hundredths</div>
+                <div class="ex-item"><strong>16.</strong> Sixty-one and seventy-four hundredths</div>
+                <div class="ex-item"><strong>17.</strong> Seven tenths</div>
+                <div class="ex-item"><strong>18.</strong> Six tenths</div>
+                <div class="ex-item"><strong>19.</strong> One thousandth</div>
+                <div class="ex-item"><strong>20.</strong> Nine thousandths</div>
+                <div class="ex-item"><strong>21.</strong> Twenty-nine thousandths</div>
+                <div class="ex-item"><strong>22.</strong> Thirty-five thousandths</div>
+                <div class="ex-item"><strong>23.</strong> Negative eleven and nine ten-thousandths</div>
+                <div class="ex-item"><strong>24.</strong> Negative fifty-nine and two ten-thousandths</div>
+                <div class="ex-item"><strong>25.</strong> Thirteen and three hundred ninety-five ten-thousandths</div>
+                <div class="ex-item"><strong>26.</strong> Thirty and two hundred seventy-nine thousandths</div>
+            </div>
+
+            <h3>Convert Decimals to Fractions or Mixed Numbers</h3>
+            <p>In the following exercises, convert each decimal to a fraction or mixed number.</p>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>27.</strong> 1.99</div>
+                <div class="ex-item"><strong>28.</strong> 5.83</div>
+                <div class="ex-item"><strong>29.</strong> 15.7</div>
+                <div class="ex-item"><strong>30.</strong> 18.1</div>
+                <div class="ex-item"><strong>31.</strong> 0.239</div>
+                <div class="ex-item"><strong>32.</strong> 0.373</div>
+                <div class="ex-item"><strong>33.</strong> 0.13</div>
+                <div class="ex-item"><strong>34.</strong> 0.19</div>
+                <div class="ex-item"><strong>35.</strong> 0.011</div>
+                <div class="ex-item"><strong>36.</strong> 0.049</div>
+                <div class="ex-item"><strong>37.</strong> −0.00007</div>
+                <div class="ex-item"><strong>38.</strong> −0.00003</div>
+                <div class="ex-item"><strong>39.</strong> 6.4</div>
+                <div class="ex-item"><strong>40.</strong> 5.2</div>
+                <div class="ex-item"><strong>41.</strong> 7.05</div>
+                <div class="ex-item"><strong>42.</strong> 9.04</div>
+                <div class="ex-item"><strong>43.</strong> 4.006</div>
+                <div class="ex-item"><strong>44.</strong> 2.008</div>
+                <div class="ex-item"><strong>45.</strong> 10.25</div>
+                <div class="ex-item"><strong>46.</strong> 12.75</div>
+                <div class="ex-item"><strong>47.</strong> 1.324</div>
+                <div class="ex-item"><strong>48.</strong> 2.482</div>
+                <div class="ex-item"><strong>49.</strong> 14.125</div>
+                <div class="ex-item"><strong>50.</strong> 20.375</div>
+            </div>
+
+            <p class="credit-note">Exercises taken from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main><!-- end .container -->
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
