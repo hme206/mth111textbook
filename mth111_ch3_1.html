@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.1: Unit Conversions, Length, &amp; Perimeter</title>
+
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: {
+                load: ['input/tex', 'output/chtml']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- TOC loaded from external file -->
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-1">Section 3.1: Unit Conversions, Length, &amp; Perimeter</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Measure objects using both metric and English sides of a ruler.</li>
+            <li>Convert numbers between different units.</li>
+            <li>Find the perimeter of straight-edge and non-straight-edge objects.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         ENGLISH SYSTEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="english-system-heading">
+        <h3 id="english-system-heading">Length</h3>
+
+        <p>We've all measured something at some point in time in our lives. Most of us have probably used the <strong>English system</strong> of measurement, which the United States has used for a very long time. However, we are about the only ones who don't use the <strong>Metric System</strong>.</p>
+
+        <p>Without even really knowing it, we've all used a method called <span class="blue-text"><strong>dimensional analysis</strong></span> in order to convert some of our English measurements to other English measurements. One example would be if you needed to convert inches into feet. In dimensional analysis we set up proportions using like rates to change our units to what we are looking for. To do this we use something known as a <span class="blue-text"><strong>conversion factor</strong></span>. Some of our common English conversion factors are given below:</p>
+
+        <!-- English Conversion Factor Box -->
+        <div class="conversion-box" role="note" aria-label="Length Conversion Factors for the English System">
+            <h3>Length Conversion Factors — English System</h3>
+            <table>
+                <caption class="visually-hidden">Common English system length conversion factors</caption>
+                <tbody>
+                    <tr>
+                        <td>1 mile (mi)</td>
+                        <td>=</td>
+                        <td>1,760 yards (yds)</td>
+                    </tr>
+                    <tr>
+                        <td>1 mile (mi)</td>
+                        <td>=</td>
+                        <td>5,280 feet (ft or &#x2032;)</td>
+                    </tr>
+                    <tr>
+                        <td>1 yard (yd)</td>
+                        <td>=</td>
+                        <td>3 feet (ft or &#x2032;)</td>
+                    </tr>
+                    <tr>
+                        <td>1 foot (ft or &#x2032;)</td>
+                        <td>=</td>
+                        <td>12 inches (in or &#x2033;)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-3-1-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-1-heading">Example 1</h3>
+                <p>Your car can drive 300 miles on a tank of gas. How many yards can it drive?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>To start this we need to set up the ratio:</p>
+                    \[\frac{300\text{ miles}}{1\text{ tank of gas}}\]
+                    <p>Then the objective is to find the conversion factor that compares miles to yards. According to the table above, 1,760 yards = 1 mile. The way dimensional analysis works is that you want the unit you're trying to get rid of to be <em>opposite</em> of its current position. Since "miles" is currently in the numerator, in our conversion factor it needs to be in the denominator:</p>
+                    \[\frac{300\text{ miles}}{1\text{ tank}} \cdot \frac{1{,}760\text{ yds}}{1\text{ mile}} = \frac{300(1{,}760)\text{ yds}}{1\text{ tank}} = \frac{528{,}000\text{ yds}}{1\text{ tank}}\]
+                    <p>Notice that since there was a unit of miles on top and a unit of miles on the bottom, we were able to cancel the common unit. This means that your car can drive <strong>528,000 yards</strong> on one tank of gas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-3-1-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-2-heading">Example 2</h3>
+                <p>A bicycle is traveling at 15 miles per hour. How many feet will it cover in 20 seconds?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>To answer this question, we need to convert 20 seconds into hours, and also convert our miles per hour into feet per hour. We might start by converting the 20 seconds into hours:</p>
+                    \[\frac{20\text{ seconds}}{1} \cdot \frac{1\text{ minute}}{60\text{ seconds}} \cdot \frac{1\text{ hour}}{60\text{ minutes}} = \frac{20}{3{,}600}\text{ hrs} = \frac{1}{180}\text{ hrs}\]
+                    <p>Next we need to convert our miles per hour into feet per hour using the conversion factor 5,280 ft = 1 mile:</p>
+                    \[\frac{15\text{ miles}}{1\text{ hr}} \cdot \frac{5{,}280\text{ feet}}{1\text{ mile}} = \frac{79{,}200\text{ feet}}{1\text{ hr}}\]
+                    <p>This means that our bicycle travels 79,200 feet in one hour. Lastly we multiply our time by our speed, now that the units match:</p>
+                    \[\frac{1}{180}\text{ hrs} \cdot \frac{79{,}200\text{ feet}}{1\text{ hr}} = \frac{79{,}200}{180}\text{ feet} = 440\text{ feet}\]
+                    <p>This means that our bicycle will travel a total of <strong>440 feet</strong> in 20 seconds.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         METRIC SYSTEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="metric-system-heading">
+        <h3 id="metric-system-heading">The Metric System</h3>
+
+        <p>For those of us who grew up in the United States, we see no issue with the English system of measurement. However, all over the world everyone else is using a standard unit of measure known as the <span class="blue-text"><strong>Metric System</strong></span>. The Metric system works off standard base units, and then each different unit is a multiple or fraction of ten.</p>
+
+        <!-- Metric Prefix Table -->
+        <div class="conversion-box" role="note" aria-label="Basic Units of Measure — Metric Prefixes">
+            <h3>Basic Units of Measure</h3>
+            <table>
+                <caption class="visually-hidden">Metric system prefixes, their symbols, and their meaning relative to the base unit</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Prefix</th>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Meaning</th>
+                        <th scope="col">Relative to Base</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>kilo-</td>
+                        <td>k</td>
+                        <td>1,000 units</td>
+                        <td>Bigger than base unit</td>
+                    </tr>
+                    <tr>
+                        <td>hecto-</td>
+                        <td>h</td>
+                        <td>100 units</td>
+                        <td>Bigger than base unit</td>
+                    </tr>
+                    <tr>
+                        <td>deka-</td>
+                        <td>da</td>
+                        <td>10 units</td>
+                        <td>Bigger than base unit</td>
+                    </tr>
+                    <tr>
+                        <td>(base)</td>
+                        <td>m, L, g</td>
+                        <td>1 unit</td>
+                        <td>Base unit</td>
+                    </tr>
+                    <tr>
+                        <td>deci-</td>
+                        <td>d</td>
+                        <td>\(\frac{1}{10}\) of a unit</td>
+                        <td>Smaller than base unit</td>
+                    </tr>
+                    <tr>
+                        <td>centi-</td>
+                        <td>c</td>
+                        <td>\(\frac{1}{100}\) of a unit</td>
+                        <td>Smaller than base unit</td>
+                    </tr>
+                    <tr>
+                        <td>milli-</td>
+                        <td>m</td>
+                        <td>\(\frac{1}{1{,}000}\) of a unit</td>
+                        <td>Smaller than base unit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>For the sake of measuring length, the Metric system uses something known as a <strong>Meter (m)</strong>, which is just slightly longer than one yard. The Metric system works on a base-10 system. If you've ever looked at a ruler on the metric side, you've probably noticed that between the 1 cm and 2 cm mark there are 9 little lines. Each of those lines is known as a millimeter, so 10 mm = 1 cm — which is a much easier conversion than 12 in = 1 ft.</p>
+
+        <p>When converting length in the metric system, it is often easiest to simply divide or multiply, as illustrated in Figure 1 below. Think of it as a ladder: as you move <em>up</em> the ladder you divide by 10 for each step, and as you move <em>down</em> the ladder you multiply by 10 for each step.</p>
+
+        <!-- Metric Ladder Diagram -->
+        <figure style="text-align: center; margin: 1.5rem 0;">
+            <img
+                src="images/mth111_3_1_1.png"
+                alt="A vertical ladder diagram labeled Figure 1 – Metric Conversions. The ladder has seven rungs from top to bottom: Kilo, Hecto, Deka, Base (meters, liters, grams), Deci, Centi, Milli. On the left side of the ladder an arrow points upward labeled Divide by 10. On the right side an arrow points downward labeled Multiply by 10. Moving up the ladder requires dividing by 10 for each step; moving down requires multiplying by 10 for each step."
+                style="max-width: 480px; width: 100%; height: auto;"
+            />
+            <figcaption style="font-style: italic; color: #555; margin-top: 0.5rem;">
+                Figure 1 – Metric Conversions
+            </figcaption>
+        </figure>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-3-1-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-3-heading">Example 3</h3>
+                <p>How many meters are in 4.5 km?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First we have to decide where on the ladder we would be. The "k" means we are at the Kilo level and we want to move <em>down</em> to the base level. To do that we'd move down the ladder 3 steps (Kilo → Hecto → Deka → Base), which means we multiply by \(10^3\):</p>
+                    \[4.5\text{ km} \times 10^3 = 4.5(1{,}000) = 4{,}500\text{ m}\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-3-1-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-4-heading">Example 4</h3>
+                <p>How many meters are in 0.0257 cm?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Once again we need to determine where on the ladder we'd be. The "c" means centi. In order to move from centi to our base (meters) we'd need to move <em>up</em> the ladder 2 steps (Centi → Deci → Base). Since we're going up, we divide by \(10^2\):</p>
+                    \[\frac{0.0257\text{ cm}}{10^2} = \frac{0.0257}{100} = 0.000257\text{ m}\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-3-1-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-5-heading">Example 5</h3>
+                <p>One snack-size bag of cheese Ritz Bits contains 200 mg of sodium. According to Healthline.com, the average adult should consume at most 2.3 grams per day. What percentage of your daily sodium intake would this serving represent?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First we need to convert 200 mg into grams. To do that we'd move <em>up</em> the ladder 3 steps (Milli → Centi → Deci → Base), so we divide by \(10^3\):</p>
+                    \[\frac{200\text{ mg}}{10^3} = \frac{200}{1{,}000} = 0.2\text{ g}\]
+                    <p>Next we find what percentage of 2.3 g that is. Recall that percentage is \(\dfrac{\text{part}}{\text{whole}} \times 100\%\):</p>
+                    \[\frac{0.2}{2.3} \times 100\% \approx 0.08696 \times 100\% \approx 8.7\%\]
+                    <p>This serving represents approximately <strong>8.7%</strong> of the recommended daily sodium intake.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         METRIC–ENGLISH CONVERSIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="metric-english-heading">
+        <h3 id="metric-english-heading">Metric–English Conversions</h3>
+
+        <p>If you've ever noticed, most food packaging lists nutritional facts in metric units. But what if you want to convert between metric measurements and English measurements? In that case we need some additional conversion factors.</p>
+
+        <!-- Metric-English Conversion Box -->
+        <div class="conversion-box" role="note" aria-label="Metric to English length conversion factors">
+            <h3>Metric–English Conversion Factors</h3>
+            <table>
+                <caption class="visually-hidden">Conversion factors between metric and English units of length, presented in two columns showing conversions in both directions</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">English to Metric</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Metric to English</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1 mile</td><td>=</td><td>1.61 km</td>
+                        <td>1 km</td><td>=</td><td>0.62 miles</td>
+                    </tr>
+                    <tr>
+                        <td>1 yard</td><td>=</td><td>0.914 meters</td>
+                        <td>1 meter</td><td>=</td><td>3.28 feet</td>
+                    </tr>
+                    <tr>
+                        <td>1 foot</td><td>=</td><td>0.305 meters</td>
+                        <td>1 meter</td><td>=</td><td>1.09 yards</td>
+                    </tr>
+                    <tr>
+                        <td>1 inch</td><td>=</td><td>2.54 centimeters</td>
+                        <td>1 centimeter</td><td>=</td><td>0.394 inches</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-style: italic; margin-top: 15px; margin-bottom: 0;">
+                Note: Depending on which conversion factor you choose, your answers may vary slightly due to rounding in the conversion factors.
+            </p>
+        </div>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-3-1-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-6-heading">Example 6</h3>
+                <p>Your friend in Spain wants to know how far you can throw a football. You go outside and find the distance to be 75 yards. How many meters would that be?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Looking at our conversion factors, we have two options for converting yards to meters. We will show both so you can see the difference — in practice you would choose one and apply dimensional analysis.</p>
+
+                    <p><strong>Option 1:</strong> Using 1 yd = 0.914 m</p>
+                    \[\frac{75\text{ yards}}{1} \cdot \frac{0.914\text{ m}}{1\text{ yd}} = 68.55\text{ m}\]
+
+                    <p><strong>Option 2:</strong> Using 1 m = 1.09 yds</p>
+                    \[\frac{75\text{ yards}}{1} \cdot \frac{1\text{ m}}{1.09\text{ yds}} \approx 68.81\text{ m}\]
+
+                    <p>Remember, since the conversion factors are approximated, that is what creates the small difference in our answers. Either way, we can tell our friend that the throw was just short of <strong>69 meters</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         PERIMETER
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="perimeter-heading">
+        <h3 id="perimeter-heading">Perimeter</h3>
+
+        <p>The <span class="blue-text"><strong>perimeter</strong></span> of a two-dimensional shape is the distance around the shape. You can think of wrapping a string around a rectangle — the length of that string would be the perimeter of the rectangle. Another way to think of it: some people find it useful to remember "pe<strong>RIM</strong>eter" because the edge of an object is its <em>rim</em>.</p>
+
+        <p>If the shape is a <span class="blue-text"><strong>polygon</strong></span> (a shape with many straight sides), you can simply add up all the lengths of the sides to find the perimeter. Be careful to make sure that all lengths are measured in the same units. Perimeter is measured in <em>linear units</em> (one-dimensional), such as inches, centimeters, or feet.</p>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-3-1-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-7-heading">Example 7</h3>
+                <p>Find the perimeter of the figure below. All measurements are in inches.</p>
+                <figure style="text-align: center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_1_2.png"
+                        alt="An irregular six-sided polygon with the following side lengths labeled in inches: top side 5, upper-right side 3, lower-right side 6, bottom side 2, lower-left side 3, and upper-left side 3. All measurements are in inches."
+                        style="max-width: 320px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since all sides are measured in inches, we simply add the lengths of all six sides:</p>
+                    \[P = 5 + 3 + 6 + 2 + 3 + 3\]
+                    \[P = 22\text{ inches}\]
+                    <p>Remember to always include units. This means that a tightly wrapped string running the entire distance around the polygon would measure <strong>22 inches</strong> long.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Sometimes you need to use what you know about a polygon in order to find the perimeter. Let's look at a rectangle.</p>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-3-1-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-8-heading">Example 8</h3>
+                <p>A rectangle has a length of 8 cm and a width of 3 cm. Find the perimeter.</p>
+                <figure style="text-align: center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_1_3.png"
+                        alt="A rectangle with its length labeled 8 cm along the top and its width labeled 3 cm along the right side."
+                        style="max-width: 320px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-8">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since this is a rectangle, opposite sides have the same lengths — 3 cm and 8 cm. We add up all four sides:</p>
+                    \[P = 3 + 3 + 8 + 8 = 22\text{ cm}\]
+                    <p>Notice that the perimeter of a rectangle always involves two pairs of equal-length sides. You could also write this as \(P = 2(3) + 2(8) = 6 + 16 = 22\text{ cm}\). The formula for the perimeter of a rectangle is often written as:</p>
+                    \[P = 2l + 2w\]
+                    <p>where \(l\) is the length and \(w\) is the width. The perimeter of this rectangle is <strong>22 cm</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CIRCUMFERENCE
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="circumference-heading">
+        <h3 id="circumference-heading">Circumference</h3>
+
+        <p>Circles are a common shape — wheels on a car, Frisbees, compact discs. A <span class="blue-text"><strong>circle</strong></span> is a two-dimensional figure where every point on the edge is the same distance from a fixed center point. The distance from the center to any point on the circle is called the <span class="blue-text"><strong>radius</strong></span>.</p>
+
+        <p>When two radii (the plural of radius) are combined to form a line segment that passes through the center of the circle from one side to the other, you have a <span class="blue-text"><strong>diameter</strong></span>. The diameter is always two times the length of the radius: \(d = 2r\).</p>
+
+        <figure style="text-align: center; margin: 1.5rem 0;">
+            <img
+                src="images/mth111_3_1_4.png"
+                alt="Two circle diagrams side by side. The left diagram shows a circle with center point A and a line segment from the center to point B on the circle's edge labeled radius. The right diagram shows the same circle with a full line segment through the center from one side to the other labeled diameter, and the same radius line labeled radius."
+                style="max-width: 420px; width: 100%; height: auto;"
+            />
+        </figure>
+
+        <p>The distance around a circle is called the <span class="blue-text"><strong>circumference</strong></span> (recall the distance around a polygon is the perimeter). One interesting property about circles is that the ratio of a circle's circumference to its diameter is the same for <em>every</em> circle, no matter the size. The table below illustrates this:</p>
+
+        <!-- C/D Ratio Table -->
+        <table aria-label="Circumference to diameter ratio for common circular objects">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #33AB2B; margin-bottom: 0.5rem;">
+                Circumference-to-Diameter Ratio for Common Objects
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Circumference (C)<br/><span style="font-weight:normal; font-size:0.9em;">(rounded to nearest hundredth)</span></th>
+                    <th scope="col">Diameter (d)</th>
+                    <th scope="col">Ratio \(\dfrac{C}{d}\)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cup</td>
+                    <td>253 mm</td>
+                    <td>79 mm</td>
+                    <td>\(\dfrac{253}{79} \approx 3.2025\ldots\)</td>
+                </tr>
+                <tr>
+                    <td>Quarter</td>
+                    <td>84 mm</td>
+                    <td>27 mm</td>
+                    <td>\(\dfrac{84}{27} \approx 3.1111\ldots\)</td>
+                </tr>
+                <tr>
+                    <td>Bowl</td>
+                    <td>37.25 in</td>
+                    <td>11.75 in</td>
+                    <td>\(\dfrac{37.25}{11.75} \approx 3.1702\ldots\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>If you were able to measure more precisely, the ratio \(\dfrac{C}{d}\) would approach 3.14 for each item. The mathematical name for this ratio is \(\pi\) (pi). Pi is a non-terminating, non-repeating decimal — the first 10 digits are 3.141592653. It is often rounded to 3.14 or estimated as the fraction \(\dfrac{22}{7}\). Note that both of these are approximations, used when precision is not critical.</p>
+
+        <!-- Circumference Formula Box -->
+        <div class="definition-box" role="note" aria-label="Circumference formulas for a circle">
+            <h3>Circumference of a Circle</h3>
+            <p>To find the circumference \(C\) of a circle, use one of the following formulas:</p>
+            <ul>
+                <li>\(C = \pi d\) &nbsp; (when you know the diameter)</li>
+                <li>\(C = 2\pi r\) &nbsp; (when you know the radius)</li>
+            </ul>
+        </div>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-3-1-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-9-heading">Example 9</h3>
+                <p>Find the circumference of the circle shown below.</p>
+                <figure style="text-align: center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_1_5.png"
+                        alt="A circle with a line segment drawn from the left edge through the center to the right edge, labeled diameter equals 9 inches."
+                        style="max-width: 260px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>We are given a diameter of 9 inches, so we use the formula \(C = \pi d\):</p>
+                    \[C = \pi(9)\]
+                    \[C \approx 28.27\text{ in}\]
+                    <p>Remember to always include units and use \(\approx\) when approximating. Here we rounded to two decimal places.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 10 -->
+        <section class="example" aria-labelledby="ex-3-1-10-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-1-10-heading">Example 10</h3>
+                <p>Find the circumference of a circle with a radius of 2.5 yards.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-1-10">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-1-10" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>We are given a radius of 2.5 yards, so we use the formula \(C = 2\pi r\):</p>
+                    \[C = 2\pi(2.5)\]
+                    \[C \approx 15.71\text{ yards}\]
+                    <p>Remember to always include units.</p>
+                </div>
+            </div>
+        </section>
+
+    </section><!-- end circumference -->
+
+</main><!-- end .container -->
+
+<!-- Toggle script -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    const submenu = button.nextElementSibling;
+                    submenu.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
