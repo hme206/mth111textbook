@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.9: Integer Operations</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .numberline-figure {
+            text-align: center;
+            margin: 1.25rem 0;
+        }
+        .numberline-figure img {
+            max-width: 520px;
+            width: 100%;
+            height: auto;
+        }
+        .numberline-figure figcaption {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 0.4rem;
+        }
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.1em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 3px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.5; }
+        .credit-note { font-style: italic; font-size: 0.85em; color: #666; margin-top: 1rem; }
+        @media (max-width: 600px) {
+            .ex-grid.three-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-9">Section 1.9: Integer Operations</h2>
+
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Add two or more integers with the same sign.</li>
+            <li>Add two or more integers with different signs.</li>
+        </ol>
+    </div>
+
+    <section aria-labelledby="intro-1-9-heading">
+        <h3 id="intro-1-9-heading">Introduction</h3>
+        <p>On an extremely cold day, the temperature may be \(-10\). If the temperature rises 8 degrees, how will you find the new temperature? Knowing how to add integers is important here and in much of algebra.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="same-sign-heading">
+        <h3 id="same-sign-heading">Adding Integers with the Same Signs</h3>
+
+        <p>Since positive <strong>integers</strong> are the same as natural numbers, adding two positive integers is the same as adding two natural numbers.</p>
+        <p>To add integers on the number line, you move forward, and you face right (the positive direction) when you add a positive number.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_1.png"
+                 alt="A horizontal number line from 0 to 10. A person figure stands at 0 facing right with a vertical arrow pointing upward at 0, indicating the starting position for adding positive integers in the positive direction." />
+        </figure>
+
+        <p>As with positive numbers, to add negative integers on the number line, you move forward, but you face left (the negative direction) when you add a negative number.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_2.png"
+                 alt="A horizontal number line from negative 10 to 0. A person figure stands near 0 facing left with a vertical arrow pointing upward, indicating the starting position for adding negative integers in the negative direction." />
+        </figure>
+
+        <p>In both cases, the total number of units moved is the total distance moved. Since the distance of a number from 0 is the absolute value of that number, then the absolute value of the sum of the integers is the sum of the absolute values of the <strong>addends</strong>.</p>
+        <p>When both numbers are negative, you move left in a negative direction, and the sum is negative. When both numbers are positive, you move right in a positive direction, and the sum is positive.</p>
+
+        <p>To add two numbers with the same sign (both positive or both negative):</p>
+        <ul>
+            <li>Add their absolute values and give the sum the same sign.</li>
+        </ul>
+
+        <section class="example" aria-labelledby="ex-1-9-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-1-heading">Example 1</h3>
+                <p>Find \(-23 + (-16)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Both addends have the same sign (negative).</p>
+                    <p>So, add their absolute values: \(|-23| = 23\) and \(|-16| = 16\).</p>
+                    <p>The sum of those numbers is \(23 + 16 = 39\).</p>
+                    <p>Since both addends are negative, the sum is negative.</p>
+                    <p><strong>Answer:</strong> \(-23 + (-16) = -39\)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>With more than two addends that have the same sign, use the same process with all addends.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-2-heading">Example 2</h3>
+                <p>Find \(-27 + (-138) + (-55)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>All addends have the same sign (negative).</p>
+                    <p>So, add their absolute values: \(|-27| = 27\), \(|-138| = 138\), and \(|-55| = 55\).</p>
+                    <p>The sum of those numbers is \(27 + 138 + 55 = 220\).</p>
+                    <p>Since all addends are negative, the sum is negative.</p>
+                    <p><strong>Answer:</strong> \(-27 + (-138) + (-55) = -220\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Find \(-32 + (-14)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-9">Show Answer</button>
+            <div id="sca-1-9" class="self-check-answer">
+                <p>\(-46\)</p>
+                <p>The sum is found by first adding the absolute values of the addends: \(|-32| + |-14| = 32 + 14 = 46\). Then you must give the sum the same sign as the two addends, so the answer is \(-46\).</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="diff-sign-heading">
+        <h3 id="diff-sign-heading">Adding Integers with Different Signs</h3>
+
+        <p>Consider what happens when the addends have different signs, like in the temperature problem in the introduction. If it's \(-10\) degrees, and then the temperature rises 8 degrees, the new temperature is \(-10 + 8\). How can you calculate the new temperature?</p>
+        <p>Using the number line below, you move forward to add, just as before. Face and move in a positive direction (right) to add a positive number, and move forward in a negative direction (left) to add a negative number.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_3.png"
+                 alt="A horizontal number line from negative 8 to 8. A person figure stands at 0 facing right with a vertical arrow pointing upward at 0, illustrating the starting position for adding integers with different signs." />
+        </figure>
+
+        <p>See if you can find a rule for adding numbers without using the number line. Notice that when you add a positive integer and a negative integer, you move forward in the positive (right) direction to the first number, and then move forward in the negative (left) direction to add the negative integer.</p>
+        <p>Since the distances overlap, the absolute value of the sum is the difference of their distances. So to add a positive number and a negative number, you subtract their absolute values (their distances from 0.)</p>
+        <p>What is the sign of the sum? It's pretty easy to figure out. If you moved further to the right than you did to the left, you ended to the right of 0, and the answer is positive; and if you move further to the left, the answer is negative. Let's look at the illustration below and determine the sign of the sum.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_4.png"
+                 alt="A number line from negative 8 to 8 showing negative 1 plus 4 equals 3. A blue segment labeled face left move forward negative 1 spans from negative 1 toward 0, and a red segment labeled face right move forward 4 spans from 0 to 3. The equation negative 1 plus 4 equals 3 is displayed above." />
+            <figcaption>\(-1 + 4 = 3\)</figcaption>
+        </figure>
+
+        <p>If you didn't have the number line to refer to, you can find the sum of \(-1 + 4\) by</p>
+        <ul>
+            <li>subtracting the distances from zero (the absolute values) \(4 - 1 = 3\) and then</li>
+            <li>applying the sign of the one furthest from zero (the largest absolute value). In this case, 4 is further from 0 than \(-1\), so the answer is positive: \(-1 + 4 = 3\)</li>
+        </ul>
+
+        <p>Look at the illustration below.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_5.png"
+                 alt="A number line from negative 8 to 8 showing negative 3 plus 2 equals negative 1. A blue segment labeled face left move forward 3 spans from negative 3 toward 0, and a red segment labeled face right move forward 2 ends at negative 1. The equation negative 3 plus 2 equals negative 1 is displayed above." />
+            <figcaption>\(-3 + 2 = -1\)</figcaption>
+        </figure>
+
+        <p>If you didn't have the number line to refer to, you can find the sum of \(-3 + 2\) by</p>
+        <ul>
+            <li>subtracting the distances from zero (the absolute values) \(3 - 2 = 1\) and then</li>
+            <li>applying the sign of the one furthest from zero (the largest absolute value). In this case, \(|-3| > |2|\), so the answer is negative: \(-3 + 2 = -1\)</li>
+        </ul>
+
+        <p>To add two numbers with different signs (one positive and one negative):</p>
+        <ul>
+            <li>Find the difference of their absolute values.</li>
+            <li>Give the sum the same sign as the number with the greater absolute value.</li>
+        </ul>
+
+        <p>Note that when you find the difference of the absolute values, you always subtract the lesser absolute value from the greater one. The example below shows you how to solve the temperature question that you considered earlier.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-3-heading">Example 3</h3>
+                <p>Find \(8 + (-10)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The addends have different signs.</p>
+                    <p>So find the difference of their absolute values.</p>
+                    <p>\(|-10| = 10\) and \(|8| = 8\).</p>
+                    <p>The difference of the absolute values is \(10 - 8 = 2\).</p>
+                    <p>Since \(10 > 8\), the sum has the same sign as \(-10\).</p>
+                    <p><strong>Answer:</strong> \(8 + (-10) = -2\)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-4-heading">Example 4</h3>
+                <p>Find \(-22 + 37\) when \(x = -22\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(|-22| = 22\) and \(|37| = 37\)</p>
+                    <p>\(37 - 22 = 15\)</p>
+                    <p>The addends have different signs. So find the difference of their absolute values.</p>
+                    <p>Since \(|37| > |-22|\), the sum has the same sign as 37.</p>
+                    <p><strong>Answer:</strong> \(-22 + 37 = 15\)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>With more than two addends, you can add the first two, then the next one, and so on.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-5-heading">Example 5</h3>
+                <p>Find \(-27 + (-138) + 55\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Add two at a time, starting with \(-27 + (-138)\).</p>
+                    <p>\(|-27| = 27\) and \(|-138| = 138\)</p>
+                    <p>\(27 + 138 = 165\)</p>
+                    <p>\(-27 + (-138) = -165\)</p>
+                    <p>Since they have the same signs, you add their absolute values and use the same sign.</p>
+                    <p>Now add \(-165 + 55\). Since \(-165\) and \(55\) have different signs, you add them by subtracting their absolute values.</p>
+                    <p>\(|-165| = 165\) and \(|55| = 55\)</p>
+                    <p>\(165 - 55 = 110\)</p>
+                    <p>\(-165 + 55 = -110\)</p>
+                    <p>Since \(165 > 55\), the sign of the final sum is the same as the sign of \(-165\).</p>
+                    <p><strong>Answer:</strong> \(-27 + (-138) + 55 = -110\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Find \(32 + (-14)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-9">Show Answer</button>
+            <div id="scb-1-9" class="self-check-answer">
+                <p>\(18\)</p>
+                <p>Since the addends have different signs, you must find the difference of the absolute values. \(|32| = 32\) and \(|-14| = 14\). The difference is \(32 - 14 = 18\). The sign of the sum is the same as the addend with the greater absolute value. Since \(|32| > |-14|\), the sum is positive.</p>
+            </div>
+        </div>
+
+        <p>There are two cases to consider when adding integers. When the signs are the same, you add the absolute values of the addends and use the same sign. When the signs are different, you find the difference of the absolute values and use the same sign as the addend with the greater absolute value.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="adding-real-heading">
+        <h3 id="adding-real-heading">Adding Real Numbers</h3>
+
+        <p>The same rules apply when adding fractions and decimals with different signs.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-6-heading">Example 6</h3>
+                <p>Find \(-\dfrac{3}{4} + \dfrac{7}{8}\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-6">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The signs are different, so find the difference of their absolute values.</p>
+                    <p>\(\left|-\dfrac{3}{4}\right| = \dfrac{3}{4}\) and \(\left|\dfrac{7}{8}\right| = \dfrac{7}{8}\)</p>
+                    <p>First rewrite \(\dfrac{3}{4}\) as an improper fraction with a common denominator of 8, then substitute in the problem:</p>
+                    \[\frac{7}{8} - \frac{6}{8} = \frac{1}{8}\]
+                    <p>Since \(\left|\dfrac{7}{8}\right| > \left|-\dfrac{3}{4}\right|\), the sum has the same sign as \(\dfrac{7}{8}\).</p>
+                    <p><strong>Answer:</strong> \(-\dfrac{3}{4} + \dfrac{7}{8} = \dfrac{1}{8}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-7-heading">Example 7</h3>
+                <p>Find \(27.832 + (-3.06)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-7">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>When you add decimals, remember to line up the decimal points so you are adding tenths to tenths, hundredths to hundredths, and so on.</p>
+                    <p>Since the addends have different signs, subtract their absolute values.</p>
+                    \[
+                    \begin{aligned}
+                    &27.832 \\
+                    -\;&\phantom{2}3.060 \\
+                    \hline
+                    &24.772
+                    \end{aligned}
+                    \]
+                    <p>\(|-3.06| = 3.06\)</p>
+                    <p>The sum has the same sign as \(27.832\) whose absolute value is greater.</p>
+                    <p><strong>Answer:</strong> \(27.832 + (-3.06) = 24.772\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>Find \(-32.22 + 124.3\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-9">Show Answer</button>
+            <div id="scc-1-9" class="self-check-answer">
+                <p>\(92.08\)</p>
+                <p>Since the addends have different signs, you must subtract their absolute values. \(124.3 - 32.22 = 92.08\). Since \(|124.3| > |-32.22|\), the sum is positive.</p>
+            </div>
+        </div>
+
+        <section class="example" aria-labelledby="ex-1-9-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-8-heading">Example 8</h3>
+                <p>Boston is, on average, 7 degrees warmer than Bangor, Maine. The low temperature on one cold winter day in Bangor was \(-13°\text{ F}\). About what low temperature would you expect Boston to have on that day?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-8">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The phrase "7 degrees warmer" means you add 7 degrees to Bangor's temperature to estimate Boston's temperature.</p>
+                    <p>Boston's temperature is \(-13 + 7\)</p>
+                    <p>On that day, Bangor's low was \(-13°\), so you add \(7°\) to \(-13°\)</p>
+                    <p>\(-13 + 7 = -6\) &nbsp; Add the integers. Since one is positive and the other is negative, you find the difference of \(|-13|\) and \(|7|\), which is 6. Since \(|-13| > |7|\), the final sum is negative.</p>
+                    <p><strong>Answer:</strong> You would expect Boston to have a temperature of \(-6\) degrees.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-9-heading">Example 9</h3>
+                <p>Two people are in a tug-of-war contest. They are facing each other, each holding the end of a rope. They both pull on the rope, trying to move the center toward themselves.</p>
+                <p>Here's an illustration of this situation. The person on the right is pulling in the <em>positive</em> direction, and the person on the left is pulling in the <em>negative</em> direction.</p>
+                <figure class="numberline-figure">
+                    <img src="images/mth111_1_9_6.png"
+                         alt="An illustration of a tug-of-war contest. Two stick figures face each other and each holds one end of a rope. A number line below shows a center point labeled zero, with the left side labeled negative direction and the right side labeled positive direction." />
+                </figure>
+                <p>At one point in the competition, the person on the right was pulling with 122.8 pounds of force. The person on the left was pulling with 131.3 pounds of force. The forces on the center of the rope, then, were 122.8 lbs and \(-131.3\) lbs.</p>
+                <ol type="a">
+                    <li>What was the net (total sum) force on the center of the rope?</li>
+                    <li>In which direction was it moving?</li>
+                </ol>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-9">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Net force \(= 122.8 + (-131.3)\) &nbsp; The net force is the sum of the two forces on the rope.</p>
+                    <p>Net force \(= -8.5\) &nbsp; To find the sum, add the difference of the absolute values of the addends. Since \(|-131.3| > 122.8\), the sum is negative.</p>
+                    <p><strong>Answer:</strong> The net force is \(-8.5\) lbs (or 8.5 lbs to the left). The center of the rope is moving to the left (the negative direction).</p>
+                    <p>Notice that it makes sense that the rope was moving to the left, since that person was pulling with more force.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <p><strong>Self Check D</strong></p>
+            <p>After Bangor reached a low temperature of \(-13°\), the temperature rose only 4 degrees higher for the rest of the day. What was the high temperature that day?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-1-9">Show Answer</button>
+            <div id="scd-1-9" class="self-check-answer">
+                <p>The temperature rose (added) 4 degrees from \(-13\), so the high temperature is \(-13 + 4\). Since the addends have different signs, you must find the difference of the absolute values. \(|-13| = 13\) and \(|4| = 4\). The difference is \(13 - 4 = 9\). The sign of the sum is the same as the addend with the greater absolute value. Since \(|-13| > |4|\), the sum is \(-9\).</p>
+            </div>
+        </div>
+
+        <p>As with integers, adding real numbers is done following two rules. When the signs are the same, you add the absolute values of the addends and use the same sign. When the signs are different, you subtract the absolute values and use the same sign as the addend with the greater absolute value.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="subtracting-heading">
+        <h3 id="subtracting-heading">Subtracting Real Numbers</h3>
+
+        <p>Subtraction and addition are closely related. They are called <strong>inverse operations</strong>, because one "undoes" the other. So, just as with integers, you can rewrite subtraction as addition to subtract real numbers.</p>
+
+        <p>Suppose you have \(\$10\) and you loan a friend \(\$5\). An hour later, she pays you back the \(\$5\) she borrowed. You are back to having \(\$10\). You could represent the transaction like this: \(10 - 5 + 5 = 10\).</p>
+
+        <p>This works because a number minus itself is 0.</p>
+        \[3 - 3 = 0 \qquad 63.5 - 63.5 = 0 \qquad 39{,}283 - 39{,}283 = 0\]
+
+        <p>So, adding a number and then subtracting the same number is like adding 0. Thinking about this idea in terms of opposite numbers, you can also say that a number plus its opposite is also 0. Notice that each example below consists of a positive and a negative number pair added together.</p>
+        \[3 + (-3) = 0 \qquad -63.5 + 63.5 = 0 \qquad 39{,}283 + (-39{,}283) = 0\]
+
+        <p>Two numbers are <strong>additive inverses</strong> if their sum is 0. Since this means the numbers are opposites (same absolute value but different signs), "additive inverse" is another, more formal term for the opposite of a number. (Note that 0 is its own additive inverse.)</p>
+
+        <p>You can use the additive inverses or opposites to rewrite subtraction as addition. If you are adding two numbers with different signs, you find the difference between their absolute values and keep the sign of the number with the greater absolute value.</p>
+
+        <p>When the greater number is positive, it's easy to see the connection: \(13 + (-7) = 13 - 7\). Both equal 6.</p>
+
+        <p>Let's see how this works. When you add positive numbers, you are moving forward, facing in a positive direction.</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_7.png"
+                 alt="Two number line diagrams. The top shows 3 plus 1 equals 4: a person faces right, moves forward 3 to reach 3, then moves forward 1 more to reach 4 — labeled Face right, move forward 3 and Face right, move forward 1. The bottom shows 3 minus 1 equals 2: a person faces right, moves forward 3 to reach 3, then moves backward 1 to reach 2 — labeled Face right, move forward 3 and Face right, move backward 1." />
+        </figure>
+
+        <p>When you subtract positive numbers, you can imagine moving backward, but still facing in a positive direction.</p>
+         <figure class="numberline-figure">
+            <img src="images/mth111_1_9_8.png"
+                 alt="A number line showing negative 3 plus negative 1 equals negative 4. A person faces left and moves forward 3 to reach negative 3, then moves forward 1 more in the negative direction to reach negative 4 — labeled Face left, move forward 3 and Face left, move forward 1." />
+        </figure>
+
+        <p>Now let's see what this means when one or more of the numbers is negative. Recall that when you add a negative number, you move forward, but face in a negative direction (to the left).</p>
+
+       <figure class="numberline-figure">
+            <img src="images/mth111_1_9_9.png"
+                 alt="A number line showing negative 2 minus negative 3 equals 1. A person faces left and moves forward 2 to reach negative 2, then moves backward 3 while still facing left, arriving at positive 1 — labeled Face left, move forward 2 and Face left, move backward 3." />
+        </figure>
+
+        <p>How do you subtract a negative number? First face and move forward in a negative direction to the first number, \(-2\). Then continue facing in a negative direction (to the left), but move backward to subtract \(-3\).</p>
+
+          <figure class="numberline-figure">
+            <img src="images/mth111_1_9_10.png"
+                 alt="A number line with negative 93 marked on the left and 382 marked on the right. A bracket labeled 93 spans from negative 93 to 0, and a bracket labeled 382 spans from 0 to 382. A long arrow above labeled Total distance equals 382 plus 93 equals 475 units spans the entire distance from negative 93 to 382." />
+        </figure>
+
+
+        <p>But isn't this the same result as if you had added positive 3 to \(-2\)? \(-2 + 3 = 1\).</p>
+        <p>In each addition problem, you face one direction and move some distance forward. In the paired subtraction problem, you face the opposite direction and then move the same distance backward. Each gives the same result!</p>
+        <p>To subtract a real number, you can rewrite the problem as adding the opposite (additive inverse).</p>
+        <p>Note, that while this always works, whole number subtraction is still the same. You can subtract \(38 - 23\) just as you have always done. Or, you could also rewrite it as \(38 + (-23)\). Both ways you will get the same answer.</p>
+        \[38 - 23 = 38 + (-23) = 15\]
+        <p>It's your choice in these cases.</p>
+
+        <p>Another way to think about subtracting is to think about the distance between the two numbers on the number line. In the example above, 382 is to the right of 0 by 382 units, and \(-93\) is to the left of 0 by 93 units. The distance between them is the sum of their distances to 0: \(382 + 93\).</p>
+
+      
+        <section class="example" aria-labelledby="ex-1-9-10-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-10-heading">Example 10</h3>
+                <p>Find \(23 - 73\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-10">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-10" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>You can't use your usual method of subtraction, because 73 is greater than 23.</p>
+                    <p>\(23 + (-73)\) &nbsp; Rewrite the subtraction as adding the opposite.</p>
+                    <p>\(|23| = 23\) and \(|-73| = 73\)</p>
+                    <p>\(73 - 23 = 50\)</p>
+                    <p>The addends have different signs, so find the difference of their absolute values.</p>
+                    <p><strong>Answer:</strong> \(23 - 73 = -50\) &nbsp; Since \(|-73| > |23|\), the final answer is negative.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-11-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-11-heading">Example 11</h3>
+                <p>Find \(382 - (-93)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-11">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-11" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(382 + 93\) &nbsp; Rewrite the subtraction as adding the opposite. The opposite of \(-93\) is 93. So, this becomes a simple addition problem.</p>
+                    <p>\(382 + 93 = 475\)</p>
+                    <p><strong>Answer:</strong> \(382 - (-93) = 475\)</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+<p>Another way to think about subtracting is to think about the distance between the two
+numbers on the number line. In the example above, 382 is to the right of 0 by 382 units,
+and −93 is to the left of 0 by 93 units. The distance between them is the sum of their
+distances to 0: 382 + 93.</p>
+<figure class="numberline-figure">
+            <img src="images/mth111_1_9_11.png"
+                 alt="A number line from -93 to 382. Three curved red arrows each arc over 4 units, jumping from 0 to 4, 4 to 8, and 8 to 12. The equation 3 times 4 equals 12 is shown above the number line." />
+        </figure>
+<section class="example" aria-labelledby="ex-1-9-12-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-12-heading">Example 12</h3>
+                <p>Find \(22\dfrac{1}{3} - \left(-\dfrac{3}{5}\right)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-12">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-12" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Rewrite the subtraction as adding the opposite. The opposite of \(-\dfrac{3}{5}\) is \(\dfrac{3}{5}\).</p>
+                    \[22\frac{1}{3} + \frac{3}{5}\]
+                    <p>This is now just adding two rational numbers. Remember to find a common denominator when adding fractions. 3 and 5 have a common multiple of 15; change denominators of both fractions to 15 (and make the necessary changes in the numerator!) before adding.</p>
+                    \[22\frac{1 \times 5}{3 \times 5} + \frac{3 \times 3}{5 \times 3} = 22\frac{5}{15} + \frac{9}{15} = 22\frac{14}{15}\]
+                    <p><strong>Answer:</strong> \(22\dfrac{1}{3} - \left(-\dfrac{3}{5}\right) = 22\dfrac{14}{15}\)</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="self-check" role="note" aria-label="Self Check E">
+            <p><strong>Self Check E</strong></p>
+            <p>Find \(-32.3 - (-16.3)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sce-1-9">Show Answer</button>
+            <div id="sce-1-9" class="self-check-answer">
+                <p>To subtract, change the problem to adding the opposite of \(-16.3\), which gives \(-32.3 + 16.3\). Then use the rules for adding two numbers with different signs. Since the difference between 32.3 and 16.3 is 16, and \(|-32.3| > |16.3|\), the correct answer is \(-16\).</p>
+            </div>
+        </div>
+
+        <p>When you have more than two real numbers to add or subtract, work from left to right as you would when adding more than two whole numbers. Be sure to change subtraction to addition of the opposite when needed.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-13-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-13-heading">Example 13</h3>
+                <p>Find \(-23 + 16 - (-32) - 4 + 6\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-13">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-13" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Start with \(-23 + 16\). The addends have different signs, so find the difference and use the sign of the addend with the greater absolute value. \(-23 + 16 = -7\).</p>
+                    <p>Now you have \(-7 - (-32)\). Rewrite this subtraction as addition of the opposite. The opposite of \(-32\) is 32, so this becomes \(-7 + 32\), which equals 25.</p>
+                    <p>You now have \(25 - 4\). You could rewrite this as an addition problem, but you don't need to.</p>
+                    <p>Complete the final addition of \(21 + 6\).</p>
+                    <p><strong>Answer:</strong> \(-23 + 16 - (-32) - 4 + 6 = 27\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check F">
+            <p><strong>Self Check F</strong></p>
+            <p>Find \(32 - (-14) - 2 + (-82)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scf-1-9">Show Answer</button>
+            <div id="scf-1-9" class="self-check-answer">
+                <p>To subtract \(32 - (-14)\), write the subtraction as addition of the opposite, giving \(32 + 14 = 46\). Then subtract 2 to get 44, and add \(-82\) to get \(-38\).</p>
+            </div>
+        </div>
+
+        <section class="example" aria-labelledby="ex-1-9-14-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-14-heading">Example 14</h3>
+                <p>Boston is, on average, 7 degrees warmer than Bangor, Maine. The low temperature on one cold winter day in Boston was \(3°\text{F}\). About what low temperature would you expect Bangor to have on that day?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-14">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-14" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The phrase "7 degrees warmer" means you can subtract 7 degrees from Boston's temperature to estimate Bangor's temperature. (Note that you can also add 7 degrees to Bangor's temperature to estimate Boston's temperature. Be careful about which should have the greater number!)</p>
+                    <p>Bangor's temperature is \(3 - 7\) &nbsp; On that day, Boston's low was \(3°\), so you subtract \(7°\) from \(3°\).</p>
+                    <p>\(3 - 7 = 3 + (-7)\) &nbsp; Since \(3 < 7\), rewrite the subtraction problem as addition of the opposite.</p>
+                    <p>Add the numbers. Since one is positive and the other is negative, you find the difference of \(|-7|\) and \(|3|\), which is 4. Since \(|-7| > |3|\), the final sum is negative.</p>
+                    <p><strong>Answer:</strong> You would expect the low temperature in Bangor, Maine to be \(-4°\text{F}\).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-15-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-15-heading">Example 15</h3>
+                <p>Everett paid several bills without balancing his checkbook first! When the last check he wrote was still to be deducted from his balance, Everett's account was already overdrawn. The balance was \(-\$201.35\). The final check was for \(\$72.66\), and another \(\$25\) will be subtracted as an overdraft charge. What will Everett's account balance be after that last check and the overdraft charge are deducted?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-15">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-15" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(-201.35 - 72.66 - 25\) &nbsp; The new balance will be the existing balance of \(-\$201.35\), minus the check's amount and the overdraft charge.</p>
+                    <p>\(-201.35 - 72.66 - 25\)<br/>
+                    \(-201.35 + (-72.66) - 25\) &nbsp; Start with the first subtraction, \(-201.35 - 72.66\). Rewrite it as the addition of the opposite of 72.66.</p>
+                    <p>\(-274.01 - 25\) &nbsp; Since the addends have the same signs, the sum is the sum of their absolute values (\(201.35 + 72.66\)) with the same sign (negative).</p>
+                    <p>\(-274.01 + (-25)\)<br/>
+                    \(-274.01 + (-25) = -299.01\) &nbsp; Again, rewrite the subtraction as the addition of the opposite. Add, by adding the sum of their absolute values and use the same sign as both addends.</p>
+                    <p><strong>Answer:</strong> Everett's account balance will be \(-\$299.01\).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-16-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-16-heading">Example 16</h3>
+                <p>One winter, Phil flew from Syracuse, NY to Orlando, FL. The temperature in Syracuse was \(-20°\text{F}\). The temperature in Orlando was \(75°\text{F}\). What was the difference in temperatures between Syracuse and Orlando?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-16">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-16" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(75 - (-20)\) &nbsp; To find the difference between the temperatures, you need to subtract. We subtract the ending temperature from the beginning temperature to get the change in temperature.</p>
+                    <p>\(75 + 20\) &nbsp; Rewrite the subtraction as adding the opposite. The opposite of \(-20\) is 20.</p>
+                    <p>\(75 + 20 = 95\)</p>
+                    <p>There is a 95 degree difference between \(75°\) and \(-20°\).</p>
+                    <p><strong>Answer:</strong> The difference in temperatures is 95 degrees.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check G">
+            <p><strong>Self Check G</strong></p>
+            <p>Louise noticed that her bank balance was \(-\$33.72\) before her paycheck was deposited. After the check had been deposited, the balance was \(\$822.98\). No other deductions or deposits were made. How much money was she paid?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scg-1-9">Show Answer</button>
+            <div id="scg-1-9" class="self-check-answer">
+                <p>\(\$856.70\). The amount she was paid is the difference between the two balances: \(822.98 - (-33.72)\). This is the same as \(822.98 + 33.72\), or \(856.70\).</p>
+            </div>
+        </div>
+
+        <p>Subtracting a number is the same as adding its opposite (also called its additive inverse). To subtract you can rewrite the subtraction as adding the opposite and then use the rules for the addition of real numbers.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="multiplying-heading">
+        <h3 id="multiplying-heading">Multiplying and Dividing Real Numbers</h3>
+
+        <p>After addition and subtraction, the next operations you learned how to do were multiplication and division. You may recall that multiplication is a way of computing "repeated addition," and this is true for negative numbers as well.</p>
+        <p>Multiplication and division are <strong>inverse operations</strong>, just as addition and subtraction are. You may recall that when you divide fractions, you multiply by the reciprocal.</p>
+        <p>Multiplying real numbers is not that different from multiplying whole numbers and positive fractions. With whole numbers, you can think of multiplication as repeated addition. Using the number line, you can make multiple jumps of a given size. For example, the following picture shows the product \(3 \times 4\) as 3 jumps of 4 units each.</p>
+<figure class="numberline-figure">
+            <img src="images/mth111_1_9_12.png"
+                 alt="A number line from negative 16 to 0. Three curved red arrows each arc over 4 units in the negative direction, jumping from 0 to negative 4, negative 4 to negative 8, and negative 8 to negative 12. The equation 3 times negative 4 equals negative 12 is shown above the number line." />
+        </figure>
+        
+
+        <p>So to multiply \(3(-4)\), you can face left (toward the negative side) and make three "jumps" forward (in a negative direction).</p>
+
+        <figure class="numberline-figure">
+            <img src="images/mth111_1_9_13.png"
+                 alt="A number line from negative 16 to 0. Three curved red arrows each arc over 4 units in the negative direction, jumping from 0 to negative 4, negative 4 to negative 8, and negative 8 to negative 12. The equation 3 times negative 4 equals negative 12 is shown above the number line." />
+        </figure>
+
+        <p>The product of a positive number and a negative number (or a negative and a positive) is negative. You can also see this by using patterns. In the following list of products, the first number is always 3. The second number decreases by 1 with each row (3, 2, 1, 0, \(-1\), \(-2\)). Look for a pattern in the products of these numbers. What numbers would fit the pattern for the last two products?</p>
+
+        \[
+        \begin{aligned}
+        3(3) &= 9 \\
+        3(2) &= 6 \\
+        3(1) &= 3 \\
+        3(0) &= 0 \\
+        3(-1) &= \mathord{?} \\
+        3(-2) &= \mathord{?}
+        \end{aligned}
+        \]
+
+        <p>Notice that the pattern is the same if the order of the factors is switched:</p>
+
+        \[
+        \begin{aligned}
+        3(3) &= 9 \\
+        2(3) &= 6 \\
+        1(3) &= 3 \\
+        0(3) &= 0 \\
+        -1(3) &= \mathord{?} \\
+        -2(3) &= \mathord{?}
+        \end{aligned}
+        \]
+
+        <p>Take a moment to think about that pattern before you read on.</p>
+        <p>As the factor decreases by 1, the product decreases by 3. So \(3(-1) = -3\) and \(3(-2) = -6\). If you continue the pattern further, you see that multiplying 3 by a negative integer gives a negative number. This is true in general.</p>
+        <p>To multiply a positive number and a negative number, multiply their absolute values. The product is negative.</p>
+
+        <p>You can use the pattern idea to see how to multiply two negative numbers. Think about how you would complete this list of products.</p>
+
+        \[
+        \begin{aligned}
+        -3(3) &= -9 \\
+        -3(2) &= -6 \\
+        -3(1) &= -3 \\
+        -3(0) &= 0 \\
+        -3(-1) &= \mathord{?} \\
+        -3(-2) &= \mathord{?}
+        \end{aligned}
+        \]
+
+        <p>As the factor decreases by 1, the product increases by 3. So \(-3(-1) = 3\), \(-3(-2) = 6\). Multiplying \(-3\) by a negative integer gives a positive number. This is true in general.</p>
+        <p>To multiply two positive numbers, multiply their absolute values. The product is positive. To multiply two negative numbers, multiply their absolute values. The product is positive.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-17-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-17-heading">Example 17</h3>
+                <p>Find \(-3.8(0.6)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-17">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-17" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Multiply the absolute values as you normally would. Place the decimal point by counting place values. 3.8 has 1 place after the decimal point, and 0.6 has 1 place after the decimal point, so the product has \(1 + 1 = 2\) places after the decimal point.</p>
+                    \[3.8 \times 0.6 = 2.28\]
+                    <p><strong>Answer:</strong> \(-3.8(0.6) = -2.28\) &nbsp; The product of a negative and a positive is negative.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-18-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-18-heading">Example 18</h3>
+                <p>Find \(\left(-\dfrac{3}{4}\right)\left(-\dfrac{2}{5}\right)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-18">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-18" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Multiply the absolute values of the numbers. First, multiply the numerators together to get the product's numerator. Then, multiply the denominators together to get the product's denominator. Rewrite in lowest terms, if needed.</p>
+                    \[\frac{3}{4} \times \frac{2}{5} = \frac{6}{20} = \frac{3}{10}\]
+                    <p><strong>Answer:</strong> \(\left(-\dfrac{3}{4}\right)\left(-\dfrac{2}{5}\right) = \dfrac{3}{10}\) &nbsp; The product of two negative numbers is positive.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>To summarize:</p>
+        <ul>
+            <li>positive × positive: The product is positive.</li>
+            <li>negative × negative: The product is positive.</li>
+            <li>negative × positive: The product is negative.</li>
+            <li>positive × negative: The product is negative.</li>
+        </ul>
+
+        <p>You can see that the product of two negative numbers is a positive number. So, if you are multiplying more than two numbers, you can count the number of negative factors. If there are an even number (0, 2, 4, …) of negative factors to multiply, the product is positive. If there are an odd number (1, 3, 5, …) of negative factors, the product is negative.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-19-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-19-heading">Example 19</h3>
+                <p>Find \(3(-6)(2)(-3)(-1)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-19">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-19" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Multiply the absolute values of the numbers.</p>
+                    \[3 \times 6 \times 2 \times 3 \times 1 = 108\]
+                    <p>Count the number of negative factors. There are three: \((-6)\), \((-3)\), \((-1)\).</p>
+                    <p><strong>Answer:</strong> \(3(-6)(2)(-3)(-1) = -108\) &nbsp; Since there are an odd number of negative factors, the product is negative.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check H">
+            <p><strong>Self Check H</strong></p>
+            <p>Find \((-30)(-0.5)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sch-1-9">Show Answer</button>
+            <div id="sch-1-9" class="self-check-answer">
+                <p>\(15\)</p>
+                <p>First, multiply 30 and 0.5. Multiply 30 and 5 to get 150, then place the decimal point. Since 0.5 has one digit to the right of the decimal point, the decimal point in the product needs to be placed with one digit to the right of it, to get 15. The two original factors are both negative. Since there is an even number of negative factors, the product is positive.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="dividing-heading">
+        <h3 id="dividing-heading">Dividing Real Numbers</h3>
+
+        <p>When you divided by positive fractions, you learned to multiply by the reciprocal. You also do this to divide real numbers.</p>
+        <p>Two numbers are <strong>multiplicative inverses</strong> if their product is 1, the multiplicative identity. Reciprocal is another name for the multiplicative inverse (just as opposite is another name for additive inverse). An easy way to find the multiplicative inverse is to just "flip" the numerator and denominator.</p>
+        <p>Since division is rewritten as multiplication using the reciprocal of the divisor, and taking the reciprocal doesn't change any of the signs, division follows the same rules as multiplication.</p>
+        <p>When dividing, rewrite the problem as multiplication using the reciprocal of the divisor as the second factor. When one number is positive and the other is negative, the quotient is negative. When both numbers are negative, the quotient is positive. When both numbers are positive, the quotient is positive.</p>
+
+        <section class="example" aria-labelledby="ex-1-9-20-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-20-heading">Example 20</h3>
+                <p>Find \(28 \div \dfrac{4}{3}\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-20">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-20" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Rewrite the division as multiplication by the reciprocal. The reciprocal of \(\dfrac{4}{3}\) is \(\dfrac{3}{4}\).</p>
+                    \[28 \div \frac{4}{3} = 28 \times \frac{3}{4} = \frac{28 \times 3}{4} = \frac{84}{4} = 21\]
+                    <p><strong>Answer:</strong> \(28 \div \dfrac{4}{3} = 21\)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-21-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-21-heading">Example 21</h3>
+                <p>Find \(24 \div \left(-\dfrac{5}{6}\right)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-21">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-21" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Rewrite the division as multiplication by the reciprocal.</p>
+                    \[24 \times \left(-\frac{6}{5}\right) = -\frac{144}{5}\]
+                    <p>Multiply. Since one number is positive and one is negative, the product is negative.</p>
+                    <p><strong>Answer:</strong> \(24 \div \left(-\dfrac{5}{6}\right) = -\dfrac{144}{5}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="example" aria-labelledby="ex-1-9-22-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-22-heading">Example 22</h3>
+                <p>Find \(\left(-\dfrac{4}{3}\right) \div (-6)\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-22">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-22" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Rewrite the division as multiplication by the reciprocal.</p>
+                    \[\left(-\frac{4}{3}\right) \times \left(-\frac{1}{6}\right) = \frac{4}{18} = \frac{2}{9}\]
+                    <p>Multiply. There is an even number of negative numbers, so the product is positive.</p>
+                    <p><strong>Answer:</strong> \(\left(-\dfrac{4}{3}\right) \div (-6) = \dfrac{2}{9}\)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check I">
+            <p><strong>Self Check I</strong></p>
+            <p>What is the reciprocal, or multiplicative inverse, of \(-12\)?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sci-1-9">Show Answer</button>
+            <div id="sci-1-9" class="self-check-answer">
+                \[-\frac{1}{12}\]
+            </div>
+        </div>
+
+        <div class="self-check" role="note" aria-label="Self Check J">
+            <p><strong>Self Check J</strong></p>
+            <p>Find \(\dfrac{6}{7} \div \dfrac{3}{10}\). Write the answer in lowest terms.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scj-1-9">Show Answer</button>
+            <div id="scj-1-9" class="self-check-answer">
+                \[\frac{6}{7} \times \frac{10}{3} = \frac{60}{21} = \frac{20}{7}\]
+            </div>
+        </div>
+
+        <section class="example" aria-labelledby="ex-1-9-23-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-9-23-heading">Example 23</h3>
+                <p>Carl didn't know his bank account was at exactly 0 when he wrote a series of \(\$100\) checks. As each check went through, \(\$125\) was charged against his account. (In addition to the \(\$100\) for the check, there was a \(\$25\) overdraft charge.) After 1 check, his account was \(-\$125\) dollars. After 6 of these checks, what was his account balance?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-9-23">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-9-23" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Each check reduces the account by \(\$125\); this is represented by \(-\$125\). To find the amount it reduces for multiple checks, multiply the number of checks by the amount charged.</p>
+                    \[-\$125 \times 6 = -\$750\]
+                    <p>Multiply. Since there is one negative number, the product is negative.</p>
+                    <p><strong>Answer:</strong> Carl's account balance is now \(-\$750\).</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="self-check" role="note" aria-label="Self Check K">
+            <p><strong>Self Check K</strong></p>
+            <p>Over the course of an 18-year research project, the height of an oceanside cliff actually dropped due to soil erosion. At the end of this period, its height was measured as \(-3\) inches compared to what it had been at the beginning of the research project. What was the average amount that the cliff's height changed each year?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sck-1-9">Show Answer</button>
+            <div id="sck-1-9" class="self-check-answer">
+                \[-3 \div 18 = -\frac{1}{6} \text{ inch per year}\]
+            </div>
+        </div>
+
+        <p>With multiplication and division, you can find the sign of the final answer by counting how many negative numbers are used in the product or quotient. If there are an even number of negatives, the result is positive. If there are an odd number of negatives, the result is negative. Division can be rewritten as multiplication, by using the reciprocal or multiplicative inverse of the divisor.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="summary-1-9-heading">
+        <h3 id="summary-1-9-heading">Summary</h3>
+        <p>There are two cases to consider when adding integers. When the signs are the same, you add the absolute values of the addends and use the same sign. When the signs are different, you find the difference of the absolute values and use the same sign as the addend with the greater absolute value.</p>
+        <p>Subtracting a number is the same as adding its opposite (also called its additive inverse). To subtract you can rewrite the subtraction as adding the opposite and then use the rules for the addition of real numbers.</p>
+        <p>With multiplication and division, you can find the sign of the final answer by counting how many negative numbers are used in the product or quotient. If there are an even number of negatives, the result is positive. If there are an odd number of negatives, the result is negative. Division can be rewritten as multiplication, by using the reciprocal or multiplicative inverse of the divisor.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section class="exercises-section" aria-labelledby="exercises-1-9-heading">
+        <h2 id="exercises-1-9-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-9-content">
+            <span class="toggle-arrow">▼</span><span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-9-content" class="exercises-content" role="region" aria-labelledby="exercises-1-9-heading">
+
+            <h3>Adding Integers — Same Sign</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>1.</strong> \(-5 + (-3)\)</div>
+                <div class="ex-item"><strong>2.</strong> \(-8 + (-4)\)</div>
+                <div class="ex-item"><strong>3.</strong> \(-14 + (-27)\)</div>
+                <div class="ex-item"><strong>4.</strong> \(-31 + (-59)\)</div>
+                <div class="ex-item"><strong>5.</strong> \(14 + (-27) + (-14)\)</div>
+                <div class="ex-item"><strong>6.</strong> \(27 + (-18) + (-27)\)</div>
+            </div>
+
+            <h3>Adding Integers — Different Signs</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>7.</strong> \(-13 + 9\)</div>
+                <div class="ex-item"><strong>8.</strong> \(-21 + 17\)</div>
+                <div class="ex-item"><strong>9.</strong> \(24 + (-51)\)</div>
+                <div class="ex-item"><strong>10.</strong> \(29 + (-61)\)</div>
+                <div class="ex-item"><strong>11.</strong> \(-11 + (-34) + 20\)</div>
+                <div class="ex-item"><strong>12.</strong> \(-14 + (-27) + 40\)</div>
+            </div>
+
+            <h3>Subtracting Real Numbers</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>13.</strong> \(9 - 3\)</div>
+                <div class="ex-item"><strong>14.</strong> \(-9 - (-3)\)</div>
+                <div class="ex-item"><strong>15.</strong> \(14 - (-23)\)</div>
+                <div class="ex-item"><strong>16.</strong> \(21 - (-37)\)</div>
+                <div class="ex-item"><strong>17.</strong> \(-31 - 7\)</div>
+                <div class="ex-item"><strong>18.</strong> \(-52 - 8\)</div>
+                <div class="ex-item"><strong>19.</strong> \(-6 - (-13)\)</div>
+                <div class="ex-item"><strong>20.</strong> \(-5 - (-17)\)</div>
+                <div class="ex-item"><strong>21.</strong> \(5.7 - (-4.3)\)</div>
+                <div class="ex-item"><strong>22.</strong> \(8.3 - (-6.4)\)</div>
+            </div>
+
+            <h3>Multiplying Real Numbers</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>23.</strong> \(-4 \times 8\)</div>
+                <div class="ex-item"><strong>24.</strong> \(-3 \times 9\)</div>
+                <div class="ex-item"><strong>25.</strong> \((-6)(-13)\)</div>
+                <div class="ex-item"><strong>26.</strong> \((-5)(-14)\)</div>
+                <div class="ex-item"><strong>27.</strong> \((-1)(4)(-3)(2)\)</div>
+                <div class="ex-item"><strong>28.</strong> \((-1)(3)(-5)(2)\)</div>
+                <div class="ex-item"><strong>29.</strong> \(-4.2 \times 3\)</div>
+                <div class="ex-item"><strong>30.</strong> \(-8.4 \times 4\)</div>
+                <div class="ex-item"><strong>31.</strong> \((-2.4)(-3.6)\)</div>
+                <div class="ex-item"><strong>32.</strong> \((-1.8)(-5.2)\)</div>
+            </div>
+
+            <h3>Dividing Real Numbers</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>33.</strong> \(-36 \div 4\)</div>
+                <div class="ex-item"><strong>34.</strong> \(-45 \div 5\)</div>
+                <div class="ex-item"><strong>35.</strong> \(-24 \div (-6)\)</div>
+                <div class="ex-item"><strong>36.</strong> \(-35 \div (-7)\)</div>
+                <div class="ex-item"><strong>37.</strong> \(8.4 \div (-2)\)</div>
+                <div class="ex-item"><strong>38.</strong> \(9.8 \div (-2)\)</div>
+                <div class="ex-item"><strong>39.</strong> \(-12.6 \div (-3)\)</div>
+                <div class="ex-item"><strong>40.</strong> \(-14.4 \div (-3)\)</div>
+            </div>
+
+            <h3>Mixed Practice</h3>
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>41.</strong> \(-32 + 28 - (-3) + 7\)</div>
+                <div class="ex-item"><strong>42.</strong> \(-15 + 19 - (-4) + 2\)</div>
+                <div class="ex-item"><strong>43.</strong> \((-2)^3\)</div>
+                <div class="ex-item"><strong>44.</strong> \((-3)^3\)</div>
+                <div class="ex-item"><strong>45.</strong> \(-2^4\)</div>
+                <div class="ex-item"><strong>46.</strong> \(-3^4\)</div>
+            </div>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
