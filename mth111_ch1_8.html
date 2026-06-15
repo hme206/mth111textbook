@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.8: Scientific Notation</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Decimal movement diagram ── */
+        .decimal-diagram {
+            display: inline-block;
+            margin: 1.25rem auto;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .decimal-diagram .digit-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            flex-wrap: wrap;
+        }
+        .decimal-diagram .digit-row .d {
+            display: inline-block;
+            min-width: 1.1ch;
+            text-align: center;
+            color: #333;
+        }
+        .decimal-diagram .digit-row .d-move {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        .decimal-diagram .digit-row .d-coeff {
+            color: #33AB2B;
+            font-weight: bold;
+        }
+        .decimal-diagram .digit-row .sep {
+            color: #888;
+            margin: 0 1px;
+        }
+        .decimal-diagram .digit-row .dec-pt {
+            color: #b84d00;
+            font-weight: bold;
+        }
+
+        /* numbered arrow row */
+        .decimal-diagram .arrow-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 2px;
+            flex-wrap: wrap;
+        }
+        .decimal-diagram .arrow-row .a {
+            display: inline-block;
+            min-width: 1.1ch;
+            text-align: center;
+            font-size: 0.7em;
+            color: #cc0000;
+            line-height: 1.1;
+        }
+        .decimal-diagram .arrow-row .a-blank {
+            display: inline-block;
+            min-width: 1.1ch;
+        }
+        .decimal-diagram .diagram-label {
+            font-size: 0.85em;
+            color: #555;
+            font-style: italic;
+            margin-top: 4px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .diagram-wrap {
+            text-align: center;
+            margin: 1.25rem 0;
+            overflow-x: auto;
+        }
+
+        /* ── Exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.1em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 3px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+        .ex-grid.two-col   { grid-template-columns: repeat(2, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.5; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 1rem; }
+        .ex-wide li { margin-bottom: 0.6rem; line-height: 1.5; }
+        .credit-note { font-style: italic; font-size: 0.85em; color: #666; margin-top: 1rem; }
+        @media (max-width: 600px) {
+            .ex-grid.three-col,
+            .ex-grid.two-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-8">Section 1.8: Scientific Notation</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Write numbers using scientific notation.</li>
+            <li>Convert numbers from scientific notation to decimal form.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-8-heading">
+        <h3 id="intro-1-8-heading">Introduction</h3>
+        <p><strong>Scientific notation</strong> is a specific way to write extremely large or extremely small numbers using exponents. In Britain it is called standard form, but in the US we call it scientific notation. Scientists developed this shorter method to express very large numbers. This notation is based on powers of the base number 10.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         WRITING NUMBERS IN SCIENTIFIC NOTATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="writing-sci-heading">
+        <h3 id="writing-sci-heading">Writing Numbers in Scientific Notation</h3>
+
+        <p>Scientific notation takes a large number like 124,000,000,000 (124 billion) and writes it without all those zeros. To do this we create two parts:</p>
+
+        <div class="definition-box" role="note" aria-label="Parts of scientific notation">
+            <h3>Parts of Scientific Notation</h3>
+            <ul>
+                <li>The <strong>coefficient</strong> — a decimal value that must be greater than or equal to 1 but less than 10. We move the decimal point until there is exactly one non-zero digit in front of it.</li>
+                <li>The <strong>base</strong> — always 10, raised to a power equal to the number of places the decimal point was moved.</li>
+            </ul>
+            <p>A number in scientific notation looks like: \(\text{coefficient} \times 10^{\text{power}}\)</p>
+        </div>
+
+        <p>For example, starting with 124,000,000,000, we move the decimal point 11 places to the left to get a coefficient of 1.24. The diagram below shows each step of that movement.</p>
+
+        <!-- Decimal movement diagram: 124,000,000,000 -->
+        <div class="diagram-wrap">
+            <div class="decimal-diagram" role="img" aria-label="The number 124,000,000,000 with the decimal point moved 11 places to the left. Each position is numbered 1 through 11 from right to left, shown in red beneath the digits. The resulting coefficient is 1.24.">
+                <div class="digit-row">
+                    <span class="d d-coeff">1</span>
+                    <span class="d d-coeff">2</span>
+                    <span class="d d-coeff">4</span>
+                    <span class="d sep">,</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d sep">,</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d sep">,</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d d-move">0</span>
+                    <span class="d dec-pt">.</span>
+                </div>
+                <div class="arrow-row">
+                    <span class="a-blank"></span><!-- 1 -->
+                    <span class="a-blank"></span><!-- 2 -->
+                    <span class="a-blank"></span><!-- 3 -->
+                    <span class="a-blank"></span><!-- sep -->
+                    <span class="a">↑<br/>11</span>
+                    <span class="a">↑<br/>10</span>
+                    <span class="a">↑<br/>9</span>
+                    <span class="a-blank"></span><!-- sep -->
+                    <span class="a">↑<br/>8</span>
+                    <span class="a">↑<br/>7</span>
+                    <span class="a">↑<br/>6</span>
+                    <span class="a-blank"></span><!-- sep -->
+                    <span class="a">↑<br/>5</span>
+                    <span class="a">↑<br/>4</span>
+                    <span class="a">↑<br/>3</span>
+                    <span class="a">↑<br/>2</span><!-- under dec-pt col -->
+                </div>
+                <div class="diagram-label">Decimal moves 11 places to the left → exponent is 11</div>
+            </div>
+        </div>
+
+        \[124{,}000{,}000{,}000 = 1.24 \times 10^{11}\]
+
+        <p>For <strong>very small numbers</strong>, we use the same process, but because we move the decimal point to the <em>right</em> instead of the left, the exponent is <strong>negative</strong>.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-8-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-8-1-heading">Example 1</h3>
+                <p>Convert 102,400,000 into scientific notation.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-8-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-8-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Move the decimal point to the left until one non-zero digit remains in front of it:</p>
+
+                    <div class="diagram-wrap">
+                        <div class="decimal-diagram" role="img" aria-label="The number 102,400,000 with the decimal point moved 8 places to the left. Positions 1 through 8 are marked in red beneath the digits. The coefficient is 1.024.">
+                            <div class="digit-row">
+                                <span class="d d-coeff">1</span>
+                                <span class="d d-coeff">0</span>
+                                <span class="d d-coeff">2</span>
+                                <span class="d sep">,</span>
+                                <span class="d d-move">4</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-move">0</span>
+                                <span class="d sep">,</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-move">0</span>
+                                <span class="d dec-pt">.</span>
+                            </div>
+                            <div class="arrow-row">
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span><!-- sep -->
+                                <span class="a">↑<br/>8</span>
+                                <span class="a">↑<br/>7</span>
+                                <span class="a">↑<br/>6</span>
+                                <span class="a-blank"></span><!-- sep -->
+                                <span class="a">↑<br/>5</span>
+                                <span class="a">↑<br/>4</span>
+                                <span class="a">↑<br/>3</span>
+                                <span class="a">↑<br/>2</span>
+                            </div>
+                            <div class="diagram-label">Decimal moves 8 places to the left → exponent is 8</div>
+                        </div>
+                    </div>
+
+                    <p>The coefficient is 1.024 (drop trailing zeros). The decimal moved 8 places to the left, so the exponent is 8.</p>
+                    \[102{,}400{,}000 = 1.024 \times 10^{8}\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-8-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-8-2-heading">Example 2</h3>
+                <p>Convert 0.000234 into scientific notation.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-8-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-8-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Move the decimal point to the <em>right</em> until one non-zero digit is in front of it:</p>
+
+                    <div class="diagram-wrap">
+                        <div class="decimal-diagram" role="img" aria-label="The number 0.000234 with the decimal point moved 4 places to the right. Positions 1 through 4 are marked in red beneath the digits. The coefficient is 2.34. Because the decimal moved right, the exponent is negative 4.">
+                            <div class="digit-row">
+                                <span class="d dec-pt">.</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-move">0</span>
+                                <span class="d d-coeff">2</span>
+                                <span class="d d-coeff">3</span>
+                                <span class="d d-coeff">4</span>
+                            </div>
+                            <div class="arrow-row">
+                                <span class="a">↓<br/>1</span>
+                                <span class="a">↓<br/>2</span>
+                                <span class="a">↓<br/>3</span>
+                                <span class="a">↓<br/>4</span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                            </div>
+                            <div class="diagram-label">Decimal moves 4 places to the right → exponent is −4</div>
+                        </div>
+                    </div>
+
+                    <p>The coefficient is 2.34. Because the decimal moved to the <em>right</em>, the exponent is <strong>negative</strong>.</p>
+                    \[0.000234 = 2.34 \times 10^{-4}\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Write 120,003,000,000 using scientific notation.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-8">
+                Show Answer
+            </button>
+            <div id="sca-1-8" class="self-check-answer">
+                <p>Move the decimal 11 places to the left. The coefficient is 1.20003.</p>
+                \[120{,}003{,}000{,}000 = 1.20003 \times 10^{11}\]
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Write 0.0001204 using scientific notation.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-8">
+                Show Answer
+            </button>
+            <div id="scb-1-8" class="self-check-answer">
+                <p>Move the decimal 4 places to the right. Because it moved right, the exponent is negative.</p>
+                \[0.0001204 = 1.204 \times 10^{-4}\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         CONVERTING SCIENTIFIC NOTATION TO DECIMAL FORM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="converting-to-decimal-heading">
+        <h3 id="converting-to-decimal-heading">Converting Scientific Notation to Decimal Form</h3>
+
+        <p>To convert from scientific notation back to decimal form, use the exponent to determine how many places to move the decimal point:</p>
+
+        <div class="definition-box" role="note" aria-label="Rules for converting scientific notation to decimal form">
+            <h3>Converting to Decimal Form</h3>
+            <ul>
+                <li><strong>Positive exponent</strong> — move the decimal point to the <strong>right</strong> that many places, filling in zeros as needed.</li>
+                <li><strong>Negative exponent</strong> — move the decimal point to the <strong>left</strong> that many places, filling in zeros as needed.</li>
+            </ul>
+        </div>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-8-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-8-3-heading">Example 3</h3>
+                <p>Convert \(5.45 \times 10^{5}\) to decimal form.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-8-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-8-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The exponent is positive (5), so move the decimal point 5 places to the <em>right</em>:</p>
+
+                    <div class="diagram-wrap">
+                        <div class="decimal-diagram" role="img" aria-label="Starting with 5.45, the decimal point moves 5 places to the right. Positions 1 through 5 are marked in red. The result is 545,000.">
+                            <div class="digit-row">
+                                <span class="d d-coeff">5</span>
+                                <span class="d dec-pt">.</span>
+                                <span class="d d-coeff">4</span>
+                                <span class="d d-coeff">5</span>
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                            </div>
+                            <div class="arrow-row">
+                                <span class="a-blank"></span>
+                                <span class="a">↓<br/>1</span>
+                                <span class="a">↓<br/>2</span>
+                                <span class="a">↓<br/>3</span>
+                                <span class="a">↓<br/>4</span>
+                                <span class="a">↓<br/>5</span>
+                            </div>
+                            <div class="diagram-label">Decimal moves 5 places right; fill blanks with zeros</div>
+                        </div>
+                    </div>
+
+                    \[5.45 \times 10^{5} = 545{,}000\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-8-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-8-4-heading">Example 4</h3>
+                <p>Convert \(6.05 \times 10^{-6}\) to decimal form.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-8-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-8-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The exponent is negative (−6), so move the decimal point 6 places to the <em>left</em>:</p>
+
+                    <div class="diagram-wrap">
+                        <div class="decimal-diagram" role="img" aria-label="Starting with 6.05, the decimal point moves 6 places to the left. Positions 1 through 6 are marked in red. The result is 0.00000605.">
+                            <div class="digit-row">
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                                <span class="d d-move">_</span>
+                                <span class="d dec-pt">.</span>
+                                <span class="d d-coeff">6</span>
+                                <span class="d d-coeff">0</span>
+                                <span class="d d-coeff">5</span>
+                            </div>
+                            <div class="arrow-row">
+                                <span class="a">↑<br/>6</span>
+                                <span class="a">↑<br/>5</span>
+                                <span class="a">↑<br/>4</span>
+                                <span class="a">↑<br/>3</span>
+                                <span class="a">↑<br/>2</span>
+                                <span class="a">↑<br/>1</span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                                <span class="a-blank"></span>
+                            </div>
+                            <div class="diagram-label">Decimal moves 6 places left; fill blanks with zeros</div>
+                        </div>
+                    </div>
+
+                    \[6.05 \times 10^{-6} = 0.00000605\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>Write \(3.204 \times 10^{4}\) in decimal form.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-8">
+                Show Answer
+            </button>
+            <div id="scc-1-8" class="self-check-answer">
+                <p>Positive exponent — move decimal 4 places to the right:</p>
+                \[3.204 \times 10^{4} = 32{,}040\]
+            </div>
+        </div>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <p><strong>Self Check D</strong></p>
+            <p>Write \(6.789 \times 10^{-7}\) in decimal form.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-1-8">
+                Show Answer
+            </button>
+            <div id="scd-1-8" class="self-check-answer">
+                <p>Negative exponent — move decimal 7 places to the left:</p>
+                \[6.789 \times 10^{-7} = 0.0000006789\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-8-heading">
+        <h3 id="summary-1-8-heading">Summary</h3>
+        <p>Scientific notation expresses very large or very small numbers as a coefficient (between 1 and 10) multiplied by a power of 10. To convert to scientific notation, move the decimal point until one non-zero digit is in front — left movement gives a positive exponent, right movement gives a negative exponent. To convert back to decimal form, move the decimal point the number of places indicated by the exponent — right for positive, left for negative — filling in zeros as needed.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-8-heading">
+        <h2 id="exercises-1-8-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-8-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-8-content" class="exercises-content" role="region" aria-labelledby="exercises-1-8-heading">
+
+            <h3>Convert from Decimal Notation to Scientific Notation</h3>
+            <p>In the following exercises, write each number in scientific notation.</p>
+
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>1.</strong> 45,000</div>
+                <div class="ex-item"><strong>2.</strong> 280,000</div>
+                <div class="ex-item"><strong>3.</strong> 8,750,000</div>
+                <div class="ex-item"><strong>4.</strong> 1,290,000</div>
+                <div class="ex-item"><strong>5.</strong> 0.036</div>
+                <div class="ex-item"><strong>6.</strong> 0.041</div>
+                <div class="ex-item"><strong>7.</strong> 0.00000924</div>
+                <div class="ex-item"><strong>8.</strong> 0.0000103</div>
+            </div>
+
+            <ol class="ex-wide" start="9">
+                <li>The population of the United States on July 4, 2010 was almost 310,000,000.</li>
+                <li>The population of the world on July 4, 2010 was more than 6,850,000,000.</li>
+                <li>The average width of a human hair is 0.0018 centimeters.</li>
+                <li>The probability of winning the 2010 Megamillions lottery is about 0.0000000057.</li>
+            </ol>
+
+            <h3>Convert Scientific Notation to Decimal Form</h3>
+            <p>In the following exercises, convert each number to decimal form.</p>
+
+            <div class="ex-grid three-col">
+                <div class="ex-item"><strong>13.</strong> \(4.1 \times 10^{2}\)</div>
+                <div class="ex-item"><strong>14.</strong> \(8.3 \times 10^{2}\)</div>
+                <div class="ex-item"><strong>15.</strong> \(5.5 \times 10^{8}\)</div>
+                <div class="ex-item"><strong>16.</strong> \(1.6 \times 10^{10}\)</div>
+                <div class="ex-item"><strong>17.</strong> \(3.5 \times 10^{-2}\)</div>
+                <div class="ex-item"><strong>18.</strong> \(2.8 \times 10^{-2}\)</div>
+                <div class="ex-item"><strong>19.</strong> \(1.93 \times 10^{-5}\)</div>
+                <div class="ex-item"><strong>20.</strong> \(6.15 \times 10^{-8}\)</div>
+            </div>
+
+            <ol class="ex-wide" start="21">
+                <li>In 2010, the number of Facebook users each day who changed their status to "engaged" was \(2 \times 10^{4}\).</li>
+            </ol>
+
+            <p class="credit-note">Exercises taken from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
