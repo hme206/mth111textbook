@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.5: Estimation with Whole Numbers</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        /* ── Rounding step table ── */
+        .round-table {
+            border-collapse: collapse;
+            margin: 0.75rem 0 1rem 0;
+            width: 100%;
+        }
+        .round-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 8px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: left;
+        }
+        .round-table td {
+            padding: 8px 14px;
+            border: 1px solid #ccc;
+        }
+        .round-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        .round-table td.arrow {
+            text-align: center;
+            color: #33AB2B;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .round-table td.rounded {
+            font-weight: bold;
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-5">Section 1.5: Estimation with Whole Numbers</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Use rounding to estimate sums and differences.</li>
+            <li>Use rounding to estimate the solutions for application problems.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-5-heading">
+        <h3 id="intro-1-5-heading">Introduction</h3>
+        <p>An <strong>estimate</strong> is an answer to a problem that is close to the exact solution, but not necessarily exact. Estimating can come in handy in a variety of situations. For example, when buying a new computer setup — a tower and keyboard for \($\)1,295, a monitor for \($\)679, a printer for \($\)486, a warranty for \($\)196, and software for \($\)374 — estimating helps you know roughly how much you'll spend without adding all the numbers exactly.</p>
+        <p>Estimation usually requires rounding. When you round a number, you find a new number close to the original. Because rounded numbers have zeros in some place values, adding or subtracting them is easier, allowing you to find an estimate quickly. Estimating before calculating also lets you check whether your exact answer is reasonable.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         ESTIMATING SUMS AND DIFFERENCES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="sums-diff-heading">
+        <h3 id="sums-diff-heading">Using Rounding to Estimate Sums and Differences</h3>
+
+        <p>To estimate a sum, round each addend to the same place value and then add the rounded numbers together.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-5-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-1-heading">Example 1</h3>
+                <p>Estimate the sum \(1{,}472 + 398 + 772 + 164\) by rounding each number to the nearest hundred.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, round each number to the nearest hundred:</p>
+                    <table class="round-table" aria-label="Rounding each addend to the nearest hundred">
+                        <thead>
+                            <tr><th scope="col">Original</th><th scope="col"></th><th scope="col">Rounded to Nearest Hundred</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1,472</td><td class="arrow">→</td><td class="rounded">1,500</td></tr>
+                            <tr><td>398</td><td class="arrow">→</td><td class="rounded">400</td></tr>
+                            <tr><td>772</td><td class="arrow">→</td><td class="rounded">800</td></tr>
+                            <tr><td>164</td><td class="arrow">→</td><td class="rounded">200</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Then add the rounded numbers:</p>
+                    \[
+                    \begin{aligned}
+                    &1{,}500 \\
+                    &\phantom{0,}400 \\
+                    &\phantom{0,}800 \\
+                    +\;&\phantom{0,}200 \\
+                    \hline
+                    &2{,}900
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The estimate is <strong>2,900</strong>. (The exact sum is 2,806 — the estimate is close.)</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Rounding to a lesser place value produces a more accurate estimate, but requires more steps. The example below shows the same sum rounded to the nearest ten.</p>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-5-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-2-heading">Example 2</h3>
+                <p>Estimate the sum \(1{,}472 + 398 + 772 + 164\) by rounding each number to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Round each number to the nearest ten:</p>
+                    <table class="round-table" aria-label="Rounding each addend to the nearest ten">
+                        <thead>
+                            <tr><th scope="col">Original</th><th scope="col"></th><th scope="col">Rounded to Nearest Ten</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1,472</td><td class="arrow">→</td><td class="rounded">1,470</td></tr>
+                            <tr><td>398</td><td class="arrow">→</td><td class="rounded">400</td></tr>
+                            <tr><td>772</td><td class="arrow">→</td><td class="rounded">770</td></tr>
+                            <tr><td>164</td><td class="arrow">→</td><td class="rounded">160</td></tr>
+                        </tbody>
+                    </table>
+                    <p>Then add the rounded numbers:</p>
+                    \[
+                    \begin{aligned}
+                    &1{,}470 \\
+                    &\phantom{0,}400 \\
+                    &\phantom{0,}770 \\
+                    +\;&\phantom{0,}160 \\
+                    \hline
+                    &2{,}800
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The estimate is <strong>2,800</strong>. (The exact sum is 2,806 — only 6 away.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>In three months, a freelance graphic artist earns \($\)1,290 for illustrating comic books, \($\)2,612 for designing logos, and \($\)4,175 for designing websites. Estimate how much she earned in total by first rounding each number to the nearest hundred.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-5">
+                Show Answer
+            </button>
+            <div id="sca-1-5" class="self-check-answer">
+                <p>Round each amount: \(\$1{,}290 \rightarrow \$1{,}300\), &nbsp; \(\$2{,}612 \rightarrow \$2{,}600\), &nbsp; \(\$4{,}175 \rightarrow \$4{,}200\).</p>
+                \[\$1{,}300 + \$2{,}600 + \$4{,}200 = \$8{,}100\]
+                <p><strong>Estimated total: $8,100</strong></p>
+            </div>
+        </div>
+
+        <p>You can also estimate differences using the same rounding approach.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-5-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-3-heading">Example 3</h3>
+                <p>Estimate the difference of 5,876 and 4,792 by first rounding each number to the nearest hundred.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="round-table" aria-label="Rounding each number to the nearest hundred">
+                        <thead>
+                            <tr><th scope="col">Original</th><th scope="col"></th><th scope="col">Rounded to Nearest Hundred</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>5,876</td><td class="arrow">→</td><td class="rounded">5,900</td></tr>
+                            <tr><td>4,792</td><td class="arrow">→</td><td class="rounded">4,800</td></tr>
+                        </tbody>
+                    </table>
+                    \[
+                    \begin{aligned}
+                    &5{,}900 \\
+                    -\;&4{,}800 \\
+                    \hline
+                    &1{,}100
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The estimate is <strong>1,100</strong>. (The exact difference is 1,084 — the estimate is 16 greater.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Estimate the difference of 474,128 and 262,767 by rounding to the nearest thousand.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-5">
+                Show Answer
+            </button>
+            <div id="scb-1-5" class="self-check-answer">
+                <p>Round each number: \(474{,}128 \rightarrow 474{,}000\) and \(262{,}767 \rightarrow 263{,}000\).</p>
+                \[474{,}000 - 263{,}000 = 211{,}000\]
+                <p><strong>Estimated difference: 211,000</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SOLVING APPLICATION PROBLEMS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="application-heading">
+        <h3 id="application-heading">Solving Application Problems by Estimating</h3>
+
+        <p>Estimating is especially handy when you want to make sure you have enough money for several purchases, or when you need a quick check on a total.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-5-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-4-heading">Example 4</h3>
+                <p>When buying a new computer, you find that the computer tower and keyboard cost \($\)1,295, the monitor costs \($\)679, the printer costs \($\)486, the 2-year warranty costs \($\)196, and a software package costs \($\)374. Estimate the total cost by first rounding each number to the nearest hundred.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="round-table" aria-label="Rounding each cost to the nearest hundred dollars">
+                        <thead>
+                            <tr><th scope="col">Item Cost</th><th scope="col"></th><th scope="col">Rounded to Nearest Hundred</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>$1,295</td><td class="arrow">→</td><td class="rounded">$1,300</td></tr>
+                            <tr><td>$679</td><td class="arrow">→</td><td class="rounded">$700</td></tr>
+                            <tr><td>$486</td><td class="arrow">→</td><td class="rounded">$500</td></tr>
+                            <tr><td>$196</td><td class="arrow">→</td><td class="rounded">$200</td></tr>
+                            <tr><td>$374</td><td class="arrow">→</td><td class="rounded">$400</td></tr>
+                        </tbody>
+                    </table>
+                    \[
+                    \begin{aligned}
+                    &1{,}300 \\
+                    &\phantom{0,}700 \\
+                    &\phantom{0,}500 \\
+                    &\phantom{0,}200 \\
+                    +\;&\phantom{0,}400 \\
+                    \hline
+                    &3{,}100
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The total cost is approximately <strong>$3,100</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-1-5-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-5-heading">Example 5</h3>
+                <p>James travels 3,247 m to the park, then 582 m to the store, then 1,634 m back to his house. Find the total distance traveled by first rounding each number to the nearest ten.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-5">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="round-table" aria-label="Rounding each distance to the nearest ten meters">
+                        <thead>
+                            <tr><th scope="col">Distance</th><th scope="col"></th><th scope="col">Rounded to Nearest Ten</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3,247 m</td><td class="arrow">→</td><td class="rounded">3,250 m</td></tr>
+                            <tr><td>582 m</td><td class="arrow">→</td><td class="rounded">580 m</td></tr>
+                            <tr><td>1,634 m</td><td class="arrow">→</td><td class="rounded">1,630 m</td></tr>
+                        </tbody>
+                    </table>
+                    \[
+                    \begin{aligned}
+                    &3{,}250 \\
+                    &\phantom{0,}580 \\
+                    +\;&1{,}630 \\
+                    \hline
+                    &5{,}460
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The total distance traveled was approximately <strong>5,460 meters</strong>. (The exact sum is 5,463 m — only 3 away.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-1-5-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-5-6-heading">Example 6</h3>
+                <p>One mountain is 10,496 feet high and another is 7,421 feet high. Find the difference in height by first rounding each number to the nearest hundred.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-5-6">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-5-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="round-table" aria-label="Rounding each height to the nearest hundred feet">
+                        <thead>
+                            <tr><th scope="col">Height</th><th scope="col"></th><th scope="col">Rounded to Nearest Hundred</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10,496 ft</td><td class="arrow">→</td><td class="rounded">10,500 ft</td></tr>
+                            <tr><td>7,421 ft</td><td class="arrow">→</td><td class="rounded">7,400 ft</td></tr>
+                        </tbody>
+                    </table>
+                    \[
+                    \begin{aligned}
+                    &10{,}500 \\
+                    -\;&\phantom{0}7{,}400 \\
+                    \hline
+                    &\phantom{0}3{,}100
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The estimated difference in height is <strong>3,100 feet</strong>. (The exact difference is 3,075 ft — the estimate is 25 greater.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>A space shuttle traveling at 17,581 miles per hour decreases its speed by 7,412 miles per hour. Estimate the speed of the space shuttle after it has slowed down by rounding each number to the nearest hundred.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-5">
+                Show Answer
+            </button>
+            <div id="scc-1-5" class="self-check-answer">
+                <p>Round each speed: \(17{,}581 \rightarrow 17{,}600\) and \(7{,}412 \rightarrow 7{,}400\).</p>
+                \[17{,}600 - 7{,}400 = 10{,}200 \text{ mi/h}\]
+                <p><strong>Estimated speed: 10,200 mi/h</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-5-heading">
+        <h3 id="summary-1-5-heading">Summary</h3>
+        <p>Estimation is very useful when an exact answer is not required. You can use estimation for problems related to travel, finances, and data analysis. Estimating is done by rounding each number to the same place value before adding or subtracting — this makes the arithmetic easier and produces an answer close to the exact value. Estimating before calculating also helps you catch errors in your work.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-5-heading">
+        <h2 id="exercises-1-5-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-5-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-5-content" class="exercises-content" role="region" aria-labelledby="exercises-1-5-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
