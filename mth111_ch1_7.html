@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.7: Understanding Exponents and Square Roots</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Perfect squares table ── */
+        .squares-table {
+            border-collapse: collapse;
+            margin: 1rem 0;
+            width: 100%;
+        }
+        .squares-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: center;
+        }
+        .squares-table td {
+            padding: 9px 14px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .squares-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* ── Diagram image ── */
+        .diagram-figure {
+            text-align: center;
+            margin: 1.25rem 0;
+        }
+        .diagram-figure img {
+            max-width: 520px;
+            width: 100%;
+            height: auto;
+        }
+        .diagram-figure figcaption {
+            font-style: italic;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-7">Section 1.7: Understanding Exponents and Square Roots</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Evaluate expressions containing exponents.</li>
+            <li>Write repeated factors using exponential notation.</li>
+            <li>Find a square root of a perfect square.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-7-heading">
+        <h3 id="intro-1-7-heading">Introduction</h3>
+        <p>Exponents provide a special way of writing repeated multiplication. Numbers written using exponents have a specific form, with each part providing important information. Writing numbers using exponents can also save a lot of space. The inverse operation of multiplying a number by itself is called finding the <strong>square root</strong> of a number, which is helpful for problems involving the area of a square.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXPONENTIAL NOTATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="exponential-heading">
+        <h3 id="exponential-heading">Understanding Exponential Notation</h3>
+
+        <p><strong>Exponential notation</strong> is a special way of writing repeated factors. It has two parts:</p>
+        <ul>
+            <li>The <strong>base</strong> — the number being multiplied by itself.</li>
+            <li>The <strong>exponent</strong> (or <strong>power</strong>) — the small number written up and to the right of the base, telling how many times to use the base as a factor.</li>
+        </ul>
+
+        <p>For example, \(7 \times 7\) can be written as \(7^2\), where 7 is the base and 2 is the exponent:</p>
+        \[7^2 = 7 \times 7 = 49\]
+
+        <div class="definition-box" role="note" aria-label="Reading exponential notation">
+            <h3>Reading Exponential Notation</h3>
+            <ul>
+                <li>\(7^2\) is read <em>"seven squared"</em> — multiplying a number by itself is called squaring.</li>
+                <li>\(7^3\) is read <em>"seven cubed"</em> — raising a number to the power of 3.</li>
+                <li>\(2^5\) is read <em>"two to the fifth power"</em> or <em>"two to the power of five."</em></li>
+                <li>\(8^4\) is read <em>"eight to the fourth power."</em></li>
+            </ul>
+        </div>
+
+        <p>To find the value of a number in exponential form, rewrite it as repeated multiplication and then multiply.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-7-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-7-1-heading">Example 1</h3>
+                <p>Find the value of \(4^2\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-7-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-7-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The base is 4 and the exponent is 2, so use 4 as a factor twice:</p>
+                    \[4^2 = 4 \times 4 = 16\]
+                    <p><strong>Answer:</strong> \(4^2 = 16\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-7-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-7-2-heading">Example 2</h3>
+                <p>Find the value of \(2^5\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-7-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-7-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The base is 2 and the exponent is 5, so use 2 as a factor five times:</p>
+                    \[
+                    \begin{aligned}
+                    2^5 &= 2 \times 2 \times 2 \times 2 \times 2 \\
+                        &= 4 \times 2 \times 2 \times 2 \\
+                        &= 8 \times 2 \times 2 \\
+                        &= 16 \times 2 \\
+                        &= 32
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> \(2^5 = 32\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Find the value of \(4^3\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-7">
+                Show Answer
+            </button>
+            <div id="sca-1-7" class="self-check-answer">
+                \[4^3 = 4 \times 4 \times 4 = 64\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         WRITING REPEATED MULTIPLICATION USING EXPONENTS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="writing-exponents-heading">
+        <h3 id="writing-exponents-heading">Writing Repeated Multiplication Using Exponents</h3>
+
+        <p>Writing repeated multiplication in exponential notation saves time and space. For example, \(5 \times 5 \times 5 \times 5\) can be written as \(5^4\) — 5 is the base (the number being multiplied) and 4 is the exponent (how many times 5 appears). Be sure to count the numbers, not the multiplication signs, when determining the exponent.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-7-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-7-3-heading">Example 3</h3>
+                <p>Write \(7 \times 7 \times 7\) in exponential notation.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-7-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-7-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The base is 7 (the number being multiplied). The factor 7 appears 3 times, so the exponent is 3.</p>
+                    \[7 \times 7 \times 7 = 7^3\]
+                    <p><strong>Answer:</strong> \(7^3\) — read "seven cubed."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <p><strong>Self Check B</strong></p>
+            <p>Write \(10 \times 10 \times 10 \times 10 \times 10 \times 10\) in exponential notation.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-7">
+                Show Answer
+            </button>
+            <div id="scb-1-7" class="self-check-answer">
+                <p>The base is 10 and it appears 6 times, so the exponent is 6.</p>
+                \[10 \times 10 \times 10 \times 10 \times 10 \times 10 = 10^6\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         UNDERSTANDING AND COMPUTING SQUARE ROOTS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="square-roots-heading">
+        <h3 id="square-roots-heading">Understanding and Computing Square Roots</h3>
+
+        <p>Raising a number to the power of 2 is called <strong>squaring</strong> the number. The result of squaring a whole number is called a <strong>perfect square</strong>. A perfect square is any number that can be written as a whole number raised to the power of 2. For example, 9 is a perfect square because \(3^2 = 9\).</p>
+
+        <p>Perfect squares can be represented as square grids, as shown in the diagram below.</p>
+
+        <figure class="diagram-figure">
+            <img
+                src="images/mth111_1_7_1.png"
+                alt="Six square grids arranged in a row, each made up of small unit squares. The first grid is 1 by 1 containing 1 square, labeled 1 times 1 equals 1. The second is 2 by 2 containing 4 squares, labeled 2 times 2 equals 4. The third is 3 by 3 containing 9 squares, labeled 3 times 3 equals 9. The fourth is 4 by 4 containing 16 squares, labeled 4 times 4 equals 16. The fifth is 5 by 5 containing 25 squares, labeled 5 times 5 equals 25. The sixth is 6 by 6 containing 36 squares, labeled 6 times 6 equals 36."
+            />
+            <figcaption>Perfect squares represented as square grids — shape numbers 1 through 6.</figcaption>
+        </figure>
+
+        <p>Below is a table of the first ten perfect squares:</p>
+
+        <table class="squares-table" aria-label="Perfect squares from 1 squared to 10 squared">
+            <caption style="caption-side:top; text-align:left; font-weight:bold; color:#33AB2B; margin-bottom:0.4rem;">
+                Perfect Squares
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Word Form</th>
+                    <th scope="col">Exponential Form</th>
+                    <th scope="col">Repeated Multiplication</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1 squared</td><td>\(1^2\)</td><td>\(1 \times 1\)</td><td>1</td></tr>
+                <tr><td>2 squared</td><td>\(2^2\)</td><td>\(2 \times 2\)</td><td>4</td></tr>
+                <tr><td>3 squared</td><td>\(3^2\)</td><td>\(3 \times 3\)</td><td>9</td></tr>
+                <tr><td>4 squared</td><td>\(4^2\)</td><td>\(4 \times 4\)</td><td>16</td></tr>
+                <tr><td>5 squared</td><td>\(5^2\)</td><td>\(5 \times 5\)</td><td>25</td></tr>
+                <tr><td>6 squared</td><td>\(6^2\)</td><td>\(6 \times 6\)</td><td>36</td></tr>
+                <tr><td>7 squared</td><td>\(7^2\)</td><td>\(7 \times 7\)</td><td>49</td></tr>
+                <tr><td>8 squared</td><td>\(8^2\)</td><td>\(8 \times 8\)</td><td>64</td></tr>
+                <tr><td>9 squared</td><td>\(9^2\)</td><td>\(9 \times 9\)</td><td>81</td></tr>
+                <tr><td>10 squared</td><td>\(10^2\)</td><td>\(10 \times 10\)</td><td>100</td></tr>
+            </tbody>
+        </table>
+
+        <p>The <strong>inverse operation</strong> of squaring a number is called finding the <strong>square root</strong>. Finding a square root answers the question: "What number multiplied by itself gives me this number?" The square root of 25 is 5, because \(5 \times 5 = 25\). Square roots are written using the <strong>radical sign</strong>: \(\sqrt{\phantom{0}}\)</p>
+
+        \[\sqrt{25} = 5\]
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-7-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-7-4-heading">Example 4</h3>
+                <p>Find \(\sqrt{81}\).</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-7-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-7-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Ask: what number multiplied by itself equals 81?</p>
+                    \[9 \times 9 = 81\]
+                    <p><strong>Answer:</strong> \(\sqrt{81} = 9\)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <p><strong>Self Check C</strong></p>
+            <p>Find \(\sqrt{36}\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-7">
+                Show Answer
+            </button>
+            <div id="scc-1-7" class="self-check-answer">
+                <p>Since \(6 \times 6 = 36\):</p>
+                \[\sqrt{36} = 6\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-7-heading">
+        <h3 id="summary-1-7-heading">Summary</h3>
+        <p>Exponential notation is a shorthand way of writing repeated multiplication of the same number. A number written in exponential notation has a <strong>base</strong> (the number being multiplied) and an <strong>exponent</strong> (how many times to use the base). Raising a base to the power of 2 is called <em>squaring</em>; raising to the power of 3 is called <em>cubing</em>. The inverse of squaring a number is finding its <strong>square root</strong> — ask yourself "what number can I multiply by itself to get this result?"</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-7-heading">
+        <h2 id="exercises-1-7-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-7-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-7-content" class="exercises-content" role="region" aria-labelledby="exercises-1-7-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
