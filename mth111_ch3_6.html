@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.6: Temperature Scales</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-6">Section 3.6: Temperature Scales</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>State the freezing and boiling points of water on the Celsius and Fahrenheit temperature scales.</li>
+            <li>Convert from one temperature scale to the other using conversion formulas.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>Turn on the television any morning and you will see meteorologists talking about the day's weather forecast. In addition to telling you about conditions like sun, clouds, or rain, they also tell you the forecast high and low temperatures. A hot summer day may reach 100° in Philadelphia, while a cool spring day may have a low of 40° in Seattle.</p>
+
+        <p>If you have been to other countries, though, you may notice that meteorologists measure heat and cold differently outside of the United States. For example, a TV weatherman in San Diego may forecast a high of 89°, but a similar forecaster in Tijuana, Mexico — only 20 miles south — may look at the same weather pattern and say the day's high temperature will be 32°. What's going on here?</p>
+
+        <p>The difference is that the two countries use different <span class="blue-text"><strong>temperature scales</strong></span>. In the United States, temperatures are usually measured using the <span class="blue-text"><strong>Fahrenheit</strong></span> scale, while most countries that use the metric system use the <span class="blue-text"><strong>Celsius</strong></span> scale. Learning about both scales — including how to convert between them — will help you figure out what the weather is going to be like no matter which country you find yourself in.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         MEASURING TEMPERATURE ON TWO SCALES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="two-scales-heading">
+        <h3 id="two-scales-heading">Measuring Temperature on Two Scales</h3>
+
+        <p>Fahrenheit and Celsius are two different scales for measuring temperature. The image below shows a Celsius thermometer reading 22°C alongside a Fahrenheit thermometer reading 72°F — both representing a comfortably warm room temperature.</p>
+
+        <figure style="text-align: center; margin: 1.5rem 0;">
+            <img
+                src="images/mth111_3_6_1.png"
+                alt="Two thermometers shown side by side. The left thermometer is labeled Celsius and reads 22 degrees, with water freezing at 0 degrees and boiling at 100 degrees marked. The right thermometer is labeled Fahrenheit and reads 72 degrees, with water freezing at 32 degrees and boiling at 212 degrees marked. Both thermometers show comfortable room temperature highlighted in the middle range."
+                style="max-width: 420px; width: 100%; height: auto;"
+            />
+            <figcaption style="font-style: italic; color: #555; margin-top: 0.5rem;">
+                Celsius (left) and Fahrenheit (right) thermometers side by side
+            </figcaption>
+        </figure>
+
+        <!-- Two-scale comparison box -->
+        <div class="definition-box" role="note" aria-label="Celsius and Fahrenheit scale comparison">
+            <h3>Celsius vs. Fahrenheit — Key Facts</h3>
+            <table>
+                <caption class="visually-hidden">Comparison of key temperature values on the Celsius and Fahrenheit scales</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Reference Point</th>
+                        <th scope="col">Celsius (°C)</th>
+                        <th scope="col">Fahrenheit (°F)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Water freezes</td>
+                        <td>0°</td>
+                        <td>32°</td>
+                    </tr>
+                    <tr>
+                        <td>Water boils</td>
+                        <td>100°</td>
+                        <td>212°</td>
+                    </tr>
+                    <tr>
+                        <td>Comfortable room temperature</td>
+                        <td>18°C – 24°C</td>
+                        <td>65°F – 75°F</td>
+                    </tr>
+                    <tr>
+                        <td>Cold winter day (e.g. Michigan)</td>
+                        <td>−18°</td>
+                        <td>0°</td>
+                    </tr>
+                    <tr>
+                        <td>Hot summer day (e.g. Arizona)</td>
+                        <td>43°</td>
+                        <td>110°</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>A cook puts a thermometer into a pot of water to see how hot it is. The thermometer reads 132°, but the water is not boiling yet. Which temperature scale is the thermometer measuring?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p><strong>Fahrenheit.</strong> Water boils at 212° on the Fahrenheit scale, so a reading of 132°F is legitimately hot but not yet boiling. On the Celsius scale, water boils at 100°, so a reading of 132°C would already be past the boiling point — impossible for non-boiling water.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CONVERTING BETWEEN THE SCALES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="converting-temp-heading">
+        <h3 id="converting-temp-heading">Converting Between the Scales</h3>
+
+        <p>By looking at the two thermometers, you can make some general comparisons. Many people tend to be comfortable in outdoor temperatures between 50°F and 80°F (or 10°C and 25°C). If a meteorologist predicts 0°C (32°F), it is a safe bet you will need a winter jacket.</p>
+
+        <p>Sometimes it is necessary to convert a Celsius measurement to its exact Fahrenheit equivalent or vice versa. Converting temperature between the systems is straightforward as long as you use the correct formulas. These formulas were developed by comparing the two scales:</p>
+
+        <ul>
+            <li>The freezing point is 0° on Celsius and 32° on Fahrenheit — so we <em>subtract 32</em> when converting from Fahrenheit to Celsius, and <em>add 32</em> when converting from Celsius to Fahrenheit.</li>
+            <li>There are 100 degrees between freezing and boiling on Celsius, and 180 degrees between the same points on Fahrenheit. The ratio \(\dfrac{180}{100} = \dfrac{9}{5}\) explains the fractions in the formulas.</li>
+        </ul>
+
+        <!-- Conversion formulas box -->
+        <div class="definition-box" role="note" aria-label="Temperature conversion formulas">
+            <h3>Temperature Conversion Formulas</h3>
+            <p><strong>Fahrenheit to Celsius:</strong></p>
+            \[C = \frac{5}{9}(F - 32)\]
+            <p><strong>Celsius to Fahrenheit:</strong></p>
+            \[F = \frac{9}{5}C + 32\]
+        </div>
+
+        <!-- Example 1: 100°C to °F -->
+        <section class="example" aria-labelledby="ex-3-6-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-6-1-heading">Example 1</h3>
+                <p>The boiling point of water is 100°C. What temperature does water boil at on the Fahrenheit scale?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-6-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-6-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>A Celsius temperature is given, so use the formula \(F = \dfrac{9}{5}C + 32\). Substitute \(C = 100\):</p>
+                    \[F = \frac{9}{5}(100) + 32 = \frac{900}{5} + 32 = 180 + 32 = 212\]
+                    <p><strong>The boiling point of water is 212°F.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2: 32°F to °C -->
+        <section class="example" aria-labelledby="ex-3-6-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-6-2-heading">Example 2</h3>
+                <p>Water freezes at 32°F. On the Celsius scale, what temperature is this?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-6-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-6-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>A Fahrenheit temperature is given, so use the formula \(C = \dfrac{5}{9}(F - 32)\). Substitute \(F = 32\):</p>
+                    \[C = \frac{5}{9}(32 - 32) = \frac{5}{9}(0) = 0\]
+                    <p><strong>The freezing point of water is 0°C.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: two scientists -->
+        <section class="example" aria-labelledby="ex-3-6-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-6-3-heading">Example 3</h3>
+                <p>Two scientists are doing an experiment to identify the boiling point of an unknown liquid. One scientist gets a result of 120°C; the other gets a result of 250°F. Which temperature is higher, and by how much?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-6-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-6-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>One temperature is in °C and the other is in °F. To compare them we need both on the same scale. Convert 120°C to °F using \(F = \dfrac{9}{5}C + 32\):</p>
+                    \[F = \frac{9}{5}(120) + 32 = \frac{1{,}080}{5} + 32 = 216 + 32 = 248°\text{F}\]
+                    <p>Now compare on the Fahrenheit scale:</p>
+                    \[250°\text{F} - 248°\text{F} = 2°\text{F}\]
+                    <p><strong>250°F is the higher temperature, by 2°F.</strong></p>
+                    <p>Note: you could also convert 250°F to Celsius instead. Doing so gives \(250°\text{F} = 121.1°\text{C}\), which is 1.1°C higher than 120°C — consistent with the answer above. Whichever direction you convert, always compare within the same scale.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Tatiana is researching vacation destinations and sees that the average summer temperature in Barcelona, Spain is around 26°C. What is the average temperature in degrees Fahrenheit?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Use the formula \(F = \dfrac{9}{5}C + 32\) with \(C = 26\):</p>
+                \[F = \frac{9}{5}(26) + 32 = \frac{234}{5} + 32 = 46.8 + 32 = 78.8°\text{F}\]
+                <p>The average summer temperature in Barcelona is approximately <strong>79°F</strong>.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Temperature is often measured using one of two scales: Celsius or Fahrenheit. On the Celsius scale, water freezes at 0° and boils at 100°. On the Fahrenheit scale, water freezes at 32° and boils at 212°. You can convert between the two scales using the formulas \(F = \dfrac{9}{5}C + 32\) and \(C = \dfrac{5}{9}(F - 32)\). When comparing temperatures given in different scales, always convert to a common scale before drawing conclusions.</p>
+    </section>
+
+</main>
+
+<!-- Toggle scripts -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
