@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.5: The Metric System</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* Metric prefix scale display */
+        .prefix-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .prefix-scale-item {
+            text-align: center;
+            flex: 1;
+            min-width: 60px;
+        }
+        .prefix-scale-item .prefix-name {
+            font-weight: bold;
+            color: #33AB2B;
+            font-size: 0.95em;
+            display: block;
+        }
+        .prefix-scale-item .prefix-size {
+            font-size: 0.8em;
+            color: #555;
+            display: block;
+            margin-top: 2px;
+        }
+        .prefix-scale-arrow {
+            font-size: 1.4em;
+            color: #33AB2B;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .prefix-scale-label {
+            font-size: 0.8em;
+            color: #333;
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-5">Section 3.5: The Metric System</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Describe the general relationship between U.S. customary units and metric units of length, weight/mass, and volume.</li>
+            <li>Define the metric prefixes and use them to perform basic conversions among metric units.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>In the United States, both the U.S. customary measurement system and the metric system are used, especially in medical, scientific, and technical fields. In most other countries, the metric system is the primary system of measurement. If you travel to other countries, you will see that road signs list distances in kilometers and milk is sold in liters. People in many countries use words like "kilometer," "liter," and "milligram" to measure the length, volume, and weight of different objects. These measurement units are all part of the metric system.</p>
+
+        <p>Unlike the U.S. customary system of measurement, the metric system is based on 10s. For example, a liter is 10 times larger than a deciliter, and a centigram is 10 times larger than a milligram. This idea of "10" is not present in the U.S. customary system — there are 12 inches in a foot, 3 feet in a yard, and 5,280 feet in a mile!</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         WHAT IS METRIC?
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="what-is-metric-heading">
+        <h3 id="what-is-metric-heading">What is Metric?</h3>
+
+        <p>The metric system uses units such as <strong>meter</strong>, <strong>liter</strong>, and <strong>gram</strong> to measure length, liquid volume, and mass, just as the U.S. customary system uses feet, quarts, and ounces. In addition to different base units, the metric system is based on powers of 10 — a meter is 100 times larger than a centimeter, and a kilogram is 1,000 times heavier than a gram.</p>
+
+        <!-- Length / Mass / Volume table -->
+        <table aria-label="Basic metric units for length, mass, and volume">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #33AB2B; margin-bottom: 0.5rem;">
+                Metric System — Basic and Common Units
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Length</th>
+                    <th scope="col">Mass</th>
+                    <th scope="col">Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><em>Basic units</em></th>
+                    <td>meter</td>
+                    <td>gram</td>
+                    <td>liter</td>
+                </tr>
+                <tr>
+                    <th scope="row"><em>Other common units</em></th>
+                    <td>kilometer<br/>centimeter<br/>millimeter</td>
+                    <td>kilogram<br/>centigram<br/>milligram</td>
+                    <td>dekaliter<br/>centiliter<br/>milliliter</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>In the metric system, the basic unit of <strong>length</strong> is the meter — slightly larger than a yardstick, or just over three feet. The basic metric unit of <strong>mass</strong> is the gram; a regular-sized paperclip has a mass of about 1 gram. Note that in science and technical fields, a distinction is made between weight and mass: weight measures the pull of gravity on an object and would differ on the moon, while mass measures the amount of substance and remains constant. For everyday purposes on Earth, mass and weight can be used fairly interchangeably. The basic metric unit of <strong>volume</strong> is the liter — slightly larger than a quart.</p>
+
+        <!-- Customary vs Metric comparison table -->
+        <table aria-label="Common measurements in customary and metric systems">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #33AB2B; margin-bottom: 0.5rem;">
+                Common Measurements: Customary and Metric Systems
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Relationship</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="3">Length</th>
+                    <td>1 centimeter is a little less than half an inch.</td>
+                </tr>
+                <tr>
+                    <td>1.6 kilometers is about 1 mile.</td>
+                </tr>
+                <tr>
+                    <td>1 meter is about 3 inches longer than 1 yard.</td>
+                </tr>
+                <tr>
+                    <th scope="row" rowspan="2">Mass</th>
+                    <td>1 kilogram is a little more than 2 pounds.</td>
+                </tr>
+                <tr>
+                    <td>28 grams is about the same as 1 ounce.</td>
+                </tr>
+                <tr>
+                    <th scope="row" rowspan="2">Volume</th>
+                    <td>1 liter is a little more than 1 quart.</td>
+                </tr>
+                <tr>
+                    <td>4 liters is a little more than 1 gallon.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         PREFIXES IN THE METRIC SYSTEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="prefixes-heading">
+        <h3 id="prefixes-heading">Prefixes in the Metric System</h3>
+
+        <p>The metric system is a base-10 system, meaning each successive unit is 10 times larger than the previous one. The names of metric units are formed by adding a <strong>prefix</strong> to the basic unit of measurement. To tell how large or small a unit is, look at the prefix. To tell whether the unit measures length, mass, or volume, look at the base word.</p>
+
+        <!-- Prefix scale visual -->
+        <div class="prefix-scale" role="note" aria-label="Metric prefix scale from largest to smallest">
+            <div class="prefix-scale-item">
+                <span class="prefix-name">kilo-</span>
+                <span class="prefix-size">1,000× base</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">hecto-</span>
+                <span class="prefix-size">100× base</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">deka-</span>
+                <span class="prefix-size">10× base</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">BASE</span>
+                <span class="prefix-size">m / g / L</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">deci-</span>
+                <span class="prefix-size">\(\tfrac{1}{10}\) base</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">centi-</span>
+                <span class="prefix-size">\(\tfrac{1}{100}\) base</span>
+            </div>
+            <span class="prefix-scale-arrow" aria-hidden="true">›</span>
+            <div class="prefix-scale-item">
+                <span class="prefix-name">milli-</span>
+                <span class="prefix-size">\(\tfrac{1}{1000}\) base</span>
+            </div>
+        </div>
+        <p class="prefix-scale-label" style="font-style:italic; color:#555; margin-top: 4px;">← Moving left: divide by 10 per step &nbsp;|&nbsp; Moving right: multiply by 10 per step →</p>
+
+        <p>Using this scale as a reference:</p>
+        <ul>
+            <li>A <strong>kilogram</strong> is 1,000 times larger than one gram (so 1 kilogram = 1,000 grams).</li>
+            <li>A <strong>centimeter</strong> is 100 times smaller than one meter (so 1 meter = 100 centimeters).</li>
+            <li>A <strong>dekaliter</strong> is 10 times larger than one liter (so 1 dekaliter = 10 liters).</li>
+        </ul>
+
+        <p>The table below shows the metric units of mass along with their size relative to 1 gram (the base unit) and their common abbreviations. Since the prefixes remain constant throughout the metric system, a similar chart applies to length (meters) and volume (liters).</p>
+
+        <!-- Mass prefix table -->
+        <table aria-label="Metric mass units from kilogram to milligram with abbreviations and values">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #33AB2B; margin-bottom: 0.5rem;">
+                Measuring Mass in the Metric System
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">kilogram (kg)</th>
+                    <th scope="col">hectogram (hg)</th>
+                    <th scope="col">dekagram (dag)</th>
+                    <th scope="col">gram (g)</th>
+                    <th scope="col">decigram (dg)</th>
+                    <th scope="col">centigram (cg)</th>
+                    <th scope="col">milligram (mg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1,000 grams</td>
+                    <td>100 grams</td>
+                    <td>10 grams</td>
+                    <td>1 gram</td>
+                    <td>0.1 gram</td>
+                    <td>0.01 gram</td>
+                    <td>0.001 gram</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Which of the following sets of three units are all metric measurements of length?</p>
+            <ol type="A">
+                <li>inch, foot, yard</li>
+                <li>kilometer, centimeter, millimeter</li>
+                <li>kilogram, gram, centigram</li>
+                <li>kilometer, foot, decimeter</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p><strong>B) kilometer, centimeter, millimeter.</strong> All three are from the metric system. You can tell they are measurements of length because they all contain the word "meter."</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CONVERTING UNITS UP AND DOWN THE METRIC SCALE
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="converting-metric-heading">
+        <h3 id="converting-metric-heading">Converting Units Up and Down the Metric Scale</h3>
+
+        <p>Converting between metric units of measure requires knowledge of the metric prefixes and an understanding of the decimal system. In the prefix scale above, each unit is 10 times larger than the one immediately to its right. This means:</p>
+        <ul>
+            <li>Moving <strong>down</strong> (toward smaller units) → <strong>multiply</strong> by 10 for each step.</li>
+            <li>Moving <strong>up</strong> (toward larger units) → <strong>divide</strong> by 10 for each step.</li>
+        </ul>
+
+        <!-- Example: dg to mg -->
+        <section class="example" aria-labelledby="ex-3-5-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-1-heading">Example 1</h3>
+                <p>How many milligrams are in one decigram?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Locate decigrams (dg) and milligrams (mg) on the prefix scale:</p>
+                    <p style="text-align:center; font-family: monospace; font-size:1em; margin: 0.5rem 0;">
+                        kg &nbsp;–&nbsp; hg &nbsp;–&nbsp; dag &nbsp;–&nbsp; g &nbsp;–&nbsp; <strong>dg</strong> &nbsp;–&nbsp; cg &nbsp;–&nbsp; <strong>mg</strong>
+                    </p>
+                    <p>Decigrams are larger than milligrams, so we expect many milligrams in one decigram. Moving from dg to mg requires 2 steps to the right (toward smaller units), so we multiply by \(10 \times 10 = 100\):</p>
+                    \[1\text{ dg} \times 10 \times 10 = 100\text{ mg}\]
+                    <p><strong>There are 100 milligrams in 1 decigram.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: cm to km -->
+        <section class="example" aria-labelledby="ex-3-5-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-2-heading">Example 2</h3>
+                <p>Convert 1 centimeter to kilometers.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Locate kilometers (km) and centimeters (cm) on the prefix scale:</p>
+                    <p style="text-align:center; font-family: monospace; font-size:1em; margin: 0.5rem 0;">
+                        <strong>km</strong> &nbsp;–&nbsp; hm &nbsp;–&nbsp; dam &nbsp;–&nbsp; m &nbsp;–&nbsp; dm &nbsp;–&nbsp; <strong>cm</strong> &nbsp;–&nbsp; mm
+                    </p>
+                    <p>Kilometers are larger than centimeters, so we expect our answer to be less than 1. Moving from cm to km requires 5 steps to the left (toward larger units), so we divide by \(10^5 = 100{,}000\):</p>
+                    \[1\text{ cm} \div 10 \div 10 \div 10 \div 10 \div 10 = \frac{1}{100{,}000} = 0.00001\text{ km}\]
+                    <p><strong>1 centimeter = 0.00001 kilometers.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Decimal Shortcut -->
+        <div class="definition-box" role="note" aria-label="Shortcut: moving the decimal point">
+            <h3>Shortcut: Moving the Decimal Point</h3>
+            <p>Once you understand the metric prefix scale, converting is as simple as moving the decimal point:</p>
+            <ul>
+                <li>Converting to a <strong>smaller unit</strong> (moving right on the scale) → move the decimal point <strong>right</strong> by the number of steps.</li>
+                <li>Converting to a <strong>larger unit</strong> (moving left on the scale) → move the decimal point <strong>left</strong> by the number of steps.</li>
+            </ul>
+            <p>For example, to convert 1 dg to mg (2 steps right): \(1\text{ dg} \rightarrow 100.\text{ mg}\)</p>
+            <p>To convert 1 cm to km (5 steps left): \(1\text{ cm} \rightarrow 0.00001\text{ km}\)</p>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>How many milliliters are in 1 liter?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Moving from liters to milliliters is 3 steps to the right on the prefix scale, so multiply by \(10 \times 10 \times 10 = 1{,}000\):</p>
+                \[1\text{ L} \times 1{,}000 = 1{,}000\text{ mL}\]
+            </div>
+        </div>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>Convert 3,085 milligrams to grams.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>One gram is 1,000 times larger than a milligram, so move from mg to g is 3 steps to the left. Move the decimal point 3 places to the left:</p>
+                \[3{,}085\text{ mg} \rightarrow 3.085\text{ g}\]
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         FACTOR LABEL METHOD
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="factor-label-heading">
+        <h3 id="factor-label-heading">Factor Label Method</h3>
+
+        <p>You can also use the factor label method (dimensional analysis) to convert metric measurements — the same method used in sections 3.1, 3.3, and 3.4. It relies on unit fractions and cancellation of intermediate units. The table below shows unit equivalents and conversion factors for length in the metric system. Note that two additional prefixes appear here: <strong>mega-</strong> (very large) and <strong>micro-</strong> (very small).</p>
+
+        <!-- Factor label unit equivalents table -->
+        <table aria-label="Metric length unit equivalents and conversion factors">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #33AB2B; margin-bottom: 0.5rem;">
+                Metric Length — Unit Equivalents and Conversion Factors
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Unit Equivalents</th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(larger to smaller)</span></th>
+                    <th scope="col">Conversion Factors<br/><span style="font-weight:normal; font-size:0.9em;">(smaller to larger)</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1 meter = 1,000,000 micrometers</td>
+                    <td>\(\dfrac{1{,}000{,}000\text{ μm}}{1\text{ m}}\)</td>
+                    <td>\(\dfrac{1\text{ m}}{1{,}000{,}000\text{ μm}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 meter = 1,000 millimeters</td>
+                    <td>\(\dfrac{1{,}000\text{ mm}}{1\text{ m}}\)</td>
+                    <td>\(\dfrac{1\text{ m}}{1{,}000\text{ mm}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 meter = 100 centimeters</td>
+                    <td>\(\dfrac{100\text{ cm}}{1\text{ m}}\)</td>
+                    <td>\(\dfrac{1\text{ m}}{100\text{ cm}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 meter = 10 decimeters</td>
+                    <td>\(\dfrac{10\text{ dm}}{1\text{ m}}\)</td>
+                    <td>\(\dfrac{1\text{ m}}{10\text{ dm}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 dekameter = 10 meters</td>
+                    <td>\(\dfrac{10\text{ m}}{1\text{ dam}}\)</td>
+                    <td>\(\dfrac{1\text{ dam}}{10\text{ m}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 hectometer = 100 meters</td>
+                    <td>\(\dfrac{100\text{ m}}{1\text{ hm}}\)</td>
+                    <td>\(\dfrac{1\text{ hm}}{100\text{ m}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 kilometer = 1,000 meters</td>
+                    <td>\(\dfrac{1{,}000\text{ m}}{1\text{ km}}\)</td>
+                    <td>\(\dfrac{1\text{ km}}{1{,}000\text{ m}}\)</td>
+                </tr>
+                <tr>
+                    <td>1 megameter = 1,000,000 meters</td>
+                    <td>\(\dfrac{1{,}000{,}000\text{ m}}{1\text{ Mm}}\)</td>
+                    <td>\(\dfrac{1\text{ Mm}}{1{,}000{,}000\text{ m}}\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>When applying the factor label method in the metric system, be sure you are not skipping over any intermediate units of measurement.</p>
+
+        <!-- Example: cm to m -->
+        <section class="example" aria-labelledby="ex-3-5-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-3-heading">Example 3</h3>
+                <p>Convert 7,225 centimeters to meters.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Meters is larger than centimeters, so we expect our answer to be less than 7,225. Using the factor label method, write 7,225 cm as a fraction and multiply by the appropriate unit fraction:</p>
+                    \[\frac{7{,}225\text{ cm}}{1} \cdot \frac{1\text{ m}}{100\text{ cm}} = \frac{7{,}225}{100}\text{ m} = 72.25\text{ m}\]
+                    <p><strong>7,225 centimeters = 72.25 meters.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: pharmacy mg to g -->
+        <section class="example" aria-labelledby="ex-3-5-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-4-heading">Example 4</h3>
+                <p>If you have a prescription for 5,000 mg of medicine, and upon getting it filled the dosage label reads 5 g of medicine, did the pharmacist make a mistake?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Convert 5,000 mg to grams using the factor label method:</p>
+                    \[\frac{5{,}000\text{ mg}}{1} \cdot \frac{1\text{ g}}{1{,}000\text{ mg}} = \frac{5{,}000}{1{,}000}\text{ g} = 5\text{ g}\]
+                    <p>Since 5,000 mg = 5 g, <strong>the pharmacist did not make a mistake.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <h4>Self Check D</h4>
+            <p>Convert 32.5 kilometers to meters.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scd-answer" class="self-check-answer">
+                <p>Using the factor label method:</p>
+                \[\frac{32.5\text{ km}}{1} \cdot \frac{1{,}000\text{ m}}{1\text{ km}} = 32{,}500\text{ m}\]
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         USING METRIC CONVERSIONS TO SOLVE PROBLEMS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applying-metric-heading">
+        <h3 id="applying-metric-heading">Using Metric Conversions to Solve Problems</h3>
+
+        <p>Learning how to solve real-world problems using metric conversions is as important as learning how to do the conversions themselves. Mathematicians, scientists, nurses, and even athletes are often confronted with situations where they are presented with metric measurements and must make informed decisions based on that data.</p>
+
+        <p>To solve these problems effectively: understand the context, perform the necessary conversions, and then check the reasonableness of your answer.</p>
+
+        <!-- Example: board cutting -->
+        <section class="example" aria-labelledby="ex-3-5-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-5-heading">Example 5</h3>
+                <p>Marcus bought a 2-meter board and cut off a piece 1 meter and 35 cm long. How much board is left?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>To subtract, we need all measurements in the same unit. Convert everything to centimeters.</p>
+                    <p>Convert 2 meters to centimeters:</p>
+                    \[\frac{2\text{ m}}{1} \cdot \frac{100\text{ cm}}{1\text{ m}} = 200\text{ cm}\]
+                    <p>Convert the cut piece (1 meter + 35 cm) to centimeters:</p>
+                    \[1\text{ m} = 100\text{ cm} \quad \Rightarrow \quad 100\text{ cm} + 35\text{ cm} = 135\text{ cm}\]
+                    <p>Subtract to find what remains:</p>
+                    \[200\text{ cm} - 135\text{ cm} = 65\text{ cm}\]
+                    <p><strong>There is 65 cm of board left.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: dripping faucet -->
+        <section class="example" aria-labelledby="ex-3-5-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-5-6-heading">Example 6</h3>
+                <p>A faucet drips 10 mL every minute. How much water will be wasted in a week?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-5-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-5-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Use the factor label method to convert time units and find the total milliliters wasted in one week:</p>
+                    \[\frac{10\text{ mL}}{1\text{ min}} \cdot \frac{60\text{ min}}{1\text{ hr}} \cdot \frac{24\text{ hr}}{1\text{ day}} \cdot \frac{7\text{ days}}{1\text{ week}} = \frac{10 \times 60 \times 24 \times 7}{1}\text{ mL/week}\]
+                    \[= 100{,}800\text{ mL per week}\]
+                    <p>Convert to liters (move 3 steps up the metric scale — divide by \(10^3\)):</p>
+                    \[\frac{100{,}800\text{ mL}}{1} \cdot \frac{1\text{ L}}{1{,}000\text{ mL}} = 100.8\text{ L}\]
+                    <p><strong>The faucet wastes about 100.8 liters each week.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check (bread flour) -->
+        <div class="self-check" role="note" aria-label="Self Check — Applying Metric Conversions">
+            <h4>Self Check</h4>
+            <p>A bread recipe calls for 600 g of flour. How many kilograms of flour would you need to make 5 loaves?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sce-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sce-answer" class="self-check-answer">
+                <p>First find the total grams needed for 5 loaves:</p>
+                \[600\text{ g} \times 5 = 3{,}000\text{ g}\]
+                <p>Convert to kilograms (3 steps up the scale — divide by \(10^3\)):</p>
+                \[\frac{3{,}000\text{ g}}{1{,}000} = 3\text{ kg}\]
+                <p>You will need <strong>3 kg of flour</strong> to make 5 loaves.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>The metric system is based on joining one of a series of prefixes — kilo-, hecto-, deka-, deci-, centi-, and milli- — with a base unit of measurement such as meter, liter, or gram. Units in the metric system are all related by a power of 10, which means each successive unit is 10 times larger than the previous one. This makes converting one metric measurement to another straightforward, often as simple as moving a decimal point. Always consider the direction of the conversion: converting to a smaller unit moves the decimal right (larger number), while converting to a larger unit moves the decimal left (smaller number). The factor label method can also be applied to metric conversions using unit fractions and cancellation.</p>
+    </section>
+
+</main>
+
+<!-- Toggle scripts -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
