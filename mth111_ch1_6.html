@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 1.6: Estimation with Decimals</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Rounding step table ── */
+        .round-table {
+            border-collapse: collapse;
+            margin: 0.75rem 0 1rem 0;
+            width: 100%;
+        }
+        .round-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 8px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: left;
+        }
+        .round-table td {
+            padding: 8px 14px;
+            border: 1px solid #ccc;
+        }
+        .round-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        .round-table td.arrow {
+            text-align: center;
+            color: #33AB2B;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .round-table td.rounded {
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 1: Numbers</h1>
+    <h2 id="section-1-6">Section 1.6: Estimation with Decimals</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Estimate the answer to a decimal problem.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-1-6-heading">
+        <h3 id="intro-1-6-heading">Introduction</h3>
+        <p>Being able to estimate your answer is a very useful skill. Not only will it help you decide if your answer is reasonable when doing homework or answering test questions, it can also prove helpful in everyday life. When shopping, you can estimate how much money you have spent, the tip for a restaurant bill, or the sale price of an item. By rounding and then doing a quick calculation, you will at least know if you are close to the exact answer.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         ESTIMATING WITH DECIMALS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="estimating-decimals-heading">
+        <h3 id="estimating-decimals-heading">Estimating with Decimals</h3>
+
+        <p>Consider this problem. Stewart wanted to buy a DVD home theater system that cost \(\$345.23\) and a universal remote priced at \(\$32.90\). He used a calculator and got a sum of \(\$674.23\). He was surprised! Rounding both prices to the nearest ten — \(\$345.23 \approx \$350\) and \(\$32.90 \approx \$30\) — gives \(\$350 + \$30 = \$380\), which is nowhere near \(\$674.23\). Stewart clearly made a calculator error.</p>
+
+        <p>Estimating before calculating helps you catch mistakes like this, especially when decimal points can easily end up in the wrong place.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-1-6-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-6-1-heading">Example 1</h3>
+                <p>Hakim wrote checks for \(\$64.20\), \(\$47.89\), and \(\$95.80\). Estimate the total of all three checks.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-6-1">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-6-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Round each check to the nearest \(\$10\):</p>
+                    <table class="round-table" aria-label="Rounding each check amount to the nearest ten dollars">
+                        <thead>
+                            <tr><th scope="col">Check Amount</th><th scope="col"></th><th scope="col">Rounded to Nearest \(\$10\)</th><th scope="col">Reason</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\(\$64.20\)</td>
+                                <td class="arrow">→</td>
+                                <td class="rounded">\(\$60\)</td>
+                                <td>4 &lt; 5, round down</td>
+                            </tr>
+                            <tr>
+                                <td>\(\$47.89\)</td>
+                                <td class="arrow">→</td>
+                                <td class="rounded">\(\$50\)</td>
+                                <td>7 ≥ 5, round up</td>
+                            </tr>
+                            <tr>
+                                <td>\(\$95.80\)</td>
+                                <td class="arrow">→</td>
+                                <td class="rounded">\(\$100\)</td>
+                                <td>5 ≥ 5, round up</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Add the rounded amounts:</p>
+                    \[
+                    \begin{aligned}
+                    &\$60 \\
+                    &\$50 \\
+                    +\;&\$100 \\
+                    \hline
+                    &\$210
+                    \end{aligned}
+                    \]
+                    <p><strong>Answer:</strong> The estimated total for the three checks is <strong>\(\$210\)</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>You can also use estimation to see if you have enough money for a purchase. In that case, it is best to round all numbers <em>up</em> to make sure you have enough.</p>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-1-6-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-6-2-heading">Example 2</h3>
+                <p>Sherry has \(\$50\) and wants to buy CDs that cost \(\$11.50\) each. About how many CDs can she buy?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-6-2">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-6-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>To make sure Sherry has enough money, round \(\$11.50\) <em>up</em> to the nearest whole dollar:</p>
+                    \[\$11.50 \rightarrow \$12\]
+                    <p>Now divide to find how many CDs she can afford:</p>
+                    \[\$50 \div \$12 = 4 \text{ remainder } 2\]
+                    <p>The remainder is not important here — what matters is the whole number of CDs.</p>
+                    <p><strong>Answer:</strong> Sherry can buy about <strong>4 CDs</strong> with \(\$50\).</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Estimation is also commonly used when calculating a restaurant tip. An easy method is to double the tax amount. You can round to the nearest dollar — up for good service, down for poor service.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-1-6-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-6-3-heading">Example 3</h3>
+                <p>After a delicious meal, the bill for two is \(\$45.36\), which includes tax of \(\$3.74\). The service was very good. How much tip would you leave if you follow the rule to double the amount of tax?</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-6-3">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-6-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since the service was good, round the tax <em>up</em> to the nearest dollar:</p>
+                    \[\$3.74 \rightarrow \$4\]
+                    <p>Double the rounded tax to find the tip:</p>
+                    \[\$4 \times 2 = \$8\]
+                    <p><strong>Answer:</strong> The tip for good service would be <strong>\(\$8\)</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>When using rounding for multiplication or division, it is usually better to round numbers so that each has only one or two non-zero digits. This makes the mental arithmetic much easier.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-1-6-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-1-6-4-heading">Example 4</h3>
+                <p>Jin is building a model ship based on a real one. Each length of the model is 0.017 times the actual length of the ship. The real ship is 132 feet long. Estimate the length of the model, then find the actual length.</p>
+            </div>
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-1-6-4">
+                <span class="toggle-arrow">▼</span><span>Show Solution</span>
+            </button>
+            <div id="sol-1-6-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Round the scale factor to the nearest hundredth (rounding to a whole number or tenth would lose too much precision):</p>
+                    \[0.017 \rightarrow 0.02\]
+                    <p>Round the ship length to the nearest ten:</p>
+                    \[132 \rightarrow 130\]
+                    <p>Multiply the rounded values. It helps to first multiply by 2, then place the decimal:</p>
+                    \[
+                    \begin{aligned}
+                    130 \times 0.02 &= 130 \times 2 \div 100 \\
+                                    &= 260 \div 100 \\
+                                    &= 2.60
+                    \end{aligned}
+                    \]
+                    <p>For the exact length, use a calculator:</p>
+                    \[132 \times 0.017 = 2.244 \text{ ft}\]
+                    <p><strong>Answer:</strong> The model is approximately <strong>2.6 ft</strong> long (exact: 2.244 ft). The estimate is quite close!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <p><strong>Self Check A</strong></p>
+            <p>Evelyn is purchasing 287 ceramic tiles for her new kitchen. Each one costs \(\$0.21\). Which of the following is the most accurate estimate for the total cost?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-6">
+                Show Answer
+            </button>
+            <div id="sca-1-6" class="self-check-answer">
+                <p>Round 287 to 300 and \(\$0.21\) to \(\$0.20\):</p>
+                \[300 \times \$0.20 = \$60\]
+                <p><strong>Estimated total: \(\$60\)</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-1-6-heading">
+        <h3 id="summary-1-6-heading">Summary</h3>
+        <p>Estimation is useful when an exact answer is not required. It also lets you check that an exact answer is close to being correct. Estimating with decimals works the same way as estimating with whole numbers — round the values to numbers that are easy to work with, then perform the operation. For multiplication and division, round so that each number has only one or two non-zero digits.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════
+         EXERCISES (empty container for future use)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-1-6-heading">
+        <h2 id="exercises-1-6-heading" class="subsection-title">Exercises</h2>
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-1-6-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+        <div id="exercises-1-6-content" class="exercises-content" role="region" aria-labelledby="exercises-1-6-heading">
+            <p>Exercises to be added at a later date.</p>
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answer = button.nextElementSibling;
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            button.textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.style.display = 'block';
+            button.textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            document.querySelectorAll('.toc-chapter').forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
