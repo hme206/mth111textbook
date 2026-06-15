@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 3.2: Volumes of Solids</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles1.css" />
+
+    <style>
+        /* ── Solid identification & formula tables ── */
+        .solids-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .solids-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ccc;
+            font-weight: bold;
+        }
+        .solids-table td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+        }
+        .solids-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        .solids-table .svg-cell {
+            text-align: center;
+            width: 140px;
+        }
+        .solids-table .formula-cell {
+            font-size: 1em;
+        }
+
+        /* Self Check box */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Self Check collapsible answer */
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 3: Measurements &amp; Conversions</h1>
+    <h2 id="section-3-2">Section 3.2: Volumes of Solids</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Identify geometric solids.</li>
+            <li>Find the volume of geometric solids.</li>
+            <li>Find the volume of a composite geometric solid.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>Living in a two-dimensional world would be pretty boring. Thankfully, all of the physical objects that you see and use every day — computers, phones, cars, shoes — exist in three dimensions. They all have length, width, and height. (Even very thin objects like a piece of paper are three-dimensional. The thickness of a piece of paper may be a fraction of a millimeter, but it does exist.)</p>
+
+        <p>In the world of geometry, it is common to see three-dimensional figures. In mathematics, a flat side of a three-dimensional figure is called a <span class="blue-text"><strong>face</strong></span>. <span class="blue-text"><strong>Polyhedrons</strong></span> are shapes that have four or more faces, each one being a polygon. These include cubes, prisms, and pyramids. Sometimes you may even see single figures that are composites of two of these figures.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         IDENTIFYING SOLIDS — ONE COMBINED TABLE
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="identifying-solids-heading">
+        <h3 id="identifying-solids-heading">Identifying Solids</h3>
+
+        <p>The table below summarizes the six common geometric solids you will work with, along with a definition and illustration of each.</p>
+
+        <table class="solids-table" aria-label="Common geometric solids with definitions and illustrations">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Definition</th>
+                    <th scope="col" style="text-align:center;">Shape</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- CUBE -->
+                <tr>
+                    <td><strong>Cube</strong></td>
+                    <td>A six-sided polyhedron that has congruent squares as faces.</td>
+                    <td class="svg-cell">
+                        <svg width="110" height="110" role="img" aria-label="3D cube diagram" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="20,90 90,90 90,30 20,30" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="20,30 90,30 100,20 30,20" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <polygon points="90,90 100,80 100,20 90,30" fill="steelblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="90" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="90" y1="90" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="30" x2="30" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="20" x2="100" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="20" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="20" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="80" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- RECTANGULAR PRISM -->
+                <tr>
+                    <td><strong>Rectangular Prism</strong></td>
+                    <td>A polyhedron that has three pairs of congruent, rectangular, parallel faces.</td>
+                    <td class="svg-cell">
+                        <svg width="150" height="110" role="img" aria-label="3D rectangular prism diagram with length l, width w, and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="20,90 110,90 110,50 20,50" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="20,50 110,50 120,40 30,40" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <polygon points="110,90 120,80 120,40 110,50" fill="steelblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="90" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="110" y1="90" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="50" x2="30" y2="40" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="40" x2="120" y2="40" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="40" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="120" y1="40" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="80" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <text x="65" y="105" font-size="12" text-anchor="middle" fill="#333">l</text>
+                            <text x="128" y="85" font-size="12" text-anchor="start" fill="#333">w</text>
+                            <text x="128" y="58" font-size="12" text-anchor="start" fill="#333">h</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- PYRAMID -->
+                <tr>
+                    <td><strong>Pyramid</strong></td>
+                    <td>A polyhedron with a polygonal base and a collection of triangular faces that meet at a point.</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="120" role="img" aria-label="3D pyramid diagram with rectangular base and triangular faces meeting at a point" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="60,10 110,90 10,90" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="60,10 110,90 90,100 40,100 10,90" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <line x1="10" y1="90" x2="40" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="110" y1="90" x2="90" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="40" y1="100" x2="90" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="60" y1="10" x2="65" y2="100" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- CYLINDER -->
+                <tr>
+                    <td><strong>Cylinder</strong></td>
+                    <td>A solid figure with a pair of circular, parallel bases and a round, smooth face between them.</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="140" role="img" aria-label="3D cylinder diagram with radius r and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="60" cy="30" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="30" x2="20" y2="110" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="30" x2="100" y2="110" stroke="black" stroke-width="2"/>
+                            <ellipse cx="60" cy="110" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="60" y1="30" x2="100" y2="30" stroke="black" stroke-width="1"/>
+                            <text x="80" y="25" font-size="12" fill="#333">r</text>
+                            <line x1="60" y1="30" x2="60" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <text x="65" y="72" font-size="12" fill="#333">h</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- CONE -->
+                <tr>
+                    <td><strong>Cone</strong></td>
+                    <td>A solid figure with a single circular base and a round, smooth face that diminishes to a single point.</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="140" role="img" aria-label="3D cone diagram with radius r and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="60" cy="110" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="110" x2="60" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="110" x2="60" y2="20" stroke="black" stroke-width="2"/>
+                            <path d="M20,110 A40,12 0 0 1 100,110" fill="none" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="60" y1="110" x2="100" y2="110" stroke="black" stroke-width="1"/>
+                            <text x="82" y="106" font-size="12" fill="#333">r</text>
+                            <line x1="60" y1="20" x2="60" y2="110" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <text x="65" y="68" font-size="12" fill="#333">h</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- SPHERE -->
+                <tr>
+                    <td><strong>Sphere</strong></td>
+                    <td>A solid, round figure where every point on the surface is the same distance from the center.</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="120" role="img" aria-label="Sphere diagram with radius r labeled, showing horizontal and vertical ellipses for perspective" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="45" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <ellipse cx="60" cy="60" rx="45" ry="11" fill="none" stroke="black" stroke-dasharray="4" stroke-width="1"/>
+                            <ellipse cx="60" cy="60" rx="11" ry="45" fill="none" stroke="black" stroke-dasharray="4" stroke-width="1"/>
+                            <line x1="60" y1="60" x2="105" y2="60" stroke="black" stroke-width="1"/>
+                            <text x="83" y="55" font-size="12" fill="#333">r</text>
+                        </svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Notice the different names used for these figures. A <strong>cube</strong> is different from a square — a cube has three dimensions, while a square only has two. Likewise, you would describe a shoebox as a <strong>rectangular prism</strong> (not simply a rectangle), and the ancient structures of Egypt as <strong>pyramids</strong> (not triangles).</p>
+
+        <!-- Identifying Example -->
+        <section class="example" aria-labelledby="ex-3-2-id-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-2-id-heading">Example</h3>
+                <p>A three-dimensional figure has the following properties:</p>
+                <ul>
+                    <li>It has a rectangular base.</li>
+                    <li>It has four triangular faces.</li>
+                </ul>
+                <p>What kind of solid is it?</p>
+                <figure style="text-align:center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_2_1.png"
+                        alt="Three wireframe diagrams side by side: a cube on the left, a rectangular prism in the middle, and a pyramid on the right. The pyramid is highlighted as the answer since it has a rectangular base and four triangular faces meeting at a point."
+                        style="max-width: 380px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-2-id">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-2-id" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>A rectangular base tells us the figure must be a cube, rectangular prism, or pyramid. Since the faces are triangular rather than rectangular, it must be a <strong>pyramid</strong>.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         VOLUME
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="volume-heading">
+        <h3 id="volume-heading">Volume</h3>
+
+        <p>Recall that perimeter measures one dimension (length), and area measures two dimensions (length and width). To measure the amount of space a three-dimensional figure takes up, you use another measurement called <span class="blue-text"><strong>volume</strong></span>.</p>
+
+        <p>To visualize what "volume" measures, imagine stacking identical 1×1×1 cubes inside a rectangular prism (like an empty shoebox) with no gaps. If you counted the number of cubes that fit inside, you would have its volume. Volume is measured in <strong>cubic units</strong> — for example, cubic inches (in³) or cubic meters (m³).</p>
+
+        <p>A much easier way to find the volume is to use geometric formulas. The table below lists the volume formula for each of the six common solids.</p>
+
+        <!-- Volume Formula Table -->
+        <table class="solids-table" aria-label="Volume formulas for common geometric solids">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col" style="text-align:center;">Shape</th>
+                    <th scope="col">Volume Formula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- CUBE -->
+                <tr>
+                    <td><strong>Cube</strong><br/><em>a</em> = side length</td>
+                    <td class="svg-cell">
+                        <svg width="110" height="110" role="img" aria-label="Cube with side length a labeled" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="20,90 90,90 90,30 20,30" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="20,30 90,30 100,20 30,20" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <polygon points="90,90 100,80 100,20 90,30" fill="steelblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="90" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="90" y1="90" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="30" x2="30" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="20" x2="100" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="20" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="20" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="80" x2="100" y2="80" stroke="black" stroke-width="2"/>
+                            <text x="55" y="108" font-size="12" text-anchor="middle" fill="#333">a</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = a \cdot a \cdot a = a^3\)</td>
+                </tr>
+                <!-- RECTANGULAR PRISM -->
+                <tr>
+                    <td><strong>Rectangular Prism</strong><br/><em>l</em> = length, <em>w</em> = width, <em>h</em> = height</td>
+                    <td class="svg-cell">
+                        <svg width="150" height="110" role="img" aria-label="Rectangular prism with length l, width w, and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="20,90 110,90 110,50 20,50" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="20,50 110,50 120,40 30,40" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <polygon points="110,90 120,80 120,40 110,50" fill="steelblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="90" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="110" y1="90" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="50" x2="30" y2="40" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="40" x2="120" y2="40" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="40" x2="30" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="120" y1="40" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <line x1="30" y1="80" x2="120" y2="80" stroke="black" stroke-width="2"/>
+                            <text x="65" y="105" font-size="12" text-anchor="middle" fill="#333">l</text>
+                            <text x="128" y="85" font-size="12" text-anchor="start" fill="#333">w</text>
+                            <text x="128" y="58" font-size="12" text-anchor="start" fill="#333">h</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = l \cdot w \cdot h\)</td>
+                </tr>
+                <!-- PYRAMID -->
+                <tr>
+                    <td><strong>Pyramid</strong><br/><em>l</em> = length, <em>w</em> = width, <em>h</em> = height</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="120" role="img" aria-label="Pyramid with rectangular base, labeled with height h, length l, and width w" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="60,10 110,90 10,90" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <polygon points="60,10 110,90 90,100 40,100 10,90" fill="skyblue" stroke="black" stroke-width="2"/>
+                            <line x1="10" y1="90" x2="40" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="110" y1="90" x2="90" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="40" y1="100" x2="90" y2="100" stroke="black" stroke-width="2"/>
+                            <line x1="60" y1="10" x2="65" y2="100" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <text x="68" y="58" font-size="11" fill="#333">h</text>
+                            <text x="65" y="108" font-size="11" text-anchor="middle" fill="#333">w</text>
+                            <text x="112" y="96" font-size="11" fill="#333">l</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = \dfrac{l \cdot w \cdot h}{3}\)</td>
+                </tr>
+                <!-- CYLINDER -->
+                <tr>
+                    <td><strong>Cylinder</strong><br/><em>r</em> = radius, <em>h</em> = height</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="130" role="img" aria-label="Cylinder with radius r and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="60" cy="28" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="28" x2="20" y2="105" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="28" x2="100" y2="105" stroke="black" stroke-width="2"/>
+                            <ellipse cx="60" cy="105" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="60" y1="28" x2="100" y2="28" stroke="black" stroke-width="1"/>
+                            <text x="80" y="23" font-size="12" fill="#333">r</text>
+                            <line x1="60" y1="28" x2="60" y2="105" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <text x="65" y="70" font-size="12" fill="#333">h</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = \pi \cdot r^2 \cdot h\)</td>
+                </tr>
+                <!-- CONE -->
+                <tr>
+                    <td><strong>Cone</strong><br/><em>r</em> = radius, <em>h</em> = height</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="130" role="img" aria-label="Cone with radius r and height h labeled" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="60" cy="105" rx="40" ry="12" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <line x1="20" y1="105" x2="60" y2="20" stroke="black" stroke-width="2"/>
+                            <line x1="100" y1="105" x2="60" y2="20" stroke="black" stroke-width="2"/>
+                            <path d="M20,105 A40,12 0 0 1 100,105" fill="none" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="60" y1="105" x2="100" y2="105" stroke="black" stroke-width="1"/>
+                            <text x="82" y="101" font-size="12" fill="#333">r</text>
+                            <line x1="60" y1="20" x2="60" y2="105" stroke="black" stroke-width="1" stroke-dasharray="4"/>
+                            <text x="65" y="65" font-size="12" fill="#333">h</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = \dfrac{\pi \cdot r^2 \cdot h}{3}\)</td>
+                </tr>
+                <!-- SPHERE -->
+                <tr>
+                    <td><strong>Sphere</strong><br/><em>r</em> = radius</td>
+                    <td class="svg-cell">
+                        <svg width="120" height="120" role="img" aria-label="Sphere with radius r labeled" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="45" fill="lightblue" stroke="black" stroke-width="2"/>
+                            <ellipse cx="60" cy="60" rx="45" ry="11" fill="none" stroke="black" stroke-dasharray="4" stroke-width="1"/>
+                            <ellipse cx="60" cy="60" rx="11" ry="45" fill="none" stroke="black" stroke-dasharray="4" stroke-width="1"/>
+                            <line x1="60" y1="60" x2="105" y2="60" stroke="black" stroke-width="1"/>
+                            <text x="83" y="55" font-size="12" fill="#333">r</text>
+                        </svg>
+                    </td>
+                    <td class="formula-cell">\(V = \dfrac{4}{3}\pi r^3\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>As you look through the formulas, you may notice some patterns. The volume of a <strong>cylinder</strong> is the area of its circular base (\(\pi r^2\)) times its height — just like the volume of a rectangular prism is the area of its rectangular base (\(l \cdot w\)) times its height. The cone and pyramid formulas follow the same idea, but are divided by 3. Looking for these patterns can help you remember which formula goes with which solid.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         APPLYING THE FORMULAS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applying-heading">
+        <h3 id="applying-heading">Applying the Formulas</h3>
+
+        <p>To calculate the actual volume of a given shape, substitute the solid's dimensions into the formula and calculate. Remember to always include cubic units in your answer.</p>
+
+        <!-- Example: Cube -->
+        <section class="example" aria-labelledby="ex-3-2-cube-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-2-cube-heading">Example</h3>
+                <p>Find the volume of a cube with side lengths of 6 meters.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-2-cube">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-2-cube" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Identify the formula for a cube: \(V = a^3\), where \(a\) is the side length. Substitute \(a = 6\):</p>
+                    \[V = 6 \cdot 6 \cdot 6 = 6^3 = 216\]
+                    <p><strong>Volume = 216 meters³</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: Pyramid -->
+        <section class="example" aria-labelledby="ex-3-2-pyramid-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-2-pyramid-heading">Example</h3>
+                <p>Find the volume of the shape shown below.</p>
+                <figure style="text-align:center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_2_1.png"
+                        alt="A pyramid with a rectangular base. The base has length 4 inches and width 3 inches. The height of the pyramid is 8 inches, shown as a dashed vertical line from the apex to the base."
+                        style="max-width: 280px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-2-pyramid">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-2-pyramid" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The figure has a rectangular base and rises to a point — it is a <strong>pyramid</strong>. Use the formula \(V = \dfrac{l \cdot w \cdot h}{3}\) with \(l = 4\), \(w = 3\), \(h = 8\):</p>
+                    \[V = \frac{4 \cdot 3 \cdot 8}{3} = \frac{96}{3} = 32\]
+                    <p><strong>The volume of the pyramid is 32 inches³.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example: Cylinder -->
+        <section class="example" aria-labelledby="ex-3-2-cylinder-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-2-cylinder-heading">Example</h3>
+                <p>Find the volume of the shape shown below. Use 3.14 for \(\pi\) and round to the nearest hundredth.</p>
+                <figure style="text-align:center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_2_2.png"
+                        alt="A flat cylinder (disc shape) with radius labeled 7 feet and height labeled 1 foot."
+                        style="max-width: 280px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-2-cylinder">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-2-cylinder" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The figure has a circular base and uniform height — it is a <strong>cylinder</strong>. Use the formula \(V = \pi \cdot r^2 \cdot h\) with \(r = 7\) and \(h = 1\):</p>
+                    \[V = \pi \cdot 7^2 \cdot 1 = \pi \cdot 49 = 49\pi \approx 153.86\]
+                    <p><strong>The volume is \(49\pi\) or approximately 153.86 feet³.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Find the volume of a rectangular prism that is 8 inches long, 3 inches wide, and 10 inches tall.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Use the formula \(V = l \cdot w \cdot h\):</p>
+                \[V = 8 \cdot 3 \cdot 10 = 240\text{ inches}^3\]
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         COMPOSITE SOLIDS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="composite-heading">
+        <h3 id="composite-heading">Composite Solids</h3>
+
+        <p><span class="blue-text"><strong>Composite geometric solids</strong></span> are made from two or more geometric solids combined. You can find the volume of these solids as long as you can identify the individual solids that make up the composite shape.</p>
+
+        <p>Look at the image of a capsule below. Each end is a half-sphere. What solids can you break this shape into?</p>
+
+        <figure style="text-align:center; margin: 1.5rem 0;">
+            <img
+                src="images/mth111_3_2_3.png"
+                alt="A capsule shape: a cylinder with a rounded half-sphere on each end, shown as a single assembled solid."
+                style="max-width: 320px; width: 100%; height: auto;"
+            />
+        </figure>
+
+        <p>You can break it into a cylinder and two half-spheres:</p>
+
+        <figure style="text-align:center; margin: 1.5rem 0;">
+            <img
+                src="images/mth111_3_2_4.png"
+                alt="The capsule broken apart into three pieces: a half-sphere on the left, a cylinder in the middle, and a half-sphere on the right."
+                style="max-width: 380px; width: 100%; height: auto;"
+            />
+        </figure>
+
+        <p>Two half-spheres form one whole sphere, so if you know the volume formulas for a cylinder and a sphere, you can find the volume of this capsule.</p>
+
+        <!-- Composite Example -->
+        <section class="example" aria-labelledby="ex-3-2-composite-heading">
+            <div class="example-problem">
+                <h3 id="ex-3-2-composite-heading">Example</h3>
+                <p>If the radius of the spherical ends is 6 inches, find the volume of the solid below. Use 3.14 for \(\pi\). Round your final answer to the nearest whole number.</p>
+                <figure style="text-align:center; margin: 1rem 0;">
+                    <img
+                        src="images/mth111_3_2_5.png"
+                        alt="A capsule with the cylindrical middle section labeled 24 inches in length. The spherical ends each have a radius of 6 inches."
+                        style="max-width: 340px; width: 100%; height: auto;"
+                    />
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-3-2-composite">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-3-2-composite" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <figure style="text-align:center; margin: 1rem 0;">
+                        <img
+                            src="images/mth111_3_2_6.png"
+                            alt="The capsule with 6 inches labeled on each spherical end and 24 inches labeled on the cylindrical middle section."
+                            style="max-width: 340px; width: 100%; height: auto;"
+                        />
+                    </figure>
+
+                    <p>This capsule is a cylinder with a half-sphere on each end. The two half-spheres combine to form one whole sphere. Identify the formulas and dimensions:</p>
+
+                    <ul>
+                        <li>Cylinder: \(V = \pi \cdot r^2 \cdot h\), with \(r = 6\) and \(h = 24\)</li>
+                        <li>Sphere: \(V = \dfrac{4}{3}\pi r^3\), with \(r = 6\)</li>
+                    </ul>
+
+                    <p><strong>Volume of the cylinder:</strong></p>
+                    \[V = \pi \cdot 6^2 \cdot 24 = \pi \cdot 36 \cdot 24 = 864\pi \approx 2{,}712.96\text{ in}^3\]
+
+                    <p><strong>Volume of the sphere:</strong></p>
+                    \[V = \frac{4}{3}\pi \cdot 6^3 = \frac{4}{3}\pi \cdot 216 = 288\pi \approx 904.32\text{ in}^3\]
+
+                    <p><strong>Total volume of the capsule:</strong></p>
+                    \[2{,}712.96 + 904.32 \approx 3{,}617.28 \approx 3{,}617\text{ in}^3\]
+
+                    <p><strong>The volume of the capsule is \(1{,}152\pi\) or approximately 3,617 inches³.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>A machine takes a solid cylinder with a height of 9 mm and a diameter of 7 mm, and bores a hole all the way through it. The hole has a diameter of 3 mm. Find the volume of the remaining solid.</p>
+            <figure style="text-align:center; margin: 1rem 0;">
+                <img
+                    src="images/mth111_3_2_7.png"
+                    alt="A green cylinder with height labeled 9 mm and diameter labeled 7 mm. A smaller cylindrical hole bored through the center has a diameter labeled 3 mm."
+                    style="max-width: 220px; width: 100%; height: auto;"
+                />
+            </figure>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Find the volume of the full cylinder, then subtract the volume of the smaller bored-out cylinder. The outer radius is \(\frac{7}{2} = 3.5\) mm and the inner radius is \(\frac{3}{2} = 1.5\) mm, with \(h = 9\) mm for both.</p>
+                \[V = (\pi \cdot 3.5^2 \cdot 9) - (\pi \cdot 1.5^2 \cdot 9) \approx 346.36 - 63.62 \approx 282.74 \approx 282.6\text{ mm}^3\]
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Three-dimensional solids have length, width, and height. You use a measurement called <strong>volume</strong> to figure out the amount of space these solids take up. To find the volume of a specific geometric solid, apply the volume formula for that solid. Sometimes you will encounter <strong>composite geometric solids</strong> — solids that combine two or more basic shapes. To find the volume of these, identify the simpler solids that make up the composite figure, find the volumes of those solids individually, and combine them as needed.</p>
+    </section>
+
+</main>
+
+<!-- Toggle scripts -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
