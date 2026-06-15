@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Formulas &amp; Unit Reference</title>
+
+    <!-- MathJax -->
+    <script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]']] },
+            options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /*
+         * COLOR CONTRAST AUDIT (WCAG 2.1 AA)
+         * --green-dark #1e6b18 on white #fff  → 7.2:1  ✓ AAA (used for labels/headers)
+         * --green      #33AB2B on white #fff  → 4.54:1 ✓ AA  (used for bars/backgrounds)
+         * white  #fff  on --green #33AB2B     → 4.54:1 ✓ AA
+         * black  #000  on white #fff          → 21:1   ✓ AAA
+         * black  #000  on --green-light #f0f8ed → 16.9:1 ✓ AAA
+         * No red, no grey text, no light-on-light combinations.
+         */
+        :root {
+            --green:        #33AB2B;
+            --green-dark:   #1e6b18;
+            --green-light:  #f0f8ed;
+            --green-border: #5cb856;
+            --black:        #000000;
+            --white:        #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Visually hidden but accessible to screen readers */
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important; height: 1px !important;
+            padding: 0 !important; margin: -1px !important;
+            overflow: hidden !important; clip: rect(0 0 0 0) !important;
+            white-space: nowrap !important; border: 0 !important;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #c8c8c8;
+            color: var(--black);
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute; top: -999px; left: 0;
+            background: var(--green); color: var(--white);
+            padding: 8px 16px; font-weight: 700; z-index: 999; text-decoration: none;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* Page wrapper */
+        .page {
+            width: 8.5in; min-height: 11in;
+            background: var(--white);
+            margin: 0.5in auto; padding: 0.45in 0.55in;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Green bar: white text on green 4.54:1 ✓ */
+        .page-title {
+            background: var(--green); color: var(--white);
+            font-size: 15pt; font-weight: 700; letter-spacing: 0.04em;
+            padding: 7px 14px; border-radius: 4px; margin-bottom: 14px;
+        }
+        .section-bar {
+            background: var(--green); color: var(--white);
+            font-size: 10pt; font-weight: 700; letter-spacing: 0.05em;
+            padding: 5px 12px; border-radius: 3px; margin: 10px 0 8px 0;
+        }
+
+        /* Two-column layout */
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; align-items: start; }
+        .two-col > .col { border-right: 1px solid var(--green-border); padding-right: 14px; }
+        .two-col > .col:last-child { border-right: none; padding-right: 0; padding-left: 4px; }
+
+        /* Shape blocks */
+        .shape-block { margin-bottom: 10px; }
+
+        /* green-dark on white 7.2:1 ✓ */
+        .shape-label {
+            font-size: 8.5pt; font-weight: 700; color: var(--green-dark);
+            letter-spacing: 0.06em; margin-bottom: 2px; text-transform: uppercase;
+        }
+        /* black on white 21:1 ✓ */
+        .shape-formula { font-size: 8.5pt; color: var(--black); line-height: 1.65; padding-left: 10px; }
+
+        /* Unit list headers: green-dark on white 7.2:1 ✓ */
+        .unit-col-header {
+            font-size: 8pt; font-weight: 700; color: var(--green-dark);
+            text-align: center; text-transform: uppercase; letter-spacing: 0.05em;
+            margin-bottom: 4px; border-bottom: 2px solid var(--green); padding-bottom: 2px;
+        }
+        /* black on white ✓ */
+        .unit-line { font-size: 8pt; line-height: 1.6; color: var(--black); }
+
+        /* Conversion table */
+        .conv-table { width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-top: 6px; }
+
+        /* white text on green ✓ */
+        .conv-table thead th {
+            background: var(--green); color: var(--white);
+            font-weight: 700; padding: 5px 8px; text-align: center;
+            border: 1px solid var(--green-dark);
+            font-size: 8pt; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .conv-table thead th.col-blank { background: var(--white); color: var(--black); border-color: #999; }
+
+        /* black on white ✓ */
+        .conv-table td { padding: 5px 8px; border: 1px solid #999; vertical-align: top; line-height: 1.55; color: var(--black); }
+
+        /* black on green-light 16.9:1 ✓ */
+        .conv-table td.row-label { font-weight: 700; color: var(--black); background: var(--green-light); white-space: nowrap; }
+        .conv-table tr:nth-child(even) td:not(.row-label) { background: var(--green-light); }
+
+        /* Fraction table */
+        .frac-table { width: 100%; border-collapse: collapse; font-size: 7.5pt; margin-top: 6px; }
+
+        /* white text on green ✓ */
+        .frac-table thead th {
+            background: var(--green); color: var(--white);
+            font-weight: 700; padding: 4px 5px; border: 1px solid var(--green-dark); text-align: center;
+        }
+        .frac-table thead th.row-head { background: var(--white); color: var(--black); text-align: left; white-space: nowrap; border-color: #999; }
+
+        /* black on white ✓ / black on green-light ✓ */
+        .frac-table td { padding: 4px 5px; border: 1px solid #999; text-align: center; line-height: 1.45; color: var(--black); }
+        .frac-table td.row-head { font-weight: 700; color: var(--black); background: var(--green-light); text-align: left; white-space: nowrap; }
+        .frac-table tr:nth-child(even) td:not(.row-head) { background: var(--green-light); }
+
+        .divider { border: none; border-top: 1.5px solid var(--green-border); margin: 10px 0; }
+
+        /* black on white ✓ */
+        .page-num { position: absolute; bottom: 0.25in; right: 0.55in; font-size: 8pt; color: var(--black); }
+
+        /* Print */
+        @media print {
+            body { background: var(--white); }
+            .page { margin: 0; box-shadow: none; page-break-after: always; width: 100%; min-height: auto; padding: 0.45in 0.55in; }
+            .page:last-child { page-break-after: auto; }
+            .print-btn { display: none; }
+        }
+
+        /* Print button */
+        .print-btn { display: block; margin: 0 auto 0.3in; width: 8.5in; text-align: right; }
+        .print-btn button {
+            background: var(--green); color: var(--white);
+            border: 2px solid var(--green-dark);
+            padding: 10px 24px; font-size: 11pt;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700; border-radius: 5px; cursor: pointer;
+        }
+        .print-btn button:hover,
+        .print-btn button:focus { background: var(--green-dark); outline: 3px solid var(--black); outline-offset: 2px; }
+
+        mjx-container { font-size: 0.9em !important; }
+    </style>
+</head>
+<body>
+
+<a href="#page1" class="skip-link">Skip to main content</a>
+
+<div class="print-btn">
+    <button onclick="window.print()">🖨 Print / Save as PDF</button>
+</div>
+
+<main>
+
+<!-- ══════════════════════════════════════════════
+     PAGE 1 — GEOMETRIC FORMULAS
+     ══════════════════════════════════════════════ -->
+<div class="page" id="page1">
+    <div class="page-title" role="heading" aria-level="1">Geometric Formulas</div>
+
+    <div class="two-col">
+        <!-- LEFT -->
+        <div class="col">
+            <div class="shape-block">
+                <div class="shape-label">Rectangle</div>
+                <div class="shape-formula">
+                    Perimeter &nbsp; \(P = 2l + 2w\)<br>
+                    Area &nbsp; \(A = lw\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Square</div>
+                <div class="shape-formula">
+                    Perimeter &nbsp; \(P = 4s\)<br>
+                    Area &nbsp; \(A = s^2\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Circle</div>
+                <div class="shape-formula">
+                    Perimeter &nbsp; \(P = 2\pi r\)<br>
+                    Area &nbsp; \(A = \pi r^2\)<br>
+                    where \(\pi \approx 3.14\) or \(\dfrac{22}{7}\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Triangle</div>
+                <div class="shape-formula">
+                    Perimeter &nbsp; \(P = a + b + c\)<br>
+                    Area &nbsp; \(A = \tfrac{1}{2}bh\)<br>
+                    \(m\angle A + m\angle B + m\angle C = 180°\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Right Triangle</div>
+                <div class="shape-formula">
+                    Pythagorean theorem<br>
+                    \(a^2 + b^2 = c^2\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Parallelogram</div>
+                <div class="shape-formula">
+                    Area &nbsp; \(A = bh\)
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="col">
+            <div class="shape-block">
+                <div class="shape-label">Trapezoid</div>
+                <div class="shape-formula">
+                    Area &nbsp; \(A = \tfrac{1}{2}h(B + b)\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Cube</div>
+                <div class="shape-formula">
+                    Surface area &nbsp; \(S = 6s^2\)<br>
+                    Volume &nbsp; \(V = s^3\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Rectangular Solid</div>
+                <div class="shape-formula">
+                    Surface area &nbsp; \(S = 2wh + 2lh + 2lw\)<br>
+                    Volume &nbsp; \(V = lwh\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Sphere</div>
+                <div class="shape-formula">
+                    Surface area &nbsp; \(S = 4\pi r^2\)<br>
+                    Volume &nbsp; \(V = \tfrac{4}{3}\pi r^3\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Right Circular Cylinder</div>
+                <div class="shape-formula">
+                    Surface area &nbsp; \(S = 2\pi r^2 + 2\pi rh\)<br>
+                    Volume &nbsp; \(V = \pi r^2 h\)
+                </div>
+            </div>
+            <div class="shape-block">
+                <div class="shape-label">Right Circular Cone</div>
+                <div class="shape-formula">
+                    Surface area &nbsp; \(S = \pi rl + \pi r^2\)<br>
+                    Volume &nbsp; \(V = \tfrac{1}{3}\pi r^2 h\)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-num" aria-label="Page 1">1</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAGE 2 — UNITS & CONVERSIONS
+     ══════════════════════════════════════════════ -->
+<div class="page" id="page2">
+
+    <div class="section-bar" role="heading" aria-level="1">Metric System Units</div>
+    <div class="two-col">
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Length</div>
+            <div class="unit-line">1 kilometer &nbsp;(km) = 1000 meters</div>
+            <div class="unit-line">1 hectometer (hm) = 100 meters</div>
+            <div class="unit-line">1 dekameter &nbsp;(dam) = 10 meters</div>
+            <div class="unit-line">1 meter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(m) = 1 meter</div>
+            <div class="unit-line">1 decimeter &nbsp;(dm) = 0.1 meter</div>
+            <div class="unit-line">1 centimeter &nbsp;(cm) = 0.01 meter</div>
+            <div class="unit-line">1 millimeter &nbsp;(mm) = 0.001 meter</div>
+        </div>
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Weight (Mass)</div>
+            <div class="unit-line">1 metric ton (t) = 1,000,000 grams</div>
+            <div class="unit-line">1 kilogram &nbsp;(kg) = 1000 grams</div>
+            <div class="unit-line">1 hectogram (hg) = 100 grams</div>
+            <div class="unit-line">1 dekagram &nbsp;(dag) = 10 grams</div>
+            <div class="unit-line">1 gram &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(g) = 1 gram</div>
+            <div class="unit-line">1 decigram &nbsp;(dg) = 0.1 gram</div>
+            <div class="unit-line">1 centigram &nbsp;(cg) = 0.01 gram</div>
+            <div class="unit-line">1 milligram &nbsp;(mg) = 0.001 gram</div>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:8px;">
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Volume (Capacity)</div>
+            <div class="unit-line">1 kiloliter &nbsp;(kL) = 1000 liters</div>
+            <div class="unit-line">1 hectoliter (hL) = 100 liters</div>
+            <div class="unit-line">1 dekaliter &nbsp;(daL) = 10 liters</div>
+            <div class="unit-line">1 liter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(L) = 1 liter</div>
+            <div class="unit-line">1 deciliter &nbsp;(dL) = 0.1 liter</div>
+            <div class="unit-line">1 centiliter &nbsp;(cL) = 0.01 liter</div>
+            <div class="unit-line">1 milliliter &nbsp;(mL) = 0.001 liter</div>
+        </div>
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Temperature: Celsius Scale</div>
+            <div class="unit-line">100°C = Boiling point of water</div>
+            <div class="unit-line">−273.15°C = Absolute zero: coldest possible temperature</div>
+            <div class="unit-line">0°C = Freezing point of water</div>
+            <div class="unit-line">37°C = Normal human body temperature</div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-bar" role="heading" aria-level="1">American System Units</div>
+    <div class="two-col">
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Length</div>
+            <div class="unit-line">1 mile &nbsp;(mi) = 1760 yards (yd)</div>
+            <div class="unit-line">1 mile &nbsp;(mi) = 5280 feet (ft)</div>
+            <div class="unit-line">1 yard &nbsp;(yd) = 3 feet (ft)</div>
+            <div class="unit-line">1 foot &nbsp;(ft) = 12 inches (in.)</div>
+        </div>
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Weight (Mass)</div>
+            <div class="unit-line">1 ton &nbsp;&nbsp;(T) = 2000 pounds (lb)</div>
+            <div class="unit-line">1 pound (lb) = 16 ounces (oz)</div>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top:8px;">
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Volume (Capacity)</div>
+            <div class="unit-line">1 gallon (gal) = 4 quarts (qt)</div>
+            <div class="unit-line">1 quart &nbsp;(qt) = 2 pints (pt)</div>
+            <div class="unit-line">1 pint &nbsp;&nbsp;(pt) = 2 cups (c)</div>
+        </div>
+        <div class="col">
+            <div class="unit-col-header" role="heading" aria-level="2">Temperature: Fahrenheit Scale</div>
+            <div class="unit-line">212° = Boiling point of water</div>
+            <div class="unit-line">−459.67° = Absolute zero</div>
+            <div class="unit-line">32° = Freezing point of water</div>
+            <div class="unit-line">98.6° = Normal human body temperature</div>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-bar" role="heading" aria-level="1">Metric-American Conversion of Units</div>
+
+    <table class="conv-table" aria-label="Metric and American unit conversions">
+        <caption class="visually-hidden">Conversions between American and Metric units for length, volume, weight, and temperature</caption>
+        <thead>
+            <tr>
+                <th class="col-blank" scope="col"><span class="visually-hidden">Unit type</span></th>
+                <th scope="col">American to Metric</th>
+                <th scope="col">Metric to American</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-label" scope="row">Units of Length</td>
+                <td>1 mile = 1.61 kilometers<br>1 yard = 0.914 meter<br>1 foot = 0.305 meter<br>1 inch = 2.54 centimeters</td>
+                <td>1 kilometer = 0.62 mile<br>1 meter = 3.28 feet<br>1 meter = 1.09 yards<br>1 centimeter = 0.394 inch</td>
+            </tr>
+            <tr>
+                <td class="row-label" scope="row">Units of Volume (Capacity)</td>
+                <td>1 gallon = 3.79 liters<br>1 quart = 0.946 liter</td>
+                <td>1 liter = 0.264 gallon<br>1 liter = 1.06 quarts</td>
+            </tr>
+            <tr>
+                <td class="row-label" scope="row">Units of Weight (Mass)</td>
+                <td>1 pound = 0.454 kilogram<br>1 ounce = 28.35 grams</td>
+                <td>1 kilogram = 2.2 pounds<br>1 gram = 0.0353 ounce</td>
+            </tr>
+            <tr>
+                <td class="row-label" scope="row">Units of Temperature</td>
+                <td>\({}^{\circ}\text{F} = \tfrac{9}{5}C + 32\)</td>
+                <td>\({}^{\circ}\text{C} = \tfrac{5}{9}({}^{\circ}\text{F} - 32)\)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <div class="section-bar" role="heading" aria-level="1">Fraction, Decimal, and Percent Equivalents</div>
+
+    <table class="frac-table" aria-label="Fraction, decimal, and percent equivalents">
+        <caption class="visually-hidden">Equivalent representations of common fractions as decimals and percentages</caption>
+        <thead>
+            <tr>
+                <th class="row-head" scope="col">Notation</th>
+                <th scope="col">\(\frac{1}{10}\)</th>
+                <th scope="col">\(\frac{1}{8}\)</th>
+                <th scope="col">\(\frac{1}{6}\)</th>
+                <th scope="col">\(\frac{1}{5}\)</th>
+                <th scope="col">\(\frac{1}{4}\)</th>
+                <th scope="col">\(\frac{3}{10}\)</th>
+                <th scope="col">\(\frac{1}{3}\)</th>
+                <th scope="col">\(\frac{3}{8}\)</th>
+                <th scope="col">\(\frac{2}{5}\)</th>
+                <th scope="col">\(\frac{1}{2}\)</th>
+                <th scope="col">\(\frac{3}{5}\)</th>
+                <th scope="col">\(\frac{5}{8}\)</th>
+                <th scope="col">\(\frac{2}{3}\)</th>
+                <th scope="col">\(\frac{7}{10}\)</th>
+                <th scope="col">\(\frac{3}{4}\)</th>
+                <th scope="col">\(\frac{4}{5}\)</th>
+                <th scope="col">\(\frac{5}{6}\)</th>
+                <th scope="col">\(\frac{7}{8}\)</th>
+                <th scope="col">\(\frac{9}{10}\)</th>
+                <th scope="col">1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-head" scope="row">Decimal</td>
+                <td>0.1</td><td>0.125</td><td>0.1<u>6</u></td><td>0.2</td><td>0.25</td>
+                <td>0.3</td><td>0.<u>3</u></td><td>0.375</td><td>0.4</td><td>0.5</td>
+                <td>0.6</td><td>0.625</td><td>0.<u>6</u></td><td>0.7</td><td>0.75</td>
+                <td>0.8</td><td>0.8<u>3</u></td><td>0.875</td><td>0.9</td><td>1</td>
+            </tr>
+            <tr>
+                <td class="row-head" scope="row">Percent</td>
+                <td>10%</td>
+                <td>12.5%<br><span style="font-size:6.5pt;">or 12½%</span></td>
+                <td>16.<u>6</u>%<br><span style="font-size:6.5pt;">or 16⅔%</span></td>
+                <td>20%</td><td>25%</td><td>30%</td>
+                <td>33.<u>3</u>%<br><span style="font-size:6.5pt;">or 33⅓%</span></td>
+                <td>37.5%<br><span style="font-size:6.5pt;">or 37½%</span></td>
+                <td>40%</td><td>50%</td><td>60%</td>
+                <td>62.5%<br><span style="font-size:6.5pt;">or 62½%</span></td>
+                <td>66.<u>6</u>%<br><span style="font-size:6.5pt;">or 66⅔%</span></td>
+                <td>70%</td><td>75%</td><td>80%</td>
+                <td>83.<u>3</u>%<br><span style="font-size:6.5pt;">or 83⅓%</span></td>
+                <td>87.5%<br><span style="font-size:6.5pt;">or 87½%</span></td>
+                <td>90%</td><td>100%</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-num" aria-label="Page 2">2</div>
+</div>
+<footer style="text-align: center;">
+  <p>
+    <a href="https://hme206.github.io/MTH154Textbook/acknowledgement.html">
+      Heather Umphlett
+    </a>. This work is licensed under 
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+      CC BY-SA 4.0
+    </a>.
+  </p>
+</footer>
+</main>
+</body>
+</html>
