@@ -605,3 +605,28 @@ table tr.highlighted {
     }
 
 }
+/* Learning Objectives box */
+.learning-obj-box {
+    background-color: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 6px;
+    padding: 20px 25px;
+    margin: 20px 0 30px 0;
+}
+
+.learning-obj-box h3 {
+    color: #856404;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.learning-obj-box ol {
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.learning-obj-box li {
+    margin-bottom: 6px;
+    color: #333;
+}
