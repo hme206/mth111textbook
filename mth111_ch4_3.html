@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 4.3: Graphing Using Intercepts</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Exercises */
+        .exercises-section { margin-top: 2rem; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+        .ex-grid.two-col  { grid-template-columns: repeat(2, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.6; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 0; }
+        .ex-wide li { margin-bottom: 0.75rem; line-height: 1.6; }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* Collapsible exercises */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+
+        /* Two-column algebra table */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 50%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .ex-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+            .ex-grid.two-col  { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 4: Graphs</h1>
+    <h2 id="section-4-3">Section 4.3: Graphing Using Intercepts</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Identify the intercepts on a graph.</li>
+            <li>Find the intercepts from an equation of a line.</li>
+            <li>Graph a line using the intercepts.</li>
+            <li>Choose the most convenient method to graph a line.</li>
+        </ol>
+    </div>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: IDENTIFY INTERCEPTS ON A GRAPH
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="identify-heading">
+        <h3 id="identify-heading">Identify the Intercepts on a Graph</h3>
+
+        <p>The <strong>intercepts</strong> of a graph are the points at which the graph crosses the \(x\)- and \(y\)-axes.</p>
+
+        <p>The <strong>x-intercept</strong> is the point at which the graph crosses the \(x\)-axis. At this point, the \(y\)-coordinate is zero, so the x-intercept has the form \((x, 0)\).</p>
+
+        <p>The <strong>y-intercept</strong> is the point at which the graph crosses the \(y\)-axis. At this point, the \(x\)-coordinate is zero, so the y-intercept has the form \((0, y)\).</p>
+
+        <div class="definition-box" role="note" aria-label="Definition of Intercepts">
+            <h3>Intercepts of a Line</h3>
+            <ul>
+                <li>The <strong>x-intercept</strong> is where the line crosses the \(x\)-axis. It has the form \((x, 0)\).</li>
+                <li>The <strong>y-intercept</strong> is where the line crosses the \(y\)-axis. It has the form \((0, y)\).</li>
+            </ul>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2: FIND INTERCEPTS FROM AN EQUATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="find-heading">
+        <h3 id="find-heading">Find the Intercepts from an Equation of a Line</h3>
+
+        <p>To determine the <strong>x-intercept</strong>, substitute \(y = 0\) into the equation and solve for \(x\). To determine the <strong>y-intercept</strong>, substitute \(x = 0\) into the equation and solve for \(y\).</p>
+
+        <p>Let's find the intercepts of the equation \(y = 3x - 1\).</p>
+
+        <p><strong>Finding the x-intercept:</strong> substitute \(y = 0\) and solve for \(x\).</p>
+
+        <table class="worked-table" aria-label="Finding the x-intercept of y equals 3x minus 1">
+            <tbody>
+                <tr>
+                    <td>\(y = 3x - 1\)</td>
+                    <td>Start with the original equation.</td>
+                </tr>
+                <tr>
+                    <td>\(0 = 3x - 1\)</td>
+                    <td>Substitute \(y = 0\).</td>
+                </tr>
+                <tr>
+                    <td>\(1 = 3x\)</td>
+                    <td>Add \(1\) to both sides.</td>
+                </tr>
+                <tr>
+                    <td>\(\dfrac{1}{3} = x\)</td>
+                    <td>Divide both sides by \(3\).</td>
+                </tr>
+                <tr>
+                    <td>x-intercept: \(\left(\dfrac{1}{3}, 0\right)\)</td>
+                    <td>Write the intercept as an ordered pair.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Finding the y-intercept:</strong> substitute \(x = 0\) and solve for \(y\).</p>
+
+        <table class="worked-table" aria-label="Finding the y-intercept of y equals 3x minus 1">
+            <tbody>
+                <tr>
+                    <td>\(y = 3x - 1\)</td>
+                    <td>Start with the original equation.</td>
+                </tr>
+                <tr>
+                    <td>\(y = 3(0) - 1\)</td>
+                    <td>Substitute \(x = 0\).</td>
+                </tr>
+                <tr>
+                    <td>\(y = 0 - 1\)</td>
+                    <td>Multiply \(3 \cdot 0 = 0\).</td>
+                </tr>
+                <tr>
+                    <td>\(y = -1\)</td>
+                    <td>Simplify.</td>
+                </tr>
+                <tr>
+                    <td>y-intercept: \((0, -1)\)</td>
+                    <td>Write the intercept as an ordered pair.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Looking at the graph of \(y = 3x - 1\) below, we can confirm that the line crosses the \(x\)-axis at \(\left(\frac{1}{3}, 0\right)\) and the \(y\)-axis at \((0, -1)\).</p>
+
+        <figure role="group" aria-labelledby="fig-4-3-intercepts-caption">
+            <svg class="svg-wrap grid-svg" viewBox="-250 -250 500 500" xmlns="http://www.w3.org/2000/svg" aria-labelledby="fig-4-3-intercepts-title fig-4-3-intercepts-desc" focusable="false">
+                <title id="fig-4-3-intercepts-title">Graph of y = 3x minus 1 showing intercepts</title>
+                <desc id="fig-4-3-intercepts-desc">A plotted line for y equals 3x minus 1 with red markers at the x-intercept (one third, 0) and y-intercept (0, negative 1).</desc>
+                <defs>
+                    <pattern id="grid-4-3" width="25" height="25" patternUnits="userSpaceOnUse">
+                        <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect x="-225" y="-225" width="450" height="450" fill="url(#grid-4-3)" />
+                <g stroke="#000" stroke-width="2">
+                    <line x1="0" y1="-225" x2="0" y2="225" />
+                    <line x1="-225" y1="0" x2="225" y2="0" />
+                </g>
+                <text x="210" y="-10" font-size="16" fill="#000">x-axis</text>
+                <text x="10" y="-210" font-size="16" fill="#000">y-axis</text>
+                <g font-size="10" fill="#000">
+                    <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-9</text>
+                    <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-8</text>
+                    <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-7</text>
+                    <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-6</text>
+                    <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-5</text>
+                    <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-4</text>
+                    <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-3</text>
+                    <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-2</text>
+                    <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-1</text>
+                    <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">1</text>
+                    <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">2</text>
+                    <line x1="75" y1="-5" x2="75" y2="5"/><text x="70" y="20">3</text>
+                    <line x1="100" y1="-5" x2="100" y2="5"/><text x="95" y="20">4</text>
+                    <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">5</text>
+                    <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">6</text>
+                    <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">7</text>
+                    <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">8</text>
+                    <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">9</text>
+                    <line x1="-5" y1="-225" x2="5" y2="-225"/><text x="-20" y="-222">9</text>
+                    <line x1="-5" y1="-200" x2="5" y2="-200"/><text x="-20" y="-197">8</text>
+                    <line x1="-5" y1="-175" x2="5" y2="-175"/><text x="-20" y="-172">7</text>
+                    <line x1="-5" y1="-150" x2="5" y2="-150"/><text x="-20" y="-147">6</text>
+                    <line x1="-5" y1="-125" x2="5" y2="-125"/><text x="-20" y="-122">5</text>
+                    <line x1="-5" y1="-100" x2="5" y2="-100"/><text x="-20" y="-97">4</text>
+                    <line x1="-5" y1="-75" x2="5" y2="-75"/><text x="-20" y="-72">3</text>
+                    <line x1="-5" y1="-50" x2="5" y2="-50"/><text x="-20" y="-47">2</text>
+                    <line x1="-5" y1="-25" x2="5" y2="-25"/><text x="-20" y="-22">1</text>
+                    <line x1="-5" y1="25" x2="5" y2="25"/><text x="-25" y="28">-1</text>
+                    <line x1="-5" y1="50" x2="5" y2="50"/><text x="-25" y="53">-2</text>
+                    <line x1="-5" y1="75" x2="5" y2="75"/><text x="-25" y="78">-3</text>
+                    <line x1="-5" y1="100" x2="5" y2="100"/><text x="-25" y="103">-4</text>
+                    <line x1="-5" y1="125" x2="5" y2="125"/><text x="-25" y="130">-5</text>
+                    <line x1="-5" y1="150" x2="5" y2="150"/><text x="-25" y="155">-6</text>
+                    <line x1="-5" y1="175" x2="5" y2="175"/><text x="-25" y="180">-7</text>
+                    <line x1="-5" y1="200" x2="5" y2="200"/><text x="-25" y="205">-8</text>
+                    <line x1="-5" y1="225" x2="5" y2="225"/><text x="-25" y="230">-9</text>
+                </g>
+                <!-- line y = 3x - 1 -->
+                <line x1="-66.7" y1="225" x2="83.33" y2="-225" stroke="#000" stroke-width="2" stroke-linecap="round" />
+                <!-- intercept points -->
+                <circle cx="0" cy="25" r="6" fill="#d9534f" aria-hidden="true" />
+                <circle cx="8.33" cy="0" r="6" fill="#d9534f" aria-hidden="true" />
+                <text x="10" y="35" font-size="12">(0, −1)</text>
+                <text x="20" y="5" font-size="12">(1/3, 0)</text>
+            </svg>
+            <figcaption id="fig-4-3-intercepts-caption">Graph of \(y = 3x - 1\) showing the y-intercept \((0, -1)\) and x-intercept \(\left(\frac{1}{3}, 0\right)\).</figcaption>
+        </figure>
+
+        <div class="definition-box" role="note" aria-label="How to find intercepts from an equation">
+            <h3>How To: Find the Intercepts from an Equation of a Line</h3>
+            <ul>
+                <li>To find the <strong>x-intercept</strong>, substitute \(y = 0\) into the equation and solve for \(x\).</li>
+                <li>To find the <strong>y-intercept</strong>, substitute \(x = 0\) into the equation and solve for \(y\).</li>
+            </ul>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-4-3-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-3-1-heading">Example 1</h3>
+                <p>Find the intercepts of the equation \(y = -\dfrac{1}{3}x - 4\). Then use a graphing utility to verify your answer.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-3-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-3-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <p><strong>Finding the x-intercept:</strong> substitute \(y = 0\) and solve for \(x\).</p>
+
+                    \[\begin{align*}
+                    y &= -\frac{1}{3}x - 4 \\
+                    0 &= -\frac{1}{3}x - 4 \\
+                    4 &= -\frac{1}{3}x \\
+                    -\frac{3}{1} \cdot 4 &= x \\
+                    -12 &= x
+                    \end{align*}\]
+
+                    <p>The x-intercept is \((-12, 0)\).</p>
+
+                    <p><strong>Finding the y-intercept:</strong> substitute \(x = 0\) and solve for \(y\).</p>
+
+                    \[\begin{align*}
+                    y &= -\frac{1}{3}x - 4 \\
+                    y &= -\frac{1}{3}(0) - 4 \\
+                    y &= 0 - 4 \\
+                    y &= -4
+                    \end{align*}\]
+
+                    <p>The y-intercept is \((0, -4)\).</p>
+
+                    <p>We can verify these answers graphically below. The line crosses the \(x\)-axis at \((-12, 0)\) and the \(y\)-axis at \((0, -4)\).</p>
+
+                    <figure role="group" aria-labelledby="fig-4-3-ex1-caption">
+                        <svg class="svg-wrap grid-svg" viewBox="-250 -250 500 500" xmlns="http://www.w3.org/2000/svg" aria-labelledby="fig-4-3-ex1-title fig-4-3-ex1-desc" focusable="false">
+                            <title id="fig-4-3-ex1-title">Graph of y equals negative one third x minus 4 showing intercepts</title>
+                            <desc id="fig-4-3-ex1-desc">A line for y equals negative one third x minus 4 with points marked at x-intercept (negative 12, 0) and y-intercept (0, negative 4).</desc>
+                            <defs>
+                                <pattern id="grid-4-3-ex1" width="25" height="25" patternUnits="userSpaceOnUse">
+                                    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
+                                </pattern>
+                            </defs>
+                            <rect x="-225" y="-225" width="450" height="450" fill="url(#grid-4-3-ex1)" />
+                            <!-- axes: y-axis shifted right to x=100 to accommodate x going to -12 -->
+                            <g stroke="#000" stroke-width="2">
+                                <line x1="100" y1="-225" x2="100" y2="225" />
+                                <line x1="-225" y1="0" x2="225" y2="0" />
+                            </g>
+                            <text x="210" y="-10" font-size="16" fill="#000">x-axis</text>
+                            <text x="110" y="-210" font-size="16" fill="#000">y-axis</text>
+                            <g font-size="10" fill="#000">
+                                <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-12</text>
+                                <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-11</text>
+                                <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-10</text>
+                                <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-9</text>
+                                <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-8</text>
+                                <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-7</text>
+                                <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-6</text>
+                                <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-5</text>
+                                <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-4</text>
+                                <line x1="0" y1="-5" x2="0" y2="5"/><text x="-5" y="20">-3</text>
+                                <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">-2</text>
+                                <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">-1</text>
+                                <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">1</text>
+                                <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">2</text>
+                                <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">3</text>
+                                <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">4</text>
+                                <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">5</text>
+                                <line x1="95" y1="-225" x2="105" y2="-225"/><text x="110" y="-222">9</text>
+                                <line x1="95" y1="-200" x2="105" y2="-200"/><text x="110" y="-197">8</text>
+                                <line x1="95" y1="-175" x2="105" y2="-175"/><text x="110" y="-172">7</text>
+                                <line x1="95" y1="-150" x2="105" y2="-150"/><text x="110" y="-147">6</text>
+                                <line x1="95" y1="-125" x2="105" y2="-125"/><text x="110" y="-122">5</text>
+                                <line x1="95" y1="-100" x2="105" y2="-100"/><text x="110" y="-97">4</text>
+                                <line x1="95" y1="-75" x2="105" y2="-75"/><text x="110" y="-72">3</text>
+                                <line x1="95" y1="-50" x2="105" y2="-50"/><text x="110" y="-47">2</text>
+                                <line x1="95" y1="-25" x2="105" y2="-25"/><text x="110" y="-22">1</text>
+                                <line x1="95" y1="25" x2="105" y2="25"/><text x="110" y="28">-1</text>
+                                <line x1="95" y1="50" x2="105" y2="50"/><text x="110" y="53">-2</text>
+                                <line x1="95" y1="75" x2="105" y2="75"/><text x="110" y="78">-3</text>
+                                <line x1="95" y1="100" x2="105" y2="100"/><text x="110" y="103">-4</text>
+                                <line x1="95" y1="125" x2="105" y2="125"/><text x="110" y="130">-5</text>
+                                <line x1="95" y1="150" x2="105" y2="150"/><text x="110" y="155">-6</text>
+                                <line x1="95" y1="175" x2="105" y2="175"/><text x="110" y="180">-7</text>
+                                <line x1="95" y1="200" x2="105" y2="200"/><text x="110" y="205">-8</text>
+                                <line x1="95" y1="225" x2="105" y2="225"/><text x="110" y="230">-9</text>
+                            </g>
+                            <!-- line y = -1/3 x - 4; y-intercept at (0,-4) → SVG y=100 with x-axis at y=100 offset -->
+                            <line x1="-220" y1="0" x2="190" y2="127" stroke="#000" stroke-width="2" stroke-linecap="round" />
+                            <!-- intercept points -->
+                            <circle cx="100" cy="100" r="4" fill="#000" aria-hidden="true" />
+                            <circle cx="-220" cy="0" r="4" fill="#000" aria-hidden="true" />
+                            <text x="110" y="98" font-size="12">(0, −4)</text>
+                            <text x="-220" y="-5" font-size="12">(−12, 0)</text>
+                        </svg>
+                        <figcaption id="fig-4-3-ex1-caption">Graph of \(y = -\dfrac{1}{3}x - 4\) showing the x-intercept \((-12, 0)\) and y-intercept \((0, -4)\).</figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3: CHOOSING THE MOST CONVENIENT METHOD
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="convenient-heading">
+        <h3 id="convenient-heading">Choose the Most Convenient Method to Graph a Line</h3>
+
+        <p>We have now seen two methods for graphing a line: plotting points and using intercepts. How do you decide which method to use for a given equation? Here are some guidelines:</p>
+
+        <div class="definition-box" role="note" aria-label="Choosing a graphing method">
+            <h3>Choosing the Most Convenient Method</h3>
+            <ul>
+                <li>If the equation is already solved for \(y\) (that is, in the form \(y = mx + b\)), the <strong>point-plotting method</strong> is often easiest — simply choose a few \(x\)-values and calculate \(y\).</li>
+                <li>If the equation is in the form \(Ax + By = C\), the <strong>intercept method</strong> is often most convenient — set each variable to zero in turn to find the two intercepts, then draw the line through them.</li>
+                <li>If the equation has only one variable (e.g., \(x = a\) or \(y = b\)), recognize it immediately as a <strong>vertical</strong> or <strong>horizontal</strong> line.</li>
+            </ul>
+            <p>Remember: you only need two points to draw a line, but finding a third point is a good habit to catch errors. If your three points do not line up, recheck your algebra.</p>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-4-3-heading">
+        <h2 id="exercises-4-3-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-4-3-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-4-3-content" class="exercises-content" role="region" aria-labelledby="exercises-4-3-heading">
+
+            <h3>Find the x- and y-Intercepts</h3>
+            <p>In the following exercises, find the \(x\)- and \(y\)-intercepts. Verify your answer using a graphing utility.</p>
+
+            <div class="ex-grid two-col">
+                <div class="ex-item"><strong>1.</strong> \(y = \dfrac{1}{3}x - 4\)</div>
+                <div class="ex-item"><strong>2.</strong> \(y = -\dfrac{3}{2}x + 5\)</div>
+                <div class="ex-item"><strong>3.</strong> \(-2x - 4 = y\)</div>
+                <div class="ex-item"><strong>4.</strong> \(y = \dfrac{2}{3}x + 5\)</div>
+                <div class="ex-item"><strong>5.</strong> \(y = -\dfrac{5}{4}x - 1\)</div>
+                <div class="ex-item"><strong>6.</strong> \(y = -2x + 5\)</div>
+                <div class="ex-item"><strong>7.</strong> \(\dfrac{1}{2}x + 4 = y\)</div>
+                <div class="ex-item"><strong>8.</strong> \(y = 2x - 3\)</div>
+            </div>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

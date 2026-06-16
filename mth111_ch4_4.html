@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 4.4: Understand Slope of a Line</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Self-check pattern */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* Worked table */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 50%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+
+        /* Exercises */
+        .exercises-section { margin-top: 2rem; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+        .ex-grid.two-col  { grid-template-columns: repeat(2, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.6; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 0; }
+        .ex-wide li { margin-bottom: 0.75rem; line-height: 1.6; }
+
+        /* Collapsible exercises */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+
+        /* Footnote */
+        .page-footnote {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ccc;
+            font-size: 0.85em;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .ex-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+            .ex-grid.two-col  { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 4: Graphs</h1>
+    <h2 id="section-4-4">Section 4.4: Understand Slope of a Line</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Find the slope of a line from its graph.</li>
+            <li>Find the slope of horizontal and vertical lines.</li>
+            <li>Use the slope formula to find the slope of a line between two points.</li>
+            <li>Graph a line given a point and the slope.</li>
+            <li>Solve slope applications.</li>
+        </ol>
+    </div>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: SLOPE-INTERCEPT INTRO (MTH154)
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="slope-intercept-heading">
+        <h3 id="slope-intercept-heading">The Slope-Intercept Method</h3>
+
+        <p>Before we get into examples, let's talk about the slope-intercept method for graphing linear equations. In the previous sections, we revisited graphing by using an \(x\)/\(y\) table. With that method, you substitute values in for \(x\) to find values of \(y\) to plot the ordered pair \((x, y)\). That method can entail a lot of work. While you can always use that method, we will now venture into the slope-intercept method.</p>
+
+        <p>An equation in the form \(y = mx + b\) is an equation in <strong>slope-intercept form</strong>. The variable \(m\) represents the <strong>slope</strong>, or "rate of change", and the variable \(b\) represents the <strong>y-intercept</strong>, which is the point \((0, b)\).</p>
+
+        <div class="definition-box" role="note" aria-label="Slope-Intercept Form">
+            <h3>Slope-Intercept Form</h3>
+            <p>An equation of the form \(y = mx + b\) is written in <strong>slope-intercept form</strong>, where:</p>
+            <ul>
+                <li>\(m\) = the slope (rate of change) = \(\dfrac{\text{rise}}{\text{run}}\)</li>
+                <li>\(b\) = the y-intercept, giving the point \((0, b)\)</li>
+            </ul>
+            <p><em>Note: Any whole number slope can be written as a fraction over 1. For example, \(m = 2 = \dfrac{2}{1}\).</em></p>
+        </div>
+
+        <!-- How To Box -->
+        <div class="orange-box" role="note" aria-label="How to Graph Using Slope-Intercept Method">
+            <h3>How To: Graph Using the Slope-Intercept Method</h3>
+            <ol>
+                <li>Place the equation in the form \(y = mx + b\) by solving for \(y\).</li>
+                <li>Identify the slope \(m = \dfrac{\text{rise}}{\text{run}}\).</li>
+                <li>Identify the y-intercept \((0, b)\).</li>
+                <li>Plot the point \((0, b)\).</li>
+                <li>From that point, rise (or fall if negative) the number of spaces in the numerator of the slope, then run the number of spaces in the denominator, and place a point at the final location.</li>
+                <li>Connect the two points with a line. Repeat step 5 as needed to plot more points.</li>
+            </ol>
+        </div>
+
+        <!-- Example 1: slope-intercept graphing from MTH154 2.2 -->
+        <section class="example" aria-labelledby="ex-4-4-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-4-1-heading">Example 1</h3>
+                <p>Graph the equation \(-2x + y = 4\) using the slope-intercept method.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-4-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-4-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, solve the equation for \(y\).</p>
+
+                    \[\begin{align*}
+                    -2x + y &= 4 \\
+                    y &= 2x + 4
+                    \end{align*}\]
+
+                    <p>Next, identify the slope and y-intercept:</p>
+                    <ul>
+                        <li><strong>Slope:</strong> \(m = 2 = \dfrac{2}{1}\) — rise 2 units, run 1 unit.</li>
+                        <li><strong>y-intercept:</strong> \((0, 4)\)</li>
+                    </ul>
+
+                    <p>Plot the y-intercept at \((0, 4)\), then use the slope to find a second point by rising 2 and running 1. Connect the points to draw the line.</p>
+
+                    <figure role="group" aria-labelledby="fig-4-4-1-caption">
+                        <svg viewBox="-5 -5 10 10" xmlns="http://www.w3.org/2000/svg" aria-labelledby="fig-4-4-1-title fig-4-4-1-desc" focusable="false">
+                            <title id="fig-4-4-1-title">Graph of y equals 2x plus 4 using slope-intercept method</title>
+                            <desc id="fig-4-4-1-desc">Coordinate grid showing the y-intercept at (0, 4), a rise of 2 units and run of 1 unit to a second point, and the line y equals 2x plus 4.</desc>
+                            <!-- Grid lines -->
+                            <g stroke="lightgray" stroke-width="0.01">
+                                <line x1="-5" y1="-5" x2="-5" y2="5"/><line x1="-4" y1="-5" x2="-4" y2="5"/>
+                                <line x1="-3" y1="-5" x2="-3" y2="5"/><line x1="-2" y1="-5" x2="-2" y2="5"/>
+                                <line x1="-1" y1="-5" x2="-1" y2="5"/><line x1="0" y1="-5" x2="0" y2="5"/>
+                                <line x1="1" y1="-5" x2="1" y2="5"/><line x1="2" y1="-5" x2="2" y2="5"/>
+                                <line x1="3" y1="-5" x2="3" y2="5"/><line x1="4" y1="-5" x2="4" y2="5"/>
+                                <line x1="-5" y1="-5" x2="5" y2="-5"/><line x1="-5" y1="-4" x2="5" y2="-4"/>
+                                <line x1="-5" y1="-3" x2="5" y2="-3"/><line x1="-5" y1="-2" x2="5" y2="-2"/>
+                                <line x1="-5" y1="-1" x2="5" y2="-1"/><line x1="-5" y1="0" x2="5" y2="0"/>
+                                <line x1="-5" y1="1" x2="5" y2="1"/><line x1="-5" y1="2" x2="5" y2="2"/>
+                                <line x1="-5" y1="3" x2="5" y2="3"/><line x1="-5" y1="4" x2="5" y2="4"/>
+                            </g>
+                            <!-- x-axis at y=4 (since y-intercept is at 4, we shift the axis) -->
+                            <line x1="-5" y1="4" x2="5" y2="4" stroke="black" stroke-width="0.05"/>
+                            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" stroke-width="0.05"/>
+                            <!-- Tick marks -->
+                            <g stroke="black" stroke-width="0.05">
+                                <line x1="-4" y1="4.1" x2="-4" y2="3.9"/><line x1="-3" y1="4.1" x2="-3" y2="3.9"/>
+                                <line x1="-2" y1="4.1" x2="-2" y2="3.9"/><line x1="-1" y1="4.1" x2="-1" y2="3.9"/>
+                                <line x1="1" y1="4.1" x2="1" y2="3.9"/><line x1="2" y1="4.1" x2="2" y2="3.9"/>
+                                <line x1="3" y1="4.1" x2="3" y2="3.9"/><line x1="4" y1="4.1" x2="4" y2="3.9"/>
+                                <line x1="0.1" y1="-4" x2="-0.1" y2="-4"/><line x1="0.1" y1="-3" x2="-0.1" y2="-3"/>
+                                <line x1="0.1" y1="-2" x2="-0.1" y2="-2"/><line x1="0.1" y1="-1" x2="-0.1" y2="-1"/>
+                                <line x1="0.1" y1="1" x2="-0.1" y2="1"/><line x1="0.1" y1="2" x2="-0.1" y2="2"/>
+                                <line x1="0.1" y1="3" x2="-0.1" y2="3"/>
+                            </g>
+                            <!-- Labels -->
+                            <g font-size="0.4" fill="#000">
+                                <text x="-4" y="4.5" text-anchor="middle">-4</text><text x="-3" y="4.5" text-anchor="middle">-3</text>
+                                <text x="-2" y="4.5" text-anchor="middle">-2</text><text x="-1" y="4.5" text-anchor="middle">-1</text>
+                                <text x="1" y="4.5" text-anchor="middle">1</text><text x="2" y="4.5" text-anchor="middle">2</text>
+                                <text x="3" y="4.5" text-anchor="middle">3</text><text x="4" y="4.5" text-anchor="middle">4</text>
+                                <text x="-0.3" y="-4" text-anchor="end" dominant-baseline="middle">8</text>
+                                <text x="-0.3" y="-3" text-anchor="end" dominant-baseline="middle">7</text>
+                                <text x="-0.3" y="-2" text-anchor="end" dominant-baseline="middle">6</text>
+                                <text x="-0.3" y="-1" text-anchor="end" dominant-baseline="middle">5</text>
+                                <text x="-0.3" y="0" text-anchor="end" dominant-baseline="middle">4</text>
+                                <text x="-0.3" y="1" text-anchor="end" dominant-baseline="middle">3</text>
+                                <text x="-0.3" y="2" text-anchor="end" dominant-baseline="middle">2</text>
+                                <text x="-0.3" y="3" text-anchor="end" dominant-baseline="middle">1</text>
+                            </g>
+                            <!-- Rise/run arrows -->
+                            <line x1="0" y1="0" x2="0" y2="-2" stroke="orange" stroke-width="0.1" stroke-dasharray="0.2 0.1"/>
+                            <text x="-1" y="-1" font-size="0.35" fill="black" text-anchor="end" dominant-baseline="middle">Rise 2</text>
+                            <line x1="0" y1="-2" x2="1" y2="-2" stroke="magenta" stroke-width="0.1" stroke-dasharray="0.2 0.1"/>
+                            <text x="0.5" y="-2.4" font-size="0.35" fill="black" text-anchor="middle">Run 1</text>
+                            <!-- y-intercept point -->
+                            <circle cx="0" cy="0" r="0.15" fill="blue"/>
+                            <text x="0.2" y="0.3" font-size="0.3" fill="black">y-intercept (0,4)</text>
+                            <!-- second point -->
+                            <circle cx="1" cy="-2" r="0.15" fill="blue"/>
+                            <!-- Line y = 2x + 4 -->
+                            <line x1="-3" y1="6" x2="3" y2="-6" stroke="blue" stroke-width="0.05"/>
+                        </svg>
+                        <figcaption id="fig-4-4-1-caption">Graph of \(y = 2x + 4\) using the slope-intercept method, showing the y-intercept at \((0, 4)\) and the rise of 2 over a run of 1.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 1 -->
+        <div class="self-check" role="note" aria-label="Self Check 1">
+            <h4>Self Check 1</h4>
+            <p>Graph the equation \(3x + y = -2\) using the slope-intercept method. Identify the slope and y-intercept first.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc1-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc1-answer" class="self-check-answer">
+                <p>First solve for \(y\): \(y = -3x - 2\).</p>
+                <ul>
+                    <li><strong>Slope:</strong> \(m = -3 = \dfrac{-3}{1}\) — fall 3 units, run 1 unit.</li>
+                    <li><strong>y-intercept:</strong> \((0, -2)\)</li>
+                </ul>
+                <p>Plot \((0, -2)\), then move down 3 and right 1 to place the second point at \((1, -5)\). Draw the line through both points.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2: SLOPE — RISE OVER RUN
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="slope-def-heading">
+        <h3 id="slope-def-heading">Understand Slope</h3>
+
+        <p>As we've been graphing linear equations, we've seen that some lines slant up as they go from left to right and some lines slant down. Some lines are very steep and some lines are flatter. What determines whether a line slants up or down, and how steep it is?</p>
+
+        <p>The steepness of the slant of a line is called the <strong>slope</strong> of the line. The concept of slope has many applications in the real world — the pitch of a roof, the grade of a highway, and the slope of a wheelchair ramp are just a few examples. When you ride a bicycle, you feel the slope as you pump uphill or coast downhill.</p>
+
+        <p>To find the slope of a line on a graph, we measure the vertical change and the horizontal change between any two points on the line. The vertical change is called the <strong>rise</strong> and the horizontal change is called the <strong>run</strong>.</p>
+
+        <div class="definition-box" role="note" aria-label="Slope of a Line definition">
+            <h3>Slope of a Line</h3>
+            <p>The slope of a line is:</p>
+            \[m = \frac{\text{rise}}{\text{run}}\]
+            <p>The <strong>rise</strong> measures the vertical change; the <strong>run</strong> measures the horizontal change. Reading from left to right, a line that goes upward has a <strong>positive</strong> slope and a line that goes downward has a <strong>negative</strong> slope.</p>
+        </div>
+
+        <p>To find slope from a graph, locate any two points on the line whose coordinates are integers. Starting with the point on the left, sketch a right triangle with the hypotenuse going from the first point to the second point. Count the rise on the vertical leg (negative if you go down) and the run on the horizontal leg, then take the ratio.</p>
+
+        <!-- How To: Find slope from a graph -->
+        <div class="orange-box" role="note" aria-label="How to find slope from a graph">
+            <h3>How To: Find the Slope of a Line from its Graph</h3>
+            <ol>
+                <li>Locate two points on the line whose coordinates are integers.</li>
+                <li>Starting with the point on the left, sketch a right triangle with the hypotenuse going from the first point to the second point.</li>
+                <li>Count the rise on the vertical leg of the triangle. The rise is negative if you go down.</li>
+                <li>Count the run on the horizontal leg.</li>
+                <li>Use the slope formula: \(m = \dfrac{\text{rise}}{\text{run}}\).</li>
+            </ol>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3: SLOPE OF HORIZONTAL/VERTICAL LINES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="horiz-vert-slope-heading">
+        <h3 id="horiz-vert-slope-heading">Slope of Horizontal and Vertical Lines</h3>
+
+        <p>What is the slope of a horizontal line such as \(y = 4\)? If we pick two points on the line, say \((0, 4)\) and \((3, 4)\), the rise is \(0\) and the run is \(3\), giving us \(m = \frac{0}{3} = 0\). All horizontal lines have a slope of zero — the line is perfectly flat, so there is no vertical change at all.</p>
+
+        <p>What about a vertical line such as \(x = 3\)? Using the points \((3, 0)\) and \((3, 2)\), the rise is \(2\) and the run is \(0\). But we cannot divide by zero, so the slope of a vertical line is <strong>undefined</strong>.</p>
+
+        <div class="definition-box" role="note" aria-label="Slopes of horizontal and vertical lines">
+            <h3>Slopes of Horizontal and Vertical Lines</h3>
+            <ul>
+                <li>The slope of a <strong>horizontal line</strong> \(y = b\) is \(0\).</li>
+                <li>The slope of a <strong>vertical line</strong> \(x = a\) is <strong>undefined</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Quick Guide -->
+        <div class="definition-box" role="note" aria-label="Quick guide to slopes">
+            <h3>Quick Guide to Slopes of Lines</h3>
+            <table aria-label="Summary of slope types">
+                <thead>
+                    <tr>
+                        <th scope="col">Line Direction</th>
+                        <th scope="col">Slope</th>
+                        <th scope="col">Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rises left to right</td>
+                        <td>Positive (\(m > 0\))</td>
+                        <td>\(m = \frac{2}{3}\)</td>
+                    </tr>
+                    <tr>
+                        <td>Falls left to right</td>
+                        <td>Negative (\(m < 0\))</td>
+                        <td>\(m = -\frac{1}{4}\)</td>
+                    </tr>
+                    <tr>
+                        <td>Horizontal</td>
+                        <td>Zero (\(m = 0\))</td>
+                        <td>\(y = 5\)</td>
+                    </tr>
+                    <tr>
+                        <td>Vertical</td>
+                        <td>Undefined</td>
+                        <td>\(x = 2\)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-4-4-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-4-2-heading">Example 2</h3>
+                <p>Find the slope of each line.</p>
+                <ol type="a">
+                    <li>\(x = 8\)</li>
+                    <li>\(y = -5\)</li>
+                </ol>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-4-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-4-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <ol type="a">
+                        <li>\(x = 8\) is a vertical line. Its slope is <strong>undefined</strong>.</li>
+                        <li>\(y = -5\) is a horizontal line. Its slope is \(m = 0\).</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 2 -->
+        <div class="self-check" role="note" aria-label="Self Check 2">
+            <h4>Self Check 2</h4>
+            <p>Find the slope of each line.</p>
+            <ol type="a">
+                <li>\(x = -4\)</li>
+                <li>\(y = 7\)</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc2-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc2-answer" class="self-check-answer">
+                <ol type="a">
+                    <li>\(x = -4\) is a vertical line. Its slope is <strong>undefined</strong>.</li>
+                    <li>\(y = 7\) is a horizontal line. Its slope is \(m = 0\).</li>
+                </ol>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 4: SLOPE FORMULA
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="slope-formula-heading">
+        <h3 id="slope-formula-heading">Use the Slope Formula to Find the Slope Between Two Points</h3>
+
+        <p>Sometimes we need to find the slope of a line between two points and we don't have a graph to count out the rise and the run. We can use the <strong>slope formula</strong> instead.</p>
+
+        <p>If we label the first point \((x_1, y_1)\) and the second point \((x_2, y_2)\), then the rise is the difference in the \(y\)-coordinates and the run is the difference in the \(x\)-coordinates.</p>
+
+        <div class="definition-box" role="note" aria-label="Slope Formula">
+            <h3>Slope Formula</h3>
+            <p>The slope of a line through two points \((x_1, y_1)\) and \((x_2, y_2)\) is:</p>
+            \[m = \frac{y_2 - y_1}{x_2 - x_1}, \quad x_1 \neq x_2\]
+        </div>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-4-4-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-4-3-heading">Example 3</h3>
+                <p>Use the slope formula to find the slope of the line between the points \((1, 2)\) and \((4, 5)\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-4-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-4-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <table class="worked-table" aria-label="Step-by-step slope calculation between (1,2) and (4,5)">
+                        <tbody>
+                            <tr>
+                                <td>Label the points.</td>
+                                <td>\((x_1, y_1) = (1, 2)\) and \((x_2, y_2) = (4, 5)\)</td>
+                            </tr>
+                            <tr>
+                                <td>Write the slope formula.</td>
+                                <td>\(m = \dfrac{y_2 - y_1}{x_2 - x_1}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute the values.</td>
+                                <td>\(m = \dfrac{5 - 2}{4 - 1}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(m = \dfrac{3}{3} = 1\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The slope of the line is \(m = 1\). Since the slope is positive, the line rises from left to right.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-4-4-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-4-4-heading">Example 4</h3>
+                <p>Use the slope formula to find the slope of the line between the points \((-2, 3)\) and \((4, -3)\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-4-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-4-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <table class="worked-table" aria-label="Step-by-step slope calculation between (-2,3) and (4,-3)">
+                        <tbody>
+                            <tr>
+                                <td>Label the points.</td>
+                                <td>\((x_1, y_1) = (-2, 3)\) and \((x_2, y_2) = (4, -3)\)</td>
+                            </tr>
+                            <tr>
+                                <td>Write the slope formula.</td>
+                                <td>\(m = \dfrac{y_2 - y_1}{x_2 - x_1}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute the values.</td>
+                                <td>\(m = \dfrac{-3 - 3}{4 - (-2)}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify the numerator and denominator.</td>
+                                <td>\(m = \dfrac{-6}{6}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(m = -1\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The slope of the line is \(m = -1\). Since the slope is negative, the line falls from left to right.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 3 -->
+        <div class="self-check" role="note" aria-label="Self Check 3">
+            <h4>Self Check 3</h4>
+            <p>Use the slope formula to find the slope of the line between \((3, -4)\) and \((2, -3)\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc3-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc3-answer" class="self-check-answer">
+                \[m = \frac{-3 - (-4)}{2 - 3} = \frac{1}{-1} = -1\]
+                <p>The slope is \(m = -1\).</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 5: SLOPE APPLICATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="slope-apps-heading">
+        <h3 id="slope-apps-heading">Solve Slope Applications</h3>
+
+        <p>Slope has many real-world applications. Whenever something rises or falls at a constant rate — a roof, a road, a ramp — the slope describes that rate of change. In these problems, slope is often described as a ratio, a grade (percentage), or a pitch.</p>
+
+        <!-- Example 5: house/roof application -->
+        <section class="example" aria-labelledby="ex-4-4-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-4-5-heading">Example 5</h3>
+                <p>The pitch of a roof is described by its slope. A contractor is building a house and the roof has a pitch where it rises 10 feet vertically for every 15 feet of horizontal run. Find the slope of the roof and interpret what it means.</p>
+
+                <figure role="group" aria-labelledby="fig-4-4-5-caption">
+                    <img src="images/mth111_4_4_1.png"
+                         alt="Diagram of a house roof showing a right triangle formed by the roof line. The vertical leg is labeled 10 feet (rise) and the horizontal leg is labeled 15 feet (run)."
+                         width="400" />
+                    <figcaption id="fig-4-4-5-caption">A roof with a rise of 10 feet and a run of 15 feet.</figcaption>
+                </figure>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-4-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-4-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <table class="worked-table" aria-label="Finding the slope of a roof">
+                        <tbody>
+                            <tr>
+                                <td>Identify the rise and the run.</td>
+                                <td>Rise \(= 10\) ft, Run \(= 15\) ft</td>
+                            </tr>
+                            <tr>
+                                <td>Write the slope formula.</td>
+                                <td>\(m = \dfrac{\text{rise}}{\text{run}}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute the values.</td>
+                                <td>\(m = \dfrac{10}{15}\)</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(m = \dfrac{2}{3}\)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The slope of the roof is \(\dfrac{2}{3}\). This means for every 3 feet of horizontal distance, the roof rises 2 feet vertically.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 4 -->
+        <div class="self-check" role="note" aria-label="Self Check 4">
+            <h4>Self Check 4</h4>
+            <p>A wheelchair ramp rises 1 foot for every 12 feet of horizontal run. Find the slope of the ramp and explain what it means.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc4-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc4-answer" class="self-check-answer">
+                \[m = \frac{\text{rise}}{\text{run}} = \frac{1}{12}\]
+                <p>The slope is \(\dfrac{1}{12}\). This means the ramp rises 1 foot for every 12 feet of horizontal distance — a gentle incline that meets accessibility standards.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-4-4-heading">
+        <h2 id="exercises-4-4-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-4-4-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-4-4-content" class="exercises-content" role="region" aria-labelledby="exercises-4-4-heading">
+
+            <h3>Find the Slope of Horizontal and Vertical Lines</h3>
+            <p>In the following exercises, find the slope of each line.</p>
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>1.</strong> \(y = 3\)</div>
+                <div class="ex-item"><strong>2.</strong> \(y = -2\)</div>
+                <div class="ex-item"><strong>3.</strong> \(x = 4\)</div>
+                <div class="ex-item"><strong>4.</strong> \(x = -3\)</div>
+                <div class="ex-item"><strong>5.</strong> \(y = -1\)</div>
+                <div class="ex-item"><strong>6.</strong> \(y = 6\)</div>
+                <div class="ex-item"><strong>7.</strong> \(x = 0\)</div>
+                <div class="ex-item"><strong>8.</strong> \(y = 0\)</div>
+            </div>
+
+            <h3>Use the Slope Formula Between Two Points</h3>
+            <p>In the following exercises, use the slope formula to find the slope of the line between each pair of points.</p>
+            <div class="ex-grid two-col">
+                <div class="ex-item"><strong>9.</strong> \((1, 4)\) and \((3, 8)\)</div>
+                <div class="ex-item"><strong>10.</strong> \((2, 3)\) and \((7, 6)\)</div>
+                <div class="ex-item"><strong>11.</strong> \((0, 3)\) and \((4, 6)\)</div>
+                <div class="ex-item"><strong>12.</strong> \((0, 1)\) and \((5, 4)\)</div>
+                <div class="ex-item"><strong>13.</strong> \((3, 5)\) and \((-1, 2)\)</div>
+                <div class="ex-item"><strong>14.</strong> \((4, 6)\) and \((-2, 1)\)</div>
+                <div class="ex-item"><strong>15.</strong> \((-3, 3)\) and \((4, -4)\)</div>
+                <div class="ex-item"><strong>16.</strong> \((-2, 4)\) and \((3, -1)\)</div>
+                <div class="ex-item"><strong>17.</strong> \((2, 1)\) and \((4, 6)\)</div>
+                <div class="ex-item"><strong>18.</strong> \((3, -4)\) and \((2, -3)\)</div>
+                <div class="ex-item"><strong>19.</strong> \((-3, -2)\) and \((-2, -3)\)</div>
+                <div class="ex-item"><strong>20.</strong> \((-1, 3)\) and \((-2, -4)\)</div>
+                <div class="ex-item"><strong>21.</strong> \((4, -5)\) and \((1, -2)\)</div>
+                <div class="ex-item"><strong>22.</strong> \((3, -6)\) and \,(2, -2)\)</div>
+                <div class="ex-item"><strong>23.</strong> \((6, -4)\) and \((-3, 2)\)</div>
+                <div class="ex-item"><strong>24.</strong> \((8, -2)\) and \((-1, 4)\)</div>
+            </div>
+
+            <h3>Slope Applications</h3>
+            <ol class="ex-wide" start="25">
+                <li>A road has a rise of 3 feet for every 50 feet of horizontal run. Find the slope of the road and explain what it means.</li>
+                <li>A hiking trail rises 8 feet for every 100 feet of horizontal distance. Find the slope of the trail.</li>
+                <li>A roof rises 6 feet over a horizontal distance of 18 feet. Find the pitch (slope) of the roof.</li>
+                <li>A ramp for loading trucks rises 2 feet over a horizontal run of 9 feet. Find the slope of the ramp.</li>
+            </ol>
+
+            <h3>Writing Exercises</h3>
+            <ol class="ex-wide" start="29">
+                <li>In your own words, explain the difference between a line with a slope of \(0\) and a line with an undefined slope.</li>
+                <li>Explain why the slope of a vertical line is undefined.</li>
+            </ol>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+    <!-- Footnote -->
+    <footer class="page-footnote" role="contentinfo">
+        <p>Portions of this section are adapted from <em>Prealgebra 2e</em> by Andrea Honeycutt Mathis, published by OpenStax (March 11, 2020), available free at <a href="https://openstax.org/books/prealgebra-2e/pages/11-4-understand-slope-of-a-line" target="_blank" rel="noopener">openstax.org/books/prealgebra-2e/pages/11-4-understand-slope-of-a-line</a>. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+    </footer>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

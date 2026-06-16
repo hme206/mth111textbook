@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 4.2: Graphing Linear Equations</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* Self-check pattern */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* Exercises */
+        .exercises-section { margin-top: 2rem; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+        .ex-grid.two-col  { grid-template-columns: repeat(2, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.6; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 0; }
+        .ex-wide li { margin-bottom: 0.75rem; line-height: 1.6; }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* Collapsible exercises */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open { display: block !important; }
+
+        @media (max-width: 600px) {
+            .ex-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+            .ex-grid.two-col  { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 4: Graphs</h1>
+    <h2 id="section-4-2">Section 4.2: Graphing Linear Equations</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Recognize the relation between the solutions of an equation and its graph.</li>
+            <li>Graph a linear equation by plotting points.</li>
+            <li>Graph vertical and horizontal lines.</li>
+        </ol>
+    </div>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: SOLUTIONS AND GRAPHS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="solutions-heading">
+        <h3 id="solutions-heading">Recognize the Relation Between the Solutions of an Equation and its Graph</h3>
+
+        <p>In the previous section, we introduced the rectangular coordinate system and practiced plotting points. Now we will connect the idea of ordered pairs to the graph of an equation.</p>
+
+        <p>Consider the equation \(3x + 2y = 6\). Some solutions to this equation are the ordered pairs \((0, 3)\), \((2, 0)\), \(\left(1, \frac{3}{2}\right)\), and \((4, -3)\). When we plot these points on a rectangular coordinate system, notice how they line up perfectly. We connect the points with a straight line to get the graph of the equation \(3x + 2y = 6\). The arrows on the ends of the line indicate that the line continues in both directions.</p>
+
+        <p>Every point on the line is a solution of the equation. Also, every solution of this equation is a point on this line. Points <em>not</em> on the line are not solutions.</p>
+
+        <p>For example, the point \((-2, 6)\) is on the line, and if you substitute \(x = -2\) and \(y = 6\) into the equation, you get a true statement. But the point \((4, 1)\) is not on the line — substituting those values gives \(14 \neq 6\), confirming it is not a solution.</p>
+
+        <p>This is an example of the saying, "A picture is worth a thousand words." The line shows you all the solutions to the equation at once. This line is called the <strong>graph</strong> of the equation \(3x + 2y = 6\).</p>
+
+        <!-- Definition Box -->
+        <div class="definition-box" role="note" aria-label="Graph of a Linear Equation">
+            <h3>Graph of a Linear Equation</h3>
+            <p>The graph of a linear equation \(Ax + By = C\) is a straight line.</p>
+            <ul>
+                <li>Every point on the line is a solution of the equation.</li>
+                <li>Every solution of this equation is a point on this line.</li>
+            </ul>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-4-2-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-1-heading">Example 1</h3>
+                <p>The graph of \(y = 2x - 3\) is shown below.</p>
+
+                <figure aria-labelledby="fig1-title" role="group">
+                    <svg class="grid-svg svg-wrap" viewBox="-6 -6 12 12" role="img" aria-labelledby="fig1-title fig1-desc" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                        <title id="fig1-title">Graph of y = 2x minus 3</title>
+                        <desc id="fig1-desc">A coordinate grid showing the line y equals 2x minus 3 passing through points (0, negative 3) and (3, 3).</desc>
+                        <!-- Grid lines -->
+                        <g stroke="lightgray" stroke-width="0.01">
+                            <line x1="-5" y1="-5" x2="-5" y2="5"/><line x1="-4" y1="-5" x2="-4" y2="5"/>
+                            <line x1="-3" y1="-5" x2="-3" y2="5"/><line x1="-2" y1="-5" x2="-2" y2="5"/>
+                            <line x1="-1" y1="-5" x2="-1" y2="5"/><line x1="0" y1="-5" x2="0" y2="5"/>
+                            <line x1="1" y1="-5" x2="1" y2="5"/><line x1="2" y1="-5" x2="2" y2="5"/>
+                            <line x1="3" y1="-5" x2="3" y2="5"/><line x1="4" y1="-5" x2="4" y2="5"/>
+                            <line x1="-5" y1="-5" x2="5" y2="-5"/><line x1="-5" y1="-4" x2="5" y2="-4"/>
+                            <line x1="-5" y1="-3" x2="5" y2="-3"/><line x1="-5" y1="-2" x2="5" y2="-2"/>
+                            <line x1="-5" y1="-1" x2="5" y2="-1"/><line x1="-5" y1="0" x2="5" y2="0"/>
+                            <line x1="-5" y1="1" x2="5" y2="1"/><line x1="-5" y1="2" x2="5" y2="2"/>
+                            <line x1="-5" y1="3" x2="5" y2="3"/><line x1="-5" y1="4" x2="5" y2="4"/>
+                        </g>
+                        <!-- Axes -->
+                        <line x1="-5" y1="0" x2="5" y2="0" stroke="black" stroke-width="0.05"/>
+                        <line x1="0" y1="-5" x2="0" y2="5" stroke="black" stroke-width="0.05"/>
+                        <!-- Tick marks -->
+                        <g stroke="black" stroke-width="0.05">
+                            <line x1="-4" y1="0.1" x2="-4" y2="-0.1"/><line x1="-3" y1="0.1" x2="-3" y2="-0.1"/>
+                            <line x1="-2" y1="0.1" x2="-2" y2="-0.1"/><line x1="-1" y1="0.1" x2="-1" y2="-0.1"/>
+                            <line x1="1" y1="0.1" x2="1" y2="-0.1"/><line x1="2" y1="0.1" x2="2" y2="-0.1"/>
+                            <line x1="3" y1="0.1" x2="3" y2="-0.1"/><line x1="4" y1="0.1" x2="4" y2="-0.1"/>
+                            <line x1="0.1" y1="-4" x2="-0.1" y2="-4"/><line x1="0.1" y1="-3" x2="-0.1" y2="-3"/>
+                            <line x1="0.1" y1="-2" x2="-0.1" y2="-2"/><line x1="0.1" y1="-1" x2="-0.1" y2="-1"/>
+                            <line x1="0.1" y1="1" x2="-0.1" y2="1"/><line x1="0.1" y1="2" x2="-0.1" y2="2"/>
+                            <line x1="0.1" y1="3" x2="-0.1" y2="3"/><line x1="0.1" y1="4" x2="-0.1" y2="4"/>
+                        </g>
+                        <!-- Labels -->
+                        <g font-size="0.4" fill="#000">
+                            <text x="-4" y="0.5" text-anchor="middle">-4</text><text x="-3" y="0.5" text-anchor="middle">-3</text>
+                            <text x="-2" y="0.5" text-anchor="middle">-2</text><text x="-1" y="0.5" text-anchor="middle">-1</text>
+                            <text x="1" y="0.5" text-anchor="middle">1</text><text x="2" y="0.5" text-anchor="middle">2</text>
+                            <text x="3" y="0.5" text-anchor="middle">3</text><text x="4" y="0.5" text-anchor="middle">4</text>
+                            <text x="-0.3" y="-4" text-anchor="end" dominant-baseline="middle">4</text>
+                            <text x="-0.3" y="-3" text-anchor="end" dominant-baseline="middle">3</text>
+                            <text x="-0.3" y="-2" text-anchor="end" dominant-baseline="middle">2</text>
+                            <text x="-0.3" y="-1" text-anchor="end" dominant-baseline="middle">1</text>
+                            <text x="-0.3" y="1" text-anchor="end" dominant-baseline="middle">-1</text>
+                            <text x="-0.3" y="2" text-anchor="end" dominant-baseline="middle">-2</text>
+                            <text x="-0.3" y="3" text-anchor="end" dominant-baseline="middle">-3</text>
+                            <text x="-0.3" y="4" text-anchor="end" dominant-baseline="middle">-4</text>
+                            <text x="4.8" y="0.5" text-anchor="middle">x</text>
+                            <text x="0.3" y="-4.8" dominant-baseline="middle">y</text>
+                            <text x="3.5" y="-3.5" font-size="0.35">y = 2x−3</text>
+                        </g>
+                        <!-- Line y = 2x - 3 -->
+                        <line x1="-1" y1="5" x2="4" y2="-5" stroke="#0074D9" stroke-width="0.07" stroke-linecap="round"/>
+                        <!-- Points -->
+                        <circle cx="0" cy="3" r="0.12" fill="#0074D9"/>
+                        <circle cx="3" cy="-3" r="0.12" fill="#0074D9"/>
+                        <circle cx="-1" cy="5" r="0.12" fill="#0074D9"/>
+                        <circle cx="1" cy="1" r="0.12" fill="#0074D9"/>
+                        <circle cx="2" cy="-1" r="0.12" fill="#0074D9"/>
+                    </svg>
+                    <figcaption>Graph of \(y = 2x - 3\).</figcaption>
+                </figure>
+
+                <p>For each ordered pair, decide: (a) Is the ordered pair a solution to the equation? (b) Is the point on the line?</p>
+                <ol type="a">
+                    <li>\((0, -3)\)</li>
+                    <li>\((3, 3)\)</li>
+                    <li>\((2, -3)\)</li>
+                    <li>\((-1, -5)\)</li>
+                </ol>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Substitute the \(x\)- and \(y\)-values into the equation \(y = 2x - 3\) to check each ordered pair.</p>
+
+                    <table aria-label="Checking ordered pairs against y equals 2x minus 3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ordered Pair</th>
+                                <th scope="col">Substitute into \(y = 2x - 3\)</th>
+                                <th scope="col">Solution?</th>
+                                <th scope="col">On the line?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\((0, -3)\)</td>
+                                <td>\(-3 \stackrel{?}{=} 2(0) - 3 \Rightarrow -3 = -3\) ✓</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>\((3, 3)\)</td>
+                                <td>\(3 \stackrel{?}{=} 2(3) - 3 \Rightarrow 3 = 3\) ✓</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>\((2, -3)\)</td>
+                                <td>\(-3 \stackrel{?}{=} 2(2) - 3 \Rightarrow -3 \neq 1\)</td>
+                                <td>No</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>\((-1, -5)\)</td>
+                                <td>\(-5 \stackrel{?}{=} 2(-1) - 3 \Rightarrow -5 = -5\) ✓</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The points \((0, -3)\), \((3, 3)\), and \((-1, -5)\) are on the line \(y = 2x - 3\), and the point \((2, -3)\) is not on the line. The points which are solutions to \(y = 2x - 3\) are on the line, but the point which is not a solution is not on the line.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 1 -->
+        <div class="self-check" role="note" aria-label="Self Check 1">
+            <h4>Self Check 1</h4>
+            <p>The graph of \(y = 3x - 1\) is shown. For each ordered pair, decide: (a) Is the ordered pair a solution to the equation? (b) Is the point on the line?</p>
+            <ol>
+                <li>\((0, -1)\)</li>
+                <li>\((2, 2)\)</li>
+                <li>\((3, -1)\)</li>
+                <li>\((-1, -4)\)</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc1-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc1-answer" class="self-check-answer">
+                <ol>
+                    <li>\((0, -1)\): \(-1 = 3(0) - 1 = -1\) ✓ — Yes, it is a solution and is on the line.</li>
+                    <li>\((2, 2)\): \(2 \stackrel{?}{=} 3(2) - 1 = 5\) — No, not a solution, not on the line.</li>
+                    <li>\((3, -1)\): \(-1 \stackrel{?}{=} 3(3) - 1 = 8\) — No, not a solution, not on the line.</li>
+                    <li>\((-1, -4)\): \(-4 = 3(-1) - 1 = -4\) ✓ — Yes, it is a solution and is on the line.</li>
+                </ol>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2: GRAPHING BY PLOTTING POINTS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="plotting-heading">
+        <h3 id="plotting-heading">Graph a Linear Equation by Plotting Points</h3>
+
+        <p>There are several methods that can be used to graph a linear equation. The method we will use here is called the <strong>Point-Plotting Method</strong>. Graphically, an equation is a collection of points used to create a picture. In a linear equation, the equation contains both an \(x\) and a \(y\) variable, and its graph is a straight line in a two-dimensional plane.</p>
+
+        <p>Suppose we want to graph the equation \(y = 2x + 1\). We start by finding three points that are solutions to the equation. We can choose any value for \(x\) and then solve for \(y\). Since \(y\) is isolated on the left side, it is easier to choose values for \(x\). We will use \(0\), \(1\), and \(-2\) for \(x\).</p>
+
+        <p>We can organize the solutions in a table:</p>
+
+        <table aria-label="Table of values for y equals 2x plus 1">
+            <caption class="visually-hidden">Values for graphing \(y = 2x + 1\)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">\(x\)</th>
+                    <th scope="col">\(y = 2x + 1\)</th>
+                    <th scope="col">\((x, y)\)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>\(0\)</td><td>\(y = 2(0) + 1 = 1\)</td><td>\((0, 1)\)</td></tr>
+                <tr><td>\(1\)</td><td>\(y = 2(1) + 1 = 3\)</td><td>\((1, 3)\)</td></tr>
+                <tr><td>\(-2\)</td><td>\(y = 2(-2) + 1 = -3\)</td><td>\((-2, -3)\)</td></tr>
+            </tbody>
+        </table>
+
+        <p>Now we plot the points on a rectangular coordinate system. Check that the points line up — if they do not, it means we made a mistake and should double-check our work. Then draw the line through the three points, extending it to fill the grid with arrows on both ends.</p>
+
+        <p>It is true that it only takes two points to determine a line, but it is a good habit to use three points. If you plot only two points and one of them is incorrect, you can still draw a line but it will not represent the solutions to the equation. If you use three points and one is incorrect, the points will not line up, which tells you something is wrong.</p>
+
+        <!-- How To Box -->
+        <div class="definition-box" role="note" aria-label="How to Graph a Linear Equation by Plotting Points">
+            <h3>How To: Graph a Linear Equation by Plotting Points</h3>
+            <ol>
+                <li>Make a table with one column labeled \(x\), a second column labeled with the equation, and a third column listing the resulting ordered pairs.</li>
+                <li>Enter \(x\)-values down the first column using positive and negative values. Try selecting values in numerical order (smallest to greatest).</li>
+                <li>Substitute the \(x\)-values in and calculate the \(y\)-values.</li>
+                <li>Plot the points on a rectangular coordinate system. Check that the points line up. If they do not, carefully check your work.</li>
+                <li>Draw the line through the points. Extend the line to fill the grid and put arrows on both ends of the line.</li>
+            </ol>
+        </div>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-4-2-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-2-heading">Example 2</h3>
+                <p>Graph the equation \(y = -x + 2\) by plotting points.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, select 5 to 7 \(x\)-values and substitute them into the equation to find \(y\) and build a table of ordered pairs.</p>
+
+                    <table aria-label="Table of values for y equals negative x plus 2">
+                        <caption class="visually-hidden">Values for graphing \(y = -x + 2\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y = -x + 2\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(-3\)</td><td>\(y = -(-3) + 2 = 5\)</td><td>\((-3, 5)\)</td></tr>
+                            <tr><td>\(-2\)</td><td>\(y = -(-2) + 2 = 4\)</td><td>\((-2, 4)\)</td></tr>
+                            <tr><td>\(-1\)</td><td>\(y = -(-1) + 2 = 3\)</td><td>\((-1, 3)\)</td></tr>
+                            <tr><td>\(0\)</td><td>\(y = -(0) + 2 = 2\)</td><td>\((0, 2)\)</td></tr>
+                            <tr><td>\(1\)</td><td>\(y = -(1) + 2 = 1\)</td><td>\((1, 1)\)</td></tr>
+                            <tr><td>\(2\)</td><td>\(y = -(2) + 2 = 0\)</td><td>\((2, 0)\)</td></tr>
+                            <tr><td>\(3\)</td><td>\(y = -(3) + 2 = -1\)</td><td>\((3, -1)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Next, plot the ordered pairs and draw a line connecting all the points.</p>
+
+                    <figure role="img" aria-labelledby="ex2-fig-title">
+                        <svg viewBox="-6 -6 12 12" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ex2-fig-title ex2-fig-desc" focusable="false">
+                            <title id="ex2-fig-title">Graph of y = negative x plus 2</title>
+                            <desc id="ex2-fig-desc">Coordinate grid with plotted points and line for y equals negative x plus 2, passing through (negative 3, 5), (0, 2), and (3, negative 1).</desc>
+                            <!-- Grid lines -->
+                            <g stroke="lightgray" stroke-width="0.01">
+                                <line x1="-5" y1="-5" x2="-5" y2="5"/><line x1="-4" y1="-5" x2="-4" y2="5"/>
+                                <line x1="-3" y1="-5" x2="-3" y2="5"/><line x1="-2" y1="-5" x2="-2" y2="5"/>
+                                <line x1="-1" y1="-5" x2="-1" y2="5"/><line x1="0" y1="-5" x2="0" y2="5"/>
+                                <line x1="1" y1="-5" x2="1" y2="5"/><line x1="2" y1="-5" x2="2" y2="5"/>
+                                <line x1="3" y1="-5" x2="3" y2="5"/><line x1="4" y1="-5" x2="4" y2="5"/>
+                                <line x1="-5" y1="-5" x2="5" y2="-5"/><line x1="-5" y1="-4" x2="5" y2="-4"/>
+                                <line x1="-5" y1="-3" x2="5" y2="-3"/><line x1="-5" y1="-2" x2="5" y2="-2"/>
+                                <line x1="-5" y1="-1" x2="5" y2="-1"/><line x1="-5" y1="0" x2="5" y2="0"/>
+                                <line x1="-5" y1="1" x2="5" y2="1"/><line x1="-5" y1="2" x2="5" y2="2"/>
+                                <line x1="-5" y1="3" x2="5" y2="3"/><line x1="-5" y1="4" x2="5" y2="4"/>
+                            </g>
+                            <!-- Axes -->
+                            <line x1="-5" y1="0" x2="5" y2="0" stroke="black" stroke-width="0.05"/>
+                            <line x1="0" y1="-5" x2="0" y2="5" stroke="black" stroke-width="0.05"/>
+                            <!-- Tick marks -->
+                            <g stroke="black" stroke-width="0.05">
+                                <line x1="-4" y1="0.1" x2="-4" y2="-0.1"/><line x1="-3" y1="0.1" x2="-3" y2="-0.1"/>
+                                <line x1="-2" y1="0.1" x2="-2" y2="-0.1"/><line x1="-1" y1="0.1" x2="-1" y2="-0.1"/>
+                                <line x1="1" y1="0.1" x2="1" y2="-0.1"/><line x1="2" y1="0.1" x2="2" y2="-0.1"/>
+                                <line x1="3" y1="0.1" x2="3" y2="-0.1"/><line x1="4" y1="0.1" x2="4" y2="-0.1"/>
+                                <line x1="0.1" y1="-4" x2="-0.1" y2="-4"/><line x1="0.1" y1="-3" x2="-0.1" y2="-3"/>
+                                <line x1="0.1" y1="-2" x2="-0.1" y2="-2"/><line x1="0.1" y1="-1" x2="-0.1" y2="-1"/>
+                                <line x1="0.1" y1="1" x2="-0.1" y2="1"/><line x1="0.1" y1="2" x2="-0.1" y2="2"/>
+                                <line x1="0.1" y1="3" x2="-0.1" y2="3"/><line x1="0.1" y1="4" x2="-0.1" y2="4"/>
+                            </g>
+                            <!-- Labels -->
+                            <g font-size="0.4" fill="#000">
+                                <text x="-4" y="0.5" text-anchor="middle">-4</text><text x="-3" y="0.5" text-anchor="middle">-3</text>
+                                <text x="-2" y="0.5" text-anchor="middle">-2</text><text x="-1" y="0.5" text-anchor="middle">-1</text>
+                                <text x="1" y="0.5" text-anchor="middle">1</text><text x="2" y="0.5" text-anchor="middle">2</text>
+                                <text x="3" y="0.5" text-anchor="middle">3</text><text x="4" y="0.5" text-anchor="middle">4</text>
+                                <text x="-0.3" y="-4" text-anchor="end" dominant-baseline="middle">4</text>
+                                <text x="-0.3" y="-3" text-anchor="end" dominant-baseline="middle">3</text>
+                                <text x="-0.3" y="-2" text-anchor="end" dominant-baseline="middle">2</text>
+                                <text x="-0.3" y="-1" text-anchor="end" dominant-baseline="middle">1</text>
+                                <text x="-0.3" y="1" text-anchor="end" dominant-baseline="middle">-1</text>
+                                <text x="-0.3" y="2" text-anchor="end" dominant-baseline="middle">-2</text>
+                                <text x="-0.3" y="3" text-anchor="end" dominant-baseline="middle">-3</text>
+                                <text x="-0.3" y="4" text-anchor="end" dominant-baseline="middle">-4</text>
+                                <text x="4.8" y="0.5" text-anchor="middle">x</text>
+                                <text x="0.3" y="-4.8" dominant-baseline="middle">y</text>
+                            </g>
+                            <!-- Line y = -x + 2 -->
+                            <line x1="-3" y1="-5" x2="5" y2="3" stroke="blue" stroke-width="0.05"/>
+                            <!-- Plotted points -->
+                            <circle cx="-3" cy="-5" r="0.09" fill="blue"/>
+                            <circle cx="-2" cy="-4" r="0.09" fill="blue"/>
+                            <circle cx="-1" cy="-3" r="0.09" fill="blue"/>
+                            <circle cx="0" cy="-2" r="0.09" fill="blue"/>
+                            <circle cx="1" cy="-1" r="0.09" fill="blue"/>
+                            <circle cx="2" cy="0" r="0.09" fill="blue"/>
+                            <circle cx="3" cy="1" r="0.09" fill="blue"/>
+                        </svg>
+                        <figcaption>Graph of \(y = -x + 2\) using the plotted table points.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3: y = -3x (from PDF, no new SVG needed — table only) -->
+        <section class="example" aria-labelledby="ex-4-2-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-3-heading">Example 3</h3>
+                <p>Graph the equation \(y = -3x\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Find three points that are solutions to the equation. It is easier to choose values for \(x\) and solve for \(y\).</p>
+
+                    <table aria-label="Table of values for y equals negative 3x">
+                        <caption class="visually-hidden">Values for graphing \(y = -3x\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y = -3x\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(0\)</td><td>\(y = -3(0) = 0\)</td><td>\((0, 0)\)</td></tr>
+                            <tr><td>\(1\)</td><td>\(y = -3(1) = -3\)</td><td>\((1, -3)\)</td></tr>
+                            <tr><td>\(-2\)</td><td>\(y = -3(-2) = 6\)</td><td>\((-2, 6)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Plot the points, check that they line up, and draw the line through them with arrows on both ends.</p>
+
+<figure role="group" aria-labelledby="fig-4-2-3-caption">
+    <img src="images/mth111_4_2_3.png" 
+         alt="Coordinate grid showing the graph of y equals negative 3x, a line passing through the origin with a steep negative slope, plotted through points (negative 2, 6), (0, 0), and (1, negative 3)."
+         width="400" height="400" />
+    <figcaption id="fig-4-2-3-caption">Graph of \(y = -3x\).</figcaption>
+</figure>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 2 -->
+        <div class="self-check" role="note" aria-label="Self Check 2">
+            <h4>Self Check 2</h4>
+            <p>Graph the equation by plotting points: \(y = -4x\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc2-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc2-answer" class="self-check-answer">
+                <p>Choose three values for \(x\) and solve for \(y\):</p>
+                <table aria-label="Table of values for y equals negative 4x">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y = -4x\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(0\)</td><td>\(0\)</td><td>\((0, 0)\)</td></tr>
+                        <tr><td>\(1\)</td><td>\(-4\)</td><td>\((1, -4)\)</td></tr>
+                        <tr><td>\(-1\)</td><td>\(4\)</td><td>\((-1, 4)\)</td></tr>
+                    </tbody>
+                </table>
+                <p>Plot the three points, verify they line up, and draw the line.</p>
+            </div>
+        </div>
+
+        <!-- Example 4: fraction coefficient -->
+        <section class="example" aria-labelledby="ex-4-2-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-4-heading">Example 4</h3>
+                <p>Graph the equation \(y = \dfrac{1}{2}x + 3\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since this equation has the fraction \(\frac{1}{2}\) as a coefficient of \(x\), we will choose values of \(x\) carefully to avoid fraction answers, which are hard to graph precisely. We will use zero as one choice and multiples of 2 for the other choices.</p>
+
+                    <table aria-label="Table of values for y equals one half x plus 3">
+                        <caption class="visually-hidden">Values for graphing \(y = \frac{1}{2}x + 3\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y = \frac{1}{2}x + 3\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(0\)</td><td>\(y = \frac{1}{2}(0) + 3 = 3\)</td><td>\((0, 3)\)</td></tr>
+                            <tr><td>\(2\)</td><td>\(y = \frac{1}{2}(2) + 3 = 4\)</td><td>\((2, 4)\)</td></tr>
+                            <tr><td>\(4\)</td><td>\(y = \frac{1}{2}(4) + 3 = 5\)</td><td>\((4, 5)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Plot the points, check that they line up, and draw the line.</p>
+<figure role="group" aria-labelledby="fig-4-2-4-caption">
+    <img src="images/mth111_4_2_4.png" 
+         alt="Coordinate grid showing the graph of y equals one half x plus 3, a line with a gentle positive slope passing through points (0, 3), (2, 4), and (4, 5)."
+         width="400" height="400" />
+    <figcaption id="fig-4-2-4-caption">Graph of \(y = \frac{1}{2}x + 3\).</figcaption>
+</figure>
+                    <p><strong>Tip:</strong> When an equation has a fractional coefficient, choose \(x\)-values that are multiples of the denominator. This way you will avoid fraction answers and the points will be easier to plot accurately.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 3 -->
+        <div class="self-check" role="note" aria-label="Self Check 3">
+            <h4>Self Check 3</h4>
+            <p>Graph the equation: \(y = \dfrac{1}{3}x - 1\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc3-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc3-answer" class="self-check-answer">
+                <p>Choose multiples of 3 for \(x\) to avoid fractions:</p>
+                <table aria-label="Table of values for y equals one third x minus 1">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y = \frac{1}{3}x - 1\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(0\)</td><td>\(-1\)</td><td>\((0, -1)\)</td></tr>
+                        <tr><td>\(3\)</td><td>\(0\)</td><td>\((3, 0)\)</td></tr>
+                        <tr><td>\(-3\)</td><td>\(-2\)</td><td>\((-3, -2)\)</td></tr>
+                    </tbody>
+                </table>
+                <p>Plot the three points, verify they line up, and draw the line.</p>
+            </div>
+        </div>
+
+        <!-- Example 5: equation with x and y on same side -->
+        <section class="example" aria-labelledby="ex-4-2-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-5-heading">Example 5</h3>
+                <p>Graph the equation \(3x + y = -1\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>When \(x\) and \(y\) are on the same side of the equation, it is helpful to first solve for \(y\) so we can more easily choose \(x\)-values.</p>
+
+                    \[\begin{align*} 3x + y &= -1 \\ y &= -3x - 1 \end{align*}\]
+
+                    <p>Now choose values for \(x\) and solve for \(y\).</p>
+
+                    <table aria-label="Table of values for y equals negative 3x minus 1">
+                        <caption class="visually-hidden">Values for graphing \(3x + y = -1\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y = -3x - 1\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(0\)</td><td>\(y = -3(0) - 1 = -1\)</td><td>\((0, -1)\)</td></tr>
+                            <tr><td>\(1\)</td><td>\(y = -3(1) - 1 = -4\)</td><td>\((1, -4)\)</td></tr>
+                            <tr><td>\(-1\)</td><td>\(y = -3(-1) - 1 = 2\)</td><td>\((-1, 2)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Plot the points, check that they line up, and draw the line.</p>
+                    <figure role="group" aria-labelledby="fig-4-2-5-caption">
+    <img src="images/mth111_4_2_5.png" 
+         alt="Coordinate grid showing the graph of 3x plus y equals negative 1, a line with a steep negative slope passing through points (negative 1, 2), (0, negative 1), and (1, negative 4)."
+         width="400" height="400" />
+    <figcaption id="fig-4-2-5-caption">Graph of \(3x + y = -1\).</figcaption>
+</figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 4 -->
+        <div class="self-check" role="note" aria-label="Self Check 4">
+            <h4>Self Check 4</h4>
+            <p>Graph the equation: \(2x + y = 2\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc4-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc4-answer" class="self-check-answer">
+                <p>First solve for \(y\): \(y = -2x + 2\). Then choose values for \(x\):</p>
+                <table aria-label="Table of values for y equals negative 2x plus 2">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y = -2x + 2\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(0\)</td><td>\(2\)</td><td>\((0, 2)\)</td></tr>
+                        <tr><td>\(1\)</td><td>\(0\)</td><td>\((1, 0)\)</td></tr>
+                        <tr><td>\(-1\)</td><td>\(4\)</td><td>\((-1, 4)\)</td></tr>
+                    </tbody>
+                </table>
+                <p>Plot the three points, verify they line up, and draw the line.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3: VERTICAL AND HORIZONTAL LINES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="vert-horiz-heading">
+        <h3 id="vert-horiz-heading">Graph Vertical and Horizontal Lines</h3>
+
+        <p>Can we graph an equation with only one variable — just \(x\) and no \(y\), or just \(y\) without an \(x\)? Let's consider the equation \(x = -3\). This equation says that \(x\) is always equal to \(-3\), so its value does not depend on \(y\). No matter what \(y\) is, the value of \(x\) is always \(-3\).</p>
+
+        <p>To make a table of solutions, we write \(-3\) for all the \(x\)-values, then choose any values for \(y\). When we plot the points and connect them, we get a vertical line.</p>
+
+        <table aria-label="Table of values for x equals negative 3">
+            <caption class="visually-hidden">Values for graphing \(x = -3\)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">\(x\)</th>
+                    <th scope="col">\(y\)</th>
+                    <th scope="col">\((x, y)\)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>\(-3\)</td><td>\(1\)</td><td>\((-3, 1)\)</td></tr>
+                <tr><td>\(-3\)</td><td>\(2\)</td><td>\((-3, 2)\)</td></tr>
+                <tr><td>\(-3\)</td><td>\(3\)</td><td>\((-3, 3)\)</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Vertical Line Definition Box -->
+        <div class="definition-box" role="note" aria-label="Vertical Line definition">
+            <h3>Vertical Line</h3>
+            <p>A vertical line is the graph of an equation that can be written in the form \(x = a\).</p>
+            <p>The line passes through the \(x\)-axis at \((a, 0)\).</p>
+        </div>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-4-2-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-6-heading">Example 6</h3>
+                <p>Graph the equation \(x = 2\). What type of line does it form?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The equation has only one variable, \(x\), and \(x\) is always equal to \(2\). We make a table where \(x\) is always \(2\) and we put in any values for \(y\).</p>
+
+                    <table aria-label="Table of values for x equals 2">
+                        <caption class="visually-hidden">Values for graphing \(x = 2\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(2\)</td><td>\(1\)</td><td>\((2, 1)\)</td></tr>
+                            <tr><td>\(2\)</td><td>\(2\)</td><td>\((2, 2)\)</td></tr>
+                            <tr><td>\(2\)</td><td>\(3\)</td><td>\((2, 3)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Plot the points and connect them. The graph is a <strong>vertical line</strong> passing through the \(x\)-axis at \(2\).</p>
+                    <figure role="group" aria-labelledby="fig-4-2-6-caption">
+    <img src="images/mth111_4_2_6.png" 
+         alt="Coordinate grid showing a vertical line at x equals 2, passing through the points (2, 1), (2, 2), and (2, 3)."
+         width="400" height="400" />
+    <figcaption id="fig-4-2-6-caption">Graph of \(x = 2\), a vertical line passing through the \(x\)-axis at \(2\).</figcaption>
+</figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 5 -->
+        <div class="self-check" role="note" aria-label="Self Check 5">
+            <h4>Self Check 5</h4>
+            <p>Graph the equation: \(x = 5\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc5-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc5-answer" class="self-check-answer">
+                <p>The equation \(x = 5\) means \(x\) is always \(5\), regardless of \(y\). The graph is a vertical line passing through the \(x\)-axis at \(5\).</p>
+                <table aria-label="Table of values for x equals 5">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(5\)</td><td>\(1\)</td><td>\((5, 1)\)</td></tr>
+                        <tr><td>\(5\)</td><td>\(2\)</td><td>\((5, 2)\)</td></tr>
+                        <tr><td>\(5\)</td><td>\(3\)</td><td>\((5, 3)\)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p>What if the equation has \(y\) but no \(x\)? Let's graph the equation \(y = 4\). This time the \(y\)-value is a constant, so \(y\) does not depend on \(x\). To make a table of solutions, we write \(4\) for all the \(y\)-values and choose any values for \(x\). When we plot the points and connect them, we get a horizontal line.</p>
+
+        <table aria-label="Table of values for y equals 4">
+            <caption class="visually-hidden">Values for graphing \(y = 4\)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">\(x\)</th>
+                    <th scope="col">\(y\)</th>
+                    <th scope="col">\((x, y)\)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>\(0\)</td><td>\(4\)</td><td>\((0, 4)\)</td></tr>
+                <tr><td>\(2\)</td><td>\(4\)</td><td>\((2, 4)\)</td></tr>
+                <tr><td>\(4\)</td><td>\(4\)</td><td>\((4, 4)\)</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Horizontal Line Definition Box -->
+        <div class="definition-box" role="note" aria-label="Horizontal Line definition">
+            <h3>Horizontal Line</h3>
+            <p>A horizontal line is the graph of an equation that can be written in the form \(y = b\).</p>
+            <p>The line passes through the \(y\)-axis at \((0, b)\).</p>
+        </div>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-4-2-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-2-7-heading">Example 7</h3>
+                <p>Graph the equation \(y = -1\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-2-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-2-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The equation \(y = -1\) has only one variable, \(y\). The value of \(y\) is constant. All the ordered pairs in the table have the same \(y\)-coordinate, \(-1\). We choose \(0\), \(3\), and \(-3\) as values for \(x\).</p>
+
+                    <table aria-label="Table of values for y equals negative 1">
+                        <caption class="visually-hidden">Values for graphing \(y = -1\)</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(-3\)</td><td>\(-1\)</td><td>\((-3, -1)\)</td></tr>
+                            <tr><td>\(0\)</td><td>\(-1\)</td><td>\((0, -1)\)</td></tr>
+                            <tr><td>\(3\)</td><td>\(-1\)</td><td>\((3, -1)\)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>Plot the points and connect them. The graph is a <strong>horizontal line</strong> passing through the \(y\)-axis at \(-1\).</p>
+                    <figure role="group" aria-labelledby="fig-4-2-7-caption">
+    <img src="images/mth111_4_2_7.png" 
+         alt="Coordinate grid showing a horizontal line at y equals negative 1, passing through the points (negative 3, negative 1), (0, negative 1), and (3, negative 1)."
+         width="400" height="400" />
+    <figcaption id="fig-4-2-7-caption">Graph of \(y = -1\), a horizontal line passing through the \(y\)-axis at \(-1\).</figcaption>
+</figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check 6 -->
+        <div class="self-check" role="note" aria-label="Self Check 6">
+            <h4>Self Check 6</h4>
+            <p>Graph the equation: \(y = -4\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sc6-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sc6-answer" class="self-check-answer">
+                <p>The equation \(y = -4\) means \(y\) is always \(-4\), regardless of \(x\). The graph is a horizontal line passing through the \(y\)-axis at \(-4\).</p>
+                <table aria-label="Table of values for y equals negative 4">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(-3\)</td><td>\(-4\)</td><td>\((-3, -4)\)</td></tr>
+                        <tr><td>\(0\)</td><td>\(-4\)</td><td>\((0, -4)\)</td></tr>
+                        <tr><td>\(3\)</td><td>\(-4\)</td><td>\((3, -4)\)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p>Notice the difference between the equations \(y = 4x\) and \(y = 4\). The equation \(y = 4x\) has both \(x\) and \(y\) — the value of \(y\) depends on \(x\) and changes accordingly, giving a <em>slanted</em> line. The equation \(y = 4\) has only one variable — the value of \(y\) is constant, always \(4\), giving a <em>horizontal</em> line.</p>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-4-2-heading">
+        <h2 id="exercises-4-2-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-4-2-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-4-2-content" class="exercises-content" role="region" aria-labelledby="exercises-4-2-heading">
+
+            <h3>Recognize the Relation Between Solutions and the Graph</h3>
+            <p>For each ordered pair, decide (a) is the ordered pair a solution to the equation? (b) is the point on the line?</p>
+
+            <ol class="ex-wide">
+                <li>\(y = x + 2\) &nbsp;&nbsp; (1) \((0, 2)\) &nbsp;&nbsp; (2) \((1, 2)\) &nbsp;&nbsp; (3) \((-1, 1)\) &nbsp;&nbsp; (4) \((-3, 1)\)</li>
+                <li>\(y = x - 4\) &nbsp;&nbsp; (1) \((0, -4)\) &nbsp;&nbsp; (2) \((3, -1)\) &nbsp;&nbsp; (3) \((2, 2)\) &nbsp;&nbsp; (4) \((1, -5)\)</li>
+                <li>\(y = \frac{1}{2}x - 3\) &nbsp;&nbsp; (1) \((0, -3)\) &nbsp;&nbsp; (2) \((2, -2)\) &nbsp;&nbsp; (3) \((-2, -4)\) &nbsp;&nbsp; (4) \((4, 1)\)</li>
+                <li>\(y = \frac{1}{3}x + 2\) &nbsp;&nbsp; (1) \((0, 2)\) &nbsp;&nbsp; (2) \((3, 3)\) &nbsp;&nbsp; (3) \((-3, 2)\) &nbsp;&nbsp; (4) \((-6, 0)\)</li>
+            </ol>
+
+            <h3>Graph a Linear Equation by Plotting Points</h3>
+            <p>In the following exercises, graph by plotting points.</p>
+
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>5.</strong> \(y = 3x - 1\)</div>
+                <div class="ex-item"><strong>6.</strong> \(y = 2x + 3\)</div>
+                <div class="ex-item"><strong>7.</strong> \(y = -2x + 2\)</div>
+                <div class="ex-item"><strong>8.</strong> \(y = -3x + 1\)</div>
+                <div class="ex-item"><strong>9.</strong> \(y = x + 2\)</div>
+                <div class="ex-item"><strong>10.</strong> \(y = x - 3\)</div>
+                <div class="ex-item"><strong>11.</strong> \(y = -x - 3\)</div>
+                <div class="ex-item"><strong>12.</strong> \(y = -x - 2\)</div>
+                <div class="ex-item"><strong>13.</strong> \(y = 2x\)</div>
+                <div class="ex-item"><strong>14.</strong> \(y = 3x\)</div>
+                <div class="ex-item"><strong>15.</strong> \(y = -4x\)</div>
+                <div class="ex-item"><strong>16.</strong> \(y = -2x\)</div>
+                <div class="ex-item"><strong>17.</strong> \(y = \frac{1}{2}x + 2\)</div>
+                <div class="ex-item"><strong>18.</strong> \(y = \frac{1}{3}x - 1\)</div>
+                <div class="ex-item"><strong>19.</strong> \(y = \frac{4}{3}x - 5\)</div>
+                <div class="ex-item"><strong>20.</strong> \(y = \frac{3}{2}x - 3\)</div>
+                <div class="ex-item"><strong>21.</strong> \(y = -\frac{2}{5}x + 1\)</div>
+                <div class="ex-item"><strong>22.</strong> \(y = -\frac{4}{5}x - 1\)</div>
+                <div class="ex-item"><strong>23.</strong> \(y = -\frac{3}{2}x + 2\)</div>
+                <div class="ex-item"><strong>24.</strong> \(y = -\frac{5}{3}x + 4\)</div>
+                <div class="ex-item"><strong>25.</strong> \(x + y = 6\)</div>
+                <div class="ex-item"><strong>26.</strong> \(x + y = 4\)</div>
+                <div class="ex-item"><strong>27.</strong> \(x + y = -3\)</div>
+                <div class="ex-item"><strong>28.</strong> \(x + y = -2\)</div>
+                <div class="ex-item"><strong>29.</strong> \(x - y = 2\)</div>
+                <div class="ex-item"><strong>30.</strong> \(x - y = 1\)</div>
+                <div class="ex-item"><strong>31.</strong> \(x - y = -1\)</div>
+                <div class="ex-item"><strong>32.</strong> \(x - y = -3\)</div>
+                <div class="ex-item"><strong>33.</strong> \(-x + y = 4\)</div>
+                <div class="ex-item"><strong>34.</strong> \(-x + y = 3\)</div>
+                <div class="ex-item"><strong>35.</strong> \(-x - y = 5\)</div>
+                <div class="ex-item"><strong>36.</strong> \(-x - y = 1\)</div>
+                <div class="ex-item"><strong>37.</strong> \(3x + y = 7\)</div>
+                <div class="ex-item"><strong>38.</strong> \(5x + y = 6\)</div>
+                <div class="ex-item"><strong>39.</strong> \(2x + y = -3\)</div>
+                <div class="ex-item"><strong>40.</strong> \(4x + y = -5\)</div>
+                <div class="ex-item"><strong>41.</strong> \(2x + 3y = 12\)</div>
+                <div class="ex-item"><strong>42.</strong> \(3x - 4y = 12\)</div>
+                <div class="ex-item"><strong>43.</strong> \(\frac{1}{3}x + y = 2\)</div>
+                <div class="ex-item"><strong>44.</strong> \(\frac{1}{2}x + y = 3\)</div>
+            </ol>
+
+            <h3>Graph Vertical and Horizontal Lines</h3>
+            <p>In the following exercises, graph the vertical or horizontal line.</p>
+
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>45.</strong> \(x = 4\)</div>
+                <div class="ex-item"><strong>46.</strong> \(x = 3\)</div>
+                <div class="ex-item"><strong>47.</strong> \(x = -2\)</div>
+                <div class="ex-item"><strong>48.</strong> \(x = -5\)</div>
+                <div class="ex-item"><strong>49.</strong> \(y = 3\)</div>
+                <div class="ex-item"><strong>50.</strong> \(y = 1\)</div>
+                <div class="ex-item"><strong>51.</strong> \(y = -5\)</div>
+                <div class="ex-item"><strong>52.</strong> \(y = -2\)</div>
+                <div class="ex-item"><strong>53.</strong> \(x = \frac{7}{3}\)</div>
+                <div class="ex-item"><strong>54.</strong> \(x = \frac{5}{4}\)</div>
+            </div>
+
+            <p>In the following exercises, graph each pair of equations in the same rectangular coordinate system.</p>
+
+            <div class="ex-grid two-col">
+                <div class="ex-item"><strong>55.</strong> \(y = -\frac{1}{2}x\) and \(y = -\frac{1}{2}\)</div>
+                <div class="ex-item"><strong>56.</strong> \(y = -\frac{1}{3}x\) and \(y = -\frac{1}{3}\)</div>
+                <div class="ex-item"><strong>57.</strong> \(y = 2x\) and \(y = 2\)</div>
+                <div class="ex-item"><strong>58.</strong> \(y = 5x\) and \(y = 5\)</div>
+            </div>
+
+            <h3>Mixed Practice</h3>
+            <p>In the following exercises, graph each equation.</p>
+
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>59.</strong> \(y = 4x\)</div>
+                <div class="ex-item"><strong>60.</strong> \(y = 2x\)</div>
+                <div class="ex-item"><strong>61.</strong> \(y = -\frac{1}{2}x + 3\)</div>
+                <div class="ex-item"><strong>62.</strong> \(y = \frac{1}{4}x - 2\)</div>
+                <div class="ex-item"><strong>63.</strong> \(y = -x\)</div>
+                <div class="ex-item"><strong>64.</strong> \(y = x\)</div>
+                <div class="ex-item"><strong>65.</strong> \(x - y = 3\)</div>
+                <div class="ex-item"><strong>66.</strong> \(x + y = -5\)</div>
+                <div class="ex-item"><strong>67.</strong> \(4x + y = 2\)</div>
+                <div class="ex-item"><strong>68.</strong> \(2x + y = 6\)</div>
+                <div class="ex-item"><strong>69.</strong> \(y = -1\)</div>
+                <div class="ex-item"><strong>70.</strong> \(y = 5\)</div>
+                <div class="ex-item"><strong>71.</strong> \(2x + 6y = 12\)</div>
+                <div class="ex-item"><strong>72.</strong> \(5x + 2y = 10\)</div>
+                <div class="ex-item"><strong>73.</strong> \(x = 3\)</div>
+                <div class="ex-item"><strong>74.</strong> \(x = -4\)</div>
+            </div>
+
+            <h3>Everyday Math</h3>
+            <ol class="ex-wide" start="75">
+                <li><strong>Motor home cost.</strong> The Robinsons rented a motor home for one week. It cost them $594 plus $0.32 per mile, so the linear equation \(y = 594 + 0.32x\) gives the cost \(y\) for driving \(x\) miles. Calculate the rental cost for driving 400, 800, and 1,200 miles, then graph the line.</li>
+                <li><strong>Weekly earnings.</strong> Salvador gets paid $200 per week plus 15% of his sales, so the equation \(y = 200 + 0.15x\) gives the amount \(y\) he earns for selling \$x\) of artwork. Calculate the amount Salvador earns for selling $900, $1,600, and $2,000, then graph the line.</li>
+            </ol>
+
+            <h3>Writing Exercises</h3>
+            <ol class="ex-wide" start="77">
+                <li>Explain how you would choose three \(x\)-values to make a table to graph the line \(y = \frac{1}{5}x - 2\).</li>
+                <li>What is the difference between the equations of a vertical line and a horizontal line?</li>
+            </ol>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
