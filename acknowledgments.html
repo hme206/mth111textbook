@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CH 5.5 – Inverse Trigonometric Functions</title>
+
+    <!-- MathJax configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: {
+                load: ['input/tex', 'output/chtml']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+<section id="acknowledgment">
+    <h2>Acknowledgments</h2>
+    <p>This book was created by Heather E. Umphlett; Dean of Academic Programs and Assistant Professor of Mathematics, Camp Community
+College, for use in Basic Technical Mathematics. </p>
+This text is licensed under a Creative Commons Attribution-Share Alike 4.0 United
+States License. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco,
+California, 94105, USA. You are free: to Share — to copy, distribute, display, and
+perform the work to Remix — to make derivative works Under the following conditions: Attribution.
+You must attribute the work in the manner specified by the author or licensor (but
+not in any way that suggests that they endorse you or your use of the work). Share Alike.
+If you alter, transform, or build upon this work, you may distribute the resulting work only
+under the same, similar or a compatible license. This book was written under OER commons.</p>
+<p>This book was structured around David Lippman's Math In Society and Arithmetic for College Students. 
+Lastly there are some sections and exercises that were pulled from OpenStax Elementary Algebra and Intermediate Algebra. Those
+questions have a footnote, which will lead directly to their text, which is also a free OER
+resource. </p>
+  <p>Lasty the last chapter of this text was written by the Author, structured around materials from her Precalculus OER Text.</p>
+</section>
+
+</main>
+
+<!-- Toggle script -->
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<!-- TOC loader -->
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !expanded);
+                    const submenu = button.nextElementSibling;
+                    submenu.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
