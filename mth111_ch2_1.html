@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.1: Variables &amp; Expressions</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles1.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .ex-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .ex-item {
+            padding: 4px 0;
+            line-height: 1.5;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .ex-grid.two-col,
+            .ex-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-1">Section 2.1: Variables &amp; Expressions</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Evaluate expressions with one variable for given values for the variable.</li>
+            <li>Evaluate expressions with two variables for given values for the variables.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CHAPTER INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>You may not realize it, but you already use algebra every day. Perhaps you figure out how much to tip a server in a restaurant. Maybe you calculate the amount of change you should get when you pay for something. It could even be when you compare batting averages of your favorite players. You can describe the algebra you use in specific words, and follow an orderly process. In this chapter, you will explore the words used to describe algebra and start on your path to solving algebraic problems easily, both in class and in your everyday life.</p>
+
+        <p>Algebra involves the solution of problems using variables, expressions, and equations. This section focuses on variables and expressions, and the types of expressions used in algebra.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         VARIABLES AND EXPRESSIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="vars-heading">
+        <h3 id="vars-heading">Variables and Expressions</h3>
+
+        <p>One thing that separates algebra from arithmetic is the <span class="blue-text"><strong>variable</strong></span>. A variable is a letter or symbol used to represent a quantity that can change. Any letter can be used, but \(x\) and \(y\) are common. You may have seen variables used in formulas, like the area of a rectangle. To find the area of a rectangle, you multiply length times width, written using the two variables \(l\) and \(w\):</p>
+
+        \[l \cdot w\]
+
+        <p>Here, the variable \(l\) represents the length of the rectangle and \(w\) represents the width. You may also be familiar with the formula for the area of a triangle:</p>
+
+        \[\frac{1}{2} \cdot b \cdot h\]
+
+        <p>The variable \(b\) represents the base and \(h\) represents the height. The \(\frac{1}{2}\) in this formula is a <span class="blue-text"><strong>constant</strong></span> — a quantity that does not change.</p>
+
+        <p>An <span class="blue-text"><strong>expression</strong></span> is a mathematical phrase made up of a sequence of mathematical symbols. Those symbols can be numbers, variables, or operations (\(+\), \(-\), \(\cdot\), \(\div\)). Examples of expressions include \(l \cdot w\) and \(\frac{1}{2} \cdot b \cdot h\).</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-1-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-1-1-heading">Example 1</h3>
+                <p>Identify the constant and variable in the expression \(24 - x\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-1-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-1-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since 24 cannot change its value, it is the <strong>constant</strong>. The <strong>variable</strong> is \(x\), because it could be 0, 2, or many other numbers.</p>
+                    <p><strong>Constant: 24 &nbsp;&nbsp; Variable: \(x\)</strong></p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUBSTITUTION AND EVALUATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="eval-heading">
+        <h3 id="eval-heading">Substitution and Evaluation</h3>
+
+        <p>To <span class="blue-text"><strong>evaluate</strong></span> an expression means to find its value. If there are variables in the expression, you will be asked to evaluate the expression for a specified value of the variable. The first step is to <strong>substitute</strong> the given value into the expression, then finish evaluating using arithmetic.</p>
+
+        <p>Note: when multiplying a variable by a constant, you do not need to write the multiplication sign. For example, \(3a\) means \(3 \cdot a\). The sign \(\cdot\) is used in place of \(\times\) because the multiplication sign looks too much like the letter \(x\), especially when handwritten.</p>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-1-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-1-2-heading">Example 2</h3>
+                <p>Evaluate \(24 - x\) when \(x = 3\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-1-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-1-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Substitute 3 for \(x\) in the expression:</p>
+                    \[24 - x = 24 - 3 = 21\]
+                    <p><strong>The value of the expression is 21.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <p>When you have two variables, substitute each given value for its corresponding variable.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-1-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-1-3-heading">Example 3</h3>
+                <p>Evaluate \(l \cdot w\) when \(l = 3\) and \(w = 8\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-1-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-1-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Substitute 3 for \(l\) and 8 for \(w\):</p>
+                    \[l \cdot w = 3 \cdot 8 = 24\]
+                    <p><strong>The value of the expression is 24.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-1-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-1-4-heading">Example 4</h3>
+                <p>Evaluate \(4x - 4\) when \(x = 10\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-1-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-1-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Substitute 10 for \(x\). Remember to multiply before subtracting (order of operations):</p>
+                    \[4x - 4 = 4(10) - 4 = 40 - 4 = 36\]
+                    <p><strong>The value of the expression is 36.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <p>Since variables are allowed to vary, you may need to evaluate the same expression for different values of the variable.</p>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-2-1-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-1-5-heading">Example 5</h3>
+                <p>John is planning a rectangular garden that is 2 feet wide. He is considering lengths of 4 feet, 5 feet, and 6 feet, and wants to put a short fence around the garden. Using \(x\) to represent the length, he will need \(2x + 4\) feet of fencing. How much fencing will he need for each possible length?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-1-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-1-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Evaluate \(2x + 4\) for each value of \(x\):</p>
+
+                    <p>When \(x = 4\):</p>
+                    \[2(4) + 4 = 8 + 4 = 12\]
+
+                    <p>When \(x = 5\):</p>
+                    \[2(5) + 4 = 10 + 4 = 14\]
+
+                    <p>When \(x = 6\):</p>
+                    \[2(6) + 4 = 12 + 4 = 16\]
+
+                    <p><strong>John needs 12 feet of fencing when \(x = 4\), 14 feet when \(x = 5\), and 16 feet when \(x = 6\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Evaluate \(8x - 1\) when \(x = 2\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Substitute 2 for \(x\):</p>
+                \[8(2) - 1 = 16 - 1 = 15\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Variables are an important part of algebra. Expressions made from variables, constants, and operations can represent a numerical value. You can evaluate an expression when you are provided with one or more values for the variables: substitute each variable's value into the expression, then perform any necessary arithmetic.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-1-heading">
+        <h2 id="exercises-2-1-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-1-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-1-content" class="exercises-content" role="region" aria-labelledby="exercises-2-1-heading">
+
+            <h3>Evaluate Algebraic Expressions</h3>
+            <p>In the following exercises, evaluate the expression for the given value.</p>
+
+            <div class="ex-grid two-col">
+                <div class="ex-item"><strong>1.</strong> \(7x + 8\) when \(x = 2\)</div>
+                <div class="ex-item"><strong>2.</strong> \(9x + 7\) when \(x = 3\)</div>
+                <div class="ex-item"><strong>3.</strong> \(5x - 4\) when \(x = 6\)</div>
+                <div class="ex-item"><strong>4.</strong> \(8x - 6\) when \(x = 7\)</div>
+                <div class="ex-item"><strong>5.</strong> \(x^2\) when \(x = 12\)</div>
+                <div class="ex-item"><strong>6.</strong> \(x^3\) when \(x = 5\)</div>
+                <div class="ex-item"><strong>7.</strong> \(x^5\) when \(x = 2\)</div>
+                <div class="ex-item"><strong>8.</strong> \(x^4\) when \(x = 3\)</div>
+                <div class="ex-item"><strong>9.</strong> \(3^x\) when \(x = 3\)</div>
+                <div class="ex-item"><strong>10.</strong> \(4^x\) when \(x = 2\)</div>
+                <div class="ex-item"><strong>11.</strong> \(x^2 + 3x - 7\) when \(x = 4\)</div>
+                <div class="ex-item"><strong>12.</strong> \(x^2 + 5x - 8\) when \(x = 6\)</div>
+                <div class="ex-item"><strong>13.</strong> \(2x + 4y - 5\) when \(x = 7, y = 8\)</div>
+                <div class="ex-item"><strong>14.</strong> \(6x + 3y - 9\) when \(x = 6, y = 9\)</div>
+                <div class="ex-item"><strong>15.</strong> \((x - y)^2\) when \(x = 10, y = 7\)</div>
+                <div class="ex-item"><strong>16.</strong> \((x + y)^2\) when \(x = 6, y = 9\)</div>
+                <div class="ex-item"><strong>17.</strong> \(a^2 + b^2\) when \(a = 3, b = 8\)</div>
+                <div class="ex-item"><strong>18.</strong> \(r^2 - s^2\) when \(r = 12, s = 5\)</div>
+                <div class="ex-item"><strong>19.</strong> \(2l + 2w\) when \(l = 15, w = 12\)</div>
+                <div class="ex-item"><strong>20.</strong> \(2l + 2w\) when \(l = 18, w = 14\)</div>
+            </div>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

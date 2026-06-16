@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.2: Solving Equations using the Addition &amp; Subtraction Property</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles1.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Two-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 50%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.check-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .ex-item {
+            padding: 4px 0;
+            line-height: 1.6;
+        }
+        .ex-wide {
+            margin: 0.5rem 0 1.25rem 0;
+        }
+        .ex-wide li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .ex-grid.four-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-2">Section 2.2: Solving Equations using the Addition &amp; Subtraction Property</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Solve equations using the Subtraction and Addition Property of Equality.</li>
+            <li>Translate and solve applications.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>As a kid you may have played on a teeter totter with another child at the playground. You may have even tried to balance the teeter totter so that you were both up in the air at the same time. Or perhaps you've tried to balance a pencil on your finger. Both of those tasks are difficult, but you know that if you get just the right amount of weight on each side you can balance them both. In this section, we will solve equations by keeping quantities on both sides of an equal sign in perfect balance.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SOLVING EQUATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="solving-heading">
+        <h3 id="solving-heading">Solving Equations using the Addition and Subtraction Property of Equality</h3>
+
+        <p>Solving an equation is like solving a puzzle. The purpose in solving an equation is to find the value or values of the variable that makes each side of the equation the same. Any value of the variable that makes the equation true is called a <span class="blue-text"><strong>solution</strong></span> to the equation. It is the answer to the puzzle.</p>
+
+        <!-- Steps to Solving box -->
+        <div class="orange-box" role="note" aria-label="Steps to Solving Equations">
+            <h3>Steps to Solving Equations</h3>
+            <ol>
+                <li>Start by drawing a line straight through the equal sign.</li>
+                <li>Get the variable alone by moving the number to the other side.
+                    <ul>
+                        <li>To do this, perform the <strong>opposite</strong> operation on both sides. If the number is added, subtract it from both sides; if it is subtracted, add it to both sides.</li>
+                    </ul>
+                </li>
+                <li>Check your solution.</li>
+            </ol>
+            <p><em><strong>Note:</strong> You can do whatever you want to an equation as long as you do it to both sides.</em></p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-2-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-2-1-heading">Example 1</h3>
+                <p>Solve \(x + 3 = 5\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-2-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-2-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step solution for x plus 3 equals 5">
+                        <tbody>
+                            <tr>
+                                <td>\(x + 3 \mid = 5\)</td>
+                                <td>Draw a line through the equal sign to separate the two sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(\underline{-3 \mid\; = -3}\)</td>
+                                <td>Since \(+3\) is on the left, subtract 3 from both sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(x = 2\)</td>
+                                <td>The variable is now isolated.</td>
+                            </tr>
+                            <tr class="check-row">
+                                <td>Check: \(2 + 3 = 5\) &nbsp; \(\Rightarrow\) &nbsp; \(5 = 5\) ✓</td>
+                                <td>Substitute \(x = 2\) back into the original equation. The statement is true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The solution is \(x = 2\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-2-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-2-2-heading">Example 2</h3>
+                <p>Solve \(4 = -6 + x\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-2-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-2-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step solution for 4 equals negative 6 plus x">
+                        <tbody>
+                            <tr>
+                                <td>\(4 \mid = -6 + x\)</td>
+                                <td>Draw a line through the equal sign to separate the two sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(\underline{+6 \mid\; = +6}\)</td>
+                                <td>Since \(-6\) is on the right, add 6 to both sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(10 = x\)</td>
+                                <td>The variable is now isolated.</td>
+                            </tr>
+                            <tr class="check-row">
+                                <td>Check: \(4 = -6 + 10\) &nbsp; \(\Rightarrow\) &nbsp; \(4 = 4\) ✓</td>
+                                <td>Substitute \(x = 10\) back into the original equation. The statement is true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The solution is \(x = 10\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Solve \(x + 5 = -6\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Subtract 5 from both sides:</p>
+                \[x + 5 - 5 = -6 - 5\]
+                \[x = -11\]
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Solve \(x - 3 = -10\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Add 3 to both sides:</p>
+                \[x - 3 + 3 = -10 + 3\]
+                \[x = -7\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         APPLICATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applications-heading">
+        <h3 id="applications-heading">Applications</h3>
+
+        <p>Most of the time the hardest part about word problems is understanding what they are trying to say. Remember that an equation has an equal sign between two algebraic expressions. So if we have a sentence that tells us two phrases are equal, we can translate it into an equation. We look for clue words that mean "equals." Some words that translate to the equal sign are:</p>
+
+        <ul>
+            <li>Is equal to</li>
+            <li>Is the same as</li>
+            <li>Is</li>
+            <li>Gives</li>
+            <li>Was</li>
+            <li>Will be</li>
+        </ul>
+
+        <p>It may be helpful to put a box around the "equals" word(s) in the sentence to help you focus separately on each phrase. Then translate each phrase into an expression, and write them on each side of the equal sign.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-2-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-2-3-heading">Example 3</h3>
+                <p>Translate the sentence into an algebraic equation: <em>The sum of 6 and 9 is 15.</em></p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-2-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-2-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step translation of the sum of 6 and 9 is 15">
+                        <tbody>
+                            <tr>
+                                <td>The sum of 6 and 9 <strong>is</strong> 15</td>
+                                <td>Locate the "equal" word: <em>is</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>The sum of 6 and 9 \(= 15\)</td>
+                                <td>Write the \(=\) sign in place of <em>is</em>.</td>
+                            </tr>
+                            <tr>
+                                <td>\(6 + 9 = 15\)</td>
+                                <td>Locate the operation word (<em>sum</em>) and translate into symbols.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The algebraic equation is \(6 + 9 = 15\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>To solve an equation using the Addition and Subtraction Property of Equality, isolate the variable by performing the opposite operation on both sides of the equation. Always check your solution by substituting it back into the original equation. Word problems can be translated into equations by identifying key "equals" words and translating phrases on each side of that word into algebraic expressions.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-2-heading">
+        <h2 id="exercises-2-2-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-2-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-2-content" class="exercises-content" role="region" aria-labelledby="exercises-2-2-heading">
+
+            <h3>Solve Using the Addition and Subtraction Property of Equality</h3>
+            <p>In the following exercises, solve each equation.</p>
+
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>1.</strong> \(a + 2 = 18\)</div>
+                <div class="ex-item"><strong>2.</strong> \(b + 5 = 13\)</div>
+                <div class="ex-item"><strong>3.</strong> \(p + 18 = 23\)</div>
+                <div class="ex-item"><strong>4.</strong> \(q + 14 = 31\)</div>
+                <div class="ex-item"><strong>5.</strong> \(r + 76 = 100\)</div>
+                <div class="ex-item"><strong>6.</strong> \(s + 62 = 95\)</div>
+                <div class="ex-item"><strong>7.</strong> \(16 = x + 9\)</div>
+                <div class="ex-item"><strong>8.</strong> \(17 = y + 6\)</div>
+                <div class="ex-item"><strong>9.</strong> \(93 = p + 24\)</div>
+                <div class="ex-item"><strong>10.</strong> \(116 = q + 79\)</div>
+                <div class="ex-item"><strong>11.</strong> \(465 = d + 398\)</div>
+                <div class="ex-item"><strong>12.</strong> \(932 = c + 641\)</div>
+                <div class="ex-item"><strong>13.</strong> \(y - 3 = 19\)</div>
+                <div class="ex-item"><strong>14.</strong> \(x - 4 = 12\)</div>
+                <div class="ex-item"><strong>15.</strong> \(u - 6 = 24\)</div>
+                <div class="ex-item"><strong>16.</strong> \(v - 7 = 35\)</div>
+                <div class="ex-item"><strong>17.</strong> \(f - 55 = 123\)</div>
+                <div class="ex-item"><strong>18.</strong> \(g - 39 = 117\)</div>
+                <div class="ex-item"><strong>19.</strong> \(19 = n - 13\)</div>
+                <div class="ex-item"><strong>20.</strong> \(18 = m - 15\)</div>
+                <div class="ex-item"><strong>21.</strong> \(10 = p - 38\)</div>
+                <div class="ex-item"><strong>22.</strong> \(18 = q - 72\)</div>
+                <div class="ex-item"><strong>23.</strong> \(268 = y - 199\)</div>
+                <div class="ex-item"><strong>24.</strong> \(204 = z - 149\)</div>
+            </div>
+
+            <h3>Applications</h3>
+            <p>In the following exercises, solve each application problem.</p>
+
+            <ol class="ex-wide" start="25">
+                <li>Vince's car insurance has a \(\$500\) deductible. Find the amount the insurance company will pay, \(p\), for an \(\$1800\) claim by solving the equation \(\$500 + p = \$1800\).</li>
+                <li>Marta's homeowner's insurance policy has a \(\$750\) deductible. The insurance company paid \(\$5800\) to repair damages caused by a storm. Find the total cost of the storm damage, \(d\), by solving the equation \(d - \$750 = \$5800\).</li>
+                <li>Arthur bought a suit that was on sale for \(\$120\) off. He paid \(\$340\) for the suit. Find the original price, \(p\), of the suit by solving the equation \(p - \$120 = \$340\).</li>
+                <li>Rita bought a sofa that was on sale for \(\$1299\). She paid a total of \(\$1409\), including sales tax. Find the amount of the sales tax, \(t\), by solving the equation \(\$1299 + t = \$1409\).</li>
+            </ol>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
