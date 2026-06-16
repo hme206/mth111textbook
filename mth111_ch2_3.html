@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.3: Solving Equations using the Multiplication &amp; Division Property</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Two-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 50%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.check-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .ex-item {
+            padding: 4px 0;
+            line-height: 1.6;
+        }
+        .ex-wide {
+            margin: 0.5rem 0 1.25rem 0;
+        }
+        .ex-wide li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .ex-grid.four-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-3">Section 2.3: Solving Equations using the Multiplication &amp; Division Property</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Solve equations using the Multiplication &amp; Division Property of Equality.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Solving Equations using the Multiplication &amp; Division Property of Equality</h3>
+
+        <p>Solving equations using the Multiplication &amp; Division Property of Equality is very similar to the property we learned in the previous section. Now, instead of adding or subtracting, we divide or multiply.</p>
+
+        <p>Before we get there, let's recall that any number divided by itself equals one. For example:</p>
+
+        \[4 \div 4 = \frac{4}{4} = 1\]
+
+        <p>Let's also remember that the <span class="blue-text"><strong>multiplicative inverse</strong></span> of a number — also called its <span class="blue-text"><strong>reciprocal</strong></span> — multiplies with the original number to give one. For example:</p>
+
+        \[\frac{1}{4} \cdot 4 = \frac{4}{4} = 1 \qquad \text{and} \qquad \frac{5}{3} \cdot \frac{3}{5} = \frac{15}{15} = 1\]
+
+        <!-- Steps to Solving box -->
+        <div class="orange-box" role="note" aria-label="Steps to Solving Equations">
+            <h3>Steps to Solving Equations</h3>
+            <ol>
+                <li>Start by drawing a line straight through the equal sign.</li>
+                <li>Get the variable alone by moving the number to the other side.
+                    <ul>
+                        <li>To do this, perform the <strong>opposite</strong> operation on both sides. If the variable is multiplied by a number, divide both sides by that number; if it is divided, multiply both sides — or multiply both sides by the reciprocal.</li>
+                    </ul>
+                </li>
+                <li>Check your solution.</li>
+            </ol>
+            <p><em><strong>Note:</strong> You can do whatever you want to an equation as long as you do it to both sides.</em></p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-3-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-3-1-heading">Example 1</h3>
+                <p>Solve \(3x = 7\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-3-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-3-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step solution for 3x equals 7">
+                        <tbody>
+                            <tr>
+                                <td>\(3x \mid = 7\)</td>
+                                <td>Draw a line through the equal sign to separate the two sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(\dfrac{3x}{3} \mid = \dfrac{7}{3}\)</td>
+                                <td>Since \(x\) is multiplied by 3, divide both sides by 3.</td>
+                            </tr>
+                            <tr>
+                                <td>\(x = \dfrac{7}{3}\)</td>
+                                <td>The variable is now isolated.</td>
+                            </tr>
+                            <tr class="check-row">
+                                <td>Check: \(3\!\left(\dfrac{7}{3}\right) = 7\) &nbsp;\(\Rightarrow\)&nbsp; \(7 = 7\) ✓</td>
+                                <td>Substitute \(x = \dfrac{7}{3}\) back into the original equation. The statement is true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The solution is \(x = \dfrac{7}{3}\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-3-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-3-2-heading">Example 2</h3>
+                <p>Solve \(6 = \dfrac{x}{5}\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-3-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-3-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step solution for 6 equals x divided by 5">
+                        <tbody>
+                            <tr>
+                                <td>\(6 \mid = \dfrac{x}{5}\)</td>
+                                <td>Draw a line through the equal sign to separate the two sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(5 \cdot 6 \mid = \dfrac{x}{5} \cdot 5\)</td>
+                                <td>Since \(x\) is divided by 5, multiply both sides by 5.</td>
+                            </tr>
+                            <tr>
+                                <td>\(30 = x\)</td>
+                                <td>The variable is now isolated.</td>
+                            </tr>
+                            <tr class="check-row">
+                                <td>Check: \(6 = \dfrac{30}{5}\) &nbsp;\(\Rightarrow\)&nbsp; \(6 = 6\) ✓</td>
+                                <td>Substitute \(x = 30\) back into the original equation. The statement is true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The solution is \(x = 30\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-3-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-3-3-heading">Example 3</h3>
+                <p>Solve \(5 = \dfrac{2}{3}x\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-3-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-3-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Step-by-step solution for 5 equals two-thirds x">
+                        <tbody>
+                            <tr>
+                                <td>\(5 \mid = \dfrac{2}{3}x\)</td>
+                                <td>Draw a line through the equal sign to separate the two sides.</td>
+                            </tr>
+                            <tr>
+                                <td>\(\dfrac{3}{2} \cdot 5 \mid = \dfrac{2}{3}x \cdot \dfrac{3}{2}\)</td>
+                                <td>Since \(x\) is multiplied by \(\dfrac{2}{3}\), multiply both sides by the reciprocal \(\dfrac{3}{2}\).</td>
+                            </tr>
+                            <tr>
+                                <td>\(\dfrac{15}{2} = x\)</td>
+                                <td>The variable is now isolated.</td>
+                            </tr>
+                            <tr class="check-row">
+                                <td>Check: \(5 = \dfrac{2}{3} \cdot \dfrac{15}{2}\) &nbsp;\(\Rightarrow\)&nbsp; \(5 = \dfrac{30}{6} = 5\) ✓</td>
+                                <td>Substitute \(x = \dfrac{15}{2}\) back into the original equation. The statement is true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>The solution is \(x = \dfrac{15}{2}\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Solve \(3x = -15\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Divide both sides by 3:</p>
+                \[\frac{3x}{3} = \frac{-15}{3}\]
+                \[x = -5\]
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Solve \(\dfrac{x}{-4} = -3\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Multiply both sides by \(-4\):</p>
+                \[(-4) \cdot \frac{x}{-4} = (-4) \cdot (-3)\]
+                \[x = 12\]
+            </div>
+        </div>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>Solve \(\dfrac{4}{5}x = \dfrac{6}{7}\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>Multiply both sides by the reciprocal \(\dfrac{5}{4}\):</p>
+                \[\frac{5}{4} \cdot \frac{4}{5}x = \frac{5}{4} \cdot \frac{6}{7}\]
+                \[x = \frac{30}{28} = \frac{15}{14}\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>To solve an equation using the Multiplication and Division Property of Equality, isolate the variable by performing the opposite operation on both sides. If the variable is multiplied by a number, divide both sides by that number. If the variable is divided by a number, multiply both sides by that number. When the coefficient is a fraction, multiply both sides by its reciprocal. Always check your solution by substituting it back into the original equation.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-3-heading">
+        <h2 id="exercises-2-3-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-3-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-3-content" class="exercises-content" role="region" aria-labelledby="exercises-2-3-heading">
+
+            <h3>Solve Using the Division and Multiplication Property of Equality</h3>
+            <p>In the following exercises, solve each equation.</p>
+
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>1.</strong> \(8x = 32\)</div>
+                <div class="ex-item"><strong>2.</strong> \(7p = 63\)</div>
+                <div class="ex-item"><strong>3.</strong> \(-5c = 55\)</div>
+                <div class="ex-item"><strong>4.</strong> \(-9x = -27\)</div>
+                <div class="ex-item"><strong>5.</strong> \(-90 = 6y\)</div>
+                <div class="ex-item"><strong>6.</strong> \(-72 = 12y\)</div>
+                <div class="ex-item"><strong>7.</strong> \(-16p = -6\)</div>
+                <div class="ex-item"><strong>8.</strong> \(-8m = -56\)</div>
+                <div class="ex-item"><strong>9.</strong> \(0.25z = 3.25\)</div>
+                <div class="ex-item"><strong>10.</strong> \(0.75a = 11.25\)</div>
+                <div class="ex-item"><strong>11.</strong> \(-3x = 0\)</div>
+                <div class="ex-item"><strong>12.</strong> \(4x = 0\)</div>
+                <div class="ex-item"><strong>13.</strong> \(\dfrac{x}{4} = 15\)</div>
+                <div class="ex-item"><strong>14.</strong> \(\dfrac{z}{2} = 14\)</div>
+                <div class="ex-item"><strong>15.</strong> \(-20 = \dfrac{q}{-5}\)</div>
+                <div class="ex-item"><strong>16.</strong> \(\dfrac{c}{-3} = -12\)</div>
+                <div class="ex-item"><strong>17.</strong> \(\dfrac{y}{9} = -6\)</div>
+                <div class="ex-item"><strong>18.</strong> \(\dfrac{q}{6} = -8\)</div>
+                <div class="ex-item"><strong>19.</strong> \(\dfrac{m}{-12} = 5\)</div>
+                <div class="ex-item"><strong>20.</strong> \(-4 = \dfrac{p}{20}\)</div>
+                <div class="ex-item"><strong>21.</strong> \(\dfrac{2}{3}y = 18\)</div>
+                <div class="ex-item"><strong>22.</strong> \(\dfrac{3}{5}r = 15\)</div>
+                <div class="ex-item"><strong>23.</strong> \(-\dfrac{5}{8}w = 40\)</div>
+                <div class="ex-item"><strong>24.</strong> \(24 = -\dfrac{3}{4}x\)</div>
+                <div class="ex-item"><strong>25.</strong> \(-\dfrac{2}{5} = \dfrac{a}{10}\)</div>
+                <div class="ex-item"><strong>26.</strong> \(-\dfrac{1}{3}q = -\dfrac{5}{6}\)</div>
+            </div>
+
+            <h3>Applications</h3>
+            <p>In the following exercises, solve each application problem.</p>
+
+            <ol class="ex-wide" start="27">
+                <li>Daria paid \(\$36.25\) for 5 children's tickets at the ice skating rink. Find the price of each ticket, \(p\), by solving the equation \(5p = 36.25\).</li>
+            </ol>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col11756/1.9" target="_blank" rel="noopener">cnx.org/content/col11756/1.9</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.4: Convert Percents, Decimals, and Fractions</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Three-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 20%;
+            font-weight: bold;
+            color: #33AB2B;
+            background-color: #fafafa;
+            white-space: nowrap;
+        }
+        .worked-table td:nth-child(2) {
+            width: 35%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.answer-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:nth-child(2) {
+            background-color: #f0f8ed;
+            font-weight: bold;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:last-child {
+            background-color: #f0f8ed;
+        }
+
+        /* ── Centered image with caption ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .fig-caption {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.four-col {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .ex-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .ex-item {
+            padding: 4px 0;
+            line-height: 1.6;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            .ex-grid.four-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .worked-table td:first-child {
+                white-space: normal;
+            }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-4">Section 2.4: Convert Percents, Decimals, and Fractions</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Describe the meaning of percent.</li>
+            <li>Represent a number as a decimal, percent, and fraction.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>Three common formats for numbers are fractions, decimals, and percents. Percents are often used to communicate a <em>relative</em> amount. You have probably seen them used for discounts, where the percent of discount can apply to different prices. Percents are also used when discussing taxes and interest rates on savings and loans.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         THE MEANING OF PERCENT
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="meaning-heading">
+        <h3 id="meaning-heading">The Meaning of Percent</h3>
+
+        <p>A <span class="blue-text"><strong>percent</strong></span> is a ratio of a number to 100. <em>Per cent</em> means "per 100," or "how many out of 100." You use the symbol % after a number to indicate percent.</p>
+
+        <p>Notice that 12 of the 100 squares in the grid below have been shaded green. This represents 12 percent (12 per 100).</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_4_1.png"
+                 alt="A 10-by-10 grid of 100 equal squares. The leftmost column of 10 squares and 2 squares in the second column are shaded green, representing 12 out of 100 squares." />
+        </div>
+
+        \[12\% = 12 \text{ percent} = 12 \text{ parts out of } 100 = \frac{12}{100}\]
+
+        <p>How many of the squares in the grid above are unshaded? Since 12 are shaded and there are a total of 100 squares, 88 are unshaded. The unshaded portion of the whole grid is 88 parts out of 100, or 88% of the grid. Notice that the shaded and unshaded portions together make 100% of the grid (100 out of 100 squares).</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-4-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-1-heading">Example 1</h3>
+                <p>What percent of the grid is shaded?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_2_4_2.png"
+                         alt="A 10-by-10 grid of 100 equal squares. The bottom two full rows and 3 squares in the third row from the bottom are shaded green, representing 23 out of 100 squares." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The grid is divided into 100 smaller squares, with 10 squares in each row. 23 squares out of 100 squares are shaded.</p>
+                    <p><strong>23% of the grid is shaded.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-4-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-2-heading">Example 2</h3>
+                <p>What percent of the large square is shaded?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_2_4_3.png"
+                         alt="A large square divided into 10 equal vertical rectangles. The leftmost 3 rectangles are shaded green." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The grid is divided into 10 rectangles. For percents, you need to look at 100 equal-sized parts of the whole. You can divide each of the 10 rectangles into 10 pieces, giving 100 parts.</p>
+                    <div class="fig-wrap">
+                        <img src="images/mth111_2_4_4.png"
+                             alt="The same large square now subdivided into a 10-by-10 grid of 100 equal squares. The leftmost 3 columns of 10 squares each are shaded green, showing 30 out of 100 squares shaded." />
+                    </div>
+                    <p>30 small squares out of 100 are shaded.</p>
+                    <p><strong>30% of the large square is shaded.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>What percent of this grid is shaded?</p>
+            <div class="fig-wrap">
+                <img src="images/mth111_2_4_5.png"
+                     alt="A 10-by-10 grid of 100 equal squares. Three full columns of 10 squares are shaded green, plus 8 additional squares in the fourth column, for a total of 38 shaded squares." />
+            </div>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Three full columns of 10 squares are shaded, plus another 8 squares from the next column. So there are \(30 + 8 = 38\) squares shaded out of 100. This means <strong>38% of the grid is shaded</strong>.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         REWRITING PERCENTS, DECIMALS, AND FRACTIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="rewriting-heading">
+        <h3 id="rewriting-heading">Rewriting Percents, Decimals, and Fractions</h3>
+
+        <p>It is often helpful to change the format of a number. For example, you may find it easier to add decimals than to add fractions. If you can write the fractions as decimals, you can add them as decimals. Then you can rewrite your decimal sum as a fraction, if necessary.</p>
+
+        <p>Percents can be written as fractions and decimals in very few steps.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-4-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-3-heading">Example 3</h3>
+                <p>Write 25% as a simplified fraction and as a decimal.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting 25 percent to a fraction and decimal">
+                        <tbody>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(25\% = \dfrac{25}{100}\)</td>
+                                <td>Since % means "out of 100," 25% means 25 out of 100. Write this as a fraction using 100 as the denominator.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{25}{100} = \dfrac{25 \div 25}{100 \div 25} = \dfrac{1}{4}\)</td>
+                                <td>Simplify the fraction by dividing the numerator and denominator by the common factor 25.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(25\% = \dfrac{25}{100} = 0.25\)</td>
+                                <td>Move the decimal point in 25 two places to the left to get 0.25.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(25\% = \dfrac{1}{4} = 0.25\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>Notice in the diagram below that 25% of a grid is also \(\dfrac{1}{4}\) of the grid, as found in the example above.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_4_6.png"
+                 alt="Two grids side by side. On the left, a 10-by-10 grid with 25 squares shaded green in the top-left corner, labeled 25%. On the right, a 2-by-2 grid with one square shaded green, labeled one-fourth. Both representations show the same proportion." />
+        </div>
+
+        <p>Notice that rewriting a percent as a decimal takes just a shift of the decimal point. Any percentage \(x\) can be represented as the fraction \(\dfrac{x}{100}\), and any fraction \(\dfrac{x}{100}\) can be written as a decimal by moving the decimal point in \(x\) two places to the left. For example, 81% can be written as \(\dfrac{81}{100}\), and dividing 81 by 100 results in 0.81. People often skip the intermediary fraction step and just convert a percent to a decimal by moving the decimal point two places to the left.</p>
+
+        <p>In the same way, rewriting a decimal as a percent (or as a fraction) requires few steps.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-4-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-4-heading">Example 4</h3>
+                <p>Write 0.6 as a percent and as a simplified fraction.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting 0.6 to a percent and fraction">
+                        <tbody>
+                            <tr>
+                                <td>Write as a percent.</td>
+                                <td>\(0.6 = 0.60 = 60\%\)</td>
+                                <td>Write 0.6 as 0.60, which is 60 hundredths. 60 hundredths is 60 percent. You can also move the decimal point two places to the <em>right</em> to find the percent equivalent.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(0.6 = \dfrac{6}{10}\)</td>
+                                <td>Read the decimal — 6 tenths — and write 6 tenths in fraction form.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{6}{10} = \dfrac{6 \div 2}{10 \div 2} = \dfrac{3}{5}\)</td>
+                                <td>Simplify the fraction by dividing the numerator and denominator by 2, a common factor.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(0.6 = 60\% = \dfrac{3}{5}\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>In the next example, the percent is not a whole number. It's usually easiest to convert the percent to a decimal first, then convert the decimal to a fraction.</p>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-2-4-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-5-heading">Example 5</h3>
+                <p>Write 5.6% as a decimal and as a simplified fraction.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting 5.6 percent to a decimal and fraction">
+                        <tbody>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(5.6\% = 0.056\)</td>
+                                <td>Move the decimal point two places to the left. Insert a 0 in front of the 5 (05.6) in order to move the decimal two places to the left.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(0.056 = \dfrac{56}{1{,}000}\)</td>
+                                <td>Write the fraction as you would read the decimal. The last digit is in the thousandths place, so the denominator is 1,000.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{56}{1{,}000} = \dfrac{56 \div 8}{1{,}000 \div 8} = \dfrac{7}{125}\)</td>
+                                <td>Simplify the fraction by dividing the numerator and denominator by 8, a common factor.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(5.6\% = \dfrac{7}{125} = 0.056\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Write 0.645 as a percent and as a simplified fraction.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                \[0.645 = 64.5\% = \frac{129}{200}\]
+            </div>
+        </div>
+
+        <p>To write a fraction as a decimal or a percent, write the fraction as an equivalent fraction with a denominator of 10 (or another power of 10 such as 100 or 1,000), then convert to a decimal and a percent.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-2-4-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-6-heading">Example 6</h3>
+                <p>Write \(\dfrac{3}{4}\) as a decimal and as a percent.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting three-fourths to a decimal and percent">
+                        <tbody>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(\dfrac{3}{4} = \dfrac{3 \cdot 25}{4 \cdot 25} = \dfrac{75}{100}\)</td>
+                                <td>Find an equivalent fraction with 100 in the denominator. Since 100 is a multiple of 4, multiply both numerator and denominator by 25.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{75}{100} = 0.75\)</td>
+                                <td>Write the fraction as a decimal with the 5 in the hundredths place.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a percent.</td>
+                                <td>\(0.75 = 75\%\)</td>
+                                <td>Move the decimal point two places to the right.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(\dfrac{3}{4} = 0.75 = 75\%\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>If it is difficult to find an equivalent fraction with a denominator of 10, 100, 1,000, and so on, you can always divide the numerator by the denominator to find the decimal equivalent.</p>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-2-4-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-7-heading">Example 7</h3>
+                <p>Write \(\dfrac{3}{8}\) as a decimal and as a percent.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting three-eighths to a decimal and percent">
+                        <tbody>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(\dfrac{3}{8} = 3 \div 8 = 0.375\)</td>
+                                <td>Divide the numerator by the denominator: \(3 \div 8 = 0.375\).</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a percent.</td>
+                                <td>\(0.375 = 37.5\%\)</td>
+                                <td>Move the decimal point two places to the right.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(\dfrac{3}{8} = 0.375 = 37.5\%\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>Write \(\dfrac{4}{5}\) as a decimal and as a percent.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                \[\frac{4}{5} = 0.8 = 80\%\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         MIXED NUMBERS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="mixed-heading">
+        <h3 id="mixed-heading">Mixed Numbers</h3>
+
+        <p>All the previous examples involve fractions and decimals less than 1, so all of the percents so far have been less than 100%. Percents greater than 100% are possible as well, and are used to describe situations where there is more than one whole.</p>
+
+        <p>In the diagram below, 115% is shaded. Each grid is considered a whole, and you need two grids to show 115%.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_4_7.png"
+                 alt="Two 10-by-10 grids side by side. The left grid is entirely shaded green (100 squares). The right grid has 15 squares shaded green in the top-left corner. Together they represent 115 out of 100, or 115%." />
+        </div>
+
+        <p>Expressed as a decimal, 115% is 1.15; as a fraction, it is \(1\dfrac{15}{100}\), or \(1\dfrac{3}{20}\). Notice that you can still convert among percents, fractions, and decimals when the quantity is greater than one whole.</p>
+
+        <p>Numbers greater than one that include a fractional part can be written as the sum of a whole number and the fractional part. For instance, the mixed number \(3\dfrac{1}{4}\) is the sum of the whole number 3 and the fraction \(\dfrac{1}{4}\): \(3\dfrac{1}{4} = 3 + \dfrac{1}{4}\).</p>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-2-4-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-8-heading">Example 8</h3>
+                <p>Write \(2\dfrac{7}{8}\) as a decimal and as a percent.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-8">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting 2 and seven-eighths to a decimal and percent">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>\(2\dfrac{7}{8} = 2 + \dfrac{7}{8}\)</td>
+                                <td>Write the mixed number as 2 wholes plus the fractional part.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(\dfrac{7}{8} = 7 \div 8 = 0.875\)</td>
+                                <td>Write the fractional part as a decimal by dividing the numerator by the denominator: \(7 \div 8 = 0.875\).</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(2 + 0.875 = 2.875\)</td>
+                                <td>Add 2 to the decimal.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a percent.</td>
+                                <td>\(2.875 = 287.5\%\)</td>
+                                <td>Move the decimal point two places to the right.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(2\dfrac{7}{8} = 2.875 = 287.5\%\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Note that a whole number can be written as a percent: 100% means one whole, so two wholes would be 200%.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-2-4-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-9-heading">Example 9</h3>
+                <p>Write 375% as a decimal and as a simplified fraction.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Converting 375 percent to a decimal and fraction">
+                        <tbody>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(375\% = 3.75\)</td>
+                                <td>Move the decimal point two places to the left. Note there is a whole number part since the percent is more than 100%.</td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(3.75 = 3 + 0.75\)</td>
+                                <td>Write the decimal as the sum of the whole number and the fractional part.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(0.75 = \dfrac{75}{100}\)</td>
+                                <td>Write the decimal part as a fraction.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{75}{100} = \dfrac{75 \div 25}{100 \div 25} = \dfrac{3}{4}\)</td>
+                                <td>Simplify the fraction by dividing numerator and denominator by the common factor 25.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(3 + \dfrac{3}{4} = 3\dfrac{3}{4}\)</td>
+                                <td>Add the whole number part to the fraction.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(375\% = 3.75 = 3\dfrac{3}{4}\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <h4>Self Check D</h4>
+            <p>Write 4.12 as a percent and as a simplified fraction.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scd-answer" class="self-check-answer">
+                <p>\(4.12 = 412\%\), and the simplified fraction form is \(4\dfrac{12}{100} = 4\dfrac{3}{25}\).</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         FINDING A PERCENT OF A WHOLE
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="percent-whole-heading">
+        <h3 id="percent-whole-heading">Finding a Percent of a Whole</h3>
+
+        <!-- Sub-section learning objectives -->
+        <div class="learning-obj-box" role="note" aria-label="Learning Objective">
+            <h3>Learning Objective(s)</h3>
+            <ol>
+                <li>Find a percent of a whole.</li>
+            </ol>
+        </div>
+
+        <p>A percent, like a fraction, usually represents a portion of a whole. When we know the whole amount, we often want to find a portion of that whole.</p>
+
+        <p>When working with fractions, if we knew a gas tank held 14 gallons and wanted to know how many gallons were in \(\dfrac{1}{4}\) of a tank, we would multiply:</p>
+
+        \[\frac{1}{4} \cdot 14 = \frac{14}{4} = \frac{7}{2} = 3\frac{1}{2} \text{ gallons}\]
+
+        <p>Likewise, if we wanted to find 25% of 14 gallons, we convert 25% to a decimal first, then multiply:</p>
+
+        \[25\% \text{ of } 14 \text{ gallons} = 0.25 \times 14 = 3.5 \text{ gallons}\]
+
+        <div class="definition-box" role="note" aria-label="Finding a Percent of a Whole">
+            <h3>Finding a Percent of a Whole</h3>
+            <p>To find a percent of a whole, multiply the percent, written as a decimal, by the whole amount.</p>
+        </div>
+
+        <!-- Example 10 -->
+        <section class="example" aria-labelledby="ex-2-4-10-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-4-10-heading">Example 10</h3>
+                <p>What is 15% of \(\$200\)?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-4-10">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-4-10" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding 15 percent of 200 dollars">
+                        <tbody>
+                            <tr>
+                                <td>Write as a decimal.</td>
+                                <td>\(15\% = 0.15\)</td>
+                                <td>Move the decimal point two places to the left.</td>
+                            </tr>
+                            <tr>
+                                <td>Multiply.</td>
+                                <td>\(0.15 \times 200 = 30\)</td>
+                                <td>Multiply the decimal form of the percent by the whole number.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(15\%\) of \(\$200\) is \(\$30\).</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check E -->
+        <div class="self-check" role="note" aria-label="Self Check E">
+            <h4>Self Check E</h4>
+            <p>What number is 70% of 23?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sce-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sce-answer" class="self-check-answer">
+                \[0.70 \times 23 = 16.1\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Percents are a common way to represent fractional amounts, just as decimals and fractions are. Any number that can be written as a decimal, fraction, or percent can also be written using the other two representations. To convert between forms, remember that percent means "per 100" — move the decimal point two places left to go from percent to decimal, and two places right to go from decimal to percent. To find a percent of a whole, convert the percent to a decimal and multiply by the whole amount.</p>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
