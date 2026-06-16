@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 5.1: Points, Lines, and Angles</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Points and Lines table with SVG pictures ── */
+        .geometry-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+        }
+        .geometry-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 10px 16px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: center;
+        }
+        .geometry-table td {
+            padding: 14px 16px;
+            border: 1px solid #ccc;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .geometry-table td:first-child {
+            font-weight: bold;
+            text-align: left;
+            width: 20%;
+        }
+        .geometry-table td:nth-child(2) {
+            width: 30%;
+            font-size: 1.05em;
+        }
+        .geometry-table td:last-child {
+            width: 50%;
+        }
+        .geometry-table svg {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* ── Centered image ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .fig-caption {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 5: Geometry</h1>
+    <h2 id="section-5-1">Section 5.1: Points, Lines, and Angles</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Measurement of Angles</li>
+            <li>Supplementary and Complementary Angles</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         POINTS AND LINES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="points-lines-heading">
+        <h3 id="points-lines-heading">Points and Lines</h3>
+
+        <p>Geometry is the area of mathematics that deals with shapes, angles, and planes. In this chapter we will look primarily at triangles and angles. First we need to talk about the building blocks that make up angles.</p>
+
+        <p>A <span class="blue-text"><strong>point</strong></span> is a small dot that has no distinct length, width, or thickness. A <span class="blue-text"><strong>line</strong></span> connects two points and continues through both points indefinitely — it also has no distinct length, width, or thickness. Putting these together we get a <span class="blue-text"><strong>line segment</strong></span>, which connects exactly two points with a definite length, and a <span class="blue-text"><strong>ray</strong></span>, which is like a half-line — it starts at one point and continues through the other indefinitely.</p>
+
+        <table class="geometry-table" aria-label="Names, symbols, and pictures of points, lines, line segments, and rays">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Symbolic Notation</th>
+                    <th scope="col">Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Point -->
+                <tr>
+                    <td>Point</td>
+                    <td>\(A\)</td>
+                    <td>
+                        <svg width="80" height="40" viewBox="0 0 80 40"
+                             role="img" aria-labelledby="svg-point-title"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <title id="svg-point-title">A single dot labeled A representing a point</title>
+                            <circle cx="35" cy="20" r="4" fill="#1a6eb5" />
+                            <text x="44" y="25" font-size="14" font-family="serif" fill="#333">A</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- Line -->
+                <tr>
+                    <td>Line</td>
+                    <td>\(\overleftrightarrow{AB}\)</td>
+                    <td>
+                        <svg width="160" height="40" viewBox="0 0 160 40"
+                             role="img" aria-labelledby="svg-line-title"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <title id="svg-line-title">A line through points A and B with arrows on both ends extending indefinitely in both directions</title>
+                            <!-- line -->
+                            <line x1="15" y1="20" x2="145" y2="20" stroke="#1a6eb5" stroke-width="1.8" />
+                            <!-- left arrowhead -->
+                            <polygon points="10,20 20,15 20,25" fill="#1a6eb5" />
+                            <!-- right arrowhead -->
+                            <polygon points="150,20 140,15 140,25" fill="#1a6eb5" />
+                            <!-- dots -->
+                            <circle cx="55" cy="20" r="3.5" fill="#1a6eb5" />
+                            <circle cx="105" cy="20" r="3.5" fill="#1a6eb5" />
+                            <!-- labels -->
+                            <text x="48" y="13" font-size="13" font-family="serif" fill="#333">A</text>
+                            <text x="98" y="13" font-size="13" font-family="serif" fill="#333">B</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- Line Segment -->
+                <tr>
+                    <td>Line Segment</td>
+                    <td>\(\overline{AB}\)</td>
+                    <td>
+                        <svg width="160" height="40" viewBox="0 0 160 40"
+                             role="img" aria-labelledby="svg-segment-title"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <title id="svg-segment-title">A line segment from point A to point B with filled dots at each endpoint</title>
+                            <line x1="30" y1="20" x2="130" y2="20" stroke="#1a6eb5" stroke-width="1.8" />
+                            <circle cx="30" cy="20" r="3.5" fill="#1a6eb5" />
+                            <circle cx="130" cy="20" r="3.5" fill="#1a6eb5" />
+                            <text x="22" y="13" font-size="13" font-family="serif" fill="#333">A</text>
+                            <text x="122" y="13" font-size="13" font-family="serif" fill="#333">B</text>
+                        </svg>
+                    </td>
+                </tr>
+                <!-- Ray -->
+                <tr>
+                    <td>Ray</td>
+                    <td>\(\overrightarrow{AB}\)</td>
+                    <td>
+                        <svg width="160" height="40" viewBox="0 0 160 40"
+                             role="img" aria-labelledby="svg-ray-title"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <title id="svg-ray-title">A ray starting at point A passing through point B and continuing indefinitely to the right with an arrow</title>
+                            <line x1="30" y1="20" x2="140" y2="20" stroke="#1a6eb5" stroke-width="1.8" />
+                            <!-- right arrowhead only -->
+                            <polygon points="148,20 138,15 138,25" fill="#1a6eb5" />
+                            <!-- dot at A (starting point) -->
+                            <circle cx="30" cy="20" r="3.5" fill="#1a6eb5" />
+                            <!-- dot at B -->
+                            <circle cx="100" cy="20" r="3.5" fill="#1a6eb5" />
+                            <text x="22" y="13" font-size="13" font-family="serif" fill="#333">A</text>
+                            <text x="92" y="13" font-size="13" font-family="serif" fill="#333">B</text>
+                        </svg>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         ANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="angles-heading">
+        <h3 id="angles-heading">Angles</h3>
+
+        <p>An <span class="blue-text"><strong>angle</strong></span> is created by combining two rays joined at a common point called a <span class="blue-text"><strong>vertex</strong></span>. Every angle has an <span class="blue-text"><strong>initial side</strong></span>, which is where the angle begins, and a <span class="blue-text"><strong>terminal side</strong></span>, which is where the angle ends.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_5_1_1.png"
+                 alt="Two rays meeting at point B forming an angle. The lower ray extends to the right toward point A and is labeled Initial Side. The upper ray extends upward and to the right toward point C and is labeled Terminal Side. Point B at the vertex is labeled vertex. To the right, the angle is identified as angle B, angle ABC, or angle CBA." />
+        </div>
+
+        <p>When it comes to measuring angles, we measure them in <span class="blue-text"><strong>degrees</strong></span>. Degrees are based on a total of 360°, which represents a full circle or full rotation. We can measure angles using a <span class="blue-text"><strong>protractor</strong></span>. To measure an angle, line up the center dot of the protractor with the vertex of the angle, and align the bottom line with the initial side of the angle, as shown in Figure 5.1 below.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_5_1_2.png"
+                 alt="A semicircular protractor with degree markings from 0 to 180. Point B is at the center of the protractor aligned with the vertex of the angle. Ray BA extends to the right along the 0-degree baseline. Ray BC extends upward and to the right, crossing the protractor scale at 40 degrees, showing that angle ABC measures 40 degrees." />
+            <p class="fig-caption">Figure 5.1 — Using a protractor to measure \(\angle ABC = 40°\)</p>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUPPLEMENTARY AND COMPLEMENTARY ANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="supp-comp-heading">
+        <h3 id="supp-comp-heading">Supplementary and Complementary Angles</h3>
+
+        <p>When the sum of two angles equals 90°, the two angles are called <span class="blue-text"><strong>complementary angles</strong></span>. When the sum of two angles equals 180°, the two angles are called <span class="blue-text"><strong>supplementary angles</strong></span>.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-5-1-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-1-1-heading">Example 1</h3>
+                <p>Find the missing angle. \(\angle ABD = 62°\). Find \(\angle DBC\).</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_1_3.png"
+                         alt="Three rays meeting at point B. Ray BA extends to the right along the horizontal. Ray BC extends straight up. Ray BD is between BA and BC, creating two angles: angle ABD and angle DBC. Together, angle ABC is a right angle of 90 degrees." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-1-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-1-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(\angle ABC = 90°\), which means \(\angle ABD\) and \(\angle DBC\) are complementary angles and \(\angle ABD + \angle DBC = 90°\).</p>
+                    \[90° = 62° + \angle DBC\]
+                    \[\angle DBC = 90° - 62° = 28°\]
+                    <p><strong>\(\angle DBC = 28°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-5-1-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-1-2-heading">Example 2</h3>
+                <p>\(\angle ABD = 112°\). What is the measure of \(\angle DBC\)?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_1_4.png"
+                         alt="Points C, B, and A lie on a straight line from left to right, forming a straight angle of 180 degrees. Ray BD extends upward from point B, dividing the straight angle into two angles: angle ABD on the right side measuring 112 degrees, and angle DBC on the left side which is unknown." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-1-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-1-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since \(\overleftrightarrow{AC}\) is a straight line, \(\angle ABC = 180°\), making \(\angle ABD\) and \(\angle DBC\) supplementary angles.</p>
+                    \[\angle ABD + \angle DBC = 180°\]
+                    \[112° + \angle DBC = 180°\]
+                    \[\angle DBC = 180° - 112° = 68°\]
+                    <p><strong>\(\angle DBC = 68°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>If \(\angle ABD\) and \(\angle DBC\) are complementary angles and \(\angle DBC = 47°\), find \(\angle ABD\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                \[\angle ABD = 90° - 47° = 43°\]
+                <p><strong>\(\angle ABD = 43°\)</strong></p>
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>If \(\angle ABD\) and \(\angle DBC\) are supplementary angles and \(\angle ABD = 127°\), find \(\angle DBC\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                \[\angle DBC = 180° - 127° = 53°\]
+                <p><strong>\(\angle DBC = 53°\)</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>A point has no size, a line extends infinitely in both directions, a line segment connects two endpoints, and a ray starts at one point and extends infinitely in one direction. An angle is formed by two rays sharing a common vertex, measured in degrees using a protractor. Two angles whose measures sum to 90° are complementary; two angles whose measures sum to 180° are supplementary.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-5-1-heading">
+        <h2 id="exercises-5-1-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-5-1-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-5-1-content" class="exercises-content" role="region" aria-labelledby="exercises-5-1-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

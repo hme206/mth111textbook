@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 5.2: Vertical Angles, Parallel and Perpendicular Lines</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Centered image with optional caption ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .fig-caption {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ══════════════════════════════════════════
+           ANGLE CLASSIFICATION TABLE (Table 5.2.1)
+           Five-column reference table with scroll
+           on narrow screens.
+        ══════════════════════════════════════════ */
+        .angle-table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .angle-table {
+            border-collapse: collapse;
+            min-width: 680px;
+            width: 100%;
+            font-size: 0.93em;
+        }
+        .angle-table caption {
+            caption-side: top;
+            font-weight: bold;
+            color: #33AB2B;
+            text-align: left;
+            padding: 8px 12px 4px 12px;
+            font-size: 0.97em;
+        }
+        .angle-table th {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: left;
+            vertical-align: top;
+        }
+        .angle-table td {
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .angle-table td:first-child {
+            font-weight: bold;
+            white-space: nowrap;
+            color: #1a1a1a;
+        }
+        .angle-table td.sketch-cell {
+            text-align: center;
+            padding: 8px;
+        }
+        .angle-table td.sketch-cell img {
+            max-width: 120px;
+            height: auto;
+        }
+        .angle-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        /* angle pairs list */
+        .angle-table .pair-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .angle-table .pair-list li {
+            margin-bottom: 4px;
+        }
+        /* property equations */
+        .angle-table .prop-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .angle-table .prop-list li {
+            margin-bottom: 4px;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 5: Geometry</h1>
+    <h2 id="section-5-2">Section 5.2: Vertical Angles, Parallel and Perpendicular Lines</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Understand and find vertical angles.</li>
+            <li>Understand and use properties of parallel lines.</li>
+            <li>Understand and use properties of perpendicular lines.</li>
+            <li>Identify alternate interior and exterior angles.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         VERTICAL ANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="vertical-heading">
+        <h3 id="vertical-heading">Vertical Angles</h3>
+
+        <p>Frequently we see two lines that intersect each other at a common point. When this happens we end up with <span class="blue-text"><strong>vertical angles</strong></span> — the angles that are opposite each other at the point of intersection. This is illustrated in Figure 5.2.1 below.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_5_2_1.png"
+                 alt="Two straight lines crossing at a central point, forming four angles. The two angles labeled 1 are opposite each other (vertical angles), and the two angles labeled 2 are opposite each other. Angles 1 and 2 are adjacent and supplementary." />
+            <p class="fig-caption">Figure 5.2.1 — Vertical angles where \(\angle 2 = \angle 2\) and \(\angle 1 = \angle 1\). Also \(\angle 1\) and \(\angle 2\) are supplementary.</p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-5-2-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-2-1-heading">Example 1</h3>
+                <p>Using vertical angles, find all the missing angles in the figure below.</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_2_2.png"
+                         alt="Two lines intersecting at point E. Ray EA extends to the upper left, ray EB extends downward, ray EC extends to the lower left, and ray ED extends to the upper right. The angle BED is labeled 68 degrees. The four angles formed at E are angle BED, angle DEA, angle AEC, and angle CEB." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-2-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-2-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>We are given \(\angle BED = 68°\).</p>
+                    <p>By vertical angles, the opposite angle is equal: \(\angle CEA = 68°\).</p>
+                    <p>Since \(\angle BED\) and \(\angle DEA\) are supplementary (they form a straight line):</p>
+                    \[\angle DEA = 180° - 68° = 112°\]
+                    <p>By vertical angles: \(\angle BEC = 112°\).</p>
+                    <p><strong>Summary: \(\angle BED = \angle CEA = 68°\) and \(\angle DEA = \angle BEC = 112°\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         PARALLEL AND PERPENDICULAR LINES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="parallel-perp-heading">
+        <h3 id="parallel-perp-heading">Parallel Lines &amp; Perpendicular Lines</h3>
+
+        <p>Two lines are <span class="blue-text"><strong>parallel</strong></span> to each other if they have the same slope, meaning they will never intersect — like railroad tracks. Since parallel lines never meet, they have no points in common. When two lines do share a point they are called <span class="blue-text"><strong>intersecting lines</strong></span>, like the lines that create vertical angles.</p>
+
+        <p>Sometimes two intersecting lines meet at exactly a 90° angle. When this happens the lines are called <span class="blue-text"><strong>perpendicular</strong></span>. Perpendicular lines have slopes that are negative reciprocals of each other. For example, if line A has slope \(m = \dfrac{1}{2}\) and lines A and B are perpendicular, then the slope of B is \(m = -\dfrac{2}{1} = -2\).</p>
+
+        <p>If a pair of parallel lines are "cut" by another line, that cutting line is called a <span class="blue-text"><strong>transversal</strong></span>. When this happens, eight angles are formed that follow several important rules, as shown in Table 5.2.1 below.</p>
+
+        <!-- Table 5.2.1 -->
+        <div class="angle-table-wrap">
+            <table class="angle-table" aria-label="Rules for classifying angles formed by parallel lines cut by a transversal">
+                <caption>Table 5.2.1 — Rules for Classifying Angles</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Sketch</th>
+                        <th scope="col">Angle Pairs</th>
+                        <th scope="col">Property</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Alternate Interior Angles -->
+                    <tr>
+                        <td>Alternate Interior Angles</td>
+                        <td>Angles that are between the two parallel lines, that don't share a vertex, and are on opposite sides of the transversal.</td>
+                        <td class="sketch-cell">
+                            <img src="images/mth111_5_2_3.png"
+                                 alt="Two parallel horizontal lines cut by a diagonal transversal. Angles 3 and 5 are highlighted, positioned between the parallel lines on opposite sides of the transversal, illustrating alternate interior angles." />
+                        </td>
+                        <td>
+                            <ul class="pair-list">
+                                <li>\(\angle 3\) and \(\angle 5\)</li>
+                                <li>\(\angle 4\) and \(\angle 6\)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Alternate interior angles have the same measure.</p>
+                            <ul class="prop-list">
+                                <li>\(\angle 3 = \angle 5\)</li>
+                                <li>\(\angle 4 = \angle 6\)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- Alternate Exterior Angles -->
+                    <tr>
+                        <td>Alternate Exterior Angles</td>
+                        <td>Two angles that are outside the two parallel lines, that don't share a common vertex, and are on opposite sides of the transversal.</td>
+                        <td class="sketch-cell">
+                            <img src="images/mth111_5_2_4.png"
+                                 alt="Two parallel horizontal lines cut by a diagonal transversal. Angles 2 and 8 are highlighted, positioned outside the parallel lines on opposite sides of the transversal, illustrating alternate exterior angles." />
+                        </td>
+                        <td>
+                            <ul class="pair-list">
+                                <li>\(\angle 2\) and \(\angle 8\)</li>
+                                <li>\(\angle 1\) and \(\angle 7\)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Alternate exterior angles have the same measure.</p>
+                            <ul class="prop-list">
+                                <li>\(\angle 2 = \angle 8\)</li>
+                                <li>\(\angle 1 = \angle 7\)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- Corresponding Angles -->
+                    <tr>
+                        <td>Corresponding Angles</td>
+                        <td>One interior and one exterior angle on the same side of the transversal, on opposite parallel lines.</td>
+                        <td class="sketch-cell">
+                            <img src="images/mth111_5_2_5.png"
+                                 alt="Two parallel horizontal lines cut by a diagonal transversal. Angles 2 and 6 are highlighted in the same relative position at each intersection (upper right), illustrating corresponding angles." />
+                        </td>
+                        <td>
+                            <ul class="pair-list">
+                                <li>\(\angle 2\) and \(\angle 6\)</li>
+                                <li>\(\angle 1\) and \(\angle 5\)</li>
+                                <li>\(\angle 3\) and \(\angle 7\)</li>
+                                <li>\(\angle 4\) and \(\angle 8\)</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <p>Corresponding angles have the same measure.</p>
+                            <ul class="prop-list">
+                                <li>\(\angle 2 = \angle 6\)</li>
+                                <li>\(\angle 1 = \angle 5\)</li>
+                                <li>\(\angle 3 = \angle 7\)</li>
+                                <li>\(\angle 4 = \angle 8\)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-5-2-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-2-2-heading">Example 2</h3>
+                <p>If \(\angle 4 = 35°\), find the measure of \(\angle 5\), where lines A and B are parallel, cut by transversal C.</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_2_6.png"
+                         alt="Two parallel lines A and B cut by a transversal C. At the intersection with line A, four angles are formed labeled 1, 2, 3, and 4. At the intersection with line B, four angles are formed labeled 5, 6, 7, and 8. Angle 4 is between the parallel lines on the right side of the transversal at line A, and angle 5 is between the parallel lines on the left side of the transversal at line B." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-2-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-2-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>With lines A and B parallel and C being a transversal, \(\angle 4\) and \(\angle 5\) are <strong>alternate interior angles</strong>.</p>
+                    \[\angle 5 = \angle 4 = 35°\]
+                    <p><strong>\(\angle 5 = 35°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-5-2-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-2-3-heading">Example 3</h3>
+                <p>If \(\angle 7 = 135°\), find the measure of \(\angle 2\), where lines A and B are parallel, cut by transversal C.</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_2_7.png"
+                         alt="Two parallel lines A and B cut by a transversal C with angles 1 through 8 labeled at the two intersections. Angle 7 is outside the parallel lines below line B on the left side of the transversal, and angle 2 is outside the parallel lines above line A on the right side of the transversal." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-2-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-2-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>With lines A and B parallel and C being a transversal, \(\angle 7\) and \(\angle 2\) are <strong>alternate exterior angles</strong>.</p>
+                    \[\angle 2 = \angle 7 = 135°\]
+                    <p><strong>\(\angle 2 = 135°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-5-2-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-2-4-heading">Example 4</h3>
+                <p>If \(\angle 3 = 125°\), find the measure of \(\angle 7\), where lines A and B are parallel, cut by transversal C.</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_2_8.png"
+                         alt="Two parallel lines A and B cut by a transversal C with angles 1 through 8 labeled at the two intersections. Angle 3 is between the parallel lines on the left side of the transversal at line A, and angle 7 is outside the parallel lines below line B on the left side of the transversal." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-2-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-2-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>With lines A and B parallel and C being a transversal, \(\angle 3\) and \(\angle 7\) are <strong>corresponding angles</strong>.</p>
+                    \[\angle 7 = \angle 3 = 125°\]
+                    <p><strong>\(\angle 7 = 125°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-5-2-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-2-5-heading">Example 5</h3>
+                <p>If \(\angle 4 = 35°\), find the measure of \(\angle 2\), where lines A and B are parallel, cut by transversal C.</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_2_9.png"
+                         alt="Two parallel lines A and B cut by a transversal C with angles 1 through 8 labeled at the two intersections. Angle 2 and angle 4 are both at the upper intersection with line A, on opposite sides of the transversal, and together they form a straight line." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-2-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-2-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>\(\angle 2\) and \(\angle 4\) fall on a single straight line, which means they are <strong>supplementary angles</strong>.</p>
+                    \[\angle 2 = 180° - 35° = 145°\]
+                    <p><strong>\(\angle 2 = 145°\)</strong></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>When two lines intersect, the angles opposite each other are called vertical angles and are always equal. Parallel lines never intersect and have the same slope; perpendicular lines intersect at 90° and have slopes that are negative reciprocals. When a transversal cuts two parallel lines, eight angles are formed. Alternate interior angles are equal, alternate exterior angles are equal, and corresponding angles are equal. Adjacent angles along a straight line are supplementary.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-5-2-heading">
+        <h2 id="exercises-5-2-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-5-2-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-5-2-content" class="exercises-content" role="region" aria-labelledby="exercises-5-2-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
