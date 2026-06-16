@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 5.3: Triangles</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Centered image with optional caption ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .fig-wrap.narrow img {
+            max-width: 340px;
+        }
+        .fig-caption {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 5: Geometry</h1>
+    <h2 id="section-5-3">Section 5.3: Triangles</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Understand properties of triangles.</li>
+            <li>Classify triangles.</li>
+            <li>Pythagorean Theorem.</li>
+            <li>Solve problems involving triangles.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         TRIANGLES — INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="triangles-heading">
+        <h3 id="triangles-heading">Triangles</h3>
+
+        <p>A <span class="blue-text"><strong>triangle</strong></span> is a geometric figure that has three sides. A triangle is classified as a <strong>closed geometric figure</strong> because you can start with your pen on one point or side and draw the entire shape without lifting your pen.</p>
+
+        <p>The sum of the three interior angles of any triangle is <strong>180°</strong>.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-5-3-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-1-heading">Example 1</h3>
+                <p>Using the figure below, find the missing angle.</p>
+                <div class="fig-wrap narrow">
+                    <img src="images/mth111_5_3_1.png"
+                         alt="Triangle ABC with angle A labeled alpha, angle C labeled beta, and angle B unlabeled and to be found. The triangle has vertices A at the bottom left, B at the top, and C at the bottom right." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since the interior angles of a triangle sum to 180°:</p>
+                    \[\alpha + \angle B + \beta = 180°\]
+                    <p>Subtract \(\alpha\) and \(\beta\) from both sides to isolate \(\angle B\):</p>
+                    \[\angle B = 180° - \alpha - \beta\]
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Using the figure below, if \(\alpha = 47°\) and \(\beta = 63°\), what is the measure of \(\angle B\)?</p>
+            <div class="fig-wrap narrow">
+                <img src="images/mth111_5_3_1.png"
+                     alt="Triangle ABC with angle A labeled alpha equal to 47 degrees, angle C labeled beta equal to 63 degrees, and angle B unlabeled and to be found." />
+            </div>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                \[\angle B = 180° - 47° - 63° = 70°\]
+                <p><strong>\(\angle B = 70°\)</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         CLASSIFYING TRIANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="classify-heading">
+        <h3 id="classify-heading">Classifying Triangles</h3>
+
+        <p>Triangles come in many different sizes with different characteristics. A triangle can be classified by its <strong>angles</strong> and/or by its <strong>sides</strong>, as shown in the figure below.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_5_3_2.png"
+                 alt="A classification chart showing six types of triangles. By angles: an Acute Triangle where all angles are less than 90 degrees, a Right Triangle where one angle equals exactly 90 degrees, and an Obtuse Triangle where one angle is greater than 90 degrees. By sides: an Isosceles Triangle where two sides have equal length and the angles opposite those sides are equal, an Equilateral Triangle where all three sides are equal and each angle equals 60 degrees, and a Scalene Triangle where no two sides are equal in length." />
+            <p class="fig-caption">Triangles and Their Characteristics — Classification by Angles and by Sides</p>
+        </div>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-5-3-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-2-heading">Example 2</h3>
+                <p>Classify the triangle below by angles and by sides.</p>
+                <div class="fig-wrap narrow">
+                    <img src="images/mth111_5_3_3.png"
+                         alt="Triangle ABC where angle A, angle B, and angle C all have different measures and one angle is clearly greater than 90 degrees, making this an obtuse triangle with all sides of different lengths." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Since one angle is greater than 90°, this is an <strong>obtuse triangle</strong>. Since every angle has a different measure, each side will also have a different measure, making this a <strong>scalene triangle</strong>.</p>
+                    <p><strong>Classification: Obtuse and Scalene.</strong></p>
+                    <div class="definition-box" role="note" aria-label="Note on scalene triangles">
+                        <h3>Note</h3>
+                        <p>Scalene triangles will always be obtuse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SIMILAR TRIANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="similar-heading">
+        <h3 id="similar-heading">Similar Triangles</h3>
+
+        <p>Two triangles are said to be <span class="blue-text"><strong>similar</strong></span> if they have the same angles but different side lengths. In similar triangles, the sides that match from one triangle to the other are called <span class="blue-text"><strong>corresponding sides</strong></span>, and the angles that match are called <span class="blue-text"><strong>corresponding angles</strong></span>.</p>
+
+        <p>In the figure below, \(\triangle ABC\) and \(\triangle DEF\) are similar triangles.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_5_3_4.png"
+                 alt="Two similar triangles side by side. Triangle ABC on the left has sides AB equal to 8, BC equal to 6, and AC equal to 4. Triangle DEF on the right has sides DE equal to 4, EF equal to 3, and DF equal to 2. The triangles have the same shape but triangle ABC is twice as large as triangle DEF." />
+        </div>
+
+        <p>The two triangles have the same shape — one is simply smaller than the other. Side \(AC\) corresponds to side \(DF\), and side \(AB\) corresponds to side \(DE\). When two triangles are similar we write \(\triangle ABC \sim \triangle DEF\).</p>
+
+        <p>When two triangles are similar, their matching sides are proportional to each other. We can verify this by setting up ratios of each pair of corresponding sides:</p>
+
+        \[\frac{AC}{DF} = \frac{4}{2} = 2 \qquad \frac{AB}{DE} = \frac{8}{4} = 2 \qquad \frac{BC}{EF} = \frac{6}{3} = 2\]
+
+        <p>Notice all the ratios are equal. This is always true for similar triangles and allows us to solve for unknown side lengths using proportional reasoning.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-5-3-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-3-heading">Example 3</h3>
+                <p>If \(\triangle ABC \sim \triangle DEF\), find the missing side \(x\).</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_3_5.png"
+                         alt="Two similar triangles side by side. Triangle ABC on the left has side AC labeled x (unknown), side AB labeled 15, and side BC labeled 3. Triangle DEF on the right has side DF labeled 3, side DE labeled 5, and side EF labeled 1." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>The side we are looking for is \(\overline{AC}\), which corresponds to side \(\overline{DF}\). Set up a proportion using those two sides and one other pair of corresponding sides:</p>
+                    \[\frac{\overline{AC}}{\overline{DF}} = \frac{\overline{AB}}{\overline{DE}} \quad \Rightarrow \quad \frac{x}{3} = \frac{15}{5}\]
+                    <p>Cross multiply and solve:</p>
+                    \[5x = 15(3)\]
+                    \[5x = 45\]
+                    \[x = 9\]
+                    <p><strong>The missing side is \(x = 9\).</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <p>We can determine if two triangles are similar by comparing two of their angles. If two angles of one triangle equal two angles of another, then the third angles must also be equal (since all three sum to 180°), making the triangles similar. This principle is very useful for solving real-world problems.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-5-3-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-4-heading">Example 4</h3>
+                <p>A man who is 76 inches tall is standing 10 feet from the base of a telephone pole. The man casts a 5-foot shadow, which is the same length as the shadow cast by the telephone pole. How tall is the pole?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_5_3_6.png"
+                         alt="A scene showing a tall telephone pole on the right and a man standing to its left. The man is 76 inches tall and stands 10 feet from the base of the pole. The man casts a 5-foot shadow to the right. A red diagonal line extends from the top of the pole down to the tip of the shadow, and a smaller similar triangle is formed by the man and his shadow. The unknown height of the pole is labeled X inches." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>First, convert all measurements to the same unit — inches. Since 76 inches is already in inches, convert the feet:</p>
+                    \[10 \text{ ft} \times 12 = 120 \text{ inches} \qquad 5 \text{ ft} \times 12 = 60 \text{ inches}\]
+                    <p>Both the pole and the man create right triangles and share an angle in common, so the two triangles are similar.</p>
+                    <div class="fig-wrap">
+                        <img src="images/mth111_5_3_7.png"
+                             alt="Two similar right triangles separated. The larger triangle on the left has a vertical leg labeled X inches (the pole height) and a horizontal leg labeled 120 plus 60 equals 180 inches (total base). The smaller triangle on the right has a vertical leg labeled 76 inches (the man's height) and a horizontal leg labeled 60 inches (man's shadow). Both triangles are right triangles sharing the same angle at the hypotenuse." />
+                    </div>
+                    <p>Set up a proportion using corresponding sides:</p>
+                    \[\frac{x}{76} = \frac{180}{60}\]
+                    <p>Cross multiply and solve:</p>
+                    \[60x = 76 \times 180\]
+                    \[60x = 13{,}680\]
+                    \[x = \frac{13{,}680}{60} = 228 \text{ inches}\]
+                    <p>To convert back to feet: \(228 \div 12 = 19 \text{ feet}\).</p>
+                    <p><strong>The telephone pole is 228 inches (19 feet) tall.</strong></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         PYTHAGOREAN THEOREM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="pythagorean-heading">
+        <h3 id="pythagorean-heading">Pythagorean Theorem</h3>
+
+        <p>When working with <strong>right triangles only</strong>, we can use a theorem named after the ancient Greek mathematician Pythagoras. The Pythagorean Theorem allows you to find the missing side of a right triangle when you are given the other two sides.</p>
+
+        <div class="definition-box" role="note" aria-label="Pythagorean Theorem">
+            <h3>Pythagorean Theorem</h3>
+            <p>The sum of the squares of the lengths of the legs of a right triangle equals the square of the length of the hypotenuse. If the legs have lengths \(a\) and \(b\) and the hypotenuse has length \(c\), then:</p>
+            \[a^2 + b^2 = c^2\]
+            <div class="fig-wrap narrow">
+                <img src="images/mth111_5_3_8.png"
+                     alt="A right triangle with the two shorter sides labeled a and b (the legs) and the longest side labeled c (the hypotenuse). The right angle is marked at the corner between legs a and b. The triangle vertices are labeled A, B, and C." />
+            </div>
+        </div>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-5-3-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-5-heading">Example 5</h3>
+                <p>Find the length of side \(c\) in the triangle below.</p>
+                <div class="fig-wrap narrow">
+                    <img src="images/mth111_5_3_9.png"
+                         alt="A right triangle with vertices A, B, and C. The horizontal leg from B to C is labeled 12 feet and the vertical leg from A to B is labeled 9 feet. The hypotenuse from A to C is labeled c and is the unknown side to be found." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Apply the Pythagorean Theorem with \(a = 9\) ft and \(b = 12\) ft:</p>
+                    \[a^2 + b^2 = c^2\]
+                    \[9^2 + 12^2 = c^2\]
+                    \[81 + 144 = c^2\]
+                    \[225 = c^2\]
+                    \[c = \sqrt{225} = 15 \text{ ft}\]
+                    <p><strong>The length of side \(c\) is 15 feet.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-5-3-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-5-3-6-heading">Example 6</h3>
+                <p>A contractor is building a handicap ramp for a homeowner. Construction laws state that for every 1 inch of vertical distance, there must be a horizontal run of 12 inches to ensure the ramp is not too steep. If the ramp has a horizontal distance of 120 inches and a vertical distance of 24 inches, how long is the ramp and does it meet the standard?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-5-3-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-5-3-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p><strong>Step 1: Find the length of the ramp (hypotenuse).</strong></p>
+                    <p>The horizontal distance is \(a = 120\) inches and the vertical distance is \(b = 24\) inches.</p>
+                    \[a^2 + b^2 = c^2\]
+                    \[120^2 + 24^2 = c^2\]
+                    \[14{,}400 + 576 = c^2\]
+                    \[14{,}976 = c^2\]
+                    \[c = \sqrt{14{,}976} \approx 122.4 \text{ inches}\]
+
+                    <p><strong>Step 2: Check whether the ramp meets regulations.</strong></p>
+                    <p>The regulation requires a slope no greater than \(\dfrac{1}{12}\). Find the actual slope:</p>
+                    \[\text{slope} = \frac{\text{vertical}}{\text{horizontal}} = \frac{24}{120} = \frac{1}{5}\]
+                    <p>Compare: \(\dfrac{1}{5} > \dfrac{1}{12}\).</p>
+                    <p><strong>The ramp is approximately 122.4 inches long, but the slope of \(\dfrac{1}{5}\) exceeds the maximum allowed slope of \(\dfrac{1}{12}\). This ramp is too steep and does not meet the standard.</strong></p>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>A triangle is a closed three-sided figure whose interior angles always sum to 180°. Triangles can be classified by their angles (acute, right, or obtuse) and by their sides (isosceles, equilateral, or scalene). Two triangles are similar if they have the same angles; their corresponding sides are proportional, allowing us to solve for unknown lengths. For right triangles specifically, the Pythagorean Theorem states that \(a^2 + b^2 = c^2\), where \(c\) is the hypotenuse.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-5-3-heading">
+        <h2 id="exercises-5-3-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-5-3-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-5-3-content" class="exercises-content" role="region" aria-labelledby="exercises-5-3-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
