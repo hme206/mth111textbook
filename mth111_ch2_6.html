@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.6: Proportions</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Three-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 20%;
+            font-weight: bold;
+            color: #33AB2B;
+            background-color: #fafafa;
+            white-space: nowrap;
+        }
+        .worked-table td:nth-child(2) {
+            width: 38%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.answer-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:nth-child(2) {
+            background-color: #f0f8ed;
+            font-weight: bold;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:last-child {
+            background-color: #f0f8ed;
+        }
+
+        /* ── Centered image ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        .fig-wrap.narrow img {
+            max-width: 220px;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        @media (max-width: 600px) {
+            .worked-table td:first-child {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-6">Section 2.6: Proportions</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Determine whether a proportion is true or false.</li>
+            <li>Find an unknown in a proportion.</li>
+            <li>Solve application problems using proportions.</li>
+            <li>Solve application problems using similar triangles.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>A true proportion is an equation that states that two ratios are equal. If you know one ratio in a proportion, you can use that information to find values in the other equivalent ratio. Using proportions can help you solve problems such as increasing a recipe to feed a larger crowd of people, creating a design with certain consistent features, or enlarging or reducing an image to scale.</p>
+
+        <p>For example, imagine you want to enlarge a 5-inch by 8-inch photograph to fit a wood frame that you purchased. If you want the shorter edge of the enlarged photo to measure 10 inches, how long does the photo have to be for the image to scale correctly? You can set up a proportion to determine the length of the enlarged photo.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         DETERMINING WHETHER A PROPORTION IS TRUE OR FALSE
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="true-false-heading">
+        <h3 id="true-false-heading">Determining Whether a Proportion Is True or False</h3>
+
+        <p>A proportion is usually written as two equivalent fractions. For example:</p>
+
+        \[\frac{12 \text{ inches}}{1 \text{ foot}} = \frac{36 \text{ inches}}{3 \text{ feet}}\]
+
+        <p>Notice that the equation has a ratio on each side of the equal sign. Each ratio compares the same units — inches and feet — and the ratios are equivalent because \(\dfrac{12}{1}\) is equivalent to \(\dfrac{36}{3}\).</p>
+
+        <p>Proportions might also compare two ratios with the same units. For example, Juanita has two different-sized containers of lemonade mix and wants to compare the number of ounces in each container to the number of servings each can make:</p>
+
+        \[\frac{40 \text{ ounces}}{10 \text{ servings}} = \frac{84 \text{ ounces}}{21 \text{ servings}}\]
+
+        <p>Since the units for each ratio are the same, you can express the proportion without the units:</p>
+
+        \[\frac{40}{84} = \frac{10}{21}\]
+
+        <p>When using this type of proportion, it is important that the numerators represent the same situation — in the example above, ounces — and the denominators represent the same situation — servings. Juanita could also have set up the proportion to compare container sizes to servings directly:</p>
+
+        \[\frac{40 \text{ ounces}}{10 \text{ servings}} = \frac{84 \text{ ounces}}{21 \text{ servings}}\]
+
+        <div class="definition-box" role="note" aria-label="Identifying True Proportions">
+            <h3>Identifying True Proportions</h3>
+            <p>To determine if a proportion compares equal ratios, follow these steps:</p>
+            <ol>
+                <li>Check that the units in the individual ratios are consistent either vertically or horizontally. For example, \(\dfrac{\text{miles}}{\text{hour}} = \dfrac{\text{miles}}{\text{hour}}\) or \(\dfrac{\text{miles}}{\text{miles}} = \dfrac{\text{hour}}{\text{hour}}\) are both valid setups.</li>
+                <li>Express each ratio as a simplified fraction.</li>
+                <li>If the simplified fractions are the same, the proportion is true; if they are different, the proportion is false.</li>
+            </ol>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-6-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-1-heading">Example 1</h3>
+                <p>Is the proportion true or false?
+                \[\frac{100 \text{ miles}}{4 \text{ gallons}} = \frac{50 \text{ miles}}{2 \text{ gallons}}\]</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Determining if 100 miles over 4 gallons equals 50 miles over 2 gallons">
+                        <tbody>
+                            <tr>
+                                <td>Check units.</td>
+                                <td>miles / gallons = miles / gallons</td>
+                                <td>The units are consistent across the numerators (miles) and the denominators (gallons).</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify each ratio.</td>
+                                <td>\(\dfrac{100 \div 4}{4 \div 4} = \dfrac{25}{1} \qquad \dfrac{50 \div 2}{2 \div 2} = \dfrac{25}{1}\)</td>
+                                <td>Write each ratio in simplest form.</td>
+                            </tr>
+                            <tr>
+                                <td>Compare.</td>
+                                <td>\(\dfrac{25}{1} = \dfrac{25}{1}\)</td>
+                                <td>The simplified fractions are equivalent, so the proportion is true.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The proportion is <strong>true</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-6-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-2-heading">Example 2</h3>
+                <p>One office has 3 printers for 18 computers. Another office has 20 printers for 105 computers. Is the ratio of printers to computers the same in both offices?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Comparing printer-to-computer ratios in two offices">
+                        <tbody>
+                            <tr>
+                                <td>Identify the relationship.</td>
+                                <td>\(\dfrac{\text{printers}}{\text{computers}} = \dfrac{\text{printers}}{\text{computers}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a proportion.</td>
+                                <td>\(\dfrac{3 \text{ printers}}{18 \text{ computers}} = \dfrac{20 \text{ printers}}{105 \text{ computers}}\)</td>
+                                <td>Write ratios that describe each situation and set them equal.</td>
+                            </tr>
+                            <tr>
+                                <td>Check units.</td>
+                                <td>printers / computers = printers / computers</td>
+                                <td>Units in numerators and denominators both match.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify each ratio.</td>
+                                <td>\(\dfrac{3 \div 3}{18 \div 3} = \dfrac{1}{6} \qquad \dfrac{20 \div 5}{105 \div 5} = \dfrac{4}{21}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Compare.</td>
+                                <td>\(\dfrac{1}{6} \neq \dfrac{4}{21}\)</td>
+                                <td>The simplified fractions are not equal, so the proportion is not true.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The ratio of printers to computers is <strong>not</strong> the same in these two offices.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>There is another method for determining whether a proportion is true or false called <span class="blue-text"><strong>cross multiplying</strong></span> (or finding the cross product). To cross multiply, multiply the numerator of the first ratio by the denominator of the second ratio, and the denominator of the first ratio by the numerator of the second ratio. If these products are equal, the proportion is true.</p>
+
+        <p>This strategy is called cross-multiplying because the pattern of the multiplication looks like an "x" or criss-cross, as shown below.</p>
+
+        <div class="fig-wrap ">
+            <img src="images/mth111_2_6_1.png"
+                 alt="A proportion 3 over 5 equals 6 over 10, with arrows crossing diagonally between numerator and denominator to show the cross-multiplication pattern: 3 times 10 and 5 times 6." />
+        </div>
+
+        <p>In this example, \(3 \cdot 10 = 30\) and \(5 \cdot 6 = 30\). Both products are equal, so the proportion is true.</p>
+
+        <p>To see why this works, start with the true proportion \(\dfrac{4}{8} = \dfrac{5}{10}\). If we multiply both sides by 10, we get \(10 \cdot \dfrac{4}{8} = \dfrac{5}{10} \cdot 10\), and the right side simplifies to 5, leaving \(10 \cdot \dfrac{4}{8} = 5\). Multiplying both sides by 8 gives \(10 \cdot 4 = 5 \cdot 8\). This is exactly what we would get by cross-multiplying, so cross-multiplying is just a quick way to perform these operations.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-6-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-3-heading">Example 3</h3>
+                <p>Is the proportion true or false?
+                \[\frac{5}{6} = \frac{9}{8}\]</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <div class="fig-wrap narrow">
+                        <img src="images/mth111_2_6_2.png"
+                             alt="A proportion 5 over 6 equals 9 over 8, with crossing arrows showing the cross-multiplication pattern: 5 times 8 and 6 times 9." />
+                    </div>
+                    <table class="worked-table" aria-label="Using cross products to test 5 over 6 equals 9 over 8">
+                        <tbody>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(5 \cdot 8 = 40 \qquad 6 \cdot 9 = 54\)</td>
+                                <td>Use cross products to determine if the proportion is true or false.</td>
+                            </tr>
+                            <tr>
+                                <td>Compare.</td>
+                                <td>\(40 \neq 54\)</td>
+                                <td>Since the products are not equal, the proportion is false.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The proportion is <strong>false</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Is the proportion \(\dfrac{3}{5} = \dfrac{24}{40}\) true or false?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Using cross products: \(3 \cdot 40 = 120\) and \(5 \cdot 24 = 120\). The cross products are equal, so the proportion is <strong>true</strong>.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         FINDING AN UNKNOWN QUANTITY IN A PROPORTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="unknown-heading">
+        <h3 id="unknown-heading">Finding an Unknown Quantity in a Proportion</h3>
+
+        <p>If you know that the relationship between quantities is proportional, you can use proportions to find missing quantities.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-6-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-4-heading">Example 4</h3>
+                <p>Solve for the unknown quantity \(n\):
+                \[\frac{n}{4} = \frac{25}{20}\]</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Solving for unknown n in the proportion n over 4 equals 25 over 20">
+                        <tbody>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(20 \cdot n = 4 \cdot 25\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(20n = 100\)</td>
+                                <td>You are looking for a number that when multiplied by 20 gives 100.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = \dfrac{100}{20} = 5\)</td>
+                                <td>Divide both sides by 20 to isolate \(n\).</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(n = 5\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Solve for the unknown quantity \(x\):
+            \[\frac{15}{x} = \frac{6}{10}\]</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Cross-multiplying gives \(6x = 150\). Dividing both sides by 6 gives \(x = 25\).</p>
+            </div>
+        </div>
+
+        <p>Now back to the original example. To enlarge a 5-inch by 8-inch photograph so that the shorter edge is 10 inches, you can set up a proportion to find the unknown length.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_6_3.png"
+                 alt="Two photographs side by side. The smaller photo on the left is labeled 5 inches tall and 8 inches wide. The larger photo on the right is labeled 10 inches tall and has a question mark for the width." />
+        </div>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-2-6-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-5-heading">Example 5</h3>
+                <p>Find the length of an enlarged photograph whose width is 10 inches, given that the original photograph is 5 inches wide and 8 inches long.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the length of an enlarged photograph using proportions">
+                        <tbody>
+                            <tr>
+                                <td>Determine the relationship.</td>
+                                <td>\(\dfrac{\text{width}}{\text{length}}\)</td>
+                                <td>Original photo: 5 inches wide, 8 inches long. Enlarged photo: 10 inches wide, \(n\) inches long.</td>
+                            </tr>
+                            <tr>
+                                <td>Write a proportion.</td>
+                                <td>\(\dfrac{5}{8} = \dfrac{10}{n}\)</td>
+                                <td>Set the two ratios equal to each other.</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(5 \cdot n = 8 \cdot 10\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(5n = 80\)</td>
+                                <td>You are looking for a number that when multiplied by 5 gives 80.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = \dfrac{80}{5} = 16\)</td>
+                                <td>Divide both sides by 5 to isolate \(n\).</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The length of the enlarged photograph is <strong>16 inches</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SOLVING APPLICATION PROBLEMS USING PROPORTIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applications-heading">
+        <h3 id="applications-heading">Solving Application Problems Using Proportions</h3>
+
+        <p>Setting up and solving a proportion is a helpful strategy for solving a variety of proportional reasoning problems. It is always important to identify the unknown value first, then identify a proportional relationship to solve for it.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-2-6-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-6-heading">Example 6</h3>
+                <p>Among a species of tropical birds, 30 out of every 50 birds are female. If a certain bird sanctuary has a population of 1,150 of these birds, how many would you expect to be female?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the number of female birds in a sanctuary using proportions">
+                        <tbody>
+                            <tr>
+                                <td>Identify the unknown.</td>
+                                <td>Let \(x\) = number of female birds in the sanctuary.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Set up a proportion.</td>
+                                <td>\(\dfrac{30 \text{ female}}{50 \text{ birds}} = \dfrac{x \text{ female}}{1{,}150 \text{ birds}}\)</td>
+                                <td>Set the ratios equal.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify the left ratio.</td>
+                                <td>\(\dfrac{30 \div 10}{50 \div 10} = \dfrac{3}{5}\)</td>
+                                <td>Simplify to make cross multiplication easier.</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(3 \cdot 1{,}150 = 5 \cdot x\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(3{,}450 = 5x\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(x = \dfrac{3{,}450}{5} = 690\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>You would expect <strong>690 birds</strong> in the sanctuary to be female.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-2-6-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-7-heading">Example 7</h3>
+                <p>It takes Sandra 1 hour to word process 4 pages. At this rate, how long will she take to complete 27 pages?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding how long it takes Sandra to type 27 pages using proportions">
+                        <tbody>
+                            <tr>
+                                <td>Set up a proportion.</td>
+                                <td>\(\dfrac{4 \text{ pages}}{1 \text{ hour}} = \dfrac{27 \text{ pages}}{x \text{ hours}}\)</td>
+                                <td>Compare pages typed to time taken.</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(4 \cdot x = 1 \cdot 27\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(4x = 27\)</td>
+                                <td>You are looking for a number that when multiplied by 4 gives 27.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(x = \dfrac{27}{4} = 6.75 \text{ hours}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>It will take Sandra <strong>6.75 hours</strong> to complete 27 pages.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>A map uses a scale where 2 inches represents 5 miles. If the distance between two cities is shown on the map as 20 inches, how many miles apart are the two cities?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>Set up the proportion:</p>
+                \[\frac{2 \text{ inches}}{5 \text{ miles}} = \frac{20 \text{ inches}}{x \text{ miles}}\]
+                <p>Cross-multiplying gives \(2x = 100\), so \(x = 50\) miles.</p>
+                <p><strong>The two cities are 50 miles apart.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SOLVING APPLICATION PROBLEMS USING SIMILAR TRIANGLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="similar-triangles-heading">
+        <h3 id="similar-triangles-heading">Solving Application Problems Using Similar Triangles</h3>
+
+        <p>In the photograph problem above, both the width and height of the image scaled proportionally when enlarged — we call the two rectangles <span class="blue-text"><strong>similar</strong></span>. With triangles, two triangles are <span class="blue-text"><strong>similar triangles</strong></span> if the ratios of the pairs of corresponding sides are equal. Consider the two triangles below.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_6_4.png"
+                 alt="Two similar triangles. The smaller triangle ABC has sides labeled 3, 4, and 6. The larger triangle DEF has corresponding sides labeled 9, 12, and 18. Arrows indicate the corresponding side pairs." />
+        </div>
+
+        <p>Side AB corresponds with side DE, and so on. Each ratio of corresponding sides is equal:</p>
+
+        \[\frac{9}{3} = \frac{12}{4} = \frac{18}{6}\]
+
+        <p>So these triangles are similar. If two triangles have the same angles, they will also be similar. You can find missing measurements in a triangle if you know some measurements of a similar triangle.</p>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-2-6-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-8-heading">Example 8</h3>
+                <p>\(\triangle ABC\) and \(\triangle XYZ\) are similar triangles. What is the length of side \(BC\)?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_2_6_5.png"
+                         alt="Two similar right triangles. Triangle XYZ is small with sides XY labeled 1.5, YZ labeled 2, and XZ labeled 2.5. Triangle ABC is large with side AB labeled 6, BC labeled n (unknown), and AC labeled 10." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-8">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the missing side BC of triangle ABC using similar triangles">
+                        <tbody>
+                            <tr>
+                                <td>Set up a proportion.</td>
+                                <td>\(\dfrac{BC}{YZ} = \dfrac{AB}{XY}\)</td>
+                                <td>In similar triangles, the ratios of corresponding sides are proportional. Set up a proportion that includes the missing side.</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(\dfrac{n}{2} = \dfrac{6}{1.5}\)</td>
+                                <td>Substitute in the known side lengths. Let the unknown side length be \(n\).</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(2 \cdot 6 = 1.5 \cdot n\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(12 = 1.5n\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = \dfrac{12}{1.5} = 8\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The missing length of side \(BC\) is <strong>8 units</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Be careful that your ratios represent corresponding sides — corresponding sides are opposite corresponding angles.</p>
+                </div>
+            </div>
+        </section>
+
+        <p>Applying knowledge of triangles, similarity, and congruence can be very useful for solving real-life problems. Just as you can solve for missing lengths of a triangle drawn on a page, you can use triangles to find unknown distances between locations or objects.</p>
+
+        <p>Consider two trees and their shadows. The trees themselves create one pair of corresponding sides. The shadows cast on the ground are another pair of corresponding sides. The third side of these imaginary similar triangles runs from the top of each tree to the tip of its shadow — the hypotenuse.</p>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-2-6-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-6-9-heading">Example 9</h3>
+                <p>When the sun is at a certain angle in the sky, a 6-foot tree will cast a 4-foot shadow. How tall is a tree that casts an 8-foot shadow?</p>
+                <div class="fig-wrap">
+                    <img src="images/mth111_2_6_6.png"
+                         alt="Two trees side by side with their shadows forming similar triangles. The left tree is 6 feet tall with a 4-foot shadow. The right tree has an unknown height h with an 8-foot shadow. Dashed lines show the hypotenuse of each triangle." />
+                </div>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-6-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-6-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the height of a tree using similar triangles and proportions">
+                        <tbody>
+                            <tr>
+                                <td>Identify similarity.</td>
+                                <td>\(\dfrac{\text{Tree 1}}{\text{Tree 2}} = \dfrac{\text{Shadow 1}}{\text{Shadow 2}}\)</td>
+                                <td>The angle measurements are the same, so the triangles are similar. Set up a proportion comparing heights to shadow lengths.</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(\dfrac{6}{h} = \dfrac{4}{8}\)</td>
+                                <td>Substitute in the known lengths. Call the missing tree height \(h\).</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(6 \cdot 8 = 4 \cdot h\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(48 = 4h\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(h = \dfrac{48}{4} = 12\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The tree is <strong>12 feet tall</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <h4>Self Check D</h4>
+            <p>Find the unknown side \(x\).</p>
+            <div class="fig-wrap">
+                <img src="images/mth111_2_6_6.png"
+                     alt="Two similar triangles formed by overlapping shapes. The larger triangle has a base of 50 cm and a height of 30 cm. The smaller triangle has a base of 20 cm and an unknown height x cm." />
+            </div>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scd-answer" class="self-check-answer">
+                <p>Set up the proportion comparing corresponding sides:</p>
+                \[\frac{20}{50} = \frac{x}{30}\]
+                <p>Cross-multiplying gives \(50x = 600\), so \(x = 12\) cm.</p>
+                <p><strong>The unknown side is 12 cm.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>A proportion is an equation comparing two ratios. If the ratios are equivalent, the proportion is true; if not, the proportion is false. Finding a cross product is a quick method for determining whether a proportion is true or false. Cross multiplying is also helpful for finding an unknown quantity in a proportional relationship. Setting up and solving proportions is a skill that is useful for solving a variety of problems, including those involving similar triangles.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-6-heading">
+        <h2 id="exercises-2-6-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-6-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-6-content" class="exercises-content" role="region" aria-labelledby="exercises-2-6-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

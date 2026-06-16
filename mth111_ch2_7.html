@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.7: Solving Percent Problems</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Three-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 20%;
+            font-weight: bold;
+            color: #33AB2B;
+            background-color: #fafafa;
+            white-space: nowrap;
+        }
+        .worked-table td:nth-child(2) {
+            width: 38%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.answer-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:nth-child(2) {
+            background-color: #f0f8ed;
+            font-weight: bold;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:last-child {
+            background-color: #f0f8ed;
+        }
+
+        /* ── Multiplication/Division fact table ── */
+        .fact-table {
+            border-collapse: collapse;
+            margin: 1rem auto;
+            font-size: 0.97em;
+        }
+        .fact-table th {
+            background-color: #f0f8ed;
+            color: #33AB2B;
+            padding: 8px 24px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: center;
+        }
+        .fact-table td {
+            padding: 8px 24px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .fact-table tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        @media (max-width: 600px) {
+            .worked-table td:first-child {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-7">Section 2.7: Solving Percent Problems</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Identify the amount, the base, and the percent in a percent problem.</li>
+            <li>Find the unknown in a percent problem.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p>Percents are a ratio of a number and 100, which makes them easier to compare than fractions since they always have the same denominator. A store may have a 10% off sale — the amount saved is always the same portion of the price, but a higher price means more money is taken off. Interest rates on a savings account work the same way: the more money you put in, the more interest you earn. In the last section we found a percent of a whole; in this section we will expand on that.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         PARTS OF A PERCENT PROBLEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="parts-heading">
+        <h3 id="parts-heading">Parts of a Percent Problem</h3>
+
+        <p>Jeff has a coupon at the Guitar Store for 15% off any purchase of \(\$100\) or more. He wants to buy a used guitar priced at \(\$220\) and wonders how much the coupon will save him.</p>
+
+        <p>Problems involving percents have three quantities to work with: the <span class="blue-text"><strong>percent</strong></span>, the <span class="blue-text"><strong>amount</strong></span>, and the <span class="blue-text"><strong>base</strong></span>.</p>
+
+        <ul>
+            <li>The <strong>percent</strong> has the percent symbol (%) or the word "percent." In the problem above, 15% is the percent off the purchase price.</li>
+            <li>The <strong>base</strong> is the whole amount. In the problem above, the whole price of the guitar, \(\$220\), is the base.</li>
+            <li>The <strong>amount</strong> is the number that relates to the percent — it is always part of the whole. In the problem above, the amount is unknown: it will be the amount taken off the price.</li>
+        </ul>
+
+        <p>You will return to this problem a bit later. The following examples show how to identify the three parts.</p>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-7-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-1-heading">Example 1</h3>
+                <p>Identify the percent, amount, and base in this problem: <em>30 is 20% of what number?</em></p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Identifying percent, base, and amount in: 30 is 20% of what number">
+                        <tbody>
+                            <tr>
+                                <td>Percent</td>
+                                <td>20%</td>
+                                <td>The percent is the number with the % symbol.</td>
+                            </tr>
+                            <tr>
+                                <td>Base</td>
+                                <td>Unknown</td>
+                                <td>The base is the whole amount, which is not stated.</td>
+                            </tr>
+                            <tr>
+                                <td>Amount</td>
+                                <td>30</td>
+                                <td>The amount is the portion based on the percent. 30 is a portion of another number.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>Percent = 20%, Amount = 30, Base = unknown</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Note that this problem could be rewritten: <em>20% of what number is 30?</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-7-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-2-heading">Example 2</h3>
+                <p>Identify the percent, amount, and base in this problem: <em>What percent of 30 is 3?</em></p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Identifying percent, base, and amount in: what percent of 30 is 3">
+                        <tbody>
+                            <tr>
+                                <td>Percent</td>
+                                <td>Unknown</td>
+                                <td>The problem states "what percent?" so the percent is unknown.</td>
+                            </tr>
+                            <tr>
+                                <td>Base</td>
+                                <td>30</td>
+                                <td>The base is the whole amount.</td>
+                            </tr>
+                            <tr>
+                                <td>Amount</td>
+                                <td>3</td>
+                                <td>The amount is a portion of the whole.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>Percent = unknown, Amount = 3, Base = 30</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SOLVING WITH EQUATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="equations-heading">
+        <h3 id="equations-heading">Solving with Equations</h3>
+
+        <p>Percent problems can be solved by writing equations. Since percents are fractions, finding a percent of another amount means multiplying — just as you would with fractions.</p>
+
+        <div class="definition-box" role="note" aria-label="The Percent Equation">
+            <h3>The Percent Equation</h3>
+            <p>The percent of the base is the amount:</p>
+            \[\text{Percent} \cdot \text{Base} = \text{Amount}\]
+            <p>The unknown can be represented by a letter such as \(n\), a box \(\square\), or a question mark.</p>
+        </div>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-7-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-3-heading">Example 3</h3>
+                <p>Write an equation that represents the following problem: <em>30 is 20% of what number?</em></p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Writing the percent equation for: 30 is 20% of what number">
+                        <tbody>
+                            <tr>
+                                <td>Rewrite.</td>
+                                <td>20% of what number is 30?</td>
+                                <td>Rewrite in the form "percent of base is amount."</td>
+                            </tr>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: 20%, Base: unknown, Amount: 30</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(20\% \cdot n = 30\)</td>
+                                <td>Use \(n\) for the base, which is the unknown value.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(20\% \cdot n = 30\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>Once you have an equation, you can solve it by using the relationship between multiplication and division. Look at the pairs of facts below and notice the pattern in each row.</p>
+
+        <table class="fact-table" aria-label="Multiplication and division fact pairs">
+            <thead>
+                <tr>
+                    <th scope="col">Multiplication</th>
+                    <th scope="col">Division</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(2 \cdot 3 = 6\)</td>
+                    <td>\(6 \div 2 = 3\)</td>
+                </tr>
+                <tr>
+                    <td>\(8 \cdot 5 = 40\)</td>
+                    <td>\(40 \div 8 = 5\)</td>
+                </tr>
+                <tr>
+                    <td>\(7 \cdot 4 = 28\)</td>
+                    <td>\(28 \div 7 = 4\)</td>
+                </tr>
+                <tr>
+                    <td>\(6 \cdot 9 = 54\)</td>
+                    <td>\(54 \div 6 = 9\)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Multiplication and division are inverse operations — what one does to a number, the other undoes. So when you have an equation such as \(20\% \cdot n = 30\), you can divide 30 by 20% to find the unknown:</p>
+
+        \[n = 30 \div 20\% = 30 \div 0.20 = 150\]
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-7-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-4-heading">Example 4</h3>
+                <p>What percent of 72 is 9?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding what percent of 72 is 9">
+                        <tbody>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: unknown, Base: 72, Amount: 9</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(n \cdot 72 = 9\)</td>
+                                <td>Use \(n\) for the unknown percent.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = 9 \div 72\)</td>
+                                <td>Divide to undo the multiplication of \(n\) times 72.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(n = 0.125\)</td>
+                                <td>Divide 9 by 72.</td>
+                            </tr>
+                            <tr>
+                                <td>Convert to percent.</td>
+                                <td>\(n = 12.5\%\)</td>
+                                <td>Move the decimal point two places to the right.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>12.5% of 72 is 9.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><em>Estimation check:</em> \(10\%\) of \(72 = 7.2\) and \(20\%\) of \(72 = 14.4\). Since 9 is between 7.2 and 14.4, an answer of 12.5% is reasonable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-2-7-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-5-heading">Example 5</h3>
+                <p>What is 110% of 24?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding 110% of 24">
+                        <tbody>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: 110%, Base: 24, Amount: unknown</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(110\% \cdot 24 = n\)</td>
+                                <td>The amount is unknown, so use \(n\).</td>
+                            </tr>
+                            <tr>
+                                <td>Convert and multiply.</td>
+                                <td>\(1.10 \cdot 24 = 26.4\)</td>
+                                <td>Write 110% as a decimal by moving the decimal point two places to the left, then multiply.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>26.4 is 110% of 24.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><em>Estimation check:</em> 100% of 24 is 24, and 110% is a little more than 24, so 26.4 is reasonable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>18 is what percent of 48?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>The equation is \(n \cdot 48 = 18\). Dividing gives \(n = 18 \div 48 = 0.375\). Converting to a percent: \(n = 37.5\%\).</p>
+                <p><strong>18 is 37.5% of 48.</strong></p>
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>18 is 125% of what number?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>125% written as a decimal is 1.25. The equation is \(1.25 \cdot n = 18\). Dividing gives \(n = 18 \div 1.25 = 14.4\).</p>
+                <p><strong>18 is 125% of 14.4.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SOLVING PERCENT APPLICATIONS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="applications-heading">
+        <h3 id="applications-heading">Solving Percent Applications</h3>
+
+        <!-- Sub-section learning objectives -->
+        <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+            <h3>Learning Objective(s)</h3>
+            <ol>
+                <li>Solve applications involving percents.</li>
+                <li>Solve applications involving simple interest.</li>
+            </ol>
+        </div>
+
+        <p>Percents have a wide variety of applications in everyday life, showing up regularly in taxes, discounts, markups, and interest rates. Let's return to the Guitar Store problem from the introduction.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-2-7-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-6-heading">Example 6</h3>
+                <p>Jeff has a coupon at the Guitar Store for 15% off any purchase of \(\$100\) or more. He wants to buy a used guitar priced at \(\$220\). How much money will the coupon take off?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding 15% of $220 for a guitar store coupon">
+                        <tbody>
+                            <tr>
+                                <td>Simplify the problem.</td>
+                                <td>How much is 15% of \(\$220\)?</td>
+                                <td>Eliminate extra words.</td>
+                            </tr>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: 15%, Base: 220, Amount: \(n\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(15\% \cdot 220 = n\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Convert and multiply.</td>
+                                <td>\(0.15 \cdot 220 = 33\)</td>
+                                <td>Convert 15% to 0.15, then multiply by 220.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The coupon will take <strong>\(\$33\)</strong> off the original price.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><em>Estimation check:</em> \(10\%\) of \(220 = \$22\) and \(20\%\) of \(220 = \$44\). The answer, \(\$33\), is between these values, so it is reasonable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-2-7-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-7-heading">Example 7</h3>
+                <p>Evelyn bought some books at the local bookstore. Her total bill was \(\$31.50\), which included 5% tax. How much did the books cost before tax?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the pre-tax cost of books given a total with 5% tax">
+                        <tbody>
+                            <tr>
+                                <td>Reframe.</td>
+                                <td>105% of what number = \(31.50\)?</td>
+                                <td>The cost of the books is 100%; adding 5% tax makes the total 105% of the original cost.</td>
+                            </tr>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: 105%, Base: \(n\), Amount: 31.50</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(105\% \cdot n = 31.50\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Convert.</td>
+                                <td>\(1.05 \cdot n = 31.50\)</td>
+                                <td>Write 105% as a decimal.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = 31.50 \div 1.05 = 30\)</td>
+                                <td>Divide to undo the multiplication.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The books cost <strong>\(\$30\)</strong> before tax.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-2-7-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-8-heading">Example 8</h3>
+                <p>Susana worked 20 hours at her job last week. This week, she worked 35 hours. In terms of a percent, how much more did she work this week than last week?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-8">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding what percent 35 hours is of 20 hours">
+                        <tbody>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>35 is what percent of 20?</td>
+                                <td>Eliminate extra words.</td>
+                            </tr>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>Percent: \(n\), Base: 20, Amount: 35</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(n \cdot 20 = 35\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(n = 35 \div 20 = 1.75\)</td>
+                                <td>Divide to undo the multiplication.</td>
+                            </tr>
+                            <tr>
+                                <td>Convert.</td>
+                                <td>\(n = 175\%\)</td>
+                                <td>Write 1.75 as a percent.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>Since 35 is 175% of 20, Susana worked <strong>75% more</strong> this week than last week. (She worked 100% of last week's hours, plus 75% more.)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A (Applications) -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>A bookcase that was originally \(\$150\) is on sale for 15% off. What is the sale price?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>Find 15% of \(\$150\): \(0.15 \cdot 150 = \$22.50\). This is the discount amount.</p>
+                <p>Subtract the discount from the original price: \(\$150 - \$22.50 = \$127.50\).</p>
+                <p><strong>The sale price is \(\$127.50\).</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SIMPLE INTEREST
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="interest-heading">
+        <h3 id="interest-heading">Simple Interest</h3>
+
+        <p>When a person takes out a loan, most lenders charge <span class="blue-text"><strong>interest</strong></span> — a fee for borrowing money, typically a percent rate charged per year. We can compute simple interest by finding the interest rate percentage of the amount borrowed, then multiplying by the number of years.</p>
+
+        <div class="definition-box" role="note" aria-label="Simple Interest Equation">
+            <h3>Simple Interest Equation</h3>
+            \[I = p \cdot r \cdot t\]
+            <ul>
+                <li>\(I\) is the interest paid</li>
+                <li>\(p\) is the <strong>principal</strong> — the original amount of money borrowed</li>
+                <li>\(r\) is the <strong>interest rate</strong>, a per-year rate written as a decimal</li>
+                <li>\(t\) is the <strong>time</strong> of the loan, expressed in years or portions of a year</li>
+            </ul>
+        </div>
+
+        <!-- Example 9 -->
+        <section class="example" aria-labelledby="ex-2-7-9-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-9-heading">Example 9</h3>
+                <p>Treasury Notes (T-notes) are bonds issued by the federal government to cover its expenses. Suppose you obtain a \(\$1{,}000\) T-note with a 4% annual rate, with a maturity in 2 years. How much interest will you earn?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-9" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding simple interest on a $1000 T-note at 4% for 2 years">
+                        <tbody>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>\(I\) = unknown, \(p = \$1{,}000\), \(r = 4\% = 0.04\), \(t = 2\) years</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(I = 1{,}000 \cdot 0.04 \cdot 2\)</td>
+                                <td>Substitute into the simple interest formula.</td>
+                            </tr>
+                            <tr>
+                                <td>Multiply.</td>
+                                <td>\(I = 80\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>You would earn <strong>\(\$80\)</strong> in interest.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 10 -->
+        <section class="example" aria-labelledby="ex-2-7-10-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-7-10-heading">Example 10</h3>
+                <p>A friend asks to borrow \(\$240\), offering to repay you \(\$250\) in 1 month. What annual interest rate is this equivalent to?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-7-10">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-7-10" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the annual interest rate when $250 is repaid on a $240 loan after 1 month">
+                        <tbody>
+                            <tr>
+                                <td>Identify parts.</td>
+                                <td>\(I = \$10\), \(p = \$240\), \(r\) = unknown, \(t = 1\) month</td>
+                                <td>Your friend pays back \(\$10\) more than borrowed, so \(I = \$10\).</td>
+                            </tr>
+                            <tr>
+                                <td>Convert time.</td>
+                                <td>\(t = \dfrac{1}{12}\) year</td>
+                                <td>Convert 1 month to a fraction of a year.</td>
+                            </tr>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(10 = 240 \cdot r \cdot \dfrac{1}{12}\)</td>
+                                <td>Substitute into the simple interest formula.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(10 = r \cdot \dfrac{240}{12} = r \cdot 20\)</td>
+                                <td>Regroup and simplify.</td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(r = 10 \div 20 = 0.50\)</td>
+                                <td>Divide to undo the multiplication.</td>
+                            </tr>
+                            <tr>
+                                <td>Convert.</td>
+                                <td>\(r = 50\%\)</td>
+                                <td>Write 0.50 as a percent.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>This is equivalent to a <strong>50% annual interest rate</strong>.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <h4>Self Check D</h4>
+            <p>Find the interest on \(\$5{,}000\) borrowed at 6% for 4 years.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scd-answer" class="self-check-answer">
+                \[I = 5{,}000 \cdot 0.06 \cdot 4 = \$1{,}200\]
+                <p><strong>The interest is \(\$1{,}200\).</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Percent problems have three parts: the percent, the base (or whole), and the amount. Any of those parts may be the unknown value. To solve percent problems, use the equation Percent · Base = Amount and solve for the unknown. When solving application problems, carefully identify which quantity is the percent, which is the base, and which is the amount before writing the equation. For simple interest problems, use the formula \(I = p \cdot r \cdot t\), making sure to express the rate as a decimal and the time in years.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-7-heading">
+        <h2 id="exercises-2-7-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-7-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-7-content" class="exercises-content" role="region" aria-labelledby="exercises-2-7-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

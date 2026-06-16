@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.8: Variation</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Three-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 20%;
+            font-weight: bold;
+            color: #33AB2B;
+            background-color: #fafafa;
+            white-space: nowrap;
+        }
+        .worked-table td:nth-child(2) {
+            width: 38%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.answer-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:nth-child(2) {
+            background-color: #f0f8ed;
+            font-weight: bold;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:last-child {
+            background-color: #f0f8ed;
+        }
+
+        /* ── Method divider within a solution ── */
+        .method-divider {
+            border: none;
+            border-top: 1px dashed #33AB2B;
+            margin: 1.2rem 0 0.8rem 0;
+        }
+        .method-label {
+            font-weight: bold;
+            color: #33AB2B;
+            margin-bottom: 0.5rem;
+            font-size: 0.97em;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-wide {
+            margin: 0.5rem 0 1.25rem 0;
+        }
+        .ex-wide li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        @media (max-width: 600px) {
+            .worked-table td:first-child {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-8">Section 2.8: Variation</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Solve applications involving Direct Variation.</li>
+            <li>Solve applications involving Inverse Variation.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         DIRECT VARIATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="direct-heading">
+        <h3 id="direct-heading">Direct Variation</h3>
+
+        <p>In every relationship there is a dependent and an independent variable. When the independent variable has a <em>direct</em> influence on the dependent variable — meaning one quantity is a constant multiplied by another — each variable is said to <strong>vary directly</strong> with the other.</p>
+
+        <p>Consider this example: a used-car company offers Nicole a sales position with 16% commission. Her earnings depend on her sales. If she sells a vehicle for \(\$4{,}600\), she earns \(\$736\). The formula \(y = 0.16x\) tells us her earnings \(y\) come from multiplying 16% (as a decimal) by the sale price \(x\). As the sale price increases, the earnings increase as well.</p>
+
+        <table aria-label="Nicole's commission earnings at different sale prices">
+            <thead>
+                <tr>
+                    <th scope="col">\(x\) — Sale Price</th>
+                    <th scope="col">\(y = 0.16x\)</th>
+                    <th scope="col">Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>\(\$4{,}600\)</td>
+                    <td>\(y = 0.16(\$4{,}600) = \$736\)</td>
+                    <td>Nicole earns \(\$736\) commission for selling a \(\$4{,}600\) vehicle.</td>
+                </tr>
+                <tr>
+                    <td>\(\$9{,}200\)</td>
+                    <td>\(y = 0.16(\$9{,}200) = \$1{,}472\)</td>
+                    <td>Nicole earns \(\$1{,}472\) commission for selling a \(\$9{,}200\) vehicle.</td>
+                </tr>
+                <tr>
+                    <td>\(\$18{,}400\)</td>
+                    <td>\(y = 0.16(\$18{,}400) = \$2{,}944\)</td>
+                    <td>Nicole earns \(\$2{,}944\) commission for selling a \(\$18{,}400\) vehicle.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="definition-box" role="note" aria-label="Direct Variation Definition and Steps">
+            <h3>Direct Variation</h3>
+            <p>If \(x\) and \(y\) are related by an equation of the form:</p>
+            \[y = kx\]
+            <p>then the relationship is a <strong>direct variation</strong> and \(y\) varies directly with \(x\). The constant \(k\) is called the <strong>constant of variation</strong>.</p>
+            <p><strong>Steps to solve a direct variation problem:</strong></p>
+            <ol>
+                <li>Identify the input \(x\) and the output \(y\).</li>
+                <li>Determine the constant of variation \(k\) by dividing \(y\) by \(x\).</li>
+                <li>Use \(k\) to write an equation for the relationship.</li>
+                <li>Substitute known values into the equation to find the unknown.</li>
+            </ol>
+            <p><em>Note: Direct variation problems can also be solved by setting up a proportion \(\dfrac{y_1}{x_1} = \dfrac{y_2}{x_2}\) and cross-multiplying.</em></p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-8-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-8-1-heading">Example 1</h3>
+                <p>The quantity \(y\) varies directly with \(x\). If \(y = 25\) when \(x = 2\), find \(y\) when \(x = 6\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-8-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-8-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <p class="method-label">Method 1: Constant of Variation</p>
+                    <table class="worked-table" aria-label="Direct variation example 1 using constant of variation">
+                        <tbody>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(y = kx\)</td>
+                                <td>Start with the direct variation equation.</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(25 = k \cdot 2\)</td>
+                                <td>Plug in the known values.</td>
+                            </tr>
+                            <tr>
+                                <td>Solve for \(k\).</td>
+                                <td>\(k = \dfrac{25}{2}\)</td>
+                                <td>Divide both sides by 2.</td>
+                            </tr>
+                            <tr>
+                                <td>Find \(y\).</td>
+                                <td>\(y = \dfrac{25}{2}(6) = 25(3) = 75\)</td>
+                                <td>Substitute \(k\) and \(x = 6\) into the equation.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(y = 75\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr class="method-divider" />
+                    <p class="method-label">Method 2: Proportion</p>
+                    <table class="worked-table" aria-label="Direct variation example 1 using proportion">
+                        <tbody>
+                            <tr>
+                                <td>Set up proportion.</td>
+                                <td>\(\dfrac{25}{2} = \dfrac{y}{6}\)</td>
+                                <td>Use \(\dfrac{y_1}{x_1} = \dfrac{y_2}{x_2}\).</td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(2y = 25(6) = 150\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(y = 75\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(y = 75\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-8-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-8-2-heading">Example 2</h3>
+                <p>The velocity \(v\) of a falling object varies directly with the time \(t\) of the fall. If after 2 seconds the velocity is 64 feet per second, what is the velocity after 5 seconds?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-8-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-8-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <p class="method-label">Method 1: Constant of Variation</p>
+                    <table class="worked-table" aria-label="Falling object velocity using constant of variation">
+                        <tbody>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(v = k \cdot t\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(64 = k \cdot 2\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Solve for \(k\).</td>
+                                <td>\(k = \dfrac{64}{2} = 32\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Find \(v\).</td>
+                                <td>\(v = 32(5) = 160 \text{ ft/sec}\)</td>
+                                <td>Substitute \(k = 32\) and \(t = 5\).</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(v = 160\) ft/sec</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr class="method-divider" />
+                    <p class="method-label">Method 2: Proportion</p>
+                    <table class="worked-table" aria-label="Falling object velocity using proportion">
+                        <tbody>
+                            <tr>
+                                <td>Set up proportion.</td>
+                                <td>\(\dfrac{64}{2} = \dfrac{v}{5}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Cross multiply.</td>
+                                <td>\(2v = 64(5) = 320\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(v = 160\) ft/sec</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(v = 160\) ft/sec</td>
+                                <td>Both methods give the same answer.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>\(y\) varies directly as \(x\). When \(x = 3\), then \(y = 12\). Find \(y\) when \(x = 20\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>Using proportions: \(\dfrac{12}{3} = \dfrac{y}{20}\) → \(3y = 240\) → \(y = 40\).</p>
+                <p><strong>\(y = 40\)</strong></p>
+            </div>
+        </div>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>The distance \(s\) that an object falls varies directly with the time \(t\) of the fall. If an object falls 16 feet in one second, how long will it take to fall 144 feet?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Using proportions: \(\dfrac{16}{1} = \dfrac{144}{t}\) → \(16t = 144\) → \(t = 9\) seconds.</p>
+                <p><strong>It will take 9 seconds to fall 144 feet.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         INVERSE VARIATION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="inverse-heading">
+        <h3 id="inverse-heading">Inverse Variation</h3>
+
+        <p>With direct variation, as one variable increases the other also increases. However, sometimes as one variable increases the other decreases. When this happens we say that \(y\) <strong>varies inversely</strong> with \(x\) (also called <strong>indirect variation</strong>).</p>
+
+        <p>Water temperature in an ocean varies inversely with the water's depth. Between depths of 250 and 500 feet, the formula \(T = \dfrac{14{,}000}{d}\) gives the temperature in degrees Fahrenheit at depth \(d\) in feet. As depth increases, temperature decreases.</p>
+
+        <table aria-label="Ocean temperature at different depths">
+            <thead>
+                <tr>
+                    <th scope="col">\(d\) — Depth</th>
+                    <th scope="col">\(T = \dfrac{14{,}000}{d}\)</th>
+                    <th scope="col">Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>500 ft</td>
+                    <td>\(T = \dfrac{14{,}000}{500} = 28\)</td>
+                    <td>At a depth of 500 ft, the water temperature is 28°F.</td>
+                </tr>
+                <tr>
+                    <td>350 ft</td>
+                    <td>\(T = \dfrac{14{,}000}{350} = 40\)</td>
+                    <td>At a depth of 350 ft, the water temperature is 40°F.</td>
+                </tr>
+                <tr>
+                    <td>250 ft</td>
+                    <td>\(T = \dfrac{14{,}000}{250} = 56\)</td>
+                    <td>At a depth of 250 ft, the water temperature is 56°F.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="definition-box" role="note" aria-label="Inverse Variation Definition and Steps">
+            <h3>Inverse Variation</h3>
+            <p>If \(x\) and \(y\) are related by an equation of the form:</p>
+            \[y = \frac{k}{x}\]
+            <p>then the relationship is an <strong>inverse variation</strong> and \(y\) varies inversely with \(x\). Sometimes the word <em>indirect</em> is used in place of <em>inverse</em>.</p>
+            <p><strong>Steps to solve an inverse variation problem:</strong></p>
+            <ol>
+                <li>Identify the input \(x\) and the output \(y\).</li>
+                <li>Determine the constant of variation \(k\) by multiplying \(y\) by \(x\).</li>
+                <li>Use \(k\) to write an equation for the relationship.</li>
+                <li>Substitute known values into the equation to find the unknown.</li>
+            </ol>
+            <p><em>Note: Inverse variation problems can also be solved using the product rule \(x_1 y_1 = x_2 y_2\).</em></p>
+        </div>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-8-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-8-3-heading">Example 3</h3>
+                <p>A quantity \(y\) varies inversely with \(x\). If \(y = 25\) when \(x = 2\), find \(y\) when \(x = 6\).</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-8-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-8-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <p class="method-label">Method 1: Constant of Variation</p>
+                    <table class="worked-table" aria-label="Inverse variation example using constant of variation">
+                        <tbody>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(y = \dfrac{k}{x}\)</td>
+                                <td>Start with the inverse variation equation.</td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(25 = \dfrac{k}{2}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Solve for \(k\).</td>
+                                <td>\(k = 2(25) = 50\)</td>
+                                <td>Multiply both sides by 2.</td>
+                            </tr>
+                            <tr>
+                                <td>Find \(y\).</td>
+                                <td>\(y = \dfrac{50}{6} \approx 8.33\)</td>
+                                <td>Substitute \(k = 50\) and \(x = 6\).</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(y \approx 8.33\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr class="method-divider" />
+                    <p class="method-label">Method 2: Product Rule</p>
+                    <table class="worked-table" aria-label="Inverse variation example using product rule">
+                        <tbody>
+                            <tr>
+                                <td>Apply the rule.</td>
+                                <td>\(x_1 y_1 = x_2 y_2\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(2(25) = 6y\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(50 = 6y\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(y = \dfrac{50}{6} \approx 8.33\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>\(y \approx 8.33\)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-8-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-8-4-heading">Example 4</h3>
+                <p>The rate of vibration of a string \(v\) under constant tension varies inversely with the length of the string \(l\). If a string is 24 inches long and vibrates 128 times per second, what is the length of a string that vibrates 64 times per second?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-8-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-8-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+
+                    <p class="method-label">Method 1: Constant of Variation</p>
+                    <table class="worked-table" aria-label="String vibration inverse variation using constant of variation">
+                        <tbody>
+                            <tr>
+                                <td>Write the equation.</td>
+                                <td>\(v = \dfrac{k}{l}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(128 = \dfrac{k}{24}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Solve for \(k\).</td>
+                                <td>\(k = 24(128) = 3{,}072\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Find \(l\).</td>
+                                <td>\(64 = \dfrac{3{,}072}{l}\)</td>
+                                <td>Substitute \(k = 3{,}072\) and \(v = 64\).</td>
+                            </tr>
+                            <tr>
+                                <td>Solve for \(l\).</td>
+                                <td>\(l = \dfrac{3{,}072}{64} = 48 \text{ inches}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The string is <strong>48 inches</strong> long.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr class="method-divider" />
+                    <p class="method-label">Method 2: Product Rule</p>
+                    <table class="worked-table" aria-label="String vibration inverse variation using product rule">
+                        <tbody>
+                            <tr>
+                                <td>Apply the rule.</td>
+                                <td>\(x_1 y_1 = x_2 y_2\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Substitute.</td>
+                                <td>\(24(128) = l \cdot 64\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(3{,}072 = 64l\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Divide.</td>
+                                <td>\(l = \dfrac{3{,}072}{64} = 48 \text{ inches}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The string is <strong>48 inches</strong> long.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>A quantity \(y\) varies inversely with \(x\). If \(y = 12\) when \(x = 64\), find \(y\) when \(x = 36\).</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>Using the product rule: \(64(12) = 36y\) → \(768 = 36y\) → \(y \approx 21.33\).</p>
+                <p><strong>\(y \approx 21.33\)</strong></p>
+            </div>
+        </div>
+
+        <!-- Self Check D -->
+        <div class="self-check" role="note" aria-label="Self Check D">
+            <h4>Self Check D</h4>
+            <p>The volume of a gas held at constant temperature varies indirectly as the pressure of the gas. If the volume is 1,200 cubic cm when the pressure is 200 mm of mercury, what is the volume when the pressure is 300 mm of mercury?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scd-answer" class="self-check-answer">
+                <p>Using the product rule: \(1{,}200(200) = 300v\) → \(240{,}000 = 300v\) → \(v = 800 \text{ cm}^3\).</p>
+                <p><strong>The volume is \(800 \text{ cm}^3\).</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Direct variation describes a relationship where \(y = kx\) — as one variable increases, the other increases proportionally. Inverse variation describes a relationship where \(y = \dfrac{k}{x}\) — as one variable increases, the other decreases. In both cases, \(k\) is the constant of variation. Direct variation problems can be solved using the constant of variation or by proportion; inverse variation problems can be solved using the constant of variation or the product rule \(x_1 y_1 = x_2 y_2\).</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-8-heading">
+        <h2 id="exercises-2-8-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-8-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-8-content" class="exercises-content" role="region" aria-labelledby="exercises-2-8-heading">
+
+            <h3>Solve Using Direct and Inverse Variation</h3>
+            <p>In the following exercises, solve each problem.</p>
+
+            <ol class="ex-wide">
+                <li>\(y\) varies directly with \(x\). When \(x = 2\), then \(y = 16\). Find \(y\) when \(x = 8\).</li>
+                <li>\(y\) varies directly with \(x\). When \(x = 3\), then \(y = 5\). Find \(y\) when \(x = 4\).</li>
+                <li>\(y\) varies directly with \(x\). When \(x = 16\), then \(y = 4\). Find \(y\) when \(x = 36\).</li>
+                <li>\(y\) varies directly as the cube root of \(x\). When \(x = 125\), then \(y = 15\). Find \(y\) when \(x = 1{,}000\).</li>
+                <li>\(y\) varies inversely with \(x\). When \(x = 3\), then \(y = 2\). Find \(y\) when \(x = 1\).</li>
+                <li>\(y\) varies inversely with \(x\). When \(x = 4\), then \(y = 3\). Find \(y\) when \(x = 2\).</li>
+                <li>\(y\) varies inversely with \(x\). When \(x = 3\), then \(y = 1\). Find \(y\) when \(x = 1\).</li>
+                <li>\(y\) varies inversely with \(x\). When \(x = 64\), then \(y = 12\). Find \(y\) when \(x = 36\).</li>
+                <li>\(y\) varies inversely with \(x\). When \(x = 27\), then \(y = 5\). Find \(y\) when \(x = 125\).</li>
+                <li>The intensity of light measured in foot-candles varies inversely with the distance from the light source. Suppose the intensity of a light bulb is 0.08 foot-candles at a distance of 3 meters. Find the intensity level at 8 meters.</li>
+                <li>The current in a circuit varies inversely with its resistance measured in ohms. When the current in a circuit is 40 amperes, the resistance is 10 ohms. Find the current if the resistance is 12 ohms.</li>
+            </ol>
+
+            <p class="credit-note">Exercises adapted from OpenStax Prealgebra, available free at <a href="http://cnx.org/content/col111667/1.5" target="_blank" rel="noopener">cnx.org/content/col111667/1.5</a>.</p>
+
+        </div><!-- end exercises-content -->
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>

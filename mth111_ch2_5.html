@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MTH 111 – Ch 2.5: Ratios and Rates</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            },
+            loader: { load: ['input/tex', 'output/chtml'] }
+        };
+    </script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ── Self-check pattern (Chapter 3 style) ── */
+        .self-check {
+            background-color: #f0f8ed;
+            border: 2px solid #33AB2B;
+            border-radius: 6px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .self-check h4 {
+            color: #33AB2B;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .self-check-answer {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #33AB2B;
+        }
+        .self-check-answer.open { display: block; }
+        .self-check-btn {
+            background-color: #33AB2B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        .self-check-btn:hover { background-color: #2a8922; }
+        .self-check-btn .toggle-arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+        }
+        .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
+
+        /* ── Three-column worked example table ── */
+        .worked-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.97em;
+        }
+        .worked-table td {
+            padding: 8px 14px;
+            vertical-align: top;
+            border: 1px solid #ddd;
+            line-height: 1.8;
+        }
+        .worked-table td:first-child {
+            width: 20%;
+            font-weight: bold;
+            color: #33AB2B;
+            background-color: #fafafa;
+            white-space: nowrap;
+        }
+        .worked-table td:nth-child(2) {
+            width: 35%;
+            font-weight: bold;
+            background-color: #fafafa;
+        }
+        .worked-table td:last-child {
+            color: #444;
+            font-style: italic;
+        }
+        .worked-table tr.answer-row td:first-child {
+            background-color: #f0f8ed;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:nth-child(2) {
+            background-color: #f0f8ed;
+            font-weight: bold;
+            color: #1a6e14;
+        }
+        .worked-table tr.answer-row td:last-child {
+            background-color: #f0f8ed;
+        }
+
+        /* ── Ratio notation display box ── */
+        .ratio-box {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 16px 24px;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+        .ratio-box p {
+            margin: 4px 0;
+            line-height: 1.8;
+        }
+
+        /* ── Centered image ── */
+        .fig-wrap {
+            text-align: center;
+            margin: 1.2rem auto;
+        }
+        .fig-wrap img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* ── Exercises section ── */
+        .exercises-section {
+            margin-top: 2rem;
+        }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .credit-note {
+            font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        /* ── Collapsible exercises ── */
+        .exercises-header {
+            background-color: #33AB2B;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            border: none;
+            font-size: 1em;
+            margin-bottom: 0;
+            width: 100%;
+        }
+        .exercises-header:hover { background-color: #2a8922; }
+        .exercises-content {
+            display: none !important;
+            padding: 20px 0 0 0;
+        }
+        .exercises-content.open {
+            display: block !important;
+        }
+
+        @media (max-width: 600px) {
+            .worked-table td:first-child {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc-placeholder"></div>
+
+<main class="container">
+
+    <h1>Chapter 2: The Language of Algebra</h1>
+    <h2 id="section-2-5">Section 2.5: Ratios and Rates</h2>
+
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Write ratios and rates as fractions in simplest form.</li>
+            <li>Find unit rates.</li>
+            <li>Find unit prices.</li>
+        </ol>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         INTRODUCTION
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="intro-heading">
+        <h3 id="intro-heading">Introduction</h3>
+
+        <p><span class="blue-text"><strong>Ratios</strong></span> are used to compare amounts or quantities or describe a relationship between two amounts or quantities. For example, a ratio might be used to describe the cost of a month's rent as compared to the income earned in one month. You may also use a ratio to compare the number of elephants to the total number of animals in a zoo, or the amount of calories per serving in two different brands of ice cream.</p>
+
+        <p><span class="blue-text"><strong>Rates</strong></span> are a special type of ratio used to describe a relationship between different units of measure, such as speed, wages, or prices. A car can be described as traveling 60 miles per hour; a landscaper might earn \(\$35\) per lawn mowed; gas may be sold at \(\$3\) per gallon.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         RATIOS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="ratios-heading">
+        <h3 id="ratios-heading">Ratios</h3>
+
+        <p>Ratios compare quantities using division. This means that you can set up a ratio between two quantities as a division expression between those same two quantities.</p>
+
+        <p>Here is an example. If you have a platter containing 10 sugar cookies and 20 chocolate chip cookies, you can compare the cookies using a ratio.</p>
+
+        <p>The ratio of sugar cookies to chocolate chip cookies is:</p>
+        \[\frac{\text{sugar cookies}}{\text{chocolate chip cookies}} = \frac{10}{20}\]
+
+        <p>The ratio of chocolate chip cookies to sugar cookies is:</p>
+        \[\frac{\text{chocolate chip cookies}}{\text{sugar cookies}} = \frac{20}{10}\]
+
+        <p>You can write the ratio using words, a fraction, or a colon:</p>
+
+        <div class="ratio-box" role="note" aria-label="Three ways to write the ratio of sugar cookies to chocolate chip cookies">
+            <p><strong>Ratio of sugar cookies to chocolate chip cookies</strong></p>
+            <p>10 to 20</p>
+            <p>\(\dfrac{10}{20}\)</p>
+            <p>10 : 20</p>
+        </div>
+
+        <p>Some people think about this ratio as: "For every 10 sugar cookies I have, I have 20 chocolate chip cookies."</p>
+
+        <p>You can also simplify the ratio just as you simplify a fraction:</p>
+        \[\frac{10}{20} = \frac{10 \div 10}{20 \div 10} = \frac{1}{2}\]
+
+        <p>So we can also say:</p>
+
+        <div class="ratio-box" role="note" aria-label="Simplified ratio of sugar cookies to chocolate chip cookies">
+            <p><strong>Ratio of sugar cookies to chocolate chip cookies (simplified)</strong></p>
+            <p>1 to 2</p>
+            <p>\(\dfrac{1}{2}\)</p>
+            <p>1 : 2</p>
+        </div>
+
+        <div class="definition-box" role="note" aria-label="How to Write a Ratio">
+            <h3>How to Write a Ratio</h3>
+            <p>A ratio can be written in three different ways:</p>
+            <ul>
+                <li>With the word "to": 3 to 4</li>
+                <li>As a fraction: \(\dfrac{3}{4}\)</li>
+                <li>With a colon: 3 : 4</li>
+            </ul>
+            <p>A ratio is simplified if it is equivalent to a fraction that has been fully simplified.</p>
+        </div>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-2-5-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-1-heading">Example 1</h3>
+                <p>A basketball player takes 50 jump shots during practice. She makes 28 of them. What is the ratio of shots made to shots taken? Simplify the ratio.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-1">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-1" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the ratio of shots made to shots taken">
+                        <tbody>
+                            <tr>
+                                <td>Identify the relationship.</td>
+                                <td>\(\dfrac{\text{shots made}}{\text{shots taken}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{28}{50}\)</td>
+                                <td>Express the two quantities in fraction form.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{28 \div 2}{50 \div 2} = \dfrac{14}{25}\)</td>
+                                <td>Simplify the fraction to express the ratio in simplest form.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The ratio of shots made to shots taken is \(\dfrac{14}{25}\), 14 : 25, or 14 to 25.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-2-5-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-2-heading">Example 2</h3>
+                <p>Paul is comparing the amount of calories in a personal pizza to the calories in a sub sandwich. The pizza has 600 calories, while the sandwich has 450 calories. Write a ratio that represents the calories in the pizza compared to the calories in the sandwich.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the ratio of pizza calories to sandwich calories">
+                        <tbody>
+                            <tr>
+                                <td>Identify the relationship.</td>
+                                <td>\(\dfrac{\text{calories in the pizza}}{\text{calories in the sandwich}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{600}{450}\)</td>
+                                <td>Write a ratio comparing calories.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{600 \div 150}{450 \div 150} = \dfrac{4}{3}\)</td>
+                                <td>600 and 450 have a common factor of 150.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The ratio of calories in the pizza to calories in the sandwich is \(\dfrac{4}{3}\), 4 : 3, or 4 to 3.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p>Ratios can compare a <em>part to a part</em> or a <em>part to a whole</em>. Consider the example below that describes guests at a party.</p>
+
+        <!-- Example 3 -->
+        <section class="example" aria-labelledby="ex-2-5-3-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-3-heading">Example 3</h3>
+                <p>Luisa invites a group of friends to a party. Including Luisa, there are a total of 22 people, 10 of whom are women. Which is greater: the ratio of women to men at the party, or the ratio of women to the total number of people present?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-3">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-3" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Comparing the ratio of women to men versus women to total people">
+                        <tbody>
+                            <tr>
+                                <td>Identify the first relationship.</td>
+                                <td>\(\dfrac{\text{number of women}}{\text{number of men}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{10}{12}\)</td>
+                                <td>Since there are 22 people and 10 are women, 12 must be men.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{10 \div 2}{12 \div 2} = \dfrac{5}{6}\)</td>
+                                <td>10 and 12 have a common factor of 2. The ratio of women to men is \(\dfrac{5}{6}\).</td>
+                            </tr>
+                            <tr>
+                                <td>Identify the next relationship.</td>
+                                <td>\(\dfrac{\text{number of women}}{\text{total number of people}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{10}{22}\)</td>
+                                <td>Write a ratio comparing women to the total number of people at the party.</td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{10 \div 2}{22 \div 2} = \dfrac{5}{11}\)</td>
+                                <td>10 and 22 have a common factor of 2.</td>
+                            </tr>
+                            <tr>
+                                <td>Compare.</td>
+                                <td>\(\dfrac{5 \cdot 11}{6 \cdot 11} = \dfrac{55}{66} \qquad \dfrac{5 \cdot 6}{11 \cdot 6} = \dfrac{30}{66}\)</td>
+                                <td>Rewrite each fraction with a common denominator of 66.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>\(\dfrac{5}{6} > \dfrac{5}{11}\)</td>
+                                <td>Since \(\dfrac{55}{66} > \dfrac{30}{66}\).</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The ratio of women to men at the party, \(\dfrac{5}{6}\), is greater than the ratio of women to the total number of people, \(\dfrac{5}{11}\).</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>A poll at Forrester University found that 4,000 out of 6,000 students are unmarried. Find the ratio of unmarried to married students. Express as a simplified ratio.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-answer" class="self-check-answer">
+                <p>If 4,000 students out of 6,000 are unmarried, then \(6{,}000 - 4{,}000 = 2{,}000\) must be married. The ratio of unmarried to married students is:</p>
+                \[\frac{4{,}000}{2{,}000} = \frac{4{,}000 \div 2{,}000}{2{,}000 \div 2{,}000} = \frac{2}{1}\]
+                <p><strong>The ratio of unmarried to married students is 2 to 1.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         RATES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="rates-heading">
+        <h3 id="rates-heading">Rates</h3>
+
+        <p>A <span class="blue-text"><strong>rate</strong></span> is a ratio that compares two different quantities that have different units of measure. A rate provides information such as dollars per hour, feet per second, miles per hour, and dollars per quart. The word "per" usually indicates you are dealing with a rate. Rates can be written using words, using a colon, or as a fraction — and you must include the units.</p>
+
+        <p>For example, an employer wants to rent 6 buses to transport a group of 300 people on a company outing. The rate can be written as:</p>
+
+        <div class="ratio-box" role="note" aria-label="Three ways to write the rate of buses per people">
+            <p>six buses per 300 people</p>
+            <p>6 buses : 300 people</p>
+            <p>\(\dfrac{6 \text{ buses}}{300 \text{ people}}\)</p>
+        </div>
+
+        <p>As with ratios, this rate can be expressed in simplest form by simplifying the fraction:</p>
+
+        \[\frac{6 \text{ buses}}{300 \text{ people}} = \frac{6 \div 6 \text{ buses}}{300 \div 6 \text{ people}} = \frac{1 \text{ bus}}{50 \text{ people}}\]
+
+        <p>This means the rate of buses to people is 1 bus for every 50 people.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-2-5-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-4-heading">Example 4</h3>
+                <p>Write the rate as a simplified fraction: 8 phone lines for 36 employees.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Simplifying the rate of phone lines per employees">
+                        <tbody>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{8 \text{ phone lines}}{36 \text{ employees}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{8 \div 4 \text{ phone lines}}{36 \div 4 \text{ employees}} = \dfrac{2 \text{ phone lines}}{9 \text{ employees}}\)</td>
+                                <td>Simplify the fraction using the common factor of 4.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The rate of phone lines for employees is \(\dfrac{2 \text{ phone lines}}{9 \text{ employees}}\).</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 5 -->
+        <section class="example" aria-labelledby="ex-2-5-5-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-5-heading">Example 5</h3>
+                <p>Write the rate as a simplified fraction: 6 flight attendants for 200 passengers.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-5">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-5" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Simplifying the rate of flight attendants per passengers">
+                        <tbody>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{6 \text{ flight attendants}}{200 \text{ passengers}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Simplify.</td>
+                                <td>\(\dfrac{6 \div 2 \text{ flight attendants}}{200 \div 2 \text{ passengers}} = \dfrac{3 \text{ flight attendants}}{100 \text{ passengers}}\)</td>
+                                <td>Simplify the fraction using the common factor of 2.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The rate of flight attendants to passengers is \(\dfrac{3 \text{ flight attendants}}{100 \text{ passengers}}\).</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Anyla rides her bike 18 blocks in 20 minutes. Express her rate as a simplified fraction.</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-answer" class="self-check-answer">
+                <p>Anyla's trip compares quantities with different units (blocks and minutes), so it is a rate:</p>
+                \[\frac{18 \text{ blocks}}{20 \text{ minutes}} = \frac{18 \div 2 \text{ blocks}}{20 \div 2 \text{ minutes}} = \frac{9 \text{ blocks}}{10 \text{ minutes}}\]
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         FINDING UNIT RATES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="unit-rates-heading">
+        <h3 id="unit-rates-heading">Finding Unit Rates</h3>
+
+        <p>A <span class="blue-text"><strong>unit rate</strong></span> compares a quantity to one unit of measure. You often see the speed at which an object is traveling expressed as a unit rate.</p>
+
+        <p>For example, if you wanted to describe the speed of a boy riding his bike — and you had the distance he traveled in 2 hours — you would express the speed as the distance traveled per one hour. The denominator of a unit rate will always be one.</p>
+
+        <p>Consider a car that travels 300 miles in 5 hours. To find the unit rate:</p>
+
+        \[\frac{300 \text{ miles}}{5 \text{ hours}} = \frac{300 \div 5 \text{ miles}}{5 \div 5 \text{ hours}} = \frac{60 \text{ miles}}{1 \text{ hour}}\]
+
+        <p>A common way to write this unit rate is 60 miles per hour.</p>
+
+        <!-- Example 6 -->
+        <section class="example" aria-labelledby="ex-2-5-6-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-6-heading">Example 6</h3>
+                <p>A crowded subway train has 375 passengers distributed evenly among 5 cars. What is the unit rate of passengers per subway car?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-6">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-6" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the unit rate of passengers per subway car">
+                        <tbody>
+                            <tr>
+                                <td>Identify the relationship.</td>
+                                <td>\(\dfrac{\text{passengers}}{\text{subway cars}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{375 \text{ passengers}}{5 \text{ subway cars}}\)</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Find unit rate.</td>
+                                <td>\(\dfrac{375 \div 5 \text{ passengers}}{5 \div 5 \text{ subway cars}} = \dfrac{75 \text{ passengers}}{1 \text{ subway car}}\)</td>
+                                <td>Express the fraction with 1 in the denominator to find the number of passengers in one subway car.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The unit rate is 75 riders per subway car.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         FINDING UNIT PRICES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="unit-prices-heading">
+        <h3 id="unit-prices-heading">Finding Unit Prices</h3>
+
+        <p>A <span class="blue-text"><strong>unit price</strong></span> is a unit rate that expresses the price of something. The unit price always describes the price of one unit, so that you can easily compare prices.</p>
+
+        <p>You may have noticed that grocery shelves are marked with the unit price (as well as the total price) of each product. This unit price makes it easy for shoppers to compare the prices of competing brands and different package sizes.</p>
+
+        <p>Consider the two containers of blueberries shown below. It might be difficult to decide which is the better buy just by looking at the prices; the container on the left is cheaper, but you also get fewer blueberries. A better indicator of value is the price <em>per single ounce</em> of blueberries for each container.</p>
+
+        <div class="fig-wrap">
+            <img src="images/mth111_2_5_1.png"
+                 alt="Two containers of blueberries side by side. The left container shows a unit price of 25 cents per ounce, a total price of $2.00, and a weight of 8 ounces. The right container shows a unit price of 20 cents per ounce, a total price of $2.40, and a weight of 12 ounces." />
+        </div>
+
+        <p>The container on the right is actually a better deal, since its price per ounce is lower. You pay more money for the larger container, but you also get more blueberries. Put simply, the container on the right is a better value.</p>
+
+        <p>To find a unit price, divide the total price by the number of units. Like rates, unit prices are often described with the word "per" or a slanted line /. For example, \(\$1.60\)/box is read "\(\$1.60\) per box."</p>
+
+        <!-- Example 7 -->
+        <section class="example" aria-labelledby="ex-2-5-7-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-7-heading">Example 7</h3>
+                <p>3 pounds of sirloin tips cost \(\$21\). What is the unit price per pound?</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-7">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-7" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Finding the unit price per pound of sirloin tips">
+                        <tbody>
+                            <tr>
+                                <td>Write as a fraction.</td>
+                                <td>\(\dfrac{\$21.00}{3 \text{ pounds}}\)</td>
+                                <td>Write a rate to represent the cost per number of pounds.</td>
+                            </tr>
+                            <tr>
+                                <td>Find unit price.</td>
+                                <td>\(\dfrac{\$21.00 \div 3}{3 \div 3 \text{ pounds}} = \dfrac{\$7.00}{1 \text{ pound}}\)</td>
+                                <td>Divide both numerator and denominator by 3 to get the price of 1 pound.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>The unit price of the sirloin tips is \(\$7.00\)/pound.</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Example 8 -->
+        <section class="example" aria-labelledby="ex-2-5-8-heading">
+            <div class="example-problem">
+                <h3 id="ex-2-5-8-heading">Example 8</h3>
+                <p>Sami is trying to decide between two brands of crackers. Which brand has the lower unit price?</p>
+                <ul>
+                    <li>Brand A: \(\$1.12\) for 8 ounces</li>
+                    <li>Brand B: \(\$1.56\) for 12 ounces</li>
+                </ul>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-2-5-8">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-2-5-8" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <table class="worked-table" aria-label="Comparing unit prices of Brand A and Brand B crackers">
+                        <tbody>
+                            <tr>
+                                <td>Brand A — write as a fraction.</td>
+                                <td>\(\dfrac{\$1.12}{8 \text{ ounces}}\)</td>
+                                <td>Write a rate to represent the cost per ounce for Brand A.</td>
+                            </tr>
+                            <tr>
+                                <td>Brand A — find unit price.</td>
+                                <td>\(\dfrac{\$1.12 \div 8}{8 \div 8 \text{ ounces}} = \dfrac{\$0.14}{1 \text{ ounce}}\)</td>
+                                <td>Divide numerator and denominator by 8.</td>
+                            </tr>
+                            <tr>
+                                <td>Brand B — write as a fraction.</td>
+                                <td>\(\dfrac{\$1.56}{12 \text{ ounces}}\)</td>
+                                <td>Write a rate to represent the cost per ounce for Brand B.</td>
+                            </tr>
+                            <tr>
+                                <td>Brand B — find unit price.</td>
+                                <td>\(\dfrac{\$1.56 \div 12}{12 \div 12 \text{ ounces}} = \dfrac{\$0.13}{1 \text{ ounce}}\)</td>
+                                <td>Divide numerator and denominator by 12.</td>
+                            </tr>
+                            <tr>
+                                <td>Compare.</td>
+                                <td>\(\dfrac{\$0.14}{1 \text{ oz}} > \dfrac{\$0.13}{1 \text{ oz}}\)</td>
+                                <td>Brand B has the lower unit price.</td>
+                            </tr>
+                            <tr class="answer-row">
+                                <td>Answer</td>
+                                <td>Brand A costs 14 cents/ounce; Brand B costs 13 cents/ounce. <strong>Brand B has the lower unit price and is the better value.</strong></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>A shopper is comparing two packages of rice at the grocery store. A 10-pound package costs \(\$9.89\) and a 2-pound package costs \(\$1.90\). Which package has the lower unit price to the nearest cent? What is its unit price?</p>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-answer" class="self-check-answer">
+                <p>Unit price of the 2-pound bag: \(\$1.90 \div 2 = \$0.95\) per pound.</p>
+                <p>Unit price of the 10-pound bag: \(\$9.89 \div 10 = \$0.989 \approx \$0.99\) per pound.</p>
+                <p><strong>The 2-pound bag has the lower unit price of \(\$0.95\)/pound.</strong></p>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SUMMARY
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="summary-heading">
+        <h3 id="summary-heading">Summary</h3>
+        <p>Ratios and rates are used to compare quantities and express relationships between quantities measured in the same units and in different units of measure. Both can be written as a fraction, using a colon, or using the words "to" or "per." Since rates compare two quantities measured in different units of measurement, they must include their units. A unit rate or unit price is a rate that describes the rate or price for one unit of measure.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES (placeholder)
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-2-5-heading">
+        <h2 id="exercises-2-5-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-2-5-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+
+        <div id="exercises-2-5-content" class="exercises-content" role="region" aria-labelledby="exercises-2-5-heading">
+            <!-- Exercises to be added -->
+        </div>
+    </section>
+
+</main>
+
+<script>
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
+
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
+            });
+        });
+</script>
+
+</body>
+</html>
