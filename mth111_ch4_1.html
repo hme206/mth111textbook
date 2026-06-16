@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="styles.css" />
 
     <style>
-        /* ── Self-check pattern (Chapter 3 style) ── */
+        /* Self-check pattern */
         .self-check {
             background-color: #f0f8ed;
             border: 2px solid #33AB2B;
@@ -67,44 +67,7 @@
         }
         .self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
 
-        /* ── Points and Lines table with SVG pictures ── */
-        .geometry-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.2rem 0;
-        }
-        .geometry-table th {
-            background-color: #f0f8ed;
-            color: #33AB2B;
-            padding: 10px 16px;
-            border: 1px solid #ccc;
-            font-weight: bold;
-            text-align: center;
-        }
-        .geometry-table td {
-            padding: 14px 16px;
-            border: 1px solid #ccc;
-            text-align: center;
-            vertical-align: middle;
-        }
-        .geometry-table td:first-child {
-            font-weight: bold;
-            text-align: left;
-            width: 20%;
-        }
-        .geometry-table td:nth-child(2) {
-            width: 30%;
-            font-size: 1.05em;
-        }
-        .geometry-table td:last-child {
-            width: 50%;
-        }
-        .geometry-table svg {
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* ── Centered image ── */
+        /* Centered image */
         .fig-wrap {
             text-align: center;
             margin: 1.2rem auto;
@@ -114,19 +77,46 @@
             height: auto;
             border-radius: 4px;
         }
-        .fig-caption {
-            font-size: 0.88em;
-            color: #555;
-            margin-top: 6px;
+
+        /* Three-column solution grid */
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 600px) {
+            .example-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Exercises */
+        .exercises-section { margin-top: 2rem; }
+        .exercises-section h3 {
+            color: #33AB2B;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #cce8c4;
+            padding-bottom: 4px;
+        }
+        .ex-grid {
+            display: grid;
+            gap: 0.5rem 1.5rem;
+            margin: 0.75rem 0 1.25rem 0;
+        }
+        .ex-grid.two-col  { grid-template-columns: repeat(2, 1fr); }
+        .ex-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+        .ex-item { padding: 4px 0; line-height: 1.6; }
+        .ex-wide { margin: 0.5rem 0 1.25rem 0; }
+        .ex-wide li { margin-bottom: 0.75rem; line-height: 1.6; }
+        .credit-note {
             font-style: italic;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 1rem;
         }
 
-        /* ── Exercises section ── */
-        .exercises-section {
-            margin-top: 2rem;
-        }
-
-        /* ── Collapsible exercises ── */
+        /* Collapsible exercises */
         .exercises-header {
             background-color: #33AB2B;
             color: white;
@@ -140,7 +130,6 @@
             transition: background-color 0.2s ease;
             border: none;
             font-size: 1em;
-            margin-bottom: 0;
             width: 100%;
         }
         .exercises-header:hover { background-color: #2a8922; }
@@ -148,8 +137,14 @@
             display: none !important;
             padding: 20px 0 0 0;
         }
-        .exercises-content.open {
-            display: block !important;
+        .exercises-content.open { display: block !important; }
+
+        @media (max-width: 600px) {
+            .ex-grid.four-col { grid-template-columns: repeat(2, 1fr); }
+            .ex-grid.two-col  { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 400px) {
+            .ex-grid.four-col { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -158,347 +153,329 @@
 <div id="toc-placeholder"></div>
 
 <main class="container">
- 
 
     <h1>Chapter 4: Graphs</h1>
-    <h2 id="section-4-1">Section 5.1: Rectangular Coordinate System</h2>
+    <h2 id="section-4-1">Section 4.1: Rectangular Coordinate System</h2>
 
-        <div class="intro-section">
-            <p>An old story describes how seventeenth-century philosopher/mathematician René Descartes invented the system that has become the foundation of algebra while sick in bed. According to the story, Descartes was staring at a fly crawling on the ceiling when he realized that he could describe the fly's location in relation to the perpendicular lines formed by the adjacent walls of his room. He viewed the perpendicular lines as horizontal and vertical axes. Further, by dividing each axis into equal unit lengths, Descartes saw that it was possible to locate any object in a two-dimensional plane using just two numbers: the displacement from the horizontal axis and the displacement from the vertical axis.</p>
+    <!-- Learning Objectives -->
+    <div class="learning-obj-box" role="note" aria-label="Learning Objectives">
+        <h3>Learning Objective(s)</h3>
+        <ol>
+            <li>Plot points on a rectangular coordinate system.</li>
+            <li>Identify points on a graph.</li>
+            <li>Verify solutions to an equation in two variables.</li>
+            <li>Complete a table of solutions to a linear equation.</li>
+            <li>Find solutions to linear equations in two variables.</li>
+        </ol>
+    </div>
 
-            <p>While there is evidence that ideas similar to Descartes' grid system existed centuries earlier, it was Descartes who introduced the components that comprise the <strong>Cartesian coordinate system</strong>, a grid system having perpendicular axes. Descartes named the horizontal axis the x-axis and the vertical axis the y-axis. The Cartesian System, also called the rectangular coordinate system, is based on a two-dimensional plane consisting of the x-axis and the y-axis. Perpendicular to each other, the axes divide the plane into four sections. Each section is called a <strong>quadrant</strong>; the quadrants are numbered counterclockwise as shown in <strong>Figure 2.1</strong>.</p>
-        </div>
+    <hr class="divider" role="separator" aria-hidden="true" />
 
-         <figure aria-labelledby="fig1-title" role="group">
-    <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" role="img" aria-labelledby="fig1-title fig1-desc" xmlns="http://www.w3.org/2000/svg" focusable="false">
-  <title id="fig1-title">Cartesian coordinate quadrants</title>
-  <desc id="fig1-desc">A Cartesian grid with centered axes.</desc>
+    <!-- ═══════════════════════════════════════════
+         SECTION 1: CARTESIAN COORDINATE SYSTEM
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="cartesian-heading">
+        <h3 id="cartesian-heading">The Rectangular Coordinate System</h3>
 
-  <!-- grid pattern -->
-  <defs>
-    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
-      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#e6e6e6" stroke-width="1"/>
-    </pattern>
-  </defs>
+        <p>An old story describes how seventeenth-century philosopher/mathematician René Descartes invented the system that has become the foundation of algebra while sick in bed. According to the story, Descartes was staring at a fly crawling on the ceiling when he realized that he could describe the fly's location in relation to the perpendicular lines formed by the adjacent walls of his room. He viewed the perpendicular lines as horizontal and vertical axes. Further, by dividing each axis into equal unit lengths, Descartes saw that it was possible to locate any object in a two-dimensional plane using just two numbers: the displacement from the horizontal axis and the displacement from the vertical axis.</p>
 
-  <!-- centered grid -->
-  <rect x="-220" y="-220" width="440" height="440" fill="url(#grid)" />
+        <p>While there is evidence that ideas similar to Descartes' grid system existed centuries earlier, it was Descartes who introduced the components that comprise the <strong>Cartesian coordinate system</strong>, a grid system having perpendicular axes. Descartes named the horizontal axis the x-axis and the vertical axis the y-axis. The Cartesian System, also called the rectangular coordinate system, is based on a two-dimensional plane consisting of the x-axis and the y-axis. Perpendicular to each other, the axes divide the plane into four sections. Each section is called a <strong>quadrant</strong>; the quadrants are numbered counterclockwise as shown below.</p>
 
-  <!-- axes -->
-  <g stroke="#000" stroke-width="4" stroke-linecap="round">
-    <line x1="0" y1="-220" x2="0" y2="220" />
-    <line x1="-220" y1="0" x2="220" y2="0" />
-  </g>
+        <figure aria-labelledby="fig1-caption" role="group">
+            <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" role="img" aria-labelledby="fig1-title fig1-desc" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <title id="fig1-title">Cartesian coordinate quadrants</title>
+                <desc id="fig1-desc">A Cartesian grid with centered axes labeled x-axis and y-axis, with the four quadrants labeled counterclockwise: Quadrant I upper right, Quadrant II upper left, Quadrant III lower left, Quadrant IV lower right.</desc>
+                <defs>
+                    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+                        <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#e6e6e6" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect x="-220" y="-220" width="440" height="440" fill="url(#grid)" />
+                <g stroke="#000" stroke-width="4" stroke-linecap="round">
+                    <line x1="0" y1="-220" x2="0" y2="220" />
+                    <line x1="-220" y1="0" x2="220" y2="0" />
+                </g>
+                <polygon points="0,-220  -5,-208 5,-208" fill="#000" />
+                <polygon points="220,0 208,-5 208,5" fill="#000" />
+                <text x="180" y="18" font-size="18" fill="#000">x-axis</text>
+                <text x="8" y="-200" font-size="18" fill="#000">y-axis</text>
+                <text x="80" y="-80" font-size="18" fill="#000">Quadrant I</text>
+                <text x="-180" y="-80" font-size="18" fill="#000">Quadrant II</text>
+                <text x="-180" y="140" font-size="18" fill="#000">Quadrant III</text>
+                <text x="80" y="140" font-size="18" fill="#000">Quadrant IV</text>
+            </svg>
+            <figcaption id="fig1-caption">The Cartesian coordinate system. The x-axis is horizontal and the y-axis is vertical; quadrants are numbered counterclockwise starting from the upper right.</figcaption>
+        </figure>
 
-  <!-- arrows -->
-  <polygon points="0,-220  -5,-208 5,-208" fill="#000" />
-  <polygon points="220,0 208,-5 208,5" fill="#000" />
+        <p>The center where the axes cross is the <strong>origin</strong> \((0, 0)\). Positive numbers increase to the right on the x-axis and up the y-axis; negatives go left and down. Each point is given as an <strong>ordered pair</strong> \((x, y)\).</p>
 
-  <!-- labels -->
-  <text x="180" y="18" font-size="18" fill="#000">x-axis</text>
-  <text x="8" y="-200" font-size="18" fill="#000">y-axis</text>
-
-  <!-- quadrant labels -->
-  <text x="80" y="-80" font-size="18" fill="#000">Quadrant I</text>
-  <text x="-180" y="-80" font-size="18" fill="#000">Quadrant II</text>
-  <text x="-180" y="140" font-size="18" fill="#000">Quadrant III</text>
-  <text x="80" y="140" font-size="18" fill="#000">Quadrant IV</text>
-</svg>
-
-      <figcaption>Figure 2.1 — Cartesian coordinate quadrants. The x-axis is horizontal and the y-axis is vertical; quadrants are numbered counterclockwise.</figcaption>
-    </figure>
-
-
-        <p>The center where the axes cross is the <strong>origin</strong> $(0, 0)$. Positive numbers increase to the right on the x-axis and up the y-axis; negatives go left and down. Each point is given as an <strong>ordered pair</strong> $(x, y)$.</p>
-
-        <h4>Plotting a Point</h4>
-
-        <p>Many maps, use a grid system to identify locations. In the map below you will see the numbers 1,2,3,and 4 across the bottom, and letters A,B,C, and D along the sides. Every location on the map can be identified by a number and a letter. </p>
-        <p>For example, the student center is in section 2B. It is located in the grid section above the number 2 and next to the letter B. </p>
-          <div class="fig-wrap">
-            <img src="images/mth111_4_1_1.png"
-                 alt="A coordinate grid with numbers 1,2,3,and 4 denoting columns along the bottom, and letters A,B,C, and D denoting rows across the left side, startin at the top." />
-        </div>
-  <!-- Example 1 -->
-        <div class="example">
-            <div class="example-problem">
-                <h3>Example 1</h3>
-                <ol>
-<li> Find the grid section for the Residence Halls</li>
-<li> What is located in section 4C?</li>
-
-                </ol>
-            </div>
-            <button class="solution-header" onclick="toggleExample(this)">
-                <span class="toggle-arrow">▼</span>
-                <span>Show Solution</span>
-            </button>
-            <div class="example-content">
-                <div class="solution">
-                    <h4>Solution</h4>
-                    <ol>
-                        <li> The Residence Halls are located in the upper right corner, which would be column 4, and row A. This means our solution is 4A</li>
-                        <li> To locate what is in space 4C, we would proceed left to the fourth column, and then up to row C, which is Tiger Field.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <p>We can make this same extension to the Rectangular Coordinate System. Each point in the plane is identified by its <strong>x-coordinate</strong>, or horizontal displacement from the origin, and its <strong>y-coordinate</strong>, or vertical displacement from the origin. Together, we write them as an <strong>ordered pair</strong>, indicating the combined distance from the origin in the form $(x,y)$. An ordered pair is also known as a coordinate pair because it consists of x- and y-coordinates. For example, we can represent the point $(3,-4)$ in the plane by moving three units to the right of the origin in the horizontal direction, then four units down in the vertical direction. See <strong>Figure 2.2</strong>:</p>
-
-        <figure aria-labelledby="fig-plotted-title" role="group">
-      <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" role="img" aria-labelledby="fig-plotted-title fig-plotted-desc" xmlns="http://www.w3.org/2000/svg" focusable="false">
-  <title id="fig-plotted-title">Plotting the point (3, -4) on a Cartesian grid</title>
-  <desc id="fig-plotted-desc">Grid with axes, labeled from -9 to 9, showing an orange arrow moving right 3 units, then a red arrow moving down 4 units; final point marked in blue labeled (3,-4).</desc>
-
-  <!-- background grid -->
-  <defs>
-    <pattern id="g2" width="25" height="25" patternUnits="userSpaceOnUse">
-      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <rect x="-225" y="-225" width="450" height="450" fill="url(#g2)" />
-
-  <!-- axes -->
-  <g stroke="#000" stroke-width="2">
-    <line x1="0" y1="-225" x2="0" y2="225" /> <!-- vertical axis -->
-    <line x1="-225" y1="0" x2="225" y2="0" /> <!-- horizontal axis -->
-  </g>
-
-  <!-- axis labels -->
-  <text x="210" y="-5" font-size="16" fill="#000">x-axis</text>
-  <text x="5" y="-210" font-size="16" fill="#000">y-axis</text>
-
-  <!-- x-axis ticks and labels (-9 to 9, skipping 0) -->
-  <g font-size="10" fill="#000">
-    <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-9</text>
-    <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-8</text>
-    <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-7</text>
-    <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-6</text>
-    <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-5</text>
-    <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-4</text>
-    <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-3</text>
-    <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-2</text>
-    <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-1</text>
-    <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">1</text>
-    <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">2</text>
-    <line x1="75" y1="-5" x2="75" y2="5"/><text x="70" y="20">3</text>
-    <line x1="100" y1="-5" x2="100" y2="5"/><text x="95" y="20">4</text>
-    <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">5</text>
-    <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">6</text>
-    <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">7</text>
-    <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">8</text>
-    <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">9</text>
-  </g>
-
-  <!-- y-axis ticks and labels (-9 to 9, skipping 0) -->
-  <g font-size="10" fill="#000">
-    <line x1="-5" y1="-225" x2="5" y2="-225"/><text x="-20" y="-222">9</text>
-    <line x1="-5" y1="-200" x2="5" y2="-200"/><text x="-20" y="-197">8</text>
-    <line x1="-5" y1="-175" x2="5" y2="-175"/><text x="-20" y="-172">7</text>
-    <line x1="-5" y1="-150" x2="5" y2="-150"/><text x="-20" y="-147">6</text>
-    <line x1="-5" y1="-125" x2="5" y2="-125"/><text x="-20" y="-122">5</text>
-    <line x1="-5" y1="-100" x2="5" y2="-100"/><text x="-20" y="-97">4</text>
-    <line x1="-5" y1="-75" x2="5" y2="-75"/><text x="-20" y="-72">3</text>
-    <line x1="-5" y1="-50" x2="5" y2="-50"/><text x="-20" y="-47">2</text>
-    <line x1="-5" y1="-25" x2="5" y2="-25"/><text x="-20" y="-22">1</text>
-    <line x1="-5" y1="25" x2="5" y2="25"/><text x="-25" y="28">-1</text>
-    <line x1="-5" y1="50" x2="5" y2="50"/><text x="-25" y="53">-2</text>
-    <line x1="-5" y1="75" x2="5" y2="75"/><text x="-25" y="78">-3</text>
-    <line x1="-5" y1="100" x2="5" y2="100"/><text x="-25" y="103">-4</text>
-    <line x1="-5" y1="125" x2="5" y2="125"/><text x="-25" y="128">-5</text>
-    <line x1="-5" y1="150" x2="5" y2="150"/><text x="-25" y="153">-6</text>
-    <line x1="-5" y1="175" x2="5" y2="175"/><text x="-25" y="178">-7</text>
-    <line x1="-5" y1="200" x2="5" y2="200"/><text x="-25" y="203">-8</text>
-    <line x1="-5" y1="225" x2="5" y2="225"/><text x="-25" y="228">-9</text>
-  </g>
-
-  <!-- arrows showing moves -->
-  <g stroke-linecap="round">
-    <!-- right 3 units -->
-    <line x1="0" y1="0" x2="75" y2="0" stroke="#ff8c00" stroke-width="2" stroke-dasharray="8 4" />
-    <polygon points="75,0 67,-7 67,7" fill="#ff8c00" />
-    <!-- down 4 units -->
-    <line x1="75" y1="0" x2="75" y2="-100" stroke="#d9534f" stroke-width="2" stroke-dasharray="6 4" />
-    <polygon points="75,-100 67,-93 83,-93" fill="#d9534f" />
-  </g>
-
-  <!-- plotted point -->
-  <circle cx="75" cy="-100" r="4" fill="#0074D9" stroke="#003e7a" stroke-width=".5" />
-  <text x="85" y="-90" font-size="12"> (3,-4)</text>
-</svg>
-         </figure>
-
-
-        <p>When dividing the axes into equally spaced increments, note that the x-axis may be considered separate from the y-axis. In other words, while the x-axis may be divided and labeled according to consecutive integers, the y-axis may be divided and labeled by increments of 2, 10, or even 100. In fact, the axes may represent other units, such as years against the balance in a savings account, or quantity against cost, and so on. Consider the rectangular coordinate system primarily as a method for showing the relationship between two quantities.</p>
-
-        <div class="definition-box">
+        <div class="definition-box" role="note" aria-label="Cartesian Coordinate System definition">
             <h3>Cartesian Coordinate System</h3>
-            <p>A two-dimensional place where the:</p>
+            <p>A two-dimensional plane where the:</p>
             <ul>
                 <li>x-axis is the horizontal axis</li>
                 <li>y-axis is the vertical axis</li>
             </ul>
-            <p>A point in the plane is defined as an ordered pair, $(x,y)$, such that $x$ is the horizontal distance from the origin and $y$ is the vertical distance from the origin.</p>
+            <p>A point in the plane is defined as an ordered pair \((x, y)\), such that \(x\) is the horizontal distance from the origin and \(y\) is the vertical distance from the origin.</p>
         </div>
 
-        <!-- Example 2 -->
-        <div class="example">
-            <div class="example-problem">
-                <h3>Example 2</h3>
-                <p>Plot the points $(-2,4)$, $(3,3)$, and $(0,-3)$ in the plane, and identify the quadrant or axis each point lies on.</p>
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 2: PLOTTING POINTS
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="plotting-heading">
+        <h3 id="plotting-heading">Plotting Points</h3>
+
+        <p>Many maps use a grid system to identify locations. In the map below you will see the numbers 1, 2, 3, and 4 across the bottom, and letters A, B, C, and D along the sides. Every location on the map can be identified by a number and a letter.</p>
+
+        <p>For example, the student center is in section 2B. It is located in the grid section above the number 2 and next to the letter B.</p>
+
+        <figure role="group" aria-labelledby="fig-map-caption">
+            <div class="fig-wrap">
+                <img src="images/mth111_4_1_1.png"
+                     alt="A campus map divided into a grid. Numbers 1 through 4 label the columns along the bottom and letters A through D label the rows along the left side starting from the top. Various campus buildings are located within the grid sections." />
             </div>
-            <button class="solution-header" onclick="toggleExample(this)">
+            <figcaption id="fig-map-caption">Campus map with a grid system using numbers for columns and letters for rows.</figcaption>
+        </figure>
+
+        <!-- Example 1 -->
+        <section class="example" aria-labelledby="ex-4-1-1-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-1-1-heading">Example 1</h3>
+                <ol>
+                    <li>Find the grid section for the Residence Halls.</li>
+                    <li>What is located in section 4C?</li>
+                </ol>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-1-1">
                 <span class="toggle-arrow">▼</span>
                 <span>Show Solution</span>
             </button>
-            <div class="example-content">
+
+            <div id="sol-4-1-1" class="example-content">
                 <div class="solution">
                     <h4>Solution</h4>
                     <ol>
-                        <li>To plot the point $(-2,4)$, begin at the origin. Move $-2$ places horizontally (left) along the x-axis, then move $4$ places vertically (up). Identified by the orange on the graph.</li>
-                        <li>To plot the point $(3,3)$, begin at the origin. Move $3$ places horizontally (right) along the x-axis, then move $3$ places vertically (up). Identified by the blue on the graph.</li>
-                        <li>To plot the point $(0,-3)$, begin at the origin. Move $0$ places horizontally along the x-axis, then move $-3$ places vertically (down). Identified by the red on the graph.</li>
-                    </ol>
-
-                   <figure role="img" aria-labelledby="ex1-fig-title">
-           <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ex1-fig-title ex1-fig-desc" focusable="false">
-  <title id="ex1-fig-title">Plotted points (-2,4), (3,3), (0,-3)</title>
-  <desc id="ex1-fig-desc">Grid with three colored moves along axes: orange marker at (-2,4), blue at (3,3), red at (0,-3); axes labeled.</desc>
-
-  <!-- background grid -->
-  <defs>
-    <pattern id="g3" width="25" height="25" patternUnits="userSpaceOnUse">
-      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <rect x="-225" y="-225" width="450" height="450" fill="url(#g3)" />
-
-  <!-- axes -->
-  <g stroke="#000" stroke-width="2">
-    <line x1="0" y1="-225" x2="0" y2="225" /> <!-- vertical axis -->
-    <line x1="-225" y1="0" x2="225" y2="0" /> <!-- horizontal axis -->
-  </g>
-
-  <!-- axis labels -->
-  <text x="210" y="-5" font-size="16" fill="#000">x-axis</text>
-  <text x="5" y="-210" font-size="16" fill="#000">y-axis</text>
-
-  <!-- ticks and labels (-9 to 9) -->
-  <g font-size="10" fill="#000">
-    <!-- x-axis -->
-    <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-9</text>
-    <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-8</text>
-    <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-7</text>
-    <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-6</text>
-    <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-5</text>
-    <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-4</text>
-    <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-3</text>
-    <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-2</text>
-    <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-1</text>
-    <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">1</text>
-    <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">2</text>
-    <line x1="75" y1="-5" x2="75" y2="5"/><text x="70" y="20">3</text>
-    <line x1="100" y1="-5" x2="100" y2="5"/><text x="95" y="20">4</text>
-    <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">5</text>
-    <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">6</text>
-    <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">7</text>
-    <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">8</text>
-    <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">9</text>
-
-    <!-- y-axis -->
-    <line x1="-5" y1="-225" x2="5" y2="-225"/><text x="-20" y="-222">9</text>
-    <line x1="-5" y1="-200" x2="5" y2="-200"/><text x="-20" y="-197">8</text>
-    <line x1="-5" y1="-175" x2="5" y2="-175"/><text x="-20" y="-172">7</text>
-    <line x1="-5" y1="-150" x2="5" y2="-150"/><text x="-20" y="-147">6</text>
-    <line x1="-5" y1="-125" x2="5" y2="-125"/><text x="-20" y="-122">5</text>
-    <line x1="-5" y1="-100" x2="5" y2="-100"/><text x="-20" y="-97">4</text>
-    <line x1="-5" y1="-75" x2="5" y2="-75"/><text x="-20" y="-72">3</text>
-    <line x1="-5" y1="-50" x2="5" y2="-50"/><text x="-20" y="-47">2</text>
-    <line x1="-5" y1="-25" x2="5" y2="-25"/><text x="-20" y="-22">1</text>
-    <line x1="-5" y1="25" x2="5" y2="25"/><text x="-25" y="28">-1</text>
-    <line x1="-5" y1="50" x2="5" y2="50"/><text x="-25" y="53">-2</text>
-    <line x1="-5" y1="75" x2="5" y2="75"/><text x="-25" y="78">-3</text>
-  </g>
-
-  <!-- plotted points with correct "L-shaped" moves -->
-  <g stroke-linecap="round">
-    <!-- orange (-2,4) -->
-    <line x1="0" y1="0" x2="-50" y2="0" stroke="#ff8c00" stroke-width="2" />
-    <line x1="-50" y1="0" x2="-50" y2="-100" stroke="#ff8c00" stroke-width="2" />
-    <circle cx="-50" cy="-100" r="4" fill="#ff8c00" stroke="#8a5b00" />
-    <text x="-70" y="-105" font-size="10">(-2,4)</text>
-
-    <!-- blue (3,3) -->
-    <line x1="0" y1="0" x2="75" y2="0" stroke="#0074D9" stroke-width="2" />
-    <line x1="75" y1="0" x2="75" y2="-75" stroke="#0074D9" stroke-width="2" />
-    <circle cx="75" cy="-75" r="4" fill="#0074D9" stroke="#003e7a" />
-    <text x="80" y="-80" font-size="10">(3,3)</text>
-
-    <!-- red (0,-3) -->
-    <line x1="0" y1="0" x2="0" y2="75" stroke="#d9534f" stroke-width="2" />
-    <circle cx="0" cy="75" r="4" fill="#d9534f" stroke="#7a2b2b" />
-    <text x="5" y="85" font-size="10">(0,-3)</text>
-  </g>
-</svg>
-
-            
-          </figure>
-
-
-                    <ol>
-                        <li>From the graph, we can identify that the point $(-2,4)$ is in quadrant II.</li>
-                        <li>From the graph, we can identify that the point $(3,3)$ is in quadrant I.</li>
-                        <li>From the graph, we can identify that the point $(0,-3)$ is on the negative y-axis.</li>
+                        <li>The Residence Halls are located in the upper right corner, which would be column 4 and row A. The answer is <strong>4A</strong>.</li>
+                        <li>To locate what is in space 4C, move to the fourth column and then to row C — that is <strong>Tiger Field</strong>.</li>
                     </ol>
                 </div>
             </div>
+        </section>
+
+        <p>We can make this same extension to the Rectangular Coordinate System. Each point in the plane is identified by its <strong>x-coordinate</strong>, or horizontal displacement from the origin, and its <strong>y-coordinate</strong>, or vertical displacement from the origin. Together, we write them as an <strong>ordered pair</strong> \((x, y)\). For example, we can represent the point \((3, -4)\) in the plane by moving three units to the right of the origin in the horizontal direction, then four units down in the vertical direction.</p>
+
+        <figure aria-labelledby="fig-plotted-caption" role="group">
+            <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" role="img" aria-labelledby="fig-plotted-title fig-plotted-desc" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                <title id="fig-plotted-title">Plotting the point (3, negative 4) on a Cartesian grid</title>
+                <desc id="fig-plotted-desc">Grid with axes labeled from negative 9 to 9, showing an orange dashed arrow moving right 3 units along the x-axis, then a red dashed arrow moving down 4 units; final point marked in blue labeled (3, negative 4).</desc>
+                <defs>
+                    <pattern id="g2" width="25" height="25" patternUnits="userSpaceOnUse">
+                        <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect x="-225" y="-225" width="450" height="450" fill="url(#g2)" />
+                <g stroke="#000" stroke-width="2">
+                    <line x1="0" y1="-225" x2="0" y2="225" />
+                    <line x1="-225" y1="0" x2="225" y2="0" />
+                </g>
+                <text x="210" y="-5" font-size="16" fill="#000">x-axis</text>
+                <text x="5" y="-210" font-size="16" fill="#000">y-axis</text>
+                <g font-size="10" fill="#000">
+                    <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-9</text>
+                    <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-8</text>
+                    <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-7</text>
+                    <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-6</text>
+                    <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-5</text>
+                    <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-4</text>
+                    <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-3</text>
+                    <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-2</text>
+                    <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-1</text>
+                    <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">1</text>
+                    <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">2</text>
+                    <line x1="75" y1="-5" x2="75" y2="5"/><text x="70" y="20">3</text>
+                    <line x1="100" y1="-5" x2="100" y2="5"/><text x="95" y="20">4</text>
+                    <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">5</text>
+                    <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">6</text>
+                    <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">7</text>
+                    <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">8</text>
+                    <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">9</text>
+                    <line x1="-5" y1="-225" x2="5" y2="-225"/><text x="-20" y="-222">9</text>
+                    <line x1="-5" y1="-200" x2="5" y2="-200"/><text x="-20" y="-197">8</text>
+                    <line x1="-5" y1="-175" x2="5" y2="-175"/><text x="-20" y="-172">7</text>
+                    <line x1="-5" y1="-150" x2="5" y2="-150"/><text x="-20" y="-147">6</text>
+                    <line x1="-5" y1="-125" x2="5" y2="-125"/><text x="-20" y="-122">5</text>
+                    <line x1="-5" y1="-100" x2="5" y2="-100"/><text x="-20" y="-97">4</text>
+                    <line x1="-5" y1="-75" x2="5" y2="-75"/><text x="-20" y="-72">3</text>
+                    <line x1="-5" y1="-50" x2="5" y2="-50"/><text x="-20" y="-47">2</text>
+                    <line x1="-5" y1="-25" x2="5" y2="-25"/><text x="-20" y="-22">1</text>
+                    <line x1="-5" y1="25" x2="5" y2="25"/><text x="-25" y="28">-1</text>
+                    <line x1="-5" y1="50" x2="5" y2="50"/><text x="-25" y="53">-2</text>
+                    <line x1="-5" y1="75" x2="5" y2="75"/><text x="-25" y="78">-3</text>
+                    <line x1="-5" y1="100" x2="5" y2="100"/><text x="-25" y="103">-4</text>
+                    <line x1="-5" y1="125" x2="5" y2="125"/><text x="-25" y="128">-5</text>
+                    <line x1="-5" y1="150" x2="5" y2="150"/><text x="-25" y="153">-6</text>
+                    <line x1="-5" y1="175" x2="5" y2="175"/><text x="-25" y="178">-7</text>
+                    <line x1="-5" y1="200" x2="5" y2="200"/><text x="-25" y="203">-8</text>
+                    <line x1="-5" y1="225" x2="5" y2="225"/><text x="-25" y="228">-9</text>
+                </g>
+                <g stroke-linecap="round">
+                    <line x1="0" y1="0" x2="75" y2="0" stroke="#ff8c00" stroke-width="2" stroke-dasharray="8 4" />
+                    <polygon points="75,0 67,-7 67,7" fill="#ff8c00" />
+                    <line x1="75" y1="0" x2="75" y2="100" stroke="#d9534f" stroke-width="2" stroke-dasharray="6 4" />
+                    <polygon points="75,100 67,93 83,93" fill="#d9534f" />
+                </g>
+                <circle cx="75" cy="100" r="4" fill="#0074D9" stroke="#003e7a" stroke-width=".5" />
+                <text x="85" y="110" font-size="12">(3, −4)</text>
+            </svg>
+            <figcaption id="fig-plotted-caption">Plotting the point \((3, -4)\): move right 3 units (orange), then down 4 units (red). The blue dot marks the final location.</figcaption>
+        </figure>
+
+        <p>When dividing the axes into equally spaced increments, note that the x-axis may be considered separate from the y-axis. In other words, while the x-axis may be divided and labeled according to consecutive integers, the y-axis may be divided and labeled by increments of 2, 10, or even 100. In fact, the axes may represent other units, such as years against the balance in a savings account, or quantity against cost, and so on. Consider the rectangular coordinate system primarily as a method for showing the relationship between two quantities.</p>
+
+        <!-- Example 2 -->
+        <section class="example" aria-labelledby="ex-4-1-2-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-1-2-heading">Example 2</h3>
+                <p>Plot the points \((-2, 4)\), \((3, 3)\), and \((0, -3)\) in the plane, and identify the quadrant or axis each point lies on.</p>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-1-2">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-1-2" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <ol>
+                        <li>To plot \((-2, 4)\), begin at the origin. Move 2 places left along the x-axis, then 4 places up. Shown in orange.</li>
+                        <li>To plot \((3, 3)\), begin at the origin. Move 3 places right along the x-axis, then 3 places up. Shown in blue.</li>
+                        <li>To plot \((0, -3)\), begin at the origin. Move 0 places horizontally, then 3 places down. Shown in red.</li>
+                    </ol>
+
+                    <figure role="group" aria-labelledby="ex2-fig-caption">
+                        <svg class="grid-svg svg-wrap" viewBox="-250 -250 500 500" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ex2-fig-title ex2-fig-desc" focusable="false">
+                            <title id="ex2-fig-title">Plotted points (negative 2, 4), (3, 3), and (0, negative 3)</title>
+                            <desc id="ex2-fig-desc">Grid with three colored L-shaped move paths: orange ending at (negative 2, 4) in Quadrant II, blue ending at (3, 3) in Quadrant I, and red ending at (0, negative 3) on the negative y-axis.</desc>
+                            <defs>
+                                <pattern id="g3" width="25" height="25" patternUnits="userSpaceOnUse">
+                                    <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#eee" stroke-width="1"/>
+                                </pattern>
+                            </defs>
+                            <rect x="-225" y="-225" width="450" height="450" fill="url(#g3)" />
+                            <g stroke="#000" stroke-width="2">
+                                <line x1="0" y1="-225" x2="0" y2="225" />
+                                <line x1="-225" y1="0" x2="225" y2="0" />
+                            </g>
+                            <text x="210" y="-5" font-size="16" fill="#000">x-axis</text>
+                            <text x="5" y="-210" font-size="16" fill="#000">y-axis</text>
+                            <g font-size="10" fill="#000">
+                                <line x1="-225" y1="-5" x2="-225" y2="5"/><text x="-230" y="20">-9</text>
+                                <line x1="-200" y1="-5" x2="-200" y2="5"/><text x="-205" y="20">-8</text>
+                                <line x1="-175" y1="-5" x2="-175" y2="5"/><text x="-180" y="20">-7</text>
+                                <line x1="-150" y1="-5" x2="-150" y2="5"/><text x="-155" y="20">-6</text>
+                                <line x1="-125" y1="-5" x2="-125" y2="5"/><text x="-130" y="20">-5</text>
+                                <line x1="-100" y1="-5" x2="-100" y2="5"/><text x="-105" y="20">-4</text>
+                                <line x1="-75" y1="-5" x2="-75" y2="5"/><text x="-80" y="20">-3</text>
+                                <line x1="-50" y1="-5" x2="-50" y2="5"/><text x="-55" y="20">-2</text>
+                                <line x1="-25" y1="-5" x2="-25" y2="5"/><text x="-30" y="20">-1</text>
+                                <line x1="25" y1="-5" x2="25" y2="5"/><text x="20" y="20">1</text>
+                                <line x1="50" y1="-5" x2="50" y2="5"/><text x="45" y="20">2</text>
+                                <line x1="75" y1="-5" x2="75" y2="5"/><text x="70" y="20">3</text>
+                                <line x1="100" y1="-5" x2="100" y2="5"/><text x="95" y="20">4</text>
+                                <line x1="125" y1="-5" x2="125" y2="5"/><text x="120" y="20">5</text>
+                                <line x1="150" y1="-5" x2="150" y2="5"/><text x="145" y="20">6</text>
+                                <line x1="175" y1="-5" x2="175" y2="5"/><text x="170" y="20">7</text>
+                                <line x1="200" y1="-5" x2="200" y2="5"/><text x="195" y="20">8</text>
+                                <line x1="225" y1="-5" x2="225" y2="5"/><text x="220" y="20">9</text>
+                                <line x1="-5" y1="-225" x2="5" y2="-225"/><text x="-20" y="-222">9</text>
+                                <line x1="-5" y1="-200" x2="5" y2="-200"/><text x="-20" y="-197">8</text>
+                                <line x1="-5" y1="-175" x2="5" y2="-175"/><text x="-20" y="-172">7</text>
+                                <line x1="-5" y1="-150" x2="5" y2="-150"/><text x="-20" y="-147">6</text>
+                                <line x1="-5" y1="-125" x2="5" y2="-125"/><text x="-20" y="-122">5</text>
+                                <line x1="-5" y1="-100" x2="5" y2="-100"/><text x="-20" y="-97">4</text>
+                                <line x1="-5" y1="-75" x2="5" y2="-75"/><text x="-20" y="-72">3</text>
+                                <line x1="-5" y1="-50" x2="5" y2="-50"/><text x="-20" y="-47">2</text>
+                                <line x1="-5" y1="-25" x2="5" y2="-25"/><text x="-20" y="-22">1</text>
+                                <line x1="-5" y1="25" x2="5" y2="25"/><text x="-25" y="28">-1</text>
+                                <line x1="-5" y1="50" x2="5" y2="50"/><text x="-25" y="53">-2</text>
+                                <line x1="-5" y1="75" x2="5" y2="75"/><text x="-25" y="78">-3</text>
+                            </g>
+                            <g stroke-linecap="round">
+                                <!-- orange (-2,4): left 2, up 4 → SVG: x=-50, y=-100 -->
+                                <line x1="0" y1="0" x2="-50" y2="0" stroke="#ff8c00" stroke-width="2" />
+                                <line x1="-50" y1="0" x2="-50" y2="-100" stroke="#ff8c00" stroke-width="2" />
+                                <circle cx="-50" cy="-100" r="4" fill="#ff8c00" stroke="#8a5b00" />
+                                <text x="-70" y="-105" font-size="10">(-2,4)</text>
+                                <!-- blue (3,3): right 3, up 3 → SVG: x=75, y=-75 -->
+                                <line x1="0" y1="0" x2="75" y2="0" stroke="#0074D9" stroke-width="2" />
+                                <line x1="75" y1="0" x2="75" y2="-75" stroke="#0074D9" stroke-width="2" />
+                                <circle cx="75" cy="-75" r="4" fill="#0074D9" stroke="#003e7a" />
+                                <text x="80" y="-80" font-size="10">(3,3)</text>
+                                <!-- red (0,-3): down 3 → SVG: x=0, y=75 -->
+                                <line x1="0" y1="0" x2="0" y2="75" stroke="#d9534f" stroke-width="2" />
+                                <circle cx="0" cy="75" r="4" fill="#d9534f" stroke="#7a2b2b" />
+                                <text x="5" y="85" font-size="10">(0,-3)</text>
+                            </g>
+                        </svg>
+                        <figcaption id="ex2-fig-caption">Plotted points: \((-2, 4)\) in Quadrant II (orange), \((3, 3)\) in Quadrant I (blue), and \((0, -3)\) on the negative y-axis (red).</figcaption>
+                    </figure>
+
+                    <ol>
+                        <li>The point \((-2, 4)\) is in <strong>Quadrant II</strong>.</li>
+                        <li>The point \((3, 3)\) is in <strong>Quadrant I</strong>.</li>
+                        <li>The point \((0, -3)\) is on the <strong>negative y-axis</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         SECTION 3: LINEAR EQUATIONS IN TWO VARIABLES
+    ════════════════════════════════════════════ -->
+    <section aria-labelledby="linear-heading">
+        <h3 id="linear-heading">Verifying Solutions to an Equation in Two Variables</h3>
+
+        <p>All the equations we solved so far have been equations with one variable. In almost every case, when we solved the equation we got exactly one solution — for example, \(x = 4\). But what if the equation has two variables, such as \(3x + 2y = 4\)? That kind of equation is called a <strong>linear equation in two variables</strong>.</p>
+
+        <div class="definition-box" role="note" aria-label="Linear Equation definition">
+            <h3>Linear Equation in Two Variables</h3>
+            <p>An equation of the form \(Ax + By = C\), where \(A\) and \(B\) are both non-zero numbers, is called a <strong>linear equation in two variables</strong>.</p>
+            <p>Notice the word "line" is in <em>linear</em> — graphically, a linear equation creates a straight line.</p>
         </div>
 
-<h2>Verifying Solution to an Equation in Two Variables</h2>
-<p>All the equations we solved so far have been equations with one variable. In almost every case, when we solved the
-equation we got exactly one solution. The process of solving an equation ended with a statement such as \(x = 4\). Then
-we checked the solution by substituting back into the equation.
-Here’s an example of a linear equation in one variable, and its one solution.</p>
+        <p>Is \(y = -5x + 1\) a linear equation? At first glance it doesn't look like the standard form, but with some algebra we can rearrange it:</p>
 
-\[3x+5=17\]
-\[3x=2\]
-\[x=4\]
+        \[\begin{align*} y &= -5x + 1 \\ 5x + y &= 1 \end{align*}\]
 
-<p>But what if the equation was \(3x+2y=4\), how would one go about finding those solutions? That example would have two solutions. It is also called a <strong>Linear Equation</strong></p>
+        <p>It is in fact a linear equation in two variables because it can be written in the form \(Ax + By = C\).</p>
 
-<div class="definition-box" role="note" aria-label="Linear Equations">
-            <h3>Definition - Linear Equation</h3>
-         An equation of the form \(Ax+By=C\), where A and B are both non-zero numbers, is called a linear equation in two variables. 
+        <p>Linear equations in two variables have pairs of solutions known as <strong>ordered pairs</strong>. For every \(x\) that can be substituted in, there exists a \(y\) that comes out. These two numbers together create the solution of a linear equation.</p>
+
+        <div class="definition-box" role="note" aria-label="Solutions to Linear Equations definition">
+            <h3>Solutions to Linear Equations in Two Variables</h3>
+            <p>An ordered pair \((x, y)\) is a solution to the linear equation \(Ax + By = C\) if the equation is a true statement when the two values are substituted in for their respective variables.</p>
         </div>
 
-        <p>Notice the work "line" is in linear. Graphically, a linear equation creates a straight line.</p>
-
-        <p>Is \(y=-5x+1\) a linear equation? At first glance it doesn't meet the criteria we just dicussed. However, if we used some basic algebra that we learned in the previous section we can re-arrange this equation such that it is.</p>
-        \[y=-5x+1\]
-        \[5x+y=1\]
-
-        <p>We can now see that it is in fact a linear equation in two variables because it can be written in the standard form of \(Ax+By=C\)</p>
-
-        <p>Linear equations in two variables have a pair of solutions known as a coordinate pair. For every \(x\) that can be substitued in, exists a \(y\) that will come back out. These two numbers together create the solution of a linear equation.</p>
-    
-    <div class="definition-box" role="note" aria-label="Linear Equations Solutions">
-            <h3>Definition - Solutions to Linear Equations</h3>
-         An ordered pair \((x,y)\) is a solution to the linear equation \(Ax+By=C\), if the equation is a true statement when the two values are substituted in for their respected variables in the equation. 
-        </div>
-
-
-            <!-- Example 3 -->
+        <!-- Example 3 -->
         <section class="example" aria-labelledby="ex-4-1-3-heading">
             <div class="example-problem">
                 <h3 id="ex-4-1-3-heading">Example 3</h3>
-                <p>Determine which ordered pairs are solutions of the equation \(x+4y=8\)</p>
-                <ol>
-                    <li>\((0,2)\)</li>
-                    <li>\((2,-4)\)</li>
-                    <li>\((-4,3)\)</li>
+                <p>Determine which ordered pairs are solutions of the equation \(x + 4y = 8\).</p>
+                <ol type="a">
+                    <li>\((0, 2)\)</li>
+                    <li>\((2, -4)\)</li>
+                    <li>\((-4, 3)\)</li>
                 </ol>
-    
             </div>
 
             <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-1-3">
@@ -509,179 +486,335 @@ Here’s an example of a linear equation in one variable, and its one solution.<
             <div id="sol-4-1-3" class="example-content">
                 <div class="solution">
                     <h4>Solution</h4>
-                 <p>Substitute the \(x\)- and \(y\)-values from each ordered pair into the equation and determine if it results in a true statement.</p>
+                    <p>Substitute the \(x\)- and \(y\)-values from each ordered pair into the equation and determine if it results in a true statement.</p>
 
-<div class="example-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:1rem 0;">
-
-    <div>
-        <p><strong>(a) \((0, 2)\)</strong></p>
-        <p>\(x = 0,\ y = 2\)</p>
-        <p>\(x + 4y = 8\)</p>
-        \[0 + 4(2) \stackrel{?}{=} 8\]
-        \[0 + 8 \stackrel{?}{=} 8\]
-        \[8 = 8\ ✓\]
-        <p>\((0, 2)\) <strong>is a solution.</strong></p>
-    </div>
-
-    <div>
-        <p><strong>(b) \((2, -4)\)</strong></p>
-        <p>\(x = 2,\ y = -4\)</p>
-        <p>\(x + 4y = 8\)</p>
-        \[2 + 4(-4) \stackrel{?}{=} 8\]
-        \[2 + (-16) \stackrel{?}{=} 8\]
-        \[-14 \neq 8\]
-        <p>\((2, -4)\) <strong>is not a solution.</strong></p>
-    </div>
-
-    <div>
-        <p><strong>(c) \((-4, 3)\)</strong></p>
-        <p>\(x = -4,\ y = 3\)</p>
-        <p>\(x + 4y = 8\)</p>
-        \[-4 + 4(3) \stackrel{?}{=} 8\]
-        \[-4 + 12 \stackrel{?}{=} 8\]
-        \[8 = 8\ ✓\]
-        <p>\((-4, 3)\) <strong>is a solution.</strong></p>
-    </div>
-
-</div>
+                    <div class="example-grid">
+                        <div>
+                            <p><strong>(a) \((0, 2)\)</strong></p>
+                            <p>\(x = 0,\ y = 2\)</p>
+                            \[0 + 4(2) \stackrel{?}{=} 8\]
+                            \[0 + 8 \stackrel{?}{=} 8\]
+                            \[8 = 8\ ✓\]
+                            <p>\((0, 2)\) <strong>is a solution.</strong></p>
+                        </div>
+                        <div>
+                            <p><strong>(b) \((2, -4)\)</strong></p>
+                            <p>\(x = 2,\ y = -4\)</p>
+                            \[2 + 4(-4) \stackrel{?}{=} 8\]
+                            \[2 + (-16) \stackrel{?}{=} 8\]
+                            \[-14 \neq 8\]
+                            <p>\((2, -4)\) <strong>is not a solution.</strong></p>
+                        </div>
+                        <div>
+                            <p><strong>(c) \((-4, 3)\)</strong></p>
+                            <p>\(x = -4,\ y = 3\)</p>
+                            \[-4 + 4(3) \stackrel{?}{=} 8\]
+                            \[-4 + 12 \stackrel{?}{=} 8\]
+                            \[8 = 8\ ✓\]
+                            <p>\((-4, 3)\) <strong>is a solution.</strong></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    
-<!-- Self Check A -->
-<div class="self-check" role="note" aria-label="Self Check A">
-    <h4>Self Check A</h4>
-    <p>Determine which ordered pairs are solutions of the equation \(y = 4x - 3\).</p>
-    <ol>
-        <li>\((0, 3)\)</li>
-        <li>\((1, 1)\)</li>
-        <li>\((1, 1)\)</li>
-    </ol>
-    <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-4-1-answer">
-        <span class="toggle-arrow">▼</span>
-        <span>Show Answer</span>
-    </button>
-    <div id="sca-4-1-answer" class="self-check-answer">
-        <div class="example-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:1rem 0;">
 
-            <div>
-                <p><strong>(a) \((0, 3)\)</strong></p>
-                <p>\(x = 0,\ y = 3\)</p>
-                <p>\(y = 4x - 3\)</p>
-                \[3 \stackrel{?}{=} 4(0) - 3\]
-                \[3 \stackrel{?}{=} 0 - 3\]
-                \[3 \neq -3\]
-                <p>\((0, 3)\) <strong>is not a solution.</strong></p>
+        <!-- Self Check A -->
+        <div class="self-check" role="note" aria-label="Self Check A">
+            <h4>Self Check A</h4>
+            <p>Determine which ordered pairs are solutions of the equation \(y = 4x - 3\).</p>
+            <ol type="a">
+                <li>\((0, 3)\)</li>
+                <li>\((1, 1)\)</li>
+                <li>\((-1, -7)\)</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-4-1-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="sca-4-1-answer" class="self-check-answer">
+                <div class="example-grid">
+                    <div>
+                        <p><strong>(a) \((0, 3)\)</strong></p>
+                        \[3 \stackrel{?}{=} 4(0) - 3\]
+                        \[3 \stackrel{?}{=} -3\]
+                        \[3 \neq -3\]
+                        <p>\((0, 3)\) <strong>is not a solution.</strong></p>
+                    </div>
+                    <div>
+                        <p><strong>(b) \((1, 1)\)</strong></p>
+                        \[1 \stackrel{?}{=} 4(1) - 3\]
+                        \[1 \stackrel{?}{=} 4 - 3\]
+                        \[1 = 1\ ✓\]
+                        <p>\((1, 1)\) <strong>is a solution.</strong></p>
+                    </div>
+                    <div>
+                        <p><strong>(c) \((-1, -7)\)</strong></p>
+                        \[-7 \stackrel{?}{=} 4(-1) - 3\]
+                        \[-7 \stackrel{?}{=} -4 - 3\]
+                        \[-7 = -7\ ✓\]
+                        <p>\((-1, -7)\) <strong>is a solution.</strong></p>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <p><strong>(b) \((1, 1)\)</strong></p>
-                <p>\(x = 1,\ y = 1\)</p>
-                <p>\(y = 4x - 3\)</p>
-                \[1 \stackrel{?}{=} 4(1) - 3\]
-                \[1 \stackrel{?}{=} 4 - 3\]
-                \[1 = 1\ ✓\]
-                <p>\((1, 1)\) <strong>is a solution.</strong></p>
-            </div>
-
-            <div>
-                <p><strong>(c) \((1, 1)\)</strong></p>
-                <p>\(x = 1,\ y = 1\)</p>
-                <p>\(y = 4x - 3\)</p>
-                \[1 \stackrel{?}{=} 4(1) - 3\]
-                \[1 \stackrel{?}{=} 4 - 3\]
-                \[1 = 1\ ✓\]
-                <p>\((1, 1)\) <strong>is a solution.</strong></p>
-            </div>
-
         </div>
-    </div>
-</div>
 
-<!-- Self Check B -->
-<div class="self-check" role="note" aria-label="Self Check B">
-    <h4>Self Check B</h4>
-    <p>Determine which ordered pairs are solutions of the equation \(y = -2x + 6\).</p>
-    <ol>
-        <li>\((0, 6)\)</li>
-        <li>\((1, 4)\)</li>
-        <li>\((-2, -2)\)</li>
-    </ol>
-    <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-4-1-answer">
-        <span class="toggle-arrow">▼</span>
-        <span>Show Answer</span>
-    </button>
-    <div id="scb-4-1-answer" class="self-check-answer">
-        <div class="example-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:1rem 0;">
-
-            <div>
-                <p><strong>(a) \((0, 6)\)</strong></p>
-                <p>\(x = 0,\ y = 6\)</p>
-                <p>\(y = -2x + 6\)</p>
-                \[6 \stackrel{?}{=} -2(0) + 6\]
-                \[6 \stackrel{?}{=} 0 + 6\]
-                \[6 = 6\ ✓\]
-                <p>\((0, 6)\) <strong>is a solution.</strong></p>
+        <!-- Self Check B -->
+        <div class="self-check" role="note" aria-label="Self Check B">
+            <h4>Self Check B</h4>
+            <p>Determine which ordered pairs are solutions of the equation \(y = -2x + 6\).</p>
+            <ol type="a">
+                <li>\((0, 6)\)</li>
+                <li>\((1, 4)\)</li>
+                <li>\((-2, -2)\)</li>
+            </ol>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-4-1-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scb-4-1-answer" class="self-check-answer">
+                <div class="example-grid">
+                    <div>
+                        <p><strong>(a) \((0, 6)\)</strong></p>
+                        \[6 \stackrel{?}{=} -2(0) + 6\]
+                        \[6 \stackrel{?}{=} 6\]
+                        \[6 = 6\ ✓\]
+                        <p>\((0, 6)\) <strong>is a solution.</strong></p>
+                    </div>
+                    <div>
+                        <p><strong>(b) \((1, 4)\)</strong></p>
+                        \[4 \stackrel{?}{=} -2(1) + 6\]
+                        \[4 \stackrel{?}{=} -2 + 6\]
+                        \[4 = 4\ ✓\]
+                        <p>\((1, 4)\) <strong>is a solution.</strong></p>
+                    </div>
+                    <div>
+                        <p><strong>(c) \((-2, -2)\)</strong></p>
+                        \[-2 \stackrel{?}{=} -2(-2) + 6\]
+                        \[-2 \stackrel{?}{=} 4 + 6\]
+                        \[-2 \neq 10\]
+                        <p>\((-2, -2)\) <strong>is not a solution.</strong></p>
+                    </div>
+                </div>
             </div>
-
-            <div>
-                <p><strong>(b) \((1, 4)\)</strong></p>
-                <p>\(x = 1,\ y = 4\)</p>
-                <p>\(y = -2x + 6\)</p>
-                \[4 \stackrel{?}{=} -2(1) + 6\]
-                \[4 \stackrel{?}{=} -2 + 6\]
-                \[4 = 4\ ✓\]
-                <p>\((1, 4)\) <strong>is a solution.</strong></p>
-            </div>
-
-            <div>
-                <p><strong>(c) \((-2, -2)\)</strong></p>
-                <p>\(x = -2,\ y = -2\)</p>
-                <p>\(y = -2x + 6\)</p>
-                \[-2 \stackrel{?}{=} -2(-2) + 6\]
-                \[-2 \stackrel{?}{=} 4 + 6\]
-                \[-2 \neq 10\]
-                <p>\((-2, -2)\) <strong>is not a solution.</strong></p>
-            </div>
-
         </div>
-    </div>
-</div>
 
+    </section>
 
+    <hr class="divider" role="separator" aria-hidden="true" />
 
-        <!-- ═══════════════════════════════════════════
-         EXERCISES (placeholder)
+    <!-- ═══════════════════════════════════════════
+         SECTION 4: COMPLETE A TABLE OF SOLUTIONS
     ════════════════════════════════════════════ -->
-    <section class="exercises-section" aria-labelledby="exercises-5-1-heading">
-        <h2 id="exercises-5-1-heading" class="subsection-title">Exercises</h2>
+    <section aria-labelledby="table-heading">
+        <h3 id="table-heading">Complete a Table of Solutions to a Linear Equation</h3>
 
-        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-5-1-content">
+        <p>In the examples above, we substituted given ordered pairs into the equation to check whether they were solutions. Now we'll go the other direction — we'll start with \(x\)-values and calculate the corresponding \(y\)-values to build a table of solutions.</p>
+
+        <!-- Example 4 -->
+        <section class="example" aria-labelledby="ex-4-1-4-heading">
+            <div class="example-problem">
+                <h3 id="ex-4-1-4-heading">Example 4</h3>
+                <p>Complete the table of solutions for the equation \(y = 3x - 1\).</p>
+                <table aria-label="Table of x values to complete for y equals 3x minus 1">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(-2\)</td><td></td><td></td></tr>
+                        <tr><td>\(-1\)</td><td></td><td></td></tr>
+                        <tr><td>\(0\)</td><td></td><td></td></tr>
+                        <tr><td>\(1\)</td><td></td><td></td></tr>
+                        <tr><td>\(2\)</td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="solution-header" onclick="toggleExample(this)" aria-expanded="false" aria-controls="sol-4-1-4">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Solution</span>
+            </button>
+
+            <div id="sol-4-1-4" class="example-content">
+                <div class="solution">
+                    <h4>Solution</h4>
+                    <p>Substitute each \(x\)-value into \(y = 3x - 1\) and calculate \(y\).</p>
+                    <table aria-label="Completed table of values for y equals 3x minus 1">
+                        <thead>
+                            <tr>
+                                <th scope="col">\(x\)</th>
+                                <th scope="col">\(y = 3x - 1\)</th>
+                                <th scope="col">\((x, y)\)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>\(-2\)</td><td>\(y = 3(-2) - 1 = -7\)</td><td>\((-2, -7)\)</td></tr>
+                            <tr><td>\(-1\)</td><td>\(y = 3(-1) - 1 = -4\)</td><td>\((-1, -4)\)</td></tr>
+                            <tr><td>\(0\)</td><td>\(y = 3(0) - 1 = -1\)</td><td>\((0, -1)\)</td></tr>
+                            <tr><td>\(1\)</td><td>\(y = 3(1) - 1 = 2\)</td><td>\((1, 2)\)</td></tr>
+                            <tr><td>\(2\)</td><td>\(y = 3(2) - 1 = 5\)</td><td>\((2, 5)\)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Self Check C -->
+        <div class="self-check" role="note" aria-label="Self Check C">
+            <h4>Self Check C</h4>
+            <p>Complete the table of solutions for the equation \(y = -2x + 4\).</p>
+            <table aria-label="Table of x values to complete for y equals negative 2x plus 4">
+                <thead>
+                    <tr>
+                        <th scope="col">\(x\)</th>
+                        <th scope="col">\(y\)</th>
+                        <th scope="col">\((x, y)\)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>\(-1\)</td><td></td><td></td></tr>
+                    <tr><td>\(0\)</td><td></td><td></td></tr>
+                    <tr><td>\(1\)</td><td></td><td></td></tr>
+                    <tr><td>\(2\)</td><td></td><td></td></tr>
+                </tbody>
+            </table>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-4-1-answer">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
+            <div id="scc-4-1-answer" class="self-check-answer">
+                <table aria-label="Completed table of values for y equals negative 2x plus 4">
+                    <thead>
+                        <tr>
+                            <th scope="col">\(x\)</th>
+                            <th scope="col">\(y = -2x + 4\)</th>
+                            <th scope="col">\((x, y)\)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>\(-1\)</td><td>\(-2(-1) + 4 = 6\)</td><td>\((-1, 6)\)</td></tr>
+                        <tr><td>\(0\)</td><td>\(-2(0) + 4 = 4\)</td><td>\((0, 4)\)</td></tr>
+                        <tr><td>\(1\)</td><td>\(-2(1) + 4 = 2\)</td><td>\((1, 2)\)</td></tr>
+                        <tr><td>\(2\)</td><td>\(-2(2) + 4 = 0\)</td><td>\((2, 0)\)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <hr class="divider" role="separator" aria-hidden="true" />
+
+    <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-4-1-heading">
+        <h2 id="exercises-4-1-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-4-1-content">
             <span class="toggle-arrow">▼</span>
             <span>Show Exercises</span>
         </button>
 
-        <div id="exercises-5-1-content" class="exercises-content" role="region" aria-labelledby="exercises-5-1-heading">
-            <!-- Exercises to be added -->
-        </div>
+        <div id="exercises-4-1-content" class="exercises-content" role="region" aria-labelledby="exercises-4-1-heading">
+
+            <h3>Plot Points on a Rectangular Coordinate System</h3>
+            <p>In the following exercises, plot each point on a coordinate grid and identify the quadrant or axis it lies on.</p>
+            <div class="ex-grid four-col">
+                <div class="ex-item"><strong>1.</strong> \((-4, 5)\)</div>
+                <div class="ex-item"><strong>2.</strong> \((-3, -2)\)</div>
+                <div class="ex-item"><strong>3.</strong> \((0, -5)\)</div>
+                <div class="ex-item"><strong>4.</strong> \((-1, 0)\)</div>
+                <div class="ex-item"><strong>5.</strong> \((3, 5)\)</div>
+                <div class="ex-item"><strong>6.</strong> \((4, -2)\)</div>
+                <div class="ex-item"><strong>7.</strong> \((1, 0)\)</div>
+                <div class="ex-item"><strong>8.</strong> \((0, 4)\)</div>
+            </div>
+
+            <h3>Verify Solutions to a Linear Equation</h3>
+            <p>In the following exercises, determine which ordered pairs are solutions to the given equation.</p>
+            <ol class="ex-wide">
+                <li>\(2x + y = 6\) &nbsp;&nbsp; (a) \((1, 4)\) &nbsp; (b) \((3, 0)\) &nbsp; (c) \((2, 3)\)</li>
+                <li>\(x + 3y = 9\) &nbsp;&nbsp; (a) \((0, 3)\) &nbsp; (b) \((3, 2)\) &nbsp; (c) \((-3, 4)\)</li>
+                <li>\(y = 5x - 4\) &nbsp;&nbsp; (a) \((1, 1)\) &nbsp; (b) \((0, -4)\) &nbsp; (c) \((2, 6)\)</li>
+                <li>\(y = -3x + 2\) &nbsp;&nbsp; (a) \((0, 2)\) &nbsp; (b) \((1, -1)\) &nbsp; (c) \((-1, 4)\)</li>
+            </ol>
+
+            <h3>Complete a Table of Solutions</h3>
+            <p>In the following exercises, complete the table of solutions for each equation.</p>
+            <div class="ex-grid two-col">
+                <div class="ex-item">
+                    <strong>13.</strong> \(y = 2x + 1\)
+                    <table aria-label="Table for y equals 2x plus 1">
+                        <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\((x,y)\)</th></tr></thead>
+                        <tbody>
+                            <tr><td>\(-2\)</td><td></td><td></td></tr>
+                            <tr><td>\(0\)</td><td></td><td></td></tr>
+                            <tr><td>\(2\)</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ex-item">
+                    <strong>14.</strong> \(y = -x + 5\)
+                    <table aria-label="Table for y equals negative x plus 5">
+                        <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\((x,y)\)</th></tr></thead>
+                        <tbody>
+                            <tr><td>\(-1\)</td><td></td><td></td></tr>
+                            <tr><td>\(0\)</td><td></td><td></td></tr>
+                            <tr><td>\(3\)</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ex-item">
+                    <strong>15.</strong> \(y = \frac{1}{2}x - 3\)
+                    <table aria-label="Table for y equals one half x minus 3">
+                        <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\((x,y)\)</th></tr></thead>
+                        <tbody>
+                            <tr><td>\(0\)</td><td></td><td></td></tr>
+                            <tr><td>\(2\)</td><td></td><td></td></tr>
+                            <tr><td>\(4\)</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ex-item">
+                    <strong>16.</strong> \(3x + y = 6\)
+                    <table aria-label="Table for 3x plus y equals 6">
+                        <thead><tr><th scope="col">\(x\)</th><th scope="col">\(y\)</th><th scope="col">\((x,y)\)</th></tr></thead>
+                        <tbody>
+                            <tr><td>\(-1\)</td><td></td><td></td></tr>
+                            <tr><td>\(0\)</td><td></td><td></td></tr>
+                            <tr><td>\(1\)</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div><!-- end exercises-content -->
     </section>
-</div>
+
+</main>
+
 <script>
-        function toggleExample(button) {
-            const content = button.nextElementSibling;
-            const arrow = button.querySelector('.toggle-arrow');
-            
-            if (content.classList.contains('open')) {
-                content.classList.remove('open');
-                arrow.classList.remove('open');
-                button.querySelector('span:last-child').textContent = 'Show Solution';
-            } else {
-                content.classList.add('open');
-                arrow.classList.add('open');
-                button.querySelector('span:last-child').textContent = 'Hide Solution';
-            }
+    function toggleExample(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Solution';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
         }
-     function toggleSelfCheck(button) {
+    }
+
+    function toggleSelfCheck(button) {
         const answerId = button.getAttribute('aria-controls');
         const answer = document.getElementById(answerId);
         const arrow = button.querySelector('.toggle-arrow');
@@ -697,17 +830,39 @@ Here’s an example of a linear equation in one variable, and its one solution.<
             button.setAttribute('aria-expanded', 'true');
         }
     }
-        const chapterButtons = document.querySelectorAll(".toc-chapter");
 
-        chapterButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const expanded = button.getAttribute("aria-expanded") === "true";
-                button.setAttribute("aria-expanded", !expanded);
+    function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+</script>
 
-                const submenu = button.nextElementSibling;
-                submenu.classList.toggle("open");
+<script>
+    fetch('toc.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('toc-placeholder').innerHTML = data;
+            const chapterButtons = document.querySelectorAll('.toc-chapter');
+            chapterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const expanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', String(!expanded));
+                    button.nextElementSibling.classList.toggle('open');
+                });
             });
         });
-    </script>
+</script>
+
 </body>
 </html>
