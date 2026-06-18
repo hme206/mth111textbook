@@ -630,3 +630,45 @@ table tr.highlighted {
     margin-bottom: 6px;
     color: #333;
 }
+/* ── Self-check pattern ── */
+.self-check {
+    background-color: #f0f8ed;
+    border: 2px solid #33AB2B;
+    border-radius: 6px;
+    padding: 20px 25px;
+    margin: 25px 0;
+}
+.self-check h4 {
+    color: #33AB2B;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.self-check-answer {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #33AB2B;
+}
+.self-check-answer.open { display: block; }
+.self-check-btn {
+    background-color: #33AB2B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+.self-check-btn:hover { background-color: #2a8922; }
+.self-check-btn .toggle-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 1.1em;
+}
+.self-check-btn .toggle-arrow.open { transform: rotate(180deg); }
