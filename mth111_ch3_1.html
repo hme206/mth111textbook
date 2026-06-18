@@ -568,14 +568,25 @@
 
     </section><!-- end circumference -->
 
-</main><!-- end .container -->
+<!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-3-1-heading">
+        <h2 id="exercises-3-1-heading" class="subsection-title">Exercises</h2>
 
-<!-- Toggle script -->
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-3-1-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+</section>
+
+</main>
+
+<!-- Toggle scripts -->
 <script>
     function toggleExample(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('.toggle-arrow');
-
         if (content.classList.contains('open')) {
             content.classList.remove('open');
             arrow.classList.remove('open');
@@ -585,6 +596,38 @@
             content.classList.add('open');
             arrow.classList.add('open');
             button.querySelector('span:last-child').textContent = 'Hide Solution';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    function toggleSelfCheck(button) {
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+       function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
             button.setAttribute('aria-expanded', 'true');
         }
     }
