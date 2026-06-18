@@ -203,10 +203,11 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>In three months, a freelance graphic artist earns \($\)1,290 for illustrating comic books, \($\)2,612 for designing logos, and \($\)4,175 for designing websites. Estimate how much she earned in total by first rounding each number to the nearest hundred.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-5">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-5" class="self-check-answer">
                 <p>Round each amount: \(\$1{,}290 \rightarrow \$1{,}300\), &nbsp; \(\$2{,}612 \rightarrow \$2{,}600\), &nbsp; \(\$4{,}175 \rightarrow \$4{,}200\).</p>
@@ -253,10 +254,11 @@
 
         <!-- Self Check B -->
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Estimate the difference of 474,128 and 262,767 by rounding to the nearest thousand.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-5">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scb-1-5" class="self-check-answer">
                 <p>Round each number: \(474{,}128 \rightarrow 474{,}000\) and \(262{,}767 \rightarrow 263{,}000\).</p>
@@ -389,10 +391,11 @@
 
         <!-- Self Check C -->
         <div class="self-check" role="note" aria-label="Self Check C">
-            <p><strong>Self Check C</strong></p>
+            <h4>Self Check C</h4>
             <p>A space shuttle traveling at 17,581 miles per hour decreases its speed by 7,412 miles per hour. Estimate the speed of the space shuttle after it has slowed down by rounding each number to the nearest hundred.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-5">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scc-1-5" class="self-check-answer">
                 <p>Round each speed: \(17{,}581 \rightarrow 17{,}600\) and \(7{,}412 \rightarrow 7{,}400\).</p>
@@ -416,7 +419,7 @@
     <hr class="divider" role="separator" aria-hidden="true" />
 
     <!-- ═══════════════════════════════════════
-         EXERCISES (empty container for future use)
+         EXERCISES
     ════════════════════════════════════════════ -->
     <section class="exercises-section" aria-labelledby="exercises-1-5-heading">
         <h2 id="exercises-1-5-heading" class="subsection-title">Exercises</h2>
@@ -465,14 +468,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
