@@ -655,6 +655,18 @@
         <p>The metric system is based on joining one of a series of prefixes — kilo-, hecto-, deka-, deci-, centi-, and milli- — with a base unit of measurement such as meter, liter, or gram. Units in the metric system are all related by a power of 10, which means each successive unit is 10 times larger than the previous one. This makes converting one metric measurement to another straightforward, often as simple as moving a decimal point. Always consider the direction of the conversion: converting to a smaller unit moves the decimal right (larger number), while converting to a larger unit moves the decimal left (smaller number). The factor label method can also be applied to metric conversions using unit fractions and cancellation.</p>
     </section>
 
+  <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-3-5-heading">
+        <h2 id="exercises-3-5-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-3-5-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+</section>
+
 </main>
 
 <!-- Toggle scripts -->
@@ -688,6 +700,21 @@
             answer.classList.add('open');
             arrow.classList.add('open');
             button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+       function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
             button.setAttribute('aria-expanded', 'true');
         }
     }
