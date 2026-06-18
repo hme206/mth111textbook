@@ -255,10 +255,11 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>Simplify \(40 - (4 + 6) \div 2 + 3\).</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-10">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-10" class="self-check-answer">
                 <p>\(38\)</p>
@@ -368,10 +369,11 @@
 
         <!-- Self Check B -->
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Simplify \(77 - (1 + 4 - 2)^2\).</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-10">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scb-1-10" class="self-check-answer">
                 <p>\(68\)</p>
@@ -412,7 +414,7 @@
     <hr class="divider" role="separator" aria-hidden="true" />
 
     <!-- ═══════════════════════════════════════
-         EXERCISES (empty container for future use)
+         EXERCISES
     ════════════════════════════════════════════ -->
     <section class="exercises-section" aria-labelledby="exercises-1-10-heading">
         <h2 id="exercises-1-10-heading" class="subsection-title">Exercises</h2>
@@ -461,14 +463,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
