@@ -174,9 +174,12 @@
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>Find \(-32 + (-14)\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="sca-1-9" class="self-check-answer">
                 <p>\(-46\)</p>
                 <p>The sum is found by first adding the absolute values of the addends: \(|-32| + |-14| = 32 + 14 = 46\). Then you must give the sum the same sign as the two addends, so the answer is \(-46\).</p>
@@ -305,9 +308,12 @@
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Find \(32 + (-14)\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scb-1-9" class="self-check-answer">
                 <p>\(18\)</p>
                 <p>Since the addends have different signs, you must find the difference of the absolute values. \(|32| = 32\) and \(|-14| = 14\). The difference is \(32 - 14 = 18\). The sign of the sum is the same as the addend with the greater absolute value. Since \(|32| > |-14|\), the sum is positive.</p>
@@ -374,9 +380,12 @@
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check C">
-            <p><strong>Self Check C</strong></p>
+            <h4>Self Check C</h4>
             <p>Find \(-32.22 + 124.3\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scc-1-9" class="self-check-answer">
                 <p>\(92.08\)</p>
                 <p>Since the addends have different signs, you must subtract their absolute values. \(124.3 - 32.22 = 92.08\). Since \(|124.3| > |-32.22|\), the sum is positive.</p>
@@ -433,9 +442,12 @@
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check D">
-            <p><strong>Self Check D</strong></p>
+            <h4>Self Check D</h4>
             <p>After Bangor reached a low temperature of \(-13°\), the temperature rose only 4 degrees higher for the rest of the day. What was the high temperature that day?</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scd-1-9" class="self-check-answer">
                 <p>The temperature rose (added) 4 degrees from \(-13\), so the high temperature is \(-13 + 4\). Since the addends have different signs, you must find the difference of the absolute values. \(|-13| = 13\) and \(|4| = 4\). The difference is \(13 - 4 = 9\). The sign of the sum is the same as the addend with the greater absolute value. Since \(|-13| > |4|\), the sum is \(-9\).</p>
             </div>
@@ -469,29 +481,29 @@
 
         <figure class="numberline-figure">
             <img src="images/mth111_1_9_7.png"
-                 alt="Two number line diagrams. The top shows 3 plus 1 equals 4: a person faces right, moves forward 3 to reach 3, then moves forward 1 more to reach 4 — labeled Face right, move forward 3 and Face right, move forward 1. The bottom shows 3 minus 1 equals 2: a person faces right, moves forward 3 to reach 3, then moves backward 1 to reach 2 — labeled Face right, move forward 3 and Face right, move backward 1." />
+                 alt="Two number line diagrams. The top shows 3 plus 1 equals 4: a person faces right, moves forward 3 to reach 3, then moves forward 1 more to reach 4. The bottom shows 3 minus 1 equals 2: a person faces right, moves forward 3 to reach 3, then moves backward 1 to reach 2." />
         </figure>
 
         <p>When you subtract positive numbers, you can imagine moving backward, but still facing in a positive direction.</p>
-         <figure class="numberline-figure">
+
+        <figure class="numberline-figure">
             <img src="images/mth111_1_9_8.png"
-                 alt="A number line showing negative 3 plus negative 1 equals negative 4. A person faces left and moves forward 3 to reach negative 3, then moves forward 1 more in the negative direction to reach negative 4 — labeled Face left, move forward 3 and Face left, move forward 1." />
+                 alt="A number line showing negative 3 plus negative 1 equals negative 4. A person faces left and moves forward 3 to reach negative 3, then moves forward 1 more in the negative direction to reach negative 4." />
         </figure>
 
         <p>Now let's see what this means when one or more of the numbers is negative. Recall that when you add a negative number, you move forward, but face in a negative direction (to the left).</p>
 
-       <figure class="numberline-figure">
+        <figure class="numberline-figure">
             <img src="images/mth111_1_9_9.png"
-                 alt="A number line showing negative 2 minus negative 3 equals 1. A person faces left and moves forward 2 to reach negative 2, then moves backward 3 while still facing left, arriving at positive 1 — labeled Face left, move forward 2 and Face left, move backward 3." />
+                 alt="A number line showing negative 2 minus negative 3 equals 1. A person faces left and moves forward 2 to reach negative 2, then moves backward 3 while still facing left, arriving at positive 1." />
         </figure>
 
         <p>How do you subtract a negative number? First face and move forward in a negative direction to the first number, \(-2\). Then continue facing in a negative direction (to the left), but move backward to subtract \(-3\).</p>
 
-          <figure class="numberline-figure">
+        <figure class="numberline-figure">
             <img src="images/mth111_1_9_10.png"
                  alt="A number line with negative 93 marked on the left and 382 marked on the right. A bracket labeled 93 spans from negative 93 to 0, and a bracket labeled 382 spans from 0 to 382. A long arrow above labeled Total distance equals 382 plus 93 equals 475 units spans the entire distance from negative 93 to 382." />
         </figure>
-
 
         <p>But isn't this the same result as if you had added positive 3 to \(-2\)? \(-2 + 3 = 1\).</p>
         <p>In each addition problem, you face one direction and move some distance forward. In the paired subtraction problem, you face the opposite direction and then move the same distance backward. Each gives the same result!</p>
@@ -502,7 +514,6 @@
 
         <p>Another way to think about subtracting is to think about the distance between the two numbers on the number line. In the example above, 382 is to the right of 0 by 382 units, and \(-93\) is to the left of 0 by 93 units. The distance between them is the sum of their distances to 0: \(382 + 93\).</p>
 
-      
         <section class="example" aria-labelledby="ex-1-9-10-heading">
             <div class="example-problem">
                 <h3 id="ex-1-9-10-heading">Example 10</h3>
@@ -542,17 +553,14 @@
             </div>
         </section>
 
-        
+        <p>Another way to think about subtracting is to think about the distance between the two numbers on the number line. In the example above, 382 is to the right of 0 by 382 units, and −93 is to the left of 0 by 93 units. The distance between them is the sum of their distances to 0: 382 + 93.</p>
 
-<p>Another way to think about subtracting is to think about the distance between the two
-numbers on the number line. In the example above, 382 is to the right of 0 by 382 units,
-and −93 is to the left of 0 by 93 units. The distance between them is the sum of their
-distances to 0: 382 + 93.</p>
-<figure class="numberline-figure">
+        <figure class="numberline-figure">
             <img src="images/mth111_1_9_11.png"
                  alt="A number line from -93 to 382. Three curved red arrows each arc over 4 units, jumping from 0 to 4, 4 to 8, and 8 to 12. The equation 3 times 4 equals 12 is shown above the number line." />
         </figure>
-<section class="example" aria-labelledby="ex-1-9-12-heading">
+
+        <section class="example" aria-labelledby="ex-1-9-12-heading">
             <div class="example-problem">
                 <h3 id="ex-1-9-12-heading">Example 12</h3>
                 <p>Find \(22\dfrac{1}{3} - \left(-\dfrac{3}{5}\right)\).</p>
@@ -571,11 +579,14 @@ distances to 0: 382 + 93.</p>
                 </div>
             </div>
         </section>
-        
+
         <div class="self-check" role="note" aria-label="Self Check E">
-            <p><strong>Self Check E</strong></p>
+            <h4>Self Check E</h4>
             <p>Find \(-32.3 - (-16.3)\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sce-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sce-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="sce-1-9" class="self-check-answer">
                 <p>To subtract, change the problem to adding the opposite of \(-16.3\), which gives \(-32.3 + 16.3\). Then use the rules for adding two numbers with different signs. Since the difference between 32.3 and 16.3 is 16, and \(|-32.3| > |16.3|\), the correct answer is \(-16\).</p>
             </div>
@@ -604,9 +615,12 @@ distances to 0: 382 + 93.</p>
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check F">
-            <p><strong>Self Check F</strong></p>
+            <h4>Self Check F</h4>
             <p>Find \(32 - (-14) - 2 + (-82)\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scf-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scf-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scf-1-9" class="self-check-answer">
                 <p>To subtract \(32 - (-14)\), write the subtraction as addition of the opposite, giving \(32 + 14 = 46\). Then subtract 2 to get 44, and add \(-82\) to get \(-38\).</p>
             </div>
@@ -675,9 +689,12 @@ distances to 0: 382 + 93.</p>
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check G">
-            <p><strong>Self Check G</strong></p>
+            <h4>Self Check G</h4>
             <p>Louise noticed that her bank balance was \(-\$33.72\) before her paycheck was deposited. After the check had been deposited, the balance was \(\$822.98\). No other deductions or deposits were made. How much money was she paid?</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scg-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scg-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scg-1-9" class="self-check-answer">
                 <p>\(\$856.70\). The amount she was paid is the difference between the two balances: \(822.98 - (-33.72)\). This is the same as \(822.98 + 33.72\), or \(856.70\).</p>
             </div>
@@ -694,11 +711,11 @@ distances to 0: 382 + 93.</p>
         <p>After addition and subtraction, the next operations you learned how to do were multiplication and division. You may recall that multiplication is a way of computing "repeated addition," and this is true for negative numbers as well.</p>
         <p>Multiplication and division are <strong>inverse operations</strong>, just as addition and subtraction are. You may recall that when you divide fractions, you multiply by the reciprocal.</p>
         <p>Multiplying real numbers is not that different from multiplying whole numbers and positive fractions. With whole numbers, you can think of multiplication as repeated addition. Using the number line, you can make multiple jumps of a given size. For example, the following picture shows the product \(3 \times 4\) as 3 jumps of 4 units each.</p>
-<figure class="numberline-figure">
+
+        <figure class="numberline-figure">
             <img src="images/mth111_1_9_12.png"
                  alt="A number line from negative 16 to 0. Three curved red arrows each arc over 4 units in the negative direction, jumping from 0 to negative 4, negative 4 to negative 8, and negative 8 to negative 12. The equation 3 times negative 4 equals negative 12 is shown above the number line." />
         </figure>
-        
 
         <p>So to multiply \(3(-4)\), you can face left (toward the negative side) and make three "jumps" forward (in a negative direction).</p>
 
@@ -819,9 +836,12 @@ distances to 0: 382 + 93.</p>
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check H">
-            <p><strong>Self Check H</strong></p>
+            <h4>Self Check H</h4>
             <p>Find \((-30)(-0.5)\).</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sch-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sch-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="sch-1-9" class="self-check-answer">
                 <p>\(15\)</p>
                 <p>First, multiply 30 and 0.5. Multiply 30 and 5 to get 150, then place the decimal point. Since 0.5 has one digit to the right of the decimal point, the decimal point in the product needs to be placed with one digit to the right of it, to get 15. The two original factors are both negative. Since there is an even number of negative factors, the product is positive.</p>
@@ -896,18 +916,24 @@ distances to 0: 382 + 93.</p>
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check I">
-            <p><strong>Self Check I</strong></p>
+            <h4>Self Check I</h4>
             <p>What is the reciprocal, or multiplicative inverse, of \(-12\)?</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sci-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sci-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="sci-1-9" class="self-check-answer">
                 \[-\frac{1}{12}\]
             </div>
         </div>
 
         <div class="self-check" role="note" aria-label="Self Check J">
-            <p><strong>Self Check J</strong></p>
+            <h4>Self Check J</h4>
             <p>Find \(\dfrac{6}{7} \div \dfrac{3}{10}\). Write the answer in lowest terms.</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scj-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scj-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="scj-1-9" class="self-check-answer">
                 \[\frac{6}{7} \times \frac{10}{3} = \frac{60}{21} = \frac{20}{7}\]
             </div>
@@ -933,9 +959,12 @@ distances to 0: 382 + 93.</p>
         </section>
 
         <div class="self-check" role="note" aria-label="Self Check K">
-            <p><strong>Self Check K</strong></p>
+            <h4>Self Check K</h4>
             <p>Over the course of an 18-year research project, the height of an oceanside cliff actually dropped due to soil erosion. At the end of this period, its height was measured as \(-3\) inches compared to what it had been at the beginning of the research project. What was the average amount that the cliff's height changed each year?</p>
-            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sck-1-9">Show Answer</button>
+            <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sck-1-9">
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
+            </button>
             <div id="sck-1-9" class="self-check-answer">
                 \[-3 \div 18 = -\frac{1}{6} \text{ inch per year}\]
             </div>
@@ -1055,6 +1084,7 @@ distances to 0: 382 + 93.</p>
             button.setAttribute('aria-expanded', 'true');
         }
     }
+
     function toggleExample(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('.toggle-arrow');
@@ -1070,15 +1100,20 @@ distances to 0: 382 + 93.</p>
             button.setAttribute('aria-expanded', 'true');
         }
     }
+
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
