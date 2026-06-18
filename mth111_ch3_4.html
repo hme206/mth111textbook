@@ -21,7 +21,7 @@
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles1.css" />
 
     <style>
         .self-check {
@@ -330,6 +330,18 @@
         <p>There are five basic units for measuring capacity in the U.S. customary measurement system: the fluid ounce, cup, pint, quart, and gallon. These units are related to one another, and capacity can be described using any of them. Typically, people use gallons to describe larger quantities and fluid ounces, cups, pints, or quarts for smaller quantities. Often, in order to compare or solve problems involving the amount of liquid in a container, you need to convert from one unit of measurement to another using the factor label method.</p>
     </section>
 
+        <!-- ═══════════════════════════════════════════
+         EXERCISES
+    ════════════════════════════════════════════ -->
+    <section class="exercises-section" aria-labelledby="exercises-3-4-heading">
+        <h2 id="exercises-3-4-heading" class="subsection-title">Exercises</h2>
+
+        <button class="exercises-header" onclick="toggleExercises(this)" aria-expanded="false" aria-controls="exercises-3-4-content">
+            <span class="toggle-arrow">▼</span>
+            <span>Show Exercises</span>
+        </button>
+</section>
+
 </main>
 
 <!-- Toggle scripts -->
@@ -363,6 +375,21 @@
             answer.classList.add('open');
             arrow.classList.add('open');
             button.querySelector('span:last-child').textContent = 'Hide Answer';
+            button.setAttribute('aria-expanded', 'true');
+        }
+    }
+       function toggleExercises(button) {
+        const content = button.nextElementSibling;
+        const arrow = button.querySelector('.toggle-arrow');
+        if (content.classList.contains('open')) {
+            content.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Exercises';
+            button.setAttribute('aria-expanded', 'false');
+        } else {
+            content.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Exercises';
             button.setAttribute('aria-expanded', 'true');
         }
     }
