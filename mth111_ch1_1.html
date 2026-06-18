@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -338,10 +337,11 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>In a far away galaxy, there are 2,968,351,472 stars. What does the digit 3 represent in this number?</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-1">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-1" class="self-check-answer">
                 <p>The digit 3 is in the <strong>hundred-thousands</strong> place, so it represents <strong>300,000</strong>.</p>
@@ -922,12 +922,10 @@
 
 </main><!-- end .container -->
 
-<!-- Toggle script for examples -->
 <script>
     function toggleExercises(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('.toggle-arrow');
-
         if (content.classList.contains('open')) {
             content.classList.remove('open');
             arrow.classList.remove('open');
@@ -944,7 +942,6 @@
     function toggleExample(button) {
         const content = button.nextElementSibling;
         const arrow = button.querySelector('.toggle-arrow');
-
         if (content.classList.contains('open')) {
             content.classList.remove('open');
             arrow.classList.remove('open');
@@ -959,14 +956,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
