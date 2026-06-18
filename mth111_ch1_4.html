@@ -275,10 +275,11 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>Use &lt; or &gt; to write a true sentence: 45.675 ☐ 45.649</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-4">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-4" class="self-check-answer">
                 <p>Compare digit by digit. The tenths digits are equal (6 = 6). Compare hundredths: 7 versus 4. Since 7 &gt; 4:</p>
@@ -401,10 +402,11 @@
 
         <!-- Self Check B -->
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Round 10.473 to the nearest tenth.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-4">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scb-1-4" class="self-check-answer">
                 <p>The tenths digit is 4. The hundredths digit is 7, which is 5 or greater, so round up.</p>
@@ -561,14 +563,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
