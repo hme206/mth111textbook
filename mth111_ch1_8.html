@@ -336,10 +336,11 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>Write 120,003,000,000 using scientific notation.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-8">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-8" class="self-check-answer">
                 <p>Move the decimal 11 places to the left. The coefficient is 1.20003.</p>
@@ -349,10 +350,11 @@
 
         <!-- Self Check B -->
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Write 0.0001204 using scientific notation.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-8">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scb-1-8" class="self-check-answer">
                 <p>Move the decimal 4 places to the right. Because it moved right, the exponent is negative.</p>
@@ -471,10 +473,11 @@
 
         <!-- Self Check C -->
         <div class="self-check" role="note" aria-label="Self Check C">
-            <p><strong>Self Check C</strong></p>
+            <h4>Self Check C</h4>
             <p>Write \(3.204 \times 10^{4}\) in decimal form.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-8">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scc-1-8" class="self-check-answer">
                 <p>Positive exponent — move decimal 4 places to the right:</p>
@@ -484,10 +487,11 @@
 
         <!-- Self Check D -->
         <div class="self-check" role="note" aria-label="Self Check D">
-            <p><strong>Self Check D</strong></p>
+            <h4>Self Check D</h4>
             <p>Write \(6.789 \times 10^{-7}\) in decimal form.</p>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scd-1-8">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scd-1-8" class="self-check-answer">
                 <p>Negative exponent — move decimal 7 places to the left:</p>
@@ -600,14 +604,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
