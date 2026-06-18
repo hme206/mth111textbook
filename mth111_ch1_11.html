@@ -155,7 +155,7 @@
         <figure class="numberline-figure">
             <img
                 src="images/mth111_1_11_2.png"
-                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. A filled blue circle is placed at negative 1.6, labeled negative 1.6, between negative 2 and negative 1. Two arrows above the number line show that negative 1.6 is 2 units to the left of 0 and 1 unit to the left of 0, illustrating the position of negative 1.6."
+                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. A filled blue circle is placed at negative 1.6, labeled negative 1.6, between negative 2 and negative 1."
             />
         </figure>
 
@@ -185,7 +185,7 @@
 
         <!-- Self Check A -->
         <div class="self-check" role="note" aria-label="Self Check A">
-            <p><strong>Self Check A</strong></p>
+            <h4>Self Check A</h4>
             <p>Which of the following points represents \(-1\frac{1}{4}\)?</p>
             <figure class="numberline-figure">
                 <img
@@ -194,7 +194,8 @@
                 />
             </figure>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="sca-1-11">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="sca-1-11" class="self-check-answer">
                 <p>B.</p>
@@ -254,7 +255,7 @@
 
         <!-- Self Check B -->
         <div class="self-check" role="note" aria-label="Self Check B">
-            <p><strong>Self Check B</strong></p>
+            <h4>Self Check B</h4>
             <p>Which of the following are true?</p>
             <ol type="i">
                 <li>\(-4.1 > 3.2\)</li>
@@ -263,7 +264,8 @@
                 <li>\(-4.6 < -4.1\)</li>
             </ol>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scb-1-11">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scb-1-11" class="self-check-answer">
                 <p>ii and iv</p>
@@ -342,7 +344,7 @@
         <figure class="numberline-figure">
             <img
                 src="images/mth111_1_11_6.png"
-                alt="A Venn diagram showing the sets of real numbers. The outermost circle is labeled Real Numbers. Inside it are two overlapping regions: a large circle on the left labeled Irrational Numbers containing pi, square root of 2, and square root of 7, and a large circle on the right labeled Rational Numbers containing 0.25 and 15 over 8 and 81 over 25. Inside the Rational Numbers circle is a smaller circle labeled Integers, inside which is a smaller circle labeled Whole Numbers, inside which is the smallest circle labeled Natural Numbers. The value 0.66 appears in the Rational Numbers circle outside the Integers circle."
+                alt="A Venn diagram showing the sets of real numbers. The outermost circle is labeled Real Numbers. Inside it are two regions: a circle labeled Irrational Numbers containing pi, square root of 2, and square root of 7, and a circle labeled Rational Numbers. Inside the Rational Numbers circle is a smaller circle labeled Integers, inside which is Whole Numbers, inside which is Natural Numbers."
             />
         </figure>
 
@@ -453,7 +455,7 @@
 
         <!-- Self Check C -->
         <div class="self-check" role="note" aria-label="Self Check C">
-            <p><strong>Self Check C</strong></p>
+            <h4>Self Check C</h4>
             <p>Which of the following sets does \(-\frac{33}{5}\) belong to?</p>
             <ul>
                 <li>whole numbers</li>
@@ -463,7 +465,8 @@
                 <li>real numbers</li>
             </ul>
             <button class="self-check-btn" onclick="toggleSelfCheck(this)" aria-expanded="false" aria-controls="scc-1-11">
-                Show Answer
+                <span class="toggle-arrow">▼</span>
+                <span>Show Answer</span>
             </button>
             <div id="scc-1-11" class="self-check-answer">
                 <p>rational and real numbers</p>
@@ -474,7 +477,7 @@
         <figure class="numberline-figure">
             <img
                 src="images/mth111_1_11_7.png"
-                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. Various numbers are plotted: a filled circle at negative 4 and 3 fifths labeled negative 23 over 5, a filled circle at negative 1.6, a filled circle at negative 1 and 1 fourth, a filled circle at 0.5, a filled circle at 2.75, and approximate positions for square root of 2 near 1.4 and pi near 3.14, illustrating the locations of both rational and irrational numbers on the real number line."
+                alt="A horizontal number line from negative 5 to 5 with tick marks at each integer. Various numbers are plotted: a filled circle at negative 4 and 3 fifths labeled negative 23 over 5, a filled circle at negative 1.6, a filled circle at negative 1 and 1 fourth, a filled circle at 0.5, a filled circle at 2.75, and approximate positions for square root of 2 near 1.4 and pi near 3.14."
             />
         </figure>
 
@@ -493,7 +496,7 @@
     <hr class="divider" role="separator" aria-hidden="true" />
 
     <!-- ═══════════════════════════════════════
-         EXERCISES (empty container for future use)
+         EXERCISES
     ════════════════════════════════════════════ -->
     <section class="exercises-section" aria-labelledby="exercises-1-11-heading">
         <h2 id="exercises-1-11-heading" class="subsection-title">Exercises</h2>
@@ -542,14 +545,18 @@
     }
 
     function toggleSelfCheck(button) {
-        const answer = button.nextElementSibling;
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            button.textContent = 'Show Answer';
+        const answerId = button.getAttribute('aria-controls');
+        const answer = document.getElementById(answerId);
+        const arrow = button.querySelector('.toggle-arrow');
+        if (answer.classList.contains('open')) {
+            answer.classList.remove('open');
+            arrow.classList.remove('open');
+            button.querySelector('span:last-child').textContent = 'Show Answer';
             button.setAttribute('aria-expanded', 'false');
         } else {
-            answer.style.display = 'block';
-            button.textContent = 'Hide Answer';
+            answer.classList.add('open');
+            arrow.classList.add('open');
+            button.querySelector('span:last-child').textContent = 'Hide Answer';
             button.setAttribute('aria-expanded', 'true');
         }
     }
